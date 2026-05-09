@@ -1,0 +1,1874 @@
+---
+inclusion: manual
+name: Component-Development-Guide
+description: Guide for building components with appropriate token usage, True Native Architecture, demo maintenance, and effective collaboration practices. Load when implementing components, selecting tokens, integrating icons, or maintaining demo pages.
+---
+
+# Component Development and Practices Guide
+
+**Date**: 2025-11-17
+**Last Reviewed**: 2026-05-06
+**Purpose**: Guide AI agents in building components with appropriate token usage, True Native Architecture, and effective collaboration practices
+**Organization**: process-standard
+**Scope**: cross-project
+**Layer**: 3
+**Relevant Tasks**: coding, accessibility-development, icon-integration
+
+## AI Agent Reading Priorities
+
+**Note**: This section intentionally uses the same heading as other steering documents because each document provides reading priorities specific to its content. This structural pattern enables progressive disclosure and helps AI agents navigate to relevant sections efficiently.
+
+**Layer Context**: This is a Layer 3 (Specific Implementations) document that provides domain-specific guidance for component development. It's conditionally loaded when building or modifying components and contains detailed technical implementation patterns.
+
+**WHEN building new components THEN read:**
+1. ✅ **Token Selection Decision Framework** (Step 1-4)
+2. ✅ **Semantic tokens**: Read `src/tokens/semantic/index.ts` for available tokens
+3. ✅ **Component Structure Pattern** (file organization)
+4. ✅ **True Native Architecture**: `preserved-knowledge/true-native-architecture-concepts.md`
+5. ✅ **Contract System Reference**: `Contract-System-Reference.md` (taxonomy, naming, format for contracts.yaml)
+6. ✅ **Icon System Integration** (if component uses icons)
+7. ✅ **Validation Checklist** (before implementation)
+
+**WHEN selecting tokens for components THEN read:**
+1. ✅ **Token Selection Decision Framework** (all steps)
+2. ✅ **System-Specific Terminology Glossary** (understand naming conventions)
+3. ✅ **Common Component Patterns** (button, input, container patterns)
+4. ✅ **Anti-Patterns to Avoid** (what NOT to do)
+
+**WHEN creating component-level tokens THEN read:**
+1. ✅ **Step 3: Create Component-Level Tokens for Variants**
+2. ✅ **Component Token Files** section
+3. ✅ **Component sizing guide**: `.kiro/specs/responsive-layout-system/component-sizing-token-guide.md`
+
+**WHEN creating semantic tokens THEN read:**
+1. ✅ **Step 4: Propose Semantic Token Elevation**
+2. ✅ **Primitive tokens**: Read `src/tokens/*.ts` for primitive token foundation
+3. ✅ **Token architecture**: `preserved-knowledge/token-architecture-2-0-mathematics.md`
+
+**WHEN implementing cross-platform components THEN read:**
+1. ✅ **Component Structure Pattern** (True Native Architecture)
+2. ✅ **Component Token Files** (platform-agnostic token references)
+3. ✅ **Cross-Platform Token Consumption** (how tokens work per platform)
+4. ✅ **Icon System Integration** (if component uses icons)
+5. ✅ **Platform-Specific Nuances** (iOS/Android/Web differences)
+
+**WHEN adding icons to components THEN read:**
+1. ✅ **Icon System Integration** (when to use Icon component vs. direct platform icons)
+2. ✅ **Icon Size Tokens** (token-to-pixel mapping and typography pairing)
+3. ✅ **Platform-Specific Icon Usage** (Web, iOS, Android patterns)
+4. ✅ **Icon Integration Anti-Patterns** (what NOT to do)
+5. ✅ **Icon Integration Checklist** (verification steps)
+
+**WHEN implementing interaction states (hover, pressed, focus, disabled) THEN read:**
+1. ✅ **Blend Utility Integration** (how to use blend utilities for state colors)
+2. ✅ **Semantic Blend Token Reference** (which token/function for each state)
+3. ✅ **Blend Utility Anti-Patterns** (what NOT to do - no opacity, no filters)
+4. ✅ **Blend Tokens Guide**: `.kiro/steering/Token-Family-Blend.md` (complete reference)
+
+**WHEN implementing components with CSS transitions THEN read:**
+1. ✅ **Incremental DOM Update Pattern** (architecture for preserving element identity)
+2. ✅ **Key Implementation Details** (DOM creation flag, element caching, conditional updates)
+3. ✅ **Incremental DOM Anti-Patterns** (what NOT to do - no innerHTML replacement)
+4. ✅ **Button-VerticalList-Item Implementation** - canonical example
+
+**WHEN defining CSS custom properties in components THEN read:**
+1. ✅ **CSS Custom Property Naming Convention** (the `--_[abbrev]-*` pattern)
+2. ✅ **Component Abbreviation Reference** (standard abbreviations for each component)
+3. ✅ **When to Use Each Type** (design tokens vs component-scoped properties)
+4. ✅ **CSS Custom Property Naming Anti-Patterns** (what NOT to do)
+
+**WHEN troubleshooting component issues THEN read:**
+1. ✅ **Anti-Patterns to Avoid** (common mistakes)
+2. ✅ **Validation Checklist** (what to verify)
+3. ✅ **WCAG Theme Architecture** (if accessibility issues)
+
+**SKIP when:**
+- Updating component documentation only
+- Fixing typos or formatting
+- Running tests without implementation changes
+- Working on non-component code (tokens, build system, etc.)
+
+---
+
+## Collaboration Practices and FAQs
+
+### When to Pause and Ask
+
+AI agents should pause implementation and ask Peter for clarification when:
+
+- **Token gaps:** "I need [semantic token] but it doesn't exist. Should I use [primitive token] as fallback, or should we create the semantic token first?"
+- **Design ambiguity:** "Design doc specifies fixed heights but calculated sizing seems more appropriate. Which approach should I use?"
+- **Platform idioms:** "Platform-native animation pattern conflicts with motion token usage. Should I prioritize platform UX or token compliance?"
+- **Judgment calls:** "I'm about to make a judgment call about [decision]. Should I proceed or get clarification first?"
+
+**Key Principle:** Pausing to ask is the correct behavior, not a failure. We lose more time correcting assumptive solutions than calling a timeout for clarity.
+
+### Clear Policies
+
+#### Icon Usage Policy
+
+- **Always use the Icon component** when displaying icons
+- **Never reference icon assets directly**
+- **Rationale:** Ensures consistent sizing via icon.size tokens, proper accessibility attributes, platform-appropriate rendering, and centralized icon management
+
+#### Sizing Strategy Policy
+
+- **Default to calculated sizing** (padding + content) unless explicitly told otherwise
+- **If design doc specifies fixed heights**, clarify whether calculated heights would work better
+- **Document sizing strategy** in component design docs
+
+#### Token Gap Policy
+
+- **When semantic tokens don't exist**, pause and ask for guidance
+- **Never assume primitive tokens are acceptable fallbacks**
+- **Document token gaps** in design docs for tracking
+
+#### Placeholder Policy
+
+- **Never use placeholder implementations** in production code
+- **Tooling will enforce this** through TypeScript types and tests
+- **If placeholders are needed during development**, pause and ask for guidance
+
+**For strategic guidance on cross-platform decisions**, see [Cross-Platform vs Platform-Specific Decision Framework](./Cross-Platform vs Platform-Specific Decision Framework.md)
+
+**For strategic guidance on token resolution**, see [Token Resolution Patterns](./Token-Resolution-Patterns.md)
+
+---
+
+## Token Selection Decision Framework
+
+### Step 1: Check Semantic Tokens First
+
+**ALWAYS start by reading semantic token files** to see what exists:
+- `src/tokens/semantic/ColorTokens.ts` - Brand, status, text, surface colors
+- `src/tokens/semantic/TypographyTokens.ts` - Body, heading, UI, specialized text
+- `src/tokens/semantic/SpacingTokens.ts` - Layout and inset spacing
+- `src/tokens/semantic/ShadowTokens.ts` - Elevation shadows
+- `src/tokens/semantic/index.ts` - Complete semantic token exports
+
+**Example**: Button needs text color
+- ❌ DON'T: Use primitive `blue500`
+- ✅ DO: Read `ColorTokens.ts`, find `color.primary`
+
+### Step 2: Use Primitives Only When Unavoidable
+
+**If no semantic token exists**, use primitives and document why:
+- Read `src/tokens/*.ts` to find appropriate primitive
+- Add comment explaining why semantic token doesn't exist
+- Consider proposing semantic token elevation if pattern emerges
+
+**Example**: Custom brand color not in semantic tokens
+- ✅ OK: Use `purple300` with comment: `// TODO: Evaluate for semantic token elevation`
+
+### What If Tokens Don't Exist?
+
+**When you need a token that doesn't exist:**
+
+1. **Pause and ask**: "I need [semantic token] for [use case]. Should I use [primitive token] as fallback, or should we create the semantic token first?"
+2. **Document the gap**: Add to design doc's "Token Gaps" section
+3. **Never assume**: Don't assume primitive tokens are acceptable fallbacks
+4. **Wait for guidance**: Let Peter decide whether to create token or use alternative approach
+
+**Why this matters**: Token gaps often indicate design system opportunities. Pausing to discuss prevents premature decisions and helps the design system evolve intentionally.
+
+**For strategic guidance on token resolution**, see [Token Resolution Patterns](./Token-Resolution-Patterns.md)
+
+### Step 3: Create Component-Level Tokens for Variants
+
+**If component needs multiple variants**, create component-level tokens:
+- Reference: `.kiro/specs/responsive-layout-system/component-sizing-token-guide.md`
+- Component tokens should reference semantic or primitive tokens
+- Never use hard-coded values
+
+**Example**: Button sizing variants
+```typescript
+// ButtonCTA/tokens.ts
+export const buttonCTATokens = {
+  small: {
+    paddingX: 'space.inset.tight',
+    paddingY: 'space.grouped.minimal',
+    typography: 'typography.buttonSm'
+  },
+  medium: {
+    paddingX: 'space.inset.normal',
+    paddingY: 'space.inset.tight',
+    typography: 'typography.buttonMd'
+  },
+  large: {
+    paddingX: 'space.inset.comfortable',
+    paddingY: 'space.inset.normal',
+    typography: 'typography.buttonLg'
+  }
+};
+```
+
+### Step 4: Propose Semantic Token Elevation
+
+**If 3+ components use same pattern**, propose semantic token elevation:
+- Document the pattern in component completion notes
+- Suggest semantic token name and structure
+- Reference component-sizing-token-guide.md for elevation criteria
+
+---
+
+## System-Specific Terminology Glossary
+
+### Component Naming
+
+**Container (not Card)**
+- **Use**: "Container" for generic content wrappers
+- **Avoid**: "Card" (conflicts with payment/gaming domains)
+- **Rationale**: Domain clarity - "Container" is unambiguous across contexts
+
+**True Native Architecture**
+- **Meaning**: Build-time platform separation (not runtime detection)
+- **Implementation**: Separate files per platform (Button.web.tsx, Button.ios.swift, Button.android.kt)
+- **Benefit**: No runtime overhead, platform-specific optimizations
+
+**Semantic Tokens**
+- **Meaning**: Tokens with contextual meaning (color.primary, typography.button)
+- **Purpose**: Express design intent, not implementation details
+- **Usage**: Always prefer semantic over primitive tokens in components
+
+**Strategic Flexibility**
+- **Meaning**: Mathematically-derived exceptions to 8px baseline grid
+- **Tokens**: space075 (6px), space125 (10px), space250 (20px)
+- **Usage**: Component-level spacing when baseline grid is too rigid
+- **Validation**: Three-tier system (Pass/Warning/Error)
+
+**Compositional Architecture**
+- **Meaning**: Tokens compose primitives rather than including all properties
+- **Example**: Typography tokens don't include color (color applied separately)
+- **Benefit**: Same token works with different colors in different contexts
+
+### Token Hierarchy
+
+**Primitive Tokens**
+- **Location**: `src/tokens/*.ts`
+- **Examples**: `space100`, `fontSize100`, `blue500`
+- **Usage**: Foundation for semantic tokens, rarely used directly in components
+
+**Semantic Tokens**
+- **Location**: `src/tokens/semantic/*.ts`
+- **Examples**: `color.primary`, `typography.button`, `space.inset.normal`
+- **Usage**: Primary token layer for component development
+
+**Component-Level Tokens**
+- **Location**: Within component directory (e.g., `ButtonCTA/tokens.ts`)
+- **Examples**: Button sizing variants, state-specific colors
+- **Usage**: When component needs variants not covered by semantic tokens
+
+### WCAG Theme Architecture
+
+**Dual-Theme Support**
+
+The DesignerPunk token system includes built-in dual-theme support for color tokens:
+- **Base theme**: Prioritizes aesthetic design and brand expression
+- **WCAG theme**: Ensures WCAG 2.1 AA accessibility compliance
+
+**How It Works**
+
+Each primitive color token has both `base` and `wcag` theme values:
+
+```typescript
+// Example from ColorTokens.ts
+gray200: {
+  platforms: {
+    web: {
+      value: {
+        light: { base: '#68658A', wcag: '#8A879E' },
+        dark: { base: '#68658A', wcag: '#8A879E' }
+      }
+    }
+  }
+}
+```
+
+**Theme Selection**
+
+- **Base theme** (default): Used for aesthetic design where brand expression is prioritized
+- **WCAG theme**: Used when accessibility compliance is required or when base theme fails contrast requirements
+
+**Important Notes**
+
+1. **Not Automatic**: The WCAG theme doesn't automatically solve accessibility issues - it's a tool that requires Human-AI collaboration to use effectively
+2. **Component-Specific**: Accessibility testing must consider the specific context of each component and how elements pair together
+3. **Contrast Testing**: Proper accessibility testing checks element pairings in context (e.g., text on background, border on background) with appropriate WCAG standards based on element criticality
+4. **Design Feedback**: Accessibility decisions often require design feedback to balance aesthetic goals with accessibility requirements
+
+**When to Consider WCAG Theme**
+
+- When base theme colors fail WCAG contrast requirements
+- When component needs to meet specific accessibility standards
+- When design feedback indicates accessibility improvements are needed
+- When building components for accessibility-critical contexts
+
+**Accessibility Testing Philosophy**
+
+Accessibility testing requires understanding:
+- **Element Pairings**: Contrast happens between elements (text on background, border on surface)
+- **Criticality Standards**: Different elements have different contrast requirements (4.5:1 for text, 3:1 for non-text)
+- **Context Matters**: The same color may be accessible in one context but not another
+- **Human-AI Collaboration**: Accessibility decisions require design judgment, not just automated testing
+
+---
+
+## Family Naming Convention
+
+### Authoritative Source
+
+`family-registry.yaml` (project root) is the single source of truth for component family identity. It defines three fields per family:
+
+- **`canonical`**: Machine identifier — singular PascalCase, no spaces, no hyphens (e.g., `FormInput`, `ProgressIndicator`)
+- **`displayName`**: Human-facing label for docs and MCP responses (e.g., "Form Inputs", "Progress Indicators")
+- **`prefix`**: Primary component name prefix (e.g., `Input-`, `Progress-`)
+
+All schema.yaml `family:` fields and guidance YAML `family:` fields MUST use the canonical name from the registry.
+
+### Canonical Family Names
+
+| Canonical | Display Name | Prefix | Notes |
+|-----------|-------------|--------|-------|
+| `Avatar` | "Avatars" | `Avatar-` | |
+| `Badge` | "Badges" | `Badge-` | |
+| `Button` | "Buttons" | `Button-` | |
+| `Chip` | "Chips" | `Chip-` | |
+| `Container` | "Containers" | `Container-` | |
+| `FormInput` | "Form Inputs" | `Input-` | ⚠️ Legacy prefix omits `Form` |
+| `Icon` | "Icons" | `Icon-` | |
+| `Navigation` | "Navigation" | `Nav-` | ⚠️ Legacy abbreviated prefix |
+| `ProgressIndicator` | "Progress Indicators" | `Progress-` | ⚠️ Dual prefix — primitives use `Progress-Indicator-`, semantic variants use `Progress-` |
+
+### Legacy Prefix Mapping
+
+Three families have component name prefixes that don't match their canonical family name. These are documented, not changed — component names are stable identifiers with deep references across the codebase.
+
+An agent encountering `Input-Text-Base` should know it belongs to the `FormInput` family. An agent encountering `Nav-TabBar-Base` should know it belongs to the `Navigation` family. The mapping above is the authoritative reference.
+
+### Forward-Looking Rule
+
+**New families MUST use the canonical family name as the component prefix.** No abbreviations, no divergence. If the canonical name is `DataDisplay`, the component prefix is `DataDisplay-`, not `DD-` or `Data-`.
+
+### Guidance YAML Filenames
+
+Guidance YAML filenames (e.g., `button.yaml`, `form-inputs.yaml`) are filesystem identifiers independent of the canonical family name. A file named `form-inputs.yaml` contains `family: FormInput`. This is expected — the filename convention predates the canonical naming convention and is not worth renaming.
+
+### Enforcement
+
+The `FamilyNameValidation.test.ts` test validates that every schema `family:` value matches a canonical name in `family-registry.yaml`. Adding a new family requires registering it in the registry first — the test will fail with a clear message if an unregistered family name appears.
+
+---
+
+## Family Guidance Standards
+
+When a component family reaches production readiness, its guidance YAML must meet minimum quality standards. These standards ensure that product agents (Leonardo) can select the right component for the right context from day one — not just find that guidance exists, but find guidance that's *useful*.
+
+### Minimum Quality Bar
+
+| Standard | Rationale | Enforcement |
+|----------|-----------|-------------|
+| Every production component appears in at least one `selectionRule` | An unreachable component is invisible to agents querying `getGuidance()` — it exists in the catalog but can't be selected through guidance | `GuidanceCompleteness.test.ts` — hard failure |
+| `whenToUse` is non-empty | Agents need to know what problem this family solves before selecting from it | `GuidanceCompleteness.test.ts` — hard failure |
+| `whenNotToUse` is non-empty | The most common guidance failure is selecting a component for the wrong use case. Explicit anti-patterns prevent this | `GuidanceCompleteness.test.ts` — hard failure |
+| `accessibilityNotes` is non-empty | Every production family has accessibility implications. Notes ensure agents don't produce inaccessible compositions | `GuidanceCompleteness.test.ts` — hard failure |
+| `displayName` is present | Human-facing label for docs and MCP responses. Falls back to `family` value if omitted | `FamilyNameValidation.test.ts` (Spec 082) |
+
+### Resolution Path
+
+When `GuidanceCompleteness.test.ts` fails, the error message identifies the specific family or component and points to this section. To resolve:
+
+1. **Component not reachable**: Add the component to a `selectionRule` in the family's guidance YAML. Every `selectionRule` needs a `scenario` (when to use it), `recommend` (the component name), and `rationale` (why this component fits).
+2. **Empty `whenToUse`**: Add at least one entry describing what problem this family solves. Be specific — "Use for forms" is less useful than "Use for capturing structured user input with validation feedback."
+3. **Empty `whenNotToUse`**: Add at least one entry describing the common misuse. What do agents reach for this family when they should reach for something else?
+4. **Empty `accessibilityNotes`**: Add at least one entry covering the family's key accessibility consideration — keyboard navigation, screen reader behavior, focus management, or ARIA requirements.
+
+### Enforcement
+
+Quality enforcement lives in `application-mcp-server/src/indexer/__tests__/GuidanceCompleteness.test.ts`. This file is the dedicated home for guidance *quality* checks — distinct from `CoverageDrift.test.ts` (guidance *existence*) and `FamilyNameValidation.test.ts` (family *naming*).
+
+---
+
+## Component Attribute Standards
+
+### Variant Attribute Naming
+
+**Standard**: Use `variant` attribute for component variations, not `style`
+
+**Rationale**:
+- **IDE Warnings**: The `style` attribute conflicts with the standard HTML `style` attribute, causing IDE warnings and potential confusion
+- **Industry Standards**: Leading design systems use `variant` for component variations:
+  - Material Design: `<Button variant="contained">`
+  - Shoelace: `<sl-button variant="primary">`
+  - Adobe Spectrum: `<sp-button variant="accent">`
+- **Web Component Best Practices**: Custom elements should avoid attribute names that conflict with standard HTML attributes
+- **Developer Experience**: Clear, unambiguous attribute names improve code readability and reduce errors
+
+**Correct Usage**:
+```html
+<!-- ✅ CORRECT: Use variant attribute -->
+<button-cta variant="primary" label="Submit"></button-cta>
+<button-cta variant="secondary" label="Cancel"></button-cta>
+<button-cta variant="danger" label="Delete"></button-cta>
+```
+
+**Anti-Pattern**:
+```html
+<!-- ❌ WRONG: Don't use style attribute for variants -->
+<button-cta style="primary" label="Submit"></button-cta>
+```
+
+**Why This Matters**:
+- IDEs will show warnings when `style` is used for non-CSS purposes
+- Developers familiar with web standards expect `style` to contain CSS
+- Using `variant` aligns with industry conventions and improves code clarity
+- Future-proofs components against potential conflicts with HTML standards
+
+**TypeScript Interface Pattern**:
+```typescript
+// Component props interface
+export interface ButtonCTAProps {
+  label: string;
+  variant?: 'primary' | 'secondary' | 'danger';  // ✅ Use variant
+  size?: 'small' | 'medium' | 'large';
+  icon?: string;
+  disabled?: boolean;
+}
+```
+
+**Web Component Implementation Pattern**:
+```typescript
+// Web component attribute reading
+class ButtonCTA extends HTMLElement {
+  connectedCallback() {
+    const variant = this.getAttribute('variant') || 'primary';  // ✅ Read variant
+    // Apply styling based on variant
+  }
+}
+```
+
+---
+
+## Component Structure Pattern
+
+### File Organization
+
+```
+src/components/
+  core/                          # Core, reusable components
+    [ComponentName]/
+      README.md                  # Component documentation
+      types.ts                   # Shared TypeScript interfaces
+      tokens.ts                  # Component-level tokens (if needed)
+      __tests__/                 # Cross-platform tests
+      examples/                  # Usage examples
+      platforms/                 # Platform-specific implementations
+        web/
+          [ComponentName].web.tsx
+        ios/
+          [ComponentName].ios.swift
+        android/
+          [ComponentName].android.kt
+```
+
+### Directory Purpose
+
+- **README.md**: Component documentation, usage guidelines, token consumption
+- **types.ts**: Shared TypeScript interfaces and types
+- **tokens.ts**: Component-level token references (platform-agnostic)
+- **__tests__/**: Component tests (unit, integration, accessibility)
+- **examples/**: Usage examples demonstrating component variants
+- **platforms/**: Platform-specific implementations following True Native Architecture
+
+---
+
+## Behavioral Contracts Workflow
+
+Behavioral contracts (`contracts.yaml`) define what a component guarantees to its consumers. They are core Stemma — not a separate governance layer.
+
+### When to Author Contracts
+
+Author `contracts.yaml` after `types.ts` and before platform implementation. Contracts are the specification; platform code is the implementation.
+
+### Naming Convention
+
+All contract names follow `{category}_{concept}` in `snake_case`:
+- `interaction_focusable`, `state_disabled`, `accessibility_reduced_motion`
+- 10 categories: accessibility, animation, composition, content, interaction, layout, performance, state, validation, visual
+
+### Concept Catalog Consultation
+
+Before naming a contract, query the Concept Catalog via MCP:
+```
+get_section({ path: ".kiro/steering/Contract-System-Reference.md", heading: "Concept Catalog" })
+```
+- Use existing catalog concepts whenever possible
+- If a behavior needs a new concept, propose a catalog addition (ballot measure) before using it
+- Non-catalog concept names will fail the automated validation test (`npm test`)
+
+### Relationship to Platform Implementation
+
+- Each platform implementation satisfies the same set of contracts
+- Spec task subtasks for platform implementation should include `_Contracts:` lines mapping to the contracts they satisfy
+- The automated existence check verifies every component with `platforms/` has `contracts.yaml`
+
+### Reference
+
+For the full contract system (taxonomy, canonical format, classification rules, inheritance patterns):
+```
+get_document_full({ path: ".kiro/steering/Contract-System-Reference.md" })
+```
+
+---
+
+## What If Design Doc Is Unclear?
+
+**When design documentation leaves questions unanswered:**
+
+1. **Pause and ask**: "Design doc specifies [X] but [Y] seems more appropriate. Which approach should I use?"
+2. **Provide context**: Explain why you're uncertain and what alternatives you're considering
+3. **Don't assume**: Never make judgment calls on ambiguous design decisions
+4. **Document the question**: Add to design doc as an open question if it affects other components
+
+**Common ambiguities:**
+- Fixed heights vs calculated sizing
+- Platform-specific behavior vs cross-platform consistency
+- Token usage when multiple tokens could apply
+- Variant naming and organization
+
+**Why this matters**: Design ambiguity often reveals opportunities to improve the design system. Pausing to clarify prevents rework and ensures components align with design intent.
+
+---
+
+## Component Token Files
+
+### Purpose of tokens.ts
+
+The `tokens.ts` file at component root defines **which tokens** the component uses, not **how** they're implemented per platform.
+
+**This file is platform-agnostic** - it references semantic or primitive token names that will be generated into platform-specific values by the build system.
+
+**Example**:
+```typescript
+// ButtonCTA/tokens.ts
+// Platform-agnostic token references
+export const buttonCTATokens = {
+  // Sizing - references semantic tokens
+  paddingX: 'space.inset.normal',
+  paddingY: 'space.inset.tight',
+  minWidth: 'space400',
+  
+  // Colors - references semantic tokens
+  background: 'color.primary',
+  text: 'color.text.default',
+  
+  // Typography - references semantic token
+  typography: 'typography.buttonMd',
+  
+  // Border - references primitive token
+  borderRadius: 'radius100'
+};
+```
+
+### Platform-Specific Token Usage
+
+Each platform implementation uses **generated platform-specific tokens** from the build system:
+
+**Web**: CSS custom properties
+```typescript
+// platforms/web/ButtonCTA.web.tsx
+static styles = css`
+  :host {
+    padding: var(--space-inset-tight) var(--space-inset-normal);
+    background: var(--color-primary);
+    color: var(--color-text-default);
+    font: var(--typography-button-md);
+    border-radius: var(--radius-100);
+  }
+`;
+```
+
+**iOS**: Swift constants
+```swift
+// platforms/ios/ButtonCTA.ios.swift
+Button(action: action) {
+    Text(label)
+        .font(typographyButtonMd)
+        .foregroundColor(colorTextDefault)
+}
+.padding(.horizontal, spaceInsetNormal)
+.padding(.vertical, spaceInsetTight)
+.background(colorPrimary)
+.cornerRadius(radius100)
+```
+
+**Android**: Kotlin constants
+```kotlin
+// platforms/android/ButtonCTA.android.kt
+Button(
+    onClick = onClick,
+    modifier = modifier
+        .padding(horizontal = spaceInsetNormal.dp, vertical = spaceInsetTight.dp)
+) {
+    Text(
+        text = label,
+        style = typographyButtonMd,
+        color = colorTextDefault
+    )
+}
+```
+
+**Key Point**: The build system generates platform-specific token values (CSS custom properties, Swift constants, Kotlin constants) from the semantic token references in `tokens.ts`.
+
+### What If Platform Requirements Don't Fit in Token Files?
+
+Platform implementations handle platform-specific requirements that are **not** in the component tokens file:
+
+**iOS Example**: Minimum touch target height (WCAG requirement)
+```swift
+.frame(minHeight: 44)  // iOS-specific accessibility requirement
+```
+
+**Android Example**: Material ripple effect
+```kotlin
+.clickable(
+    indication = rememberRipple(),  // Android-specific interaction
+    interactionSource = remember { MutableInteractionSource() }
+)
+```
+
+**Web Example**: Focus visible styles
+```css
+:host(:focus-visible) {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+```
+
+**These nuances are handled by platform implementations**, not defined in the component tokens file. The component tokens file only defines which design system tokens the component uses.
+
+---
+
+## Icon System Integration
+
+### Overview
+
+The Icon component provides a unified API for displaying vector icons across web, iOS, and Android platforms. This section documents when to use the Icon component system versus direct platform icons, and how to properly use icon size tokens.
+
+### When to Use Icon Component
+
+**Use the Icon component when**:
+- Icon is part of component's public API (user can specify icon name)
+- Icon needs to be swappable or configurable
+- Icon should follow consistent sizing and coloring patterns
+- Component is cross-platform and needs unified icon handling
+
+**Example - ButtonCTA with Icon**:
+```typescript
+// Web component using Icon system
+<button-cta icon="arrow-right" label="Next"></button-cta>
+
+// Component internally uses Icon component
+const iconElement = createIcon({ 
+  name: this.getAttribute('icon'),
+  size: iconSize100,  // Token-based sizing
+  color: 'currentColor'
+});
+```
+
+### When Direct Platform Icons Are Acceptable
+
+**Direct platform icons are acceptable when**:
+- Icon is internal implementation detail (not exposed to component API)
+- Icon is platform-specific UI convention (iOS SF Symbols for system UI)
+- Icon is tightly coupled to platform behavior
+
+**However**: Even internal icons MUST use icon size tokens for sizing.
+
+**Example - Input-Text-Base Status Icons**:
+```swift
+// iOS: SF Symbols for status indicators (internal implementation)
+// ✅ CORRECT: Use icon size token
+Image(systemName: "exclamationmark.circle.fill")
+    .font(.system(size: iconSize075))
+
+// ❌ WRONG: Hard-coded size
+Image(systemName: "exclamationmark.circle.fill")
+    .font(.system(size: 16))
+```
+
+**When bypassing the Icon system**, document the rationale in the component README:
+```markdown
+## Icon Usage
+
+This component uses direct SF Symbols for status indicators because:
+- Icons are internal implementation details (not exposed to API)
+- SF Symbols provide platform-native visual consistency
+- Status icons follow iOS Human Interface Guidelines
+```
+
+### Icon Size Tokens
+
+**All icon sizing MUST use icon size tokens**:
+
+| Token | Pixels | Typography Pairing | Use Cases |
+|-------|--------|-------------------|-----------|
+| `iconSize050` | 12px | caption, legal, labelXs | Smallest text, fine print |
+| `iconSize075` | 16px | bodySm, buttonSm, labelSm | Compact layouts, small UI |
+| `iconSize100` | 24px | bodyMd, buttonMd, labelMd | Standard UI (default) |
+| `iconSize125` | 32px | bodyLg, buttonLg, labelLg | Large UI elements |
+| `iconSize150` | 40px | h2 | Large headings |
+
+**Size Selection Guidelines**:
+- **Default to `iconSize100` (24px)**: Use when in doubt
+- **Match typography context**: Use icon size that pairs with the text typography
+- **Consider visual hierarchy**: Larger icons create stronger visual presence
+
+### Platform-Specific Icon Usage
+
+#### Web Platform
+
+**Using Icon Component**:
+```html
+<!-- Web component API (recommended) -->
+<icon-base name="arrow-right" size="24"></icon-base>
+
+<!-- With color override -->
+<icon-base name="check" size="24" color="color-success"></icon-base>
+```
+
+**Using Icon Size Tokens in CSS**:
+```css
+.icon-container {
+  width: var(--icon-size-100);   /* 24px */
+  height: var(--icon-size-100);  /* 24px */
+}
+
+.small-icon {
+  width: var(--icon-size-075);   /* 16px */
+  height: var(--icon-size-075);  /* 16px */
+}
+```
+
+**Using Icon Size Tokens in JavaScript**:
+```typescript
+import { createIcon } from '@/components/core/Icon/platforms/web/Icon.web';
+
+// ✅ CORRECT: Use token reference
+const icon = createIcon({ 
+  name: 'check', 
+  size: iconSize100  // Token-based sizing
+});
+
+// ❌ WRONG: Hard-coded size
+const icon = createIcon({ 
+  name: 'check', 
+  size: 24  // Hard-coded value
+});
+```
+
+#### iOS Platform (SwiftUI)
+
+**Using Icon Component**:
+```swift
+// Icon component with token-based sizing
+Icon(name: "arrow-right", size: iconSize100)
+
+// With custom color
+Icon(name: "check", size: iconSize100)
+    .foregroundColor(colorSuccess)
+```
+
+**Using Direct SF Symbols with Tokens**:
+```swift
+// ✅ CORRECT: SF Symbol with icon size token
+Image(systemName: "exclamationmark.circle.fill")
+    .font(.system(size: iconSize075))
+
+// ✅ CORRECT: SF Symbol with frame using token
+Image(systemName: "checkmark.circle.fill")
+    .frame(width: iconSize100, height: iconSize100)
+
+// ❌ WRONG: Hard-coded size
+Image(systemName: "exclamationmark.circle.fill")
+    .font(.system(size: 16))
+```
+
+**When to Use SF Symbols Directly**:
+- Status indicators (error, success, warning icons)
+- System UI elements following iOS conventions
+- Platform-specific accessibility features
+
+#### Android Platform (Jetpack Compose)
+
+**Using Icon Component**:
+```kotlin
+// Icon component with token-based sizing
+Icon(name = "arrow_right", size = iconSize100)
+
+// With custom color
+Icon(
+    name = "check",
+    size = iconSize100,
+    tint = colorSuccess
+)
+```
+
+**Using Direct Material Icons with Tokens**:
+```kotlin
+// ✅ CORRECT: Material Icon with size token
+Icon(
+    imageVector = Icons.Default.CheckCircle,
+    contentDescription = "Success",
+    modifier = Modifier.size(iconSize100)
+)
+
+// ✅ CORRECT: Custom drawable with size token
+Icon(
+    painter = painterResource(id = R.drawable.ic_status),
+    contentDescription = "Status",
+    modifier = Modifier.size(iconSize075)
+)
+
+// ❌ WRONG: Hard-coded size
+Icon(
+    imageVector = Icons.Default.CheckCircle,
+    contentDescription = "Success",
+    modifier = Modifier.size(24.dp)
+)
+```
+
+**When to Use Material Icons Directly**:
+- Status indicators following Material Design guidelines
+- System UI elements following Android conventions
+- Platform-specific interaction patterns
+
+### Icon Integration Anti-Patterns
+
+#### ❌ Hard-Coded Icon Sizes
+```swift
+// DON'T: Hard-coded pixel values
+Image(systemName: "icon-name")
+    .font(.system(size: 16))
+
+// DO: Use icon size tokens
+Image(systemName: "icon-name")
+    .font(.system(size: iconSize075))
+```
+
+#### ❌ Inconsistent Icon Usage Within Component
+```typescript
+// DON'T: Mix Icon component and direct assets inconsistently
+class MyComponent {
+  render() {
+    // Some icons use Icon component
+    const navIcon = createIcon({ name: 'arrow-right', size: iconSize100 });
+    
+    // Other icons use direct SVG (inconsistent)
+    const statusIcon = '<svg width="16" height="16">...</svg>';
+  }
+}
+
+// DO: Use consistent approach throughout component
+class MyComponent {
+  render() {
+    // All icons use Icon component
+    const navIcon = createIcon({ name: 'arrow-right', size: iconSize100 });
+    const statusIcon = createIcon({ name: 'check', size: iconSize075 });
+  }
+}
+```
+
+#### ❌ Missing Documentation for Direct Platform Icons
+```swift
+// DON'T: Use direct platform icons without documentation
+Image(systemName: "exclamationmark.circle.fill")
+    .font(.system(size: iconSize075))
+
+// DO: Document rationale in component README
+// See "When Direct Platform Icons Are Acceptable" section above
+```
+
+### Icon Integration Checklist
+
+Before implementing icons in a component, verify:
+
+- [ ] Decided whether to use Icon component or direct platform icons
+- [ ] Documented rationale if bypassing Icon component system
+- [ ] All icon sizes use icon size tokens (no hard-coded values)
+- [ ] Icon sizing matches typography context (see token pairing table)
+- [ ] Consistent icon approach throughout the component
+- [ ] Component README documents icon usage patterns
+
+---
+
+## What If Platform Idioms Conflict with Tokens?
+
+**When platform-native patterns conflict with token usage:**
+
+1. **Pause and ask**: "Platform-native [animation/interaction] conflicts with [token]. Should I prioritize platform UX or token compliance?"
+2. **Explain the conflict**: Describe the platform idiom and why it conflicts with tokens
+3. **Propose options**: Suggest alternatives (use tokens, use platform idiom, hybrid approach)
+4. **Wait for guidance**: Let Peter decide based on design system goals
+
+**Common conflicts:**
+- Motion tokens vs platform-native animations (iOS springs, Android ripples)
+- Sizing tokens vs platform accessibility requirements (44pt iOS touch targets)
+- Color tokens vs platform-specific UI conventions (system colors, semantic colors)
+
+**Decision framework**: See [Cross-Platform vs Platform-Specific Decision Framework](./Cross-Platform vs Platform-Specific Decision Framework.md) for strategic guidance on when to prioritize cross-platform consistency vs platform-appropriate UX.
+
+**Why this matters**: Platform idioms often provide superior UX, but deviating from tokens affects design system consistency. These decisions require design judgment, not assumptions.
+
+---
+
+## Cross-Platform Token Consumption
+
+### How Token Generation Works
+
+**1. Component defines token references** (platform-agnostic):
+```typescript
+// tokens.ts
+paddingX: 'space.inset.normal'
+```
+
+**2. Build system generates platform-specific values**:
+
+**Web Output** (CSS):
+```css
+--space-inset-normal: 8px;
+```
+
+**iOS Output** (Swift):
+```swift
+let spaceInsetNormal: CGFloat = 8
+```
+
+**Android Output** (Kotlin):
+```kotlin
+val spaceInsetNormal = 8.dp
+```
+
+**3. Platform implementations use generated tokens**:
+
+Each platform uses its native syntax to consume the generated token values. The mathematical relationships are preserved across all platforms — only the syntax differs.
+
+### Token Consumption by Platform (Spec 094)
+
+Tokens are split into two categories: **static tokens** (spacing, sizing, radius, typography, motion) that don't vary by theme, and **theme-varying tokens** (colors, color-dependent shadows/glows) that change per theme.
+
+**Web** — CSS custom properties, no code changes needed for theming:
+```css
+/* Static and theme-varying tokens both consumed as custom properties */
+var(--space-inset-100)          /* Static — same in all themes */
+var(--color-action-primary)     /* Theme-varying — changes with data-theme attribute */
+```
+
+**iOS** — Static tokens via `DesignTokens`, theme-varying via `@Environment`:
+```swift
+// Static tokens — unchanged
+DesignTokens.spaceInset100
+
+// Theme-varying tokens — read from environment
+@Environment(\.{abbreviation}Theme) var theme
+theme.colorActionPrimary
+```
+
+**Android** — Static tokens via `DesignTokens`, theme-varying via `CompositionLocal`:
+```kotlin
+// Static tokens — unchanged
+DesignTokens.space_inset_100
+
+// Theme-varying tokens — read from CompositionLocal
+val theme = Local{Abbreviation}Theme.current
+theme.colorActionPrimary
+```
+
+**Key rule**: Components should NOT mix static and theme-aware access for the same token. If a token is in the theme-varying set (determined by the ThemeRegistry), always use the theme-aware access pattern on iOS/Android. On web, all tokens use CSS custom properties regardless.
+
+### Token Reference Format
+
+**In component tokens.ts**, use dot notation for semantic tokens:
+```typescript
+'space.inset.normal'      // Semantic spacing token
+'color.primary'           // Semantic color token
+'typography.buttonMd'     // Semantic typography token
+```
+
+**Or direct primitive token names**:
+```typescript
+'space100'                // Primitive spacing token
+'blue500'                 // Primitive color token
+'fontSize100'             // Primitive font size token
+```
+
+**Build system resolves these references** to platform-specific generated values.
+
+---
+
+## Common Component Patterns
+
+### Button Components
+- **Text**: `typography.buttonSm/Md/Lg`
+- **Background**: `color.primary` (primary), or use primitive colors directly for variants
+- **Padding**: `space.inset.normal` or `space.inset.comfortable`
+- **Border radius**: `radius100` or `radius150`
+- **Min width**: `space400` (128px minimum for accessibility)
+
+### Input Components
+- **Text**: `typography.input`
+- **Label**: `typography.labelSm/Md/Lg`
+- **Padding**: `space.inset.normal`
+- **Border**: `border.default`, `color.border`
+- **Sizing**: Follow component-sizing-token-guide.md
+
+### Container Components
+- **Background**: `color.surface`
+- **Padding**: `space.inset.comfortable` or `space.inset.spacious`
+- **Spacing**: `space.separated.normal` between containers
+- **Shadow**: `shadow.dusk` or `shadow.sunrise`
+- **Border radius**: `radius100` or `radius150`
+
+---
+
+## Blend Utility Integration
+
+### Overview
+
+Blend utilities enable components to create new opaque colors for interaction states (hover, pressed, focus, disabled) rather than using opacity-based workarounds. All components should use blend utilities for state color modifications.
+
+### Why Blend Utilities Over CSS Filters
+
+**CSS `filter: brightness()` has significant limitations** that make it unsuitable for production design systems:
+
+1. **Affects entire element, not just target property**: CSS filters apply to the entire element including text, icons, borders, and shadows. When you want to darken only the background on hover, `filter: brightness(0.92)` also darkens the text and any icons, creating unintended visual effects.
+
+2. **Not cross-platform consistent**: CSS filters are web-only. iOS and Android have different approaches to color manipulation, making it impossible to achieve visual consistency across platforms with filter-based solutions.
+
+3. **Produces transparency artifacts**: Brightness filters can create unexpected transparency or color shifts, especially with semi-transparent elements or complex backgrounds.
+
+4. **No design token integration**: Filter values like `brightness(0.92)` are arbitrary numbers that don't connect to the design token system. Blend utilities use semantic tokens (`blend.hoverDarker = 8%`) that can be updated system-wide.
+
+5. **Accessibility concerns**: Filter-based color changes may not maintain WCAG contrast ratios predictably, while blend utilities calculate mathematically correct color values that preserve accessibility compliance.
+
+**Blend utilities solve these problems by**:
+- Calculating new opaque colors that affect only the target property
+- Using the same mathematical formulas across web, iOS, and Android
+- Integrating with the design token system for consistent, maintainable values
+- Producing predictable, accessible color values
+
+### Canonical Implementation Example
+
+**Button-CTA** (`src/components/core/Button-CTA/platforms/web/ButtonCTA.web.ts`) serves as the canonical implementation example for blend utility integration. It demonstrates:
+
+- Importing `getBlendUtilities()` from the theme-aware blend utilities module
+- Initializing blend utilities in the constructor
+- Calculating state colors (hover, pressed, disabled, icon) in `connectedCallback()`
+- Applying calculated colors via CSS custom properties
+- Retry pattern for handling CSS custom property timing
+
+**Reference this implementation** when adding blend utilities to new components.
+
+### When to Use Blend Utilities
+
+**Use blend utilities for**:
+- Hover state colors (darken or lighten based on background)
+- Pressed state colors (stronger darkening than hover)
+- Focus state colors (increased saturation for emphasis)
+- Disabled state colors (desaturation for muted appearance)
+- Icon optical balance (lightening for visual weight compensation)
+
+### Web Platform Usage
+
+```typescript
+import { getBlendUtilities } from '@3fn/core/ThemeAwareBlendUtilities';
+
+class MyComponent extends HTMLElement {
+  connectedCallback() {
+    // Read theme color from CSS custom properties
+    const computedStyle = getComputedStyle(document.documentElement);
+    const primaryColor = computedStyle.getPropertyValue('--color-primary').trim();
+    
+    // Get blend utilities
+    const blendUtils = getBlendUtilities();
+    
+    // Calculate state colors
+    this._hoverColor = blendUtils.hoverColor(primaryColor);      // 8% darker
+    this._pressedColor = blendUtils.pressedColor(primaryColor);  // 12% darker
+    this._disabledColor = blendUtils.disabledColor(primaryColor); // 12% desaturated
+    this._focusColor = blendUtils.focusColor(primaryColor);      // 8% more saturated
+  }
+}
+```
+
+### iOS Platform Usage
+
+```swift
+struct MyComponent: View {
+    let primaryColor: Color
+    
+    var body: some View {
+        Button(action: {}) {
+            Text(label)
+        }
+        .background(isPressed ? primaryColor.pressedBlend() : 
+                    isHovered ? primaryColor.hoverBlend() : 
+                    primaryColor)
+    }
+}
+```
+
+### Android Platform Usage
+
+```kotlin
+@Composable
+fun MyComponent(primaryColor: Color) {
+    val interactionSource = remember { MutableInteractionSource() }
+    val isPressed by interactionSource.collectIsPressedAsState()
+    
+    Button(
+        colors = ButtonDefaults.buttonColors(
+            containerColor = if (isPressed) primaryColor.pressedBlend() else primaryColor
+        )
+    ) {
+        Text(label)
+    }
+}
+```
+
+### Semantic Blend Token Reference
+
+| State | Token | Function | Value |
+|-------|-------|----------|-------|
+| Hover (light bg) | `blend.hoverDarker` | `hoverColor()` | 8% darker |
+| Hover (dark bg) | `blend.hoverLighter` | `lighterBlend(color, 0.08)` | 8% lighter |
+| Pressed | `blend.pressedDarker` | `pressedColor()` | 12% darker |
+| Focus | `blend.focusSaturate` | `focusColor()` | 8% more saturated |
+| Disabled | `blend.disabledDesaturate` | `disabledColor()` | 12% desaturated |
+| Container hover | `blend.containerHoverDarker` | `darkerBlend(color, 0.04)` | 4% darker |
+| Icon optical | `color.icon.opticalBalance` | `iconColor()` | 8% lighter |
+
+### Blend Utility Anti-Patterns
+
+**❌ Don't use opacity for state colors**:
+```typescript
+// WRONG: Opacity creates transparency, not new colors
+const hoverStyle = { opacity: 0.92 };
+```
+
+**❌ Don't use CSS filters for color modification**:
+```typescript
+// WRONG: Filters are not cross-platform consistent
+const iconStyle = { filter: 'brightness(1.08)' };
+```
+
+**❌ Don't use platform-specific workarounds**:
+```swift
+// WRONG: iOS scaleEffect as pressed state workaround
+.scaleEffect(isPressed ? 0.96 : 1.0)
+```
+
+**✅ Do use blend utilities**:
+```typescript
+// CORRECT: Blend utilities produce consistent opaque colors
+const hoverColor = blendUtils.hoverColor(primaryColor);
+```
+
+### Related Documentation
+
+- [Blend Tokens Guide](Token-Family-Blend.md) - Complete blend token reference
+- [Blend Infrastructure Design](../specs/031-blend-infrastructure-implementation/design.md) - Architecture decisions
+
+---
+
+## Incremental DOM Update Pattern
+
+### Overview
+
+The incremental DOM update pattern enables CSS transitions to work correctly by preserving DOM element identity across attribute changes. Instead of replacing the entire shadow DOM on every update, components create the DOM structure once and then update existing elements directly.
+
+### Why Incremental DOM Over Full Re-renders
+
+**Full `innerHTML` replacement breaks CSS transitions** because:
+
+1. **Element identity is lost**: When you replace `innerHTML`, the browser destroys existing DOM elements and creates new ones. CSS transitions require the same element to exist before and after a property change—new elements have no "before" state to transition from.
+
+2. **Transition timing is reset**: Even if the new element has the same classes and styles, the browser treats it as a fresh element. Any in-progress transitions are cancelled, and new transitions start from scratch.
+
+3. **Performance overhead**: Full DOM replacement is more expensive than targeted property updates. The browser must parse HTML, create elements, attach event listeners, and recalculate styles for the entire subtree.
+
+4. **Event listener management**: Full replacement requires detaching and reattaching event listeners on every update, which is error-prone and inefficient.
+
+**Incremental DOM solves these problems by**:
+- Creating DOM elements once and caching references
+- Updating only the properties that changed via direct DOM APIs
+- Preserving element identity so CSS transitions animate smoothly
+- Reducing DOM manipulation overhead
+
+### Canonical Implementation Example
+
+**Button-VerticalList-Item** (`src/components/core/Button-VerticalList-Item/platforms/web/ButtonVerticalListItem.web.ts`) serves as the canonical implementation example for the incremental DOM pattern. It demonstrates:
+
+- `_domCreated` flag to track initial render state
+- `_createDOM()` method for one-time DOM structure creation
+- `_updateDOM()` method for targeted property updates
+- Cached element references (`_button`, `_labelEl`, `_iconEl`, etc.)
+- CSS custom property updates via `element.style.setProperty()`
+- Direct DOM API usage (`element.textContent`, `element.className`)
+
+**Reference this implementation** when adding incremental DOM updates to new components.
+
+### Architecture Pattern
+
+```typescript
+class MyComponent extends HTMLElement {
+  private _shadowRoot: ShadowRoot;
+  private _domCreated: boolean = false;
+  
+  // Cached DOM element references
+  private _button: HTMLButtonElement | null = null;
+  private _labelEl: HTMLSpanElement | null = null;
+  private _iconEl: HTMLElement | null = null;
+  
+  constructor() {
+    super();
+    this._shadowRoot = this.attachShadow({ mode: 'open' });
+  }
+  
+  connectedCallback(): void {
+    this._render();
+  }
+  
+  attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null): void {
+    // Only update if connected, value changed, and DOM exists
+    if (oldValue !== newValue && this.isConnected && this._domCreated) {
+      this._updateDOM();
+    }
+  }
+  
+  /**
+   * Main render entry point.
+   * Routes to _createDOM() for first render or _updateDOM() for subsequent updates.
+   */
+  private _render(): void {
+    if (!this._domCreated) {
+      this._createDOM();
+      this._domCreated = true;
+    } else {
+      this._updateDOM();
+    }
+  }
+  
+  /**
+   * Create the initial DOM structure (called once).
+   * Creates all elements including containers that may be hidden.
+   */
+  private _createDOM(): void {
+    this._shadowRoot.innerHTML = `
+      <style>${styles}</style>
+      <button class="my-component">
+        <span class="my-component__icon"></span>
+        <span class="my-component__label"></span>
+      </button>
+    `;
+    
+    // Cache element references for incremental updates
+    this._button = this._shadowRoot.querySelector('button');
+    this._labelEl = this._shadowRoot.querySelector('.my-component__label');
+    this._iconEl = this._shadowRoot.querySelector('.my-component__icon');
+    
+    // Apply initial state
+    this._updateDOM();
+  }
+  
+  /**
+   * Update existing DOM elements (called on attribute changes).
+   * Only updates properties that need to change, preserving element identity.
+   */
+  private _updateDOM(): void {
+    if (!this._button || !this._labelEl) return;
+    
+    // Direct DOM updates (preserves element identity for CSS transitions)
+    this._labelEl.textContent = this.label;
+    this._button.className = `my-component ${this._getStateClass()}`;
+    
+    // CSS custom property updates for dynamic styling
+    this._button.style.setProperty('--_mc-hover-bg', this._hoverColor);
+    this._button.style.setProperty('--_mc-pressed-bg', this._pressedColor);
+    
+    // Show/hide elements via display property
+    if (this._iconEl) {
+      this._iconEl.style.display = this.icon ? '' : 'none';
+    }
+  }
+}
+```
+
+### Key Implementation Details
+
+#### 1. DOM Creation Flag
+
+```typescript
+private _domCreated: boolean = false;
+```
+
+This flag ensures `_createDOM()` runs exactly once. All subsequent renders route through `_updateDOM()`.
+
+#### 2. Element Reference Caching
+
+```typescript
+// Cache references after DOM creation
+this._button = this._shadowRoot.querySelector('button');
+this._labelEl = this._shadowRoot.querySelector('.my-component__label');
+```
+
+Caching element references avoids repeated `querySelector` calls and provides type-safe access to DOM elements.
+
+#### 3. Conditional Updates in attributeChangedCallback
+
+```typescript
+attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null): void {
+  if (oldValue !== newValue && this.isConnected && this._domCreated) {
+    this._updateDOM();
+  }
+}
+```
+
+Only call `_updateDOM()` when:
+- The value actually changed (`oldValue !== newValue`)
+- The element is connected to the DOM (`this.isConnected`)
+- The DOM has been created (`this._domCreated`)
+
+#### 4. CSS Custom Property Updates
+
+```typescript
+this._button.style.setProperty('--_mc-hover-bg', this._hoverColor);
+```
+
+Use `style.setProperty()` for CSS custom properties. This enables CSS transitions on properties driven by JavaScript-calculated values (like blend colors).
+
+#### 5. Show/Hide via Display Property
+
+```typescript
+this._iconEl.style.display = this.icon ? '' : 'none';
+```
+
+Toggle visibility using `display` property rather than removing/adding elements. This preserves element identity and enables fade transitions.
+
+### When to Use Incremental DOM
+
+**Use incremental DOM when**:
+- Component has CSS transitions on any property
+- Component updates frequently (e.g., on user interaction)
+- Component has complex DOM structure with many elements
+- Component uses blend utilities (calculated colors need to update smoothly)
+
+**All interactive components should use incremental DOM** to ensure CSS transitions work correctly.
+
+### Incremental DOM Anti-Patterns
+
+**❌ Don't replace innerHTML on attribute changes**:
+```typescript
+// WRONG: Breaks CSS transitions
+attributeChangedCallback() {
+  this._shadowRoot.innerHTML = this._generateHTML();
+}
+```
+
+**❌ Don't query elements on every update**:
+```typescript
+// WRONG: Inefficient and error-prone
+private _updateDOM(): void {
+  const button = this._shadowRoot.querySelector('button');
+  const label = this._shadowRoot.querySelector('.label');
+  // ...
+}
+```
+
+**❌ Don't remove and recreate elements for visibility**:
+```typescript
+// WRONG: Loses element identity
+if (showIcon) {
+  this._button.appendChild(this._createIcon());
+} else {
+  this._iconEl?.remove();
+}
+```
+
+**✅ Do cache element references**:
+```typescript
+// CORRECT: Cache once, reuse always
+private _createDOM(): void {
+  // ...
+  this._button = this._shadowRoot.querySelector('button');
+  this._labelEl = this._shadowRoot.querySelector('.label');
+}
+```
+
+**✅ Do use display property for visibility**:
+```typescript
+// CORRECT: Preserves element identity
+this._iconEl.style.display = showIcon ? '' : 'none';
+```
+
+### Related Documentation
+
+- [Button-VerticalList-Item Implementation](../src/components/core/Button-VerticalList-Item/platforms/web/ButtonVerticalListItem.web.ts) - Canonical example
+- [Blend Utility Integration](#blend-utility-integration) - State color calculation (often used with incremental DOM)
+
+---
+
+## CSS Custom Property Naming Convention
+
+### Overview
+
+CSS custom properties in components fall into two distinct categories that require different naming conventions to clearly communicate their purpose and scope:
+
+1. **Design system tokens**: Shared across all components, part of the public API
+2. **Component-scoped properties**: Internal to one component, calculated values or local overrides
+
+Without a clear naming convention, it's difficult to distinguish at a glance whether a property is safe to override externally (design token) or an internal implementation detail (component-scoped).
+
+### The `--_[abbrev]-*` Pattern
+
+All component-scoped CSS custom properties MUST use the `--_[abbrev]-*` naming pattern:
+
+```css
+/* Component-scoped (internal) - use underscore prefix */
+--_cta-hover-bg: #...;      /* Button-CTA internal */
+--_vlbi-background: #...;   /* Button-VerticalList-Item internal */
+--_itb-focus-color: #...;   /* Input-Text-Base internal */
+--_bi-icon-color: #...;     /* ButtonIcon internal */
+
+/* Design system tokens (external) - no underscore */
+--color-primary: #...;
+--motion-button-press-duration: 150ms;
+--space-inset-200: 16px;
+```
+
+### Why This Pattern
+
+1. **Underscore signals "private"**: Borrowed from programming conventions (Python, JavaScript), the leading underscore indicates "internal implementation detail, don't depend on this externally"
+
+2. **Abbreviation keeps names readable**: Component names can be long; abbreviations keep CSS scannable while maintaining clarity
+
+3. **Clear visual distinction**: Easy to scan CSS and immediately identify which properties are component-internal vs design system tokens
+
+4. **Prevents external dependencies**: External code should never depend on component-scoped properties—they may change without notice
+
+### Component Abbreviation Reference
+
+| Component | Abbreviation | Example Properties |
+|-----------|--------------|-------------------|
+| Button-CTA | `_cta` | `--_cta-hover-bg`, `--_cta-pressed-bg` |
+| Button-VerticalList-Item | `_vlbi` | `--_vlbi-background`, `--_vlbi-border-color` |
+| ButtonIcon | `_bi` | `--_bi-hover-bg`, `--_bi-icon-color` |
+| Input-Text-Base | `_itb` | `--_itb-focus-color`, `--_itb-disabled-color` |
+
+### When to Use Each Type
+
+**Use design system tokens (`--token-name`) when**:
+- The value comes from the token system (colors, spacing, typography)
+- The property should be themeable or overridable
+- The value is shared across multiple components
+- External consumers might need to reference the value
+
+**Use component-scoped properties (`--_abbrev-name`) when**:
+- The value is calculated at runtime (blend colors, dynamic sizing)
+- The property is an internal implementation detail
+- The value is specific to one component's internal logic
+- External code should NOT depend on or override the value
+
+### Implementation Example
+
+```css
+/* Button-CTA CSS showing both types */
+:host {
+  /* Design system tokens - external, themeable */
+  --color-primary: var(--color-primary);
+  --motion-button-press-duration: var(--motion-button-press-duration);
+  
+  /* Component-scoped properties - internal, calculated */
+  --_cta-hover-bg: /* calculated by blend utilities */;
+  --_cta-pressed-bg: /* calculated by blend utilities */;
+  --_cta-disabled-bg: /* calculated by blend utilities */;
+}
+
+.button-cta {
+  background-color: var(--color-primary);
+  transition: background-color var(--motion-button-press-duration) ease-out;
+}
+
+.button-cta:hover {
+  background-color: var(--_cta-hover-bg);
+}
+
+.button-cta:active {
+  background-color: var(--_cta-pressed-bg);
+}
+```
+
+### CSS Custom Property Naming Anti-Patterns
+
+**❌ Don't use full component names for internal properties**:
+```css
+/* WRONG: Too verbose, hard to scan */
+--button-vertical-list-item-hover-background: #...;
+
+/* CORRECT: Use abbreviation */
+--_vlbi-hover-bg: #...;
+```
+
+**❌ Don't omit underscore for internal properties**:
+```css
+/* WRONG: Looks like a design token, may be overridden externally */
+--cta-hover-bg: #...;
+
+/* CORRECT: Underscore signals internal */
+--_cta-hover-bg: #...;
+```
+
+**❌ Don't use component-scoped naming for design tokens**:
+```css
+/* WRONG: Design tokens shouldn't have component prefix */
+--_cta-primary-color: var(--color-primary);
+
+/* CORRECT: Reference design token directly */
+background-color: var(--color-primary);
+```
+
+**❌ Don't expose calculated values as design tokens**:
+```css
+/* WRONG: Calculated values are implementation details */
+--color-primary-hover: /* blend calculation */;
+
+/* CORRECT: Keep calculated values component-scoped */
+--_cta-hover-bg: /* blend calculation */;
+```
+
+### Documentation in CSS Files
+
+When using component-scoped properties, add a documentation comment explaining the naming convention:
+
+```css
+/**
+ * Component-scoped CSS custom properties
+ * 
+ * These properties are internal implementation details:
+ * - --_vlbi-background: Current background color for visual state
+ * - --_vlbi-border-color: Current border color for visual state
+ * - --_vlbi-icon-color: Icon color for current visual state
+ * 
+ * Naming Convention: --_[abbrev]-* pattern signals component-scoped (internal) properties
+ * @see Component Development Guide - CSS Custom Property Naming Convention
+ */
+```
+
+### Related Documentation
+
+- [Blend Utility Integration](#blend-utility-integration) - Calculated colors use component-scoped properties
+- [Incremental DOM Update Pattern](#incremental-dom-update-pattern) - CSS custom properties enable smooth transitions
+
+---
+
+## Anti-Patterns to Avoid
+
+**Note**: This section intentionally uses the same heading as other steering documents because each document addresses anti-patterns specific to its domain. Component Development and Practices Guide focuses on token usage anti-patterns, while other documents cover their respective domains.
+
+### ❌ Using Primitives When Semantics Exist
+```typescript
+// DON'T
+background: blue500
+
+// DO
+background: color.primary
+```
+
+### ❌ Hard-Coded Values
+```typescript
+// DON'T
+padding: 16px
+
+// DO
+padding: space.inset.normal
+```
+
+### ❌ Creating Semantic Tokens Prematurely
+```typescript
+// DON'T: Create semantic token for single component
+export const buttonWidthMin = space400;
+
+// DO: Use component-level tokens, elevate when pattern emerges (3+ components)
+```
+
+### ❌ Skipping Token Files
+```typescript
+// DON'T: Guess what tokens exist
+
+// DO: Read semantic token files to discover available tokens
+```
+
+### ❌ Platform-Specific Values in tokens.ts
+```typescript
+// DON'T: Put platform-specific values in tokens.ts
+export const buttonTokens = {
+  paddingX: '8px',  // Platform-specific CSS value
+  paddingY: 4       // Hard-coded number
+};
+
+// DO: Reference semantic or primitive tokens
+export const buttonTokens = {
+  paddingX: 'space.inset.normal',  // Token reference
+  paddingY: 'space.inset.tight'    // Token reference
+};
+```
+
+### ❌ Using `style` Attribute for Variants
+```html
+<!-- DON'T: Use style attribute for component variants -->
+<button-cta style="primary" label="Submit"></button-cta>
+
+<!-- DO: Use variant attribute -->
+<button-cta variant="primary" label="Submit"></button-cta>
+```
+
+```typescript
+// DON'T: Use style property in TypeScript interfaces
+export interface ButtonProps {
+  style?: 'primary' | 'secondary';  // Conflicts with HTML style attribute
+}
+
+// DO: Use variant property
+export interface ButtonProps {
+  variant?: 'primary' | 'secondary';  // Clear, unambiguous
+}
+```
+
+### ❌ Nested Containers with Same Border Radius
+
+```html
+<!-- DON'T: Same radius creates awkward visual overlap -->
+<container-base borderRadius="normal" padding="200">
+  <container-base borderRadius="normal">
+    Awkward corner overlap
+  </container-base>
+</container-base>
+
+<!-- DO: Reduce inner radius by padding amount -->
+<container-base borderRadius="normal" padding="200">
+  <container-base borderRadius="none">
+    Harmonious corner alignment
+  </container-base>
+</container-base>
+```
+
+**Mathematical relationship**: `inner borderRadius = outer borderRadius - padding`
+
+**Why this matters**: Padding creates visual space between containers. Reducing the inner radius maintains consistent visual curvature and prevents awkward overlapping corners.
+
+**For detailed guidance**: See Container component README "Nested Containers" section for visual examples, token value reference table, platform-specific considerations, and common use cases.
+
+### ❌ Hard-Coded Fallback Values
+
+**Problem**: Using fallback values masks token system issues and prevents early detection of problems.
+
+**Anti-Pattern Examples**:
+
+```typescript
+// DON'T: Silent fallback to hard-coded value
+const duration = this.getAttribute('duration') || '250ms';
+const spacing = tokenValue || 8;
+const color = getToken('color.primary') ?? '#3B82F6';
+```
+
+**Why This is Wrong**:
+- Masks missing tokens - component appears to work but token system is broken
+- Prevents early detection - issues discovered in production instead of development
+- Inconsistent behavior - some components use tokens, others use fallbacks
+- Maintenance burden - fallback values can drift from token values
+
+**Correct Approach**:
+
+```typescript
+// DO: Fail loudly when token is missing
+const duration = this.getAttribute('duration');
+if (!duration) {
+  throw new Error('Component: duration attribute is required');
+}
+
+// Or for non-critical values
+const spacing = tokenValue;
+if (!spacing) {
+  console.error('Component: spacing token missing, layout may be incorrect');
+}
+```
+
+**When Fallback is Genuinely Optional**:
+
+```typescript
+// DO: Explicit optional handling with documentation
+/**
+ * Helper text (optional)
+ * Provides additional context below the input
+ */
+const helperText = this.getAttribute('helper-text') || undefined;
+if (helperText !== undefined) {
+  // Render helper text
+}
+```
+
+**Benefits of Failing Loudly**:
+- ✅ Immediate detection of token system issues
+- ✅ Clear error messages guide developers to fix
+- ✅ Prevents silent failures in production
+- ✅ Maintains token system integrity
+
+---
+
+## Validation Checklist
+
+Before implementing a component, verify:
+
+- [ ] Read semantic token files to discover available tokens
+- [ ] Used semantic tokens for all styling (color, typography, spacing)
+- [ ] Created component-level tokens only when variants needed
+- [ ] Component tokens reference semantic or primitive tokens (no hard-coded values)
+- [ ] Component tokens.ts is platform-agnostic (token references, not values)
+- [ ] Platform implementations use generated platform-specific tokens
+- [ ] Platform implementations handle platform-specific nuances
+- [ ] Followed True Native Architecture (separate files per platform)
+- [ ] Used system-specific terminology (Container not Card)
+- [ ] Used `variant` attribute for component variations (not `style`)
+- [ ] Documented any primitive token usage with rationale
+
+---
+
+## Demo Maintenance Checklist
+
+When modifying a component's API, adding new variants, or changing behavior, update the corresponding demo page to keep it in sync. Demos load components via the browser bundle, so API changes that break a demo are immediately visible when loading the page — but new features won't appear unless the demo is updated.
+
+### When to Update Demos
+
+- Component API changes (new props, renamed attributes, removed features)
+- New variants or sizes added
+- New states added (e.g., loading, error)
+- Event handling changes (new events, changed event detail shape)
+- Accessibility improvements (new ARIA attributes, keyboard interactions)
+- Visual changes that affect how the component renders
+
+### Component Change Checklist
+
+When making changes to a component with a web implementation:
+
+- [ ] Update component README with new API
+- [ ] Update component demo page (if demo exists in `demos/`)
+- [ ] Run demo locally to verify all examples still work
+- [ ] Update `demos/index.html` if component description changed
+
+### How to Verify Demo Health
+
+1. Build the browser distribution: `npm run build`
+2. Start a local server: `npx http-server dist/browser -p 8080`
+3. Open the demo page in a browser
+4. Verify all variant examples render correctly
+5. Verify interactive examples respond to user input
+6. Verify token verification section shows expected values
+7. Check browser console for errors or warnings
+
+### Demo Location
+
+All demo source files live in `demos/` at the project root. The build process copies them to `dist/browser/`. See `demos/README.md` for full guidelines on creating and maintaining demo pages.
+
+---
+
+## Component Spec Development Workflow
+
+Components come with their own unique properties that might include, but are not limited to, multiple variants, states, or platform considerations. Use this workflow to create clearer, more precise specifications to fully understand their complexity.
+
+### Design Outline Before Requirements
+
+**When to use**: All components benefit from upfront exploration to understand their extensibility to support planned use cases. Identifying aspects such as sizing variants, interaction states, token dependencies, platform-specific considerations, and more are critical to creating sustainable, appropiately scaled components.
+
+**Purpose**: Explore component design space before committing to formal requirements. Captures decision-making process, token needs, and open questions in an informal document.
+
+**What to include**:
+- Component overview and variant specifications (tables work well)
+- Token requirements (existing tokens used + new tokens needed)
+- Design decisions with rationale and alternatives considered
+- Open questions and checkpoints for resolution
+- Observations and learnings for future reference
+
+**What NOT to include**:
+- Full EARS requirements (save for requirements.md)
+- Implementation details (save for design.md)
+- Task breakdowns (save for tasks.md)
+
+**Key principle**: This is a thinking document, not a template to copy-paste. Use it to explore and document your design reasoning.
+
+**Reference example**: `.kiro/specs/005-cta-button-component/design-outline.md` - Shows informal exploration of button sizing, token usage, and design decisions before creating formal spec.
+
+### README-First Documentation
+
+**Purpose**: Create living documentation that serves as both component guide and validation target. Documentation that can't drift from implementation.
+
+**Required sections**:
+- Overview (what it is, key features)
+- Related Documentation (cross-links to spec docs, related components)
+- Usage (code examples showing variants and states)
+- API Reference (props table with types)
+- Token Consumption (which tokens the component uses)
+- Accessibility (WCAG compliance notes)
+- Platform-Specific Notes (if applicable)
+- Validation (link to validation files with disclaimer)
+
+**Cross-reference pattern**:
+- Link to spec documents (requirements.md, design.md)
+- Link to related components (dependencies)
+- Link to validation files with clear disclaimer
+
+**Validation file disclaimer**: Always note that validation files are automated tests, not documentation source of truth.
+
+**Reference example**: `src/components/core/ButtonCTA/README.md` - Shows comprehensive component documentation with cross-links and validation disclaimer.
+
+### HTML Canary Validation
+
+**Purpose**: Create living examples that validate component behavior and accuracy of the README documentation. Examples that must stay functional as component evolves.
+
+**Required elements**:
+- Warning comment at top: `<!-- VALIDATION FILE - NOT DOCUMENTATION -->`
+- Purpose comment explaining what's being validated
+- Actual component usage (not mock HTML)
+- Can be run as automated tests via validation script
+- Must remain functional (breaking changes break validation)
+
+**Key principle**: These are executable tests that validate the component's implementation and documentation are actually working and in alignemnt.
+
+**Validation script pattern**: Create `scripts/validate-examples.js` to check:
+- Presence of component elements
+- Required attributes
+- Valid attribute values
+- Proper HTML structure
+- Warning comments present
+
+**Reference examples**:
+- `src/components/core/ButtonCTA/examples/BasicUsage.html` - Validates basic button functionality
+- `src/components/core/ButtonCTA/examples/WithIcon.html` - Validates icon integration
+- `src/components/core/ButtonCTA/examples/Variants.html` - Validates all size/style combinations
+- `scripts/validate-examples.js` - Validation script that checks HTML examples
+
+### Workflow Summary
+
+1. **Design Outline** (required) - Explore design space informally
+2. **Requirements** (required) - Formalize requirements using EARS format
+3. **Design** (required) - Document architecture and token integration
+4. **Tasks** (required) - Break down implementation steps
+5. **README** (required) - Create comprehensive component documentation
+6. **HTML Canaries** (required) - Create validation examples
+7. **Implementation** (required) - Build component across platforms
+8. **Dark Mode Token Population** (if component has dark mode differentiation) - Coordinate with Ada to populate the component's semantic color token entries in the dark theme file (`src/tokens/themes/dark/SemanticOverrides.ts`). Identify which tokens need Level 2 overrides (different primitive name in dark mode) and populate those entries. Leave Level 1 tokens (same primitive name, different value per mode) as commented-out — they resolve automatically via primitive dark values. Without this step, the component will silently render light-mode fallback values in dark mode for any tokens that need Level 2 overrides. *(Added by Spec 080, Lina R2 F36)*
+9. **Demo Page** (if web implementation) - Create or update demo in `demos/` (see Demo Maintenance Checklist)
+
+This workflow produces clearer requirements, better documentation, and validation that ensures documentation stays accurate.
+
+---
+
+*This guide provides minimal, sustainable guidance for AI agents building components while pointing to source files for detailed token information and maintaining True Native Architecture principles.*

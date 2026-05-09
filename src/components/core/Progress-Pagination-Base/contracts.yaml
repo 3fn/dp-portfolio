@@ -1,0 +1,103 @@
+version: "1.0.0"
+component: Progress-Pagination-Base
+family: Progress-Indicator
+
+contracts:
+  composition_node_only:
+    category: composition
+    description: Renders only Node-Base primitives (no connectors, no labels)
+    behavior: |
+      Composes Progress-Indicator-Node-Base for each item.
+      Does NOT render Connector-Base or Label-Base.
+      All nodes receive content='none' (dots only).
+    wcag: null
+    platforms: [web, ios, android]
+    validation:
+      - Renders Node-Base for each item
+      - No Connector-Base elements present
+      - No Label-Base elements present
+      - All nodes have content='none'
+    test_approach: |
+      Render pagination with 5 items. Verify 5 nodes, no connectors,
+      no labels. Verify all nodes have content='none'.
+    required: true
+
+  state_binary_derivation:
+    category: state
+    description: Derives binary state (current vs incomplete) from currentItem
+    behavior: |
+      Simple binary logic:
+      - Node at currentItem index → state 'current'
+      - All other nodes → state 'incomplete'
+      No completed or error states in pagination.
+    wcag: null
+    platforms: [web, ios, android]
+    validation:
+      - Exactly one node has state 'current'
+      - All other nodes have state 'incomplete'
+      - State derivation is deterministic
+    test_approach: |
+      Render with currentItem=2. Verify node 2 is current, all others incomplete.
+    required: true
+
+  visual_viewport_clipping:
+    category: visual
+    description: Renders dots with viewport clipping and animated centering
+    behavior: |
+      Web: Renders all totalItems dots in a flex track inside a fixed-width
+      viewport. The viewport clips to ~5 visible dots via overflow:hidden and
+      clip-path. The current dot is centered by translating the track, clamped
+      at edges to prevent overscroll. Track translation animates via CSS
+      transition using motion.settleTransition timing (350ms,
+      easingDecelerate). Node state transitions (scale + color) animate
+      independently via Node-Base CSS.
+
+      iOS: Uses ScrollViewReader with scrollTo(anchor: .center) for native
+      scroll centering. All dots rendered in HStack.
+
+      Android: Uses LazyRow/ScrollState with animateScrollToItem() for native
+      scroll centering. All dots rendered.
+
+      All platforms: Animation is disabled when the platform's reduced-motion
+      preference is active (web: prefers-reduced-motion: reduce, iOS:
+      isReduceMotionEnabled, Android: ANIMATOR_DURATION_SCALE == 0).
+      First render snaps to position without animation.
+    wcag: "2.3.3 Animation from Interactions"
+    platforms: [web, ios, android]
+    validation:
+      - totalItems ≤ 5 renders all nodes without clipping
+      - totalItems > 5 renders all nodes with viewport clipping to ~5 visible
+      - Current dot centered in viewport when not at edges
+      - First dot at left edge when currentItem is near start
+      - Last dot at right edge when currentItem is near end
+      - Track translation animates on currentItem change
+      - Node state transitions (scale, color) animate on currentItem change
+      - Animation disabled when platform reduced-motion preference is active
+      - First render positions without animation (no slide-in on mount)
+      - ARIA announcements not delayed by animation
+    test_approach: |
+      Render with totalItems=10, currentItem=5. Verify all 10 nodes rendered.
+      Verify track has translateX centering the current dot. Change currentItem
+      and verify transition CSS is applied to track. Enable
+      prefers-reduced-motion and verify transition is none. Verify first render
+      has no transition. Verify aria-label updates immediately regardless of
+      animation state.
+    required: true
+
+  accessibility_actual_position:
+    category: accessibility
+    description: ARIA label reflects actual position, not virtualized subset
+    behavior: |
+      The accessibility label always shows the real position
+      (e.g., "Page 26 of 50") regardless of which 5 nodes are visible.
+      Uses role="group" on web.
+    wcag: "4.1.2 Name, Role, Value"
+    platforms: [web, ios, android]
+    validation:
+      - aria-label shows actual currentItem and totalItems
+      - role="group" applied (web)
+      - Screen reader announces actual position
+    test_approach: |
+      Render with totalItems=50, currentItem=26. Verify aria-label says
+      "Page 26 of 50" (web).
+    required: true

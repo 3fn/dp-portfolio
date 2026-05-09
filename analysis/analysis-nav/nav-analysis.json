@@ -1,0 +1,4025 @@
+{
+  "componentName": "Nav",
+  "componentType": "COMPONENT",
+  "figmaId": "3439:89084",
+  "fileKey": "yU7908VXR1khQN5hZXC6Cy",
+  "nodeTree": {
+    "id": "3439:89084",
+    "name": "Nav",
+    "type": "FRAME",
+    "depth": 0,
+    "ancestorChain": [],
+    "tokenClassifications": {
+      "semanticIdentified": [],
+      "primitiveIdentified": [
+        {
+          "property": "fill",
+          "primitiveToken": "color.white100",
+          "rawValue": "rgba(255, 255, 255, 1)",
+          "matchMethod": "binding",
+          "confidence": "exact"
+        }
+      ],
+      "unidentified": [
+        {
+          "property": "padding-top",
+          "rawValue": "0",
+          "reason": "value-match",
+          "suggestedToken": "semanticSpace.grouped.none"
+        },
+        {
+          "property": "padding-right",
+          "rawValue": "0",
+          "reason": "value-match",
+          "suggestedToken": "semanticSpace.grouped.none"
+        },
+        {
+          "property": "padding-bottom",
+          "rawValue": "0",
+          "reason": "value-match",
+          "suggestedToken": "semanticSpace.grouped.none"
+        },
+        {
+          "property": "padding-left",
+          "rawValue": "0",
+          "reason": "value-match",
+          "suggestedToken": "semanticSpace.grouped.none"
+        },
+        {
+          "property": "border-width",
+          "rawValue": "1",
+          "reason": "value-match",
+          "suggestedToken": "semanticBorderWidth.default"
+        }
+      ]
+    },
+    "children": [
+      {
+        "id": "3439:90274",
+        "name": "NavBar",
+        "type": "FRAME",
+        "depth": 1,
+        "ancestorChain": [
+          "FRAME"
+        ],
+        "tokenClassifications": {
+          "semanticIdentified": [
+            {
+              "property": "item-spacing",
+              "semanticToken": "semanticSpace.separated.normal",
+              "primitiveToken": "space.space300",
+              "rawValue": "{space.space300}",
+              "matchMethod": "binding",
+              "confidence": "exact"
+            }
+          ],
+          "primitiveIdentified": [
+            {
+              "property": "padding-left",
+              "primitiveToken": "space.space500",
+              "rawValue": "40px",
+              "matchMethod": "binding",
+              "confidence": "exact"
+            },
+            {
+              "property": "fill",
+              "primitiveToken": "color.green200",
+              "rawValue": "rgba(128, 255, 187, 1)",
+              "matchMethod": "binding",
+              "confidence": "exact"
+            },
+            {
+              "property": "stroke",
+              "primitiveToken": "color.green400",
+              "rawValue": "rgba(0, 255, 136, 1)",
+              "matchMethod": "binding",
+              "confidence": "exact"
+            }
+          ],
+          "unidentified": [
+            {
+              "property": "padding-top",
+              "rawValue": "0",
+              "reason": "value-match",
+              "suggestedToken": "semanticSpace.grouped.none"
+            },
+            {
+              "property": "padding-right",
+              "rawValue": "0",
+              "reason": "value-match",
+              "suggestedToken": "semanticSpace.grouped.none"
+            },
+            {
+              "property": "padding-bottom",
+              "rawValue": "0",
+              "reason": "value-match",
+              "suggestedToken": "semanticSpace.grouped.none"
+            }
+          ]
+        },
+        "children": [
+          {
+            "id": "3439:90285",
+            "name": "Logo Lockup Container",
+            "type": "FRAME",
+            "depth": 2,
+            "ancestorChain": [
+              "FRAME",
+              "FRAME"
+            ],
+            "tokenClassifications": {
+              "semanticIdentified": [
+                {
+                  "property": "item-spacing",
+                  "semanticToken": "semanticSpace.grouped.none",
+                  "primitiveToken": "space.space000",
+                  "rawValue": "{space.space000}",
+                  "matchMethod": "binding",
+                  "confidence": "exact"
+                }
+              ],
+              "primitiveIdentified": [],
+              "unidentified": [
+                {
+                  "property": "padding-top",
+                  "rawValue": "0",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticSpace.grouped.none"
+                },
+                {
+                  "property": "padding-right",
+                  "rawValue": "0",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticSpace.grouped.none"
+                },
+                {
+                  "property": "padding-bottom",
+                  "rawValue": "0",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticSpace.grouped.none"
+                },
+                {
+                  "property": "padding-left",
+                  "rawValue": "0",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticSpace.grouped.none"
+                },
+                {
+                  "property": "border-width",
+                  "rawValue": "1",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticBorderWidth.default"
+                }
+              ]
+            },
+            "children": [
+              {
+                "id": "3439:90286",
+                "name": "Logo Container",
+                "type": "FRAME",
+                "depth": 3,
+                "ancestorChain": [
+                  "FRAME",
+                  "FRAME",
+                  "FRAME"
+                ],
+                "tokenClassifications": {
+                  "semanticIdentified": [],
+                  "primitiveIdentified": [],
+                  "unidentified": [
+                    {
+                      "property": "padding-top",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "padding-right",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "padding-bottom",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "padding-left",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "item-spacing",
+                      "rawValue": "8",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.normal"
+                    },
+                    {
+                      "property": "border-width",
+                      "rawValue": "1",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticBorderWidth.default"
+                    }
+                  ]
+                },
+                "children": [
+                  {
+                    "id": "3439:90287",
+                    "name": "Logo Segment Container",
+                    "type": "FRAME",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [],
+                      "primitiveIdentified": [],
+                      "unidentified": [
+                        {
+                          "property": "padding-top",
+                          "rawValue": "0",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticSpace.grouped.none"
+                        },
+                        {
+                          "property": "padding-right",
+                          "rawValue": "0",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticSpace.grouped.none"
+                        },
+                        {
+                          "property": "padding-bottom",
+                          "rawValue": "0",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticSpace.grouped.none"
+                        },
+                        {
+                          "property": "padding-left",
+                          "rawValue": "0",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticSpace.grouped.none"
+                        },
+                        {
+                          "property": "item-spacing",
+                          "rawValue": "8",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticSpace.grouped.normal"
+                        },
+                        {
+                          "property": "border-width",
+                          "rawValue": "1",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticBorderWidth.default"
+                        }
+                      ]
+                    },
+                    "children": [
+                      {
+                        "id": "3439:90288",
+                        "name": "Union",
+                        "type": "FRAME",
+                        "depth": 5,
+                        "ancestorChain": [
+                          "FRAME",
+                          "FRAME",
+                          "FRAME",
+                          "FRAME",
+                          "FRAME"
+                        ],
+                        "tokenClassifications": {
+                          "semanticIdentified": [],
+                          "primitiveIdentified": [
+                            {
+                              "property": "fill",
+                              "primitiveToken": "color.black500",
+                              "rawValue": "rgba(0, 0, 0, 1)",
+                              "matchMethod": "binding",
+                              "confidence": "exact"
+                            }
+                          ],
+                          "unidentified": []
+                        },
+                        "children": [],
+                        "layout": {
+                          "cornerRadius": 0,
+                          "width": 141.42857360839844,
+                          "height": 20,
+                          "layoutSizingHorizontal": "FIXED",
+                          "layoutSizingVertical": "FIXED",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "strokeAlign": "OUTSIDE"
+                        }
+                      }
+                    ],
+                    "layout": {
+                      "layoutMode": "HORIZONTAL",
+                      "padding": {
+                        "top": 0,
+                        "right": 0,
+                        "bottom": 0,
+                        "left": 0
+                      },
+                      "itemSpacing": 8,
+                      "counterAxisSpacing": 0,
+                      "cornerRadius": 0,
+                      "width": 125,
+                      "height": 20,
+                      "layoutSizingHorizontal": "FIXED",
+                      "layoutSizingVertical": "HUG",
+                      "primaryAxisAlignItems": "MAX",
+                      "counterAxisAlignItems": "CENTER",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "strokeWeight": 1,
+                      "strokeAlign": "INSIDE"
+                    }
+                  }
+                ],
+                "layout": {
+                  "layoutMode": "HORIZONTAL",
+                  "padding": {
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "itemSpacing": 8,
+                  "counterAxisSpacing": 0,
+                  "cornerRadius": 0,
+                  "width": 424,
+                  "height": 20,
+                  "layoutSizingHorizontal": "FILL",
+                  "layoutSizingVertical": "HUG",
+                  "primaryAxisAlignItems": "MIN",
+                  "counterAxisAlignItems": "CENTER",
+                  "layoutAlign": "STRETCH",
+                  "layoutGrow": 0,
+                  "strokeWeight": 1,
+                  "strokeAlign": "INSIDE"
+                }
+              },
+              {
+                "id": "3448:90515",
+                "name": "Credit Container",
+                "type": "FRAME",
+                "depth": 3,
+                "ancestorChain": [
+                  "FRAME",
+                  "FRAME",
+                  "FRAME"
+                ],
+                "tokenClassifications": {
+                  "semanticIdentified": [],
+                  "primitiveIdentified": [
+                    {
+                      "property": "item-spacing",
+                      "primitiveToken": "space.space025",
+                      "rawValue": "2px",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    }
+                  ],
+                  "unidentified": [
+                    {
+                      "property": "padding-top",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "padding-right",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "padding-bottom",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "padding-left",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "border-width",
+                      "rawValue": "1",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticBorderWidth.default"
+                    }
+                  ]
+                },
+                "children": [
+                  {
+                    "id": "3439:90289",
+                    "name": "by",
+                    "type": "TEXT",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [],
+                      "primitiveIdentified": [
+                        {
+                          "property": "fill",
+                          "primitiveToken": "color.black100",
+                          "rawValue": "rgba(58, 58, 69, 1)",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "unidentified": [
+                        {
+                          "property": "border-width",
+                          "rawValue": "1",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticBorderWidth.default"
+                        },
+                        {
+                          "property": "font-size",
+                          "rawValue": "13",
+                          "reason": "value-match",
+                          "suggestedToken": "icon.icon.size050"
+                        },
+                        {
+                          "property": "font-weight",
+                          "rawValue": "400",
+                          "reason": "value-match",
+                          "suggestedToken": "fontWeight.fontWeight400"
+                        },
+                        {
+                          "property": "line-height",
+                          "rawValue": "20.010000228881836",
+                          "reason": "out-of-tolerance",
+                          "closestMatch": {
+                            "token": "lineHeight.lineHeight125",
+                            "delta": "±18.454000228881835px"
+                          }
+                        }
+                      ]
+                    },
+                    "children": [],
+                    "layout": {
+                      "width": 15,
+                      "height": 21,
+                      "layoutSizingHorizontal": "HUG",
+                      "layoutSizingVertical": "HUG",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "strokeWeight": 1,
+                      "strokeAlign": "OUTSIDE"
+                    },
+                    "textStyle": {
+                      "characters": "by",
+                      "fontSize": 13,
+                      "fontFamily": "Figtree",
+                      "fontStyle": "Regular",
+                      "fontWeight": 400,
+                      "lineHeight": 20.010000228881836,
+                      "textAlignHorizontal": "LEFT",
+                      "textAlignVertical": "TOP"
+                    }
+                  },
+                  {
+                    "id": "3448:90514",
+                    "name": "3fn Design",
+                    "type": "TEXT",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [],
+                      "primitiveIdentified": [
+                        {
+                          "property": "fill",
+                          "primitiveToken": "color.black100",
+                          "rawValue": "rgba(58, 58, 69, 1)",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "unidentified": [
+                        {
+                          "property": "border-width",
+                          "rawValue": "1",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticBorderWidth.default"
+                        },
+                        {
+                          "property": "font-size",
+                          "rawValue": "13",
+                          "reason": "value-match",
+                          "suggestedToken": "icon.icon.size050"
+                        },
+                        {
+                          "property": "font-weight",
+                          "rawValue": "500",
+                          "reason": "value-match",
+                          "suggestedToken": "fontWeight.fontWeight500"
+                        },
+                        {
+                          "property": "line-height",
+                          "rawValue": "19.989999771118164",
+                          "reason": "out-of-tolerance",
+                          "closestMatch": {
+                            "token": "lineHeight.lineHeight125",
+                            "delta": "±18.433999771118163px"
+                          }
+                        }
+                      ]
+                    },
+                    "children": [],
+                    "layout": {
+                      "width": 407,
+                      "height": 20,
+                      "layoutSizingHorizontal": "FILL",
+                      "layoutSizingVertical": "HUG",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 1,
+                      "strokeWeight": 1,
+                      "strokeAlign": "OUTSIDE"
+                    },
+                    "textStyle": {
+                      "characters": "3fn Design",
+                      "fontSize": 13,
+                      "fontFamily": "Figtree",
+                      "fontStyle": "Medium",
+                      "fontWeight": 500,
+                      "lineHeight": 19.989999771118164,
+                      "textAlignHorizontal": "LEFT",
+                      "textAlignVertical": "TOP"
+                    }
+                  }
+                ],
+                "layout": {
+                  "layoutMode": "HORIZONTAL",
+                  "padding": {
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "itemSpacing": 2,
+                  "counterAxisSpacing": 0,
+                  "cornerRadius": 0,
+                  "width": 424,
+                  "height": 21,
+                  "layoutSizingHorizontal": "FILL",
+                  "layoutSizingVertical": "HUG",
+                  "primaryAxisAlignItems": "MIN",
+                  "counterAxisAlignItems": "CENTER",
+                  "layoutAlign": "STRETCH",
+                  "layoutGrow": 0,
+                  "strokeWeight": 1,
+                  "strokeAlign": "INSIDE"
+                }
+              }
+            ],
+            "layout": {
+              "layoutMode": "VERTICAL",
+              "padding": {
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "itemSpacing": 0,
+              "counterAxisSpacing": 0,
+              "cornerRadius": 0,
+              "width": 424,
+              "height": 41,
+              "layoutSizingHorizontal": "FILL",
+              "layoutSizingVertical": "HUG",
+              "primaryAxisAlignItems": "MIN",
+              "counterAxisAlignItems": "MIN",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 1,
+              "strokeWeight": 1,
+              "strokeAlign": "INSIDE"
+            }
+          },
+          {
+            "id": "3439:90279",
+            "name": "Platform Support Container",
+            "type": "FRAME",
+            "depth": 2,
+            "ancestorChain": [
+              "FRAME",
+              "FRAME"
+            ],
+            "tokenClassifications": {
+              "semanticIdentified": [
+                {
+                  "property": "item-spacing",
+                  "semanticToken": "semanticSpace.related.normal",
+                  "primitiveToken": "space.space200",
+                  "rawValue": "{space.space200}",
+                  "matchMethod": "binding",
+                  "confidence": "exact"
+                }
+              ],
+              "primitiveIdentified": [],
+              "unidentified": [
+                {
+                  "property": "padding-top",
+                  "rawValue": "0",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticSpace.grouped.none"
+                },
+                {
+                  "property": "padding-right",
+                  "rawValue": "0",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticSpace.grouped.none"
+                },
+                {
+                  "property": "padding-bottom",
+                  "rawValue": "0",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticSpace.grouped.none"
+                },
+                {
+                  "property": "padding-left",
+                  "rawValue": "0",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticSpace.grouped.none"
+                },
+                {
+                  "property": "border-width",
+                  "rawValue": "1",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticBorderWidth.default"
+                }
+              ]
+            },
+            "children": [
+              {
+                "id": "3448:90513",
+                "name": "Web Icon Container",
+                "type": "FRAME",
+                "depth": 3,
+                "ancestorChain": [
+                  "FRAME",
+                  "FRAME",
+                  "FRAME"
+                ],
+                "tokenClassifications": {
+                  "semanticIdentified": [],
+                  "primitiveIdentified": [],
+                  "unidentified": [
+                    {
+                      "property": "padding-top",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "padding-right",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "padding-bottom",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "padding-left",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "item-spacing",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "border-width",
+                      "rawValue": "1",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticBorderWidth.default"
+                    }
+                  ]
+                },
+                "children": [
+                  {
+                    "id": "3439:90284",
+                    "name": "Subtract",
+                    "type": "FRAME",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [],
+                      "primitiveIdentified": [
+                        {
+                          "property": "fill",
+                          "primitiveToken": "color.black300",
+                          "rawValue": "rgba(10, 10, 15, 1)",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "unidentified": []
+                    },
+                    "children": [],
+                    "layout": {
+                      "cornerRadius": 0,
+                      "width": 19.98845863342285,
+                      "height": 20,
+                      "layoutSizingHorizontal": "FIXED",
+                      "layoutSizingVertical": "FIXED",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "strokeAlign": "INSIDE"
+                    }
+                  }
+                ],
+                "layout": {
+                  "layoutMode": "HORIZONTAL",
+                  "padding": {
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "itemSpacing": 0,
+                  "counterAxisSpacing": 0,
+                  "cornerRadius": 0,
+                  "width": 20,
+                  "height": 20,
+                  "layoutSizingHorizontal": "FIXED",
+                  "layoutSizingVertical": "HUG",
+                  "primaryAxisAlignItems": "SPACE_BETWEEN",
+                  "counterAxisAlignItems": "CENTER",
+                  "layoutAlign": "INHERIT",
+                  "layoutGrow": 0,
+                  "strokeWeight": 1,
+                  "strokeAlign": "INSIDE"
+                }
+              },
+              {
+                "id": "3448:90512",
+                "name": "iOS Icon Container",
+                "type": "FRAME",
+                "depth": 3,
+                "ancestorChain": [
+                  "FRAME",
+                  "FRAME",
+                  "FRAME"
+                ],
+                "tokenClassifications": {
+                  "semanticIdentified": [],
+                  "primitiveIdentified": [],
+                  "unidentified": [
+                    {
+                      "property": "padding-top",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "padding-right",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "padding-bottom",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "padding-left",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "item-spacing",
+                      "rawValue": "8",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.normal"
+                    },
+                    {
+                      "property": "border-width",
+                      "rawValue": "1",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticBorderWidth.default"
+                    }
+                  ]
+                },
+                "children": [
+                  {
+                    "id": "3439:90280",
+                    "name": "Apple_logo_black 2",
+                    "type": "FRAME",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [],
+                      "primitiveIdentified": [],
+                      "unidentified": [
+                        {
+                          "property": "padding-top",
+                          "rawValue": "0",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticSpace.grouped.none"
+                        },
+                        {
+                          "property": "padding-right",
+                          "rawValue": "0",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticSpace.grouped.none"
+                        },
+                        {
+                          "property": "padding-bottom",
+                          "rawValue": "0",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticSpace.grouped.none"
+                        },
+                        {
+                          "property": "padding-left",
+                          "rawValue": "0",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticSpace.grouped.none"
+                        },
+                        {
+                          "property": "fill",
+                          "rawValue": "rgba(255, 255, 255, 1)",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticColor.color.feedback.notification.text"
+                        },
+                        {
+                          "property": "border-width",
+                          "rawValue": "1",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticBorderWidth.default"
+                        }
+                      ]
+                    },
+                    "children": [
+                      {
+                        "id": "3439:90281",
+                        "name": "Vector",
+                        "type": "FRAME",
+                        "depth": 5,
+                        "ancestorChain": [
+                          "FRAME",
+                          "FRAME",
+                          "FRAME",
+                          "FRAME",
+                          "FRAME"
+                        ],
+                        "tokenClassifications": {
+                          "semanticIdentified": [],
+                          "primitiveIdentified": [
+                            {
+                              "property": "fill",
+                              "primitiveToken": "color.black300",
+                              "rawValue": "rgba(10, 10, 15, 1)",
+                              "matchMethod": "binding",
+                              "confidence": "exact"
+                            }
+                          ],
+                          "unidentified": [
+                            {
+                              "property": "border-width",
+                              "rawValue": "1",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticBorderWidth.default"
+                            }
+                          ]
+                        },
+                        "children": [],
+                        "layout": {
+                          "cornerRadius": 0,
+                          "width": 16.233875274658203,
+                          "height": 19.998001098632812,
+                          "layoutSizingHorizontal": "FIXED",
+                          "layoutSizingVertical": "FIXED",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "strokeWeight": 1,
+                          "strokeAlign": "INSIDE"
+                        }
+                      }
+                    ],
+                    "layout": {
+                      "layoutMode": "NONE",
+                      "padding": {
+                        "top": 0,
+                        "right": 0,
+                        "bottom": 0,
+                        "left": 0
+                      },
+                      "itemSpacing": 0,
+                      "counterAxisSpacing": 0,
+                      "cornerRadius": 0,
+                      "width": 16.231884002685547,
+                      "height": 20,
+                      "layoutSizingHorizontal": "FIXED",
+                      "layoutSizingVertical": "FIXED",
+                      "primaryAxisAlignItems": "MIN",
+                      "counterAxisAlignItems": "MIN",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "strokeWeight": 1,
+                      "strokeAlign": "INSIDE"
+                    }
+                  }
+                ],
+                "layout": {
+                  "layoutMode": "HORIZONTAL",
+                  "padding": {
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "itemSpacing": 8,
+                  "counterAxisSpacing": 0,
+                  "cornerRadius": 0,
+                  "width": 20,
+                  "height": 20,
+                  "layoutSizingHorizontal": "FIXED",
+                  "layoutSizingVertical": "FIXED",
+                  "primaryAxisAlignItems": "SPACE_BETWEEN",
+                  "counterAxisAlignItems": "CENTER",
+                  "layoutAlign": "INHERIT",
+                  "layoutGrow": 0,
+                  "strokeWeight": 1,
+                  "strokeAlign": "INSIDE"
+                }
+              },
+              {
+                "id": "3439:90282",
+                "name": "Android Icon Container",
+                "type": "FRAME",
+                "depth": 3,
+                "ancestorChain": [
+                  "FRAME",
+                  "FRAME",
+                  "FRAME"
+                ],
+                "tokenClassifications": {
+                  "semanticIdentified": [],
+                  "primitiveIdentified": [],
+                  "unidentified": [
+                    {
+                      "property": "padding-top",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "padding-right",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "padding-bottom",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "padding-left",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "fill",
+                      "rawValue": "rgba(255, 255, 255, 1)",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticColor.color.feedback.notification.text"
+                    },
+                    {
+                      "property": "border-width",
+                      "rawValue": "1",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticBorderWidth.default"
+                    }
+                  ]
+                },
+                "children": [
+                  {
+                    "id": "3439:90283",
+                    "name": "Vector",
+                    "type": "FRAME",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [],
+                      "primitiveIdentified": [
+                        {
+                          "property": "fill",
+                          "primitiveToken": "color.black300",
+                          "rawValue": "rgba(10, 10, 15, 1)",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "unidentified": [
+                        {
+                          "property": "border-width",
+                          "rawValue": "81.46772003173828",
+                          "reason": "out-of-tolerance",
+                          "closestMatch": {
+                            "token": "borderWidth.borderWidth400",
+                            "delta": "±77.46772003173828px"
+                          }
+                        }
+                      ]
+                    },
+                    "children": [],
+                    "layout": {
+                      "cornerRadius": 0,
+                      "width": 16.954410552978516,
+                      "height": 19.969003677368164,
+                      "layoutSizingHorizontal": "FIXED",
+                      "layoutSizingVertical": "FIXED",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "strokeWeight": 81.46772003173828,
+                      "strokeAlign": "INSIDE"
+                    }
+                  }
+                ],
+                "layout": {
+                  "layoutMode": "NONE",
+                  "padding": {
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "itemSpacing": 0,
+                  "counterAxisSpacing": 0,
+                  "cornerRadius": 0,
+                  "width": 20.000001907348633,
+                  "height": 20.000001907348633,
+                  "layoutSizingHorizontal": "FIXED",
+                  "layoutSizingVertical": "FIXED",
+                  "primaryAxisAlignItems": "MIN",
+                  "counterAxisAlignItems": "MIN",
+                  "layoutAlign": "INHERIT",
+                  "layoutGrow": 0,
+                  "strokeWeight": 1,
+                  "strokeAlign": "INSIDE"
+                }
+              }
+            ],
+            "layout": {
+              "layoutMode": "HORIZONTAL",
+              "padding": {
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "itemSpacing": 16,
+              "counterAxisSpacing": 0,
+              "cornerRadius": 0,
+              "width": 424,
+              "height": 20.000001907348633,
+              "layoutSizingHorizontal": "FILL",
+              "layoutSizingVertical": "HUG",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 1,
+              "strokeWeight": 1,
+              "strokeAlign": "INSIDE"
+            }
+          },
+          {
+            "id": "3439:90275",
+            "name": "Frame 341",
+            "type": "FRAME",
+            "depth": 2,
+            "ancestorChain": [
+              "FRAME",
+              "FRAME"
+            ],
+            "tokenClassifications": {
+              "semanticIdentified": [
+                {
+                  "property": "item-spacing",
+                  "semanticToken": "semanticSpace.grouped.normal",
+                  "primitiveToken": "space.space100",
+                  "rawValue": "{space.space100}",
+                  "matchMethod": "binding",
+                  "confidence": "exact"
+                }
+              ],
+              "primitiveIdentified": [],
+              "unidentified": [
+                {
+                  "property": "padding-top",
+                  "rawValue": "0",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticSpace.grouped.none"
+                },
+                {
+                  "property": "padding-right",
+                  "rawValue": "0",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticSpace.grouped.none"
+                },
+                {
+                  "property": "padding-bottom",
+                  "rawValue": "0",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticSpace.grouped.none"
+                },
+                {
+                  "property": "padding-left",
+                  "rawValue": "0",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticSpace.grouped.none"
+                },
+                {
+                  "property": "border-width",
+                  "rawValue": "1",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticBorderWidth.default"
+                }
+              ]
+            },
+            "children": [
+              {
+                "id": "3439:90293",
+                "name": "Nav Button, About",
+                "type": "FRAME",
+                "depth": 3,
+                "ancestorChain": [
+                  "FRAME",
+                  "FRAME",
+                  "FRAME"
+                ],
+                "tokenClassifications": {
+                  "semanticIdentified": [
+                    {
+                      "property": "padding-right",
+                      "semanticToken": "semanticSpace.inset.200",
+                      "primitiveToken": "space.space200",
+                      "rawValue": "{space.space200}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "padding-left",
+                      "semanticToken": "semanticSpace.inset.200",
+                      "primitiveToken": "space.space200",
+                      "rawValue": "{space.space200}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    }
+                  ],
+                  "primitiveIdentified": [
+                    {
+                      "property": "padding-top",
+                      "primitiveToken": "space.space250",
+                      "rawValue": "20px",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "padding-bottom",
+                      "primitiveToken": "space.space250",
+                      "rawValue": "20px",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "fill",
+                      "primitiveToken": "color.green100",
+                      "rawValue": "rgba(230, 255, 245, 1)",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    }
+                  ],
+                  "unidentified": [
+                    {
+                      "property": "item-spacing",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "border-width",
+                      "rawValue": "1",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticBorderWidth.default"
+                    }
+                  ]
+                },
+                "children": [
+                  {
+                    "id": "3439:90276",
+                    "name": "About",
+                    "type": "TEXT",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [],
+                      "primitiveIdentified": [
+                        {
+                          "property": "fill",
+                          "primitiveToken": "color.black300",
+                          "rawValue": "rgba(10, 10, 15, 1)",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "unidentified": [
+                        {
+                          "property": "border-width",
+                          "rawValue": "1",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticBorderWidth.default"
+                        },
+                        {
+                          "property": "font-size",
+                          "rawValue": "20",
+                          "reason": "value-match",
+                          "suggestedToken": "icon.icon.size150"
+                        },
+                        {
+                          "property": "font-weight",
+                          "rawValue": "700",
+                          "reason": "value-match",
+                          "suggestedToken": "fontWeight.fontWeight700"
+                        },
+                        {
+                          "property": "line-height",
+                          "rawValue": "28",
+                          "reason": "out-of-tolerance",
+                          "closestMatch": {
+                            "token": "lineHeight.lineHeight125",
+                            "delta": "±26.444px"
+                          }
+                        }
+                      ]
+                    },
+                    "children": [],
+                    "layout": {
+                      "width": 50,
+                      "height": 28,
+                      "layoutSizingHorizontal": "FILL",
+                      "layoutSizingVertical": "HUG",
+                      "layoutAlign": "STRETCH",
+                      "layoutGrow": 0,
+                      "strokeWeight": 1,
+                      "strokeAlign": "OUTSIDE"
+                    },
+                    "textStyle": {
+                      "characters": "About",
+                      "fontSize": 20,
+                      "fontFamily": "Rajdhani",
+                      "fontStyle": "Bold",
+                      "fontWeight": 700,
+                      "lineHeight": 28,
+                      "textAlignHorizontal": "LEFT",
+                      "textAlignVertical": "TOP"
+                    }
+                  }
+                ],
+                "layout": {
+                  "layoutMode": "VERTICAL",
+                  "padding": {
+                    "top": 20,
+                    "right": 16,
+                    "bottom": 20,
+                    "left": 16
+                  },
+                  "itemSpacing": 0,
+                  "counterAxisSpacing": 0,
+                  "cornerRadius": 0,
+                  "width": 82,
+                  "height": 68,
+                  "layoutSizingHorizontal": "HUG",
+                  "layoutSizingVertical": "HUG",
+                  "primaryAxisAlignItems": "CENTER",
+                  "counterAxisAlignItems": "CENTER",
+                  "layoutAlign": "INHERIT",
+                  "layoutGrow": 0,
+                  "strokeWeight": 1,
+                  "strokeAlign": "INSIDE"
+                }
+              },
+              {
+                "id": "3439:90296",
+                "name": "Nav Button, GitHub",
+                "type": "FRAME",
+                "depth": 3,
+                "ancestorChain": [
+                  "FRAME",
+                  "FRAME",
+                  "FRAME"
+                ],
+                "tokenClassifications": {
+                  "semanticIdentified": [
+                    {
+                      "property": "padding-right",
+                      "semanticToken": "semanticSpace.inset.200",
+                      "primitiveToken": "space.space200",
+                      "rawValue": "{space.space200}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "padding-left",
+                      "semanticToken": "semanticSpace.inset.200",
+                      "primitiveToken": "space.space200",
+                      "rawValue": "{space.space200}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "item-spacing",
+                      "semanticToken": "semanticSpace.grouped.tight",
+                      "primitiveToken": "space.space050",
+                      "rawValue": "{space.space050}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    }
+                  ],
+                  "primitiveIdentified": [
+                    {
+                      "property": "padding-top",
+                      "primitiveToken": "space.space250",
+                      "rawValue": "20px",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "padding-bottom",
+                      "primitiveToken": "space.space250",
+                      "rawValue": "20px",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    }
+                  ],
+                  "unidentified": [
+                    {
+                      "property": "border-width",
+                      "rawValue": "1",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticBorderWidth.default"
+                    }
+                  ]
+                },
+                "children": [
+                  {
+                    "id": "3439:90297",
+                    "name": "GitHub",
+                    "type": "TEXT",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [],
+                      "primitiveIdentified": [
+                        {
+                          "property": "fill",
+                          "primitiveToken": "color.black300",
+                          "rawValue": "rgba(10, 10, 15, 1)",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "unidentified": [
+                        {
+                          "property": "border-width",
+                          "rawValue": "1",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticBorderWidth.default"
+                        },
+                        {
+                          "property": "font-size",
+                          "rawValue": "20",
+                          "reason": "value-match",
+                          "suggestedToken": "icon.icon.size150"
+                        },
+                        {
+                          "property": "font-weight",
+                          "rawValue": "700",
+                          "reason": "value-match",
+                          "suggestedToken": "fontWeight.fontWeight700"
+                        },
+                        {
+                          "property": "line-height",
+                          "rawValue": "28",
+                          "reason": "out-of-tolerance",
+                          "closestMatch": {
+                            "token": "lineHeight.lineHeight125",
+                            "delta": "±26.444px"
+                          }
+                        }
+                      ]
+                    },
+                    "children": [],
+                    "layout": {
+                      "width": 56,
+                      "height": 28,
+                      "layoutSizingHorizontal": "HUG",
+                      "layoutSizingVertical": "HUG",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "strokeWeight": 1,
+                      "strokeAlign": "OUTSIDE"
+                    },
+                    "textStyle": {
+                      "characters": "GitHub",
+                      "fontSize": 20,
+                      "fontFamily": "Rajdhani",
+                      "fontStyle": "Bold",
+                      "fontWeight": 700,
+                      "lineHeight": 28,
+                      "textAlignHorizontal": "LEFT",
+                      "textAlignVertical": "TOP"
+                    }
+                  },
+                  {
+                    "id": "3440:90351",
+                    "name": "Frame 511",
+                    "type": "FRAME",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [],
+                      "primitiveIdentified": [],
+                      "unidentified": [
+                        {
+                          "property": "padding-top",
+                          "rawValue": "0",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticSpace.grouped.none"
+                        },
+                        {
+                          "property": "padding-right",
+                          "rawValue": "0",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticSpace.grouped.none"
+                        },
+                        {
+                          "property": "padding-bottom",
+                          "rawValue": "0",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticSpace.grouped.none"
+                        },
+                        {
+                          "property": "padding-left",
+                          "rawValue": "0",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticSpace.grouped.none"
+                        },
+                        {
+                          "property": "border-width",
+                          "rawValue": "1",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticBorderWidth.default"
+                        }
+                      ]
+                    },
+                    "children": [
+                      {
+                        "id": "3440:90337",
+                        "name": "external-link 1",
+                        "type": "FRAME",
+                        "depth": 5,
+                        "ancestorChain": [
+                          "FRAME",
+                          "FRAME",
+                          "FRAME",
+                          "FRAME",
+                          "FRAME"
+                        ],
+                        "tokenClassifications": {
+                          "semanticIdentified": [],
+                          "primitiveIdentified": [],
+                          "unidentified": [
+                            {
+                              "property": "padding-top",
+                              "rawValue": "0",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticSpace.grouped.none"
+                            },
+                            {
+                              "property": "padding-right",
+                              "rawValue": "0",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticSpace.grouped.none"
+                            },
+                            {
+                              "property": "padding-bottom",
+                              "rawValue": "0",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticSpace.grouped.none"
+                            },
+                            {
+                              "property": "padding-left",
+                              "rawValue": "0",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticSpace.grouped.none"
+                            },
+                            {
+                              "property": "fill",
+                              "rawValue": "rgba(255, 255, 255, 1)",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticColor.color.feedback.notification.text"
+                            },
+                            {
+                              "property": "border-width",
+                              "rawValue": "1",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticBorderWidth.default"
+                            }
+                          ]
+                        },
+                        "children": [
+                          {
+                            "id": "3440:90338",
+                            "name": "Vector",
+                            "type": "FRAME",
+                            "depth": 6,
+                            "ancestorChain": [
+                              "FRAME",
+                              "FRAME",
+                              "FRAME",
+                              "FRAME",
+                              "FRAME",
+                              "FRAME"
+                            ],
+                            "tokenClassifications": {
+                              "semanticIdentified": [],
+                              "primitiveIdentified": [
+                                {
+                                  "property": "stroke",
+                                  "primitiveToken": "color.black200",
+                                  "rawValue": "rgba(34, 34, 42, 1)",
+                                  "matchMethod": "binding",
+                                  "confidence": "exact"
+                                }
+                              ],
+                              "unidentified": [
+                                {
+                                  "property": "border-width",
+                                  "rawValue": "2",
+                                  "reason": "value-match",
+                                  "suggestedToken": "semanticBorderWidth.emphasis"
+                                }
+                              ]
+                            },
+                            "children": [],
+                            "layout": {
+                              "cornerRadius": 0,
+                              "width": 10,
+                              "height": 10,
+                              "layoutSizingHorizontal": "FIXED",
+                              "layoutSizingVertical": "FIXED",
+                              "layoutAlign": "INHERIT",
+                              "layoutGrow": 0,
+                              "strokeWeight": 2,
+                              "strokeAlign": "CENTER"
+                            },
+                            "strokes": [
+                              {
+                                "color": "rgba(34, 34, 42, 1)"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "3440:90339",
+                            "name": "Vector",
+                            "type": "FRAME",
+                            "depth": 6,
+                            "ancestorChain": [
+                              "FRAME",
+                              "FRAME",
+                              "FRAME",
+                              "FRAME",
+                              "FRAME",
+                              "FRAME"
+                            ],
+                            "tokenClassifications": {
+                              "semanticIdentified": [],
+                              "primitiveIdentified": [
+                                {
+                                  "property": "stroke",
+                                  "primitiveToken": "color.black200",
+                                  "rawValue": "rgba(34, 34, 42, 1)",
+                                  "matchMethod": "binding",
+                                  "confidence": "exact"
+                                }
+                              ],
+                              "unidentified": [
+                                {
+                                  "property": "border-width",
+                                  "rawValue": "2",
+                                  "reason": "value-match",
+                                  "suggestedToken": "semanticBorderWidth.emphasis"
+                                }
+                              ]
+                            },
+                            "children": [],
+                            "layout": {
+                              "cornerRadius": 0,
+                              "width": 4,
+                              "height": 4,
+                              "layoutSizingHorizontal": "FIXED",
+                              "layoutSizingVertical": "FIXED",
+                              "layoutAlign": "INHERIT",
+                              "layoutGrow": 0,
+                              "strokeWeight": 2,
+                              "strokeAlign": "CENTER"
+                            },
+                            "strokes": [
+                              {
+                                "color": "rgba(34, 34, 42, 1)"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "3440:90340",
+                            "name": "Vector",
+                            "type": "FRAME",
+                            "depth": 6,
+                            "ancestorChain": [
+                              "FRAME",
+                              "FRAME",
+                              "FRAME",
+                              "FRAME",
+                              "FRAME",
+                              "FRAME"
+                            ],
+                            "tokenClassifications": {
+                              "semanticIdentified": [],
+                              "primitiveIdentified": [
+                                {
+                                  "property": "stroke",
+                                  "primitiveToken": "color.black200",
+                                  "rawValue": "rgba(34, 34, 42, 1)",
+                                  "matchMethod": "binding",
+                                  "confidence": "exact"
+                                }
+                              ],
+                              "unidentified": [
+                                {
+                                  "property": "border-width",
+                                  "rawValue": "2",
+                                  "reason": "value-match",
+                                  "suggestedToken": "semanticBorderWidth.emphasis"
+                                }
+                              ]
+                            },
+                            "children": [],
+                            "layout": {
+                              "cornerRadius": 0,
+                              "width": 7.333333492279053,
+                              "height": 7.333333492279053,
+                              "layoutSizingHorizontal": "FIXED",
+                              "layoutSizingVertical": "FIXED",
+                              "layoutAlign": "INHERIT",
+                              "layoutGrow": 0,
+                              "strokeWeight": 2,
+                              "strokeAlign": "CENTER"
+                            },
+                            "strokes": [
+                              {
+                                "color": "rgba(34, 34, 42, 1)"
+                              }
+                            ]
+                          }
+                        ],
+                        "layout": {
+                          "layoutMode": "NONE",
+                          "padding": {
+                            "top": 0,
+                            "right": 0,
+                            "bottom": 0,
+                            "left": 0
+                          },
+                          "itemSpacing": 0,
+                          "counterAxisSpacing": 0,
+                          "cornerRadius": 0,
+                          "width": 16,
+                          "height": 16,
+                          "layoutSizingHorizontal": "FIXED",
+                          "layoutSizingVertical": "FIXED",
+                          "primaryAxisAlignItems": "MIN",
+                          "counterAxisAlignItems": "MIN",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "strokeWeight": 1,
+                          "strokeAlign": "INSIDE"
+                        }
+                      }
+                    ],
+                    "layout": {
+                      "layoutMode": "NONE",
+                      "padding": {
+                        "top": 0,
+                        "right": 0,
+                        "bottom": 0,
+                        "left": 0
+                      },
+                      "itemSpacing": 8,
+                      "counterAxisSpacing": 0,
+                      "cornerRadius": 0,
+                      "width": 16,
+                      "height": 28,
+                      "layoutSizingHorizontal": "FIXED",
+                      "layoutSizingVertical": "FIXED",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "strokeWeight": 1,
+                      "strokeAlign": "INSIDE"
+                    }
+                  }
+                ],
+                "layout": {
+                  "layoutMode": "HORIZONTAL",
+                  "padding": {
+                    "top": 20,
+                    "right": 16,
+                    "bottom": 20,
+                    "left": 16
+                  },
+                  "itemSpacing": 4,
+                  "counterAxisSpacing": 0,
+                  "cornerRadius": 0,
+                  "width": 108,
+                  "height": 68,
+                  "layoutSizingHorizontal": "HUG",
+                  "layoutSizingVertical": "HUG",
+                  "primaryAxisAlignItems": "CENTER",
+                  "counterAxisAlignItems": "CENTER",
+                  "layoutAlign": "INHERIT",
+                  "layoutGrow": 0,
+                  "strokeWeight": 1,
+                  "strokeAlign": "INSIDE"
+                }
+              },
+              {
+                "id": "3439:90298",
+                "name": "Nav Button, About",
+                "type": "FRAME",
+                "depth": 3,
+                "ancestorChain": [
+                  "FRAME",
+                  "FRAME",
+                  "FRAME"
+                ],
+                "tokenClassifications": {
+                  "semanticIdentified": [
+                    {
+                      "property": "padding-right",
+                      "semanticToken": "semanticSpace.inset.200",
+                      "primitiveToken": "space.space200",
+                      "rawValue": "{space.space200}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "padding-left",
+                      "semanticToken": "semanticSpace.inset.200",
+                      "primitiveToken": "space.space200",
+                      "rawValue": "{space.space200}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "item-spacing",
+                      "semanticToken": "semanticSpace.grouped.tight",
+                      "primitiveToken": "space.space050",
+                      "rawValue": "{space.space050}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    }
+                  ],
+                  "primitiveIdentified": [
+                    {
+                      "property": "padding-top",
+                      "primitiveToken": "space.space250",
+                      "rawValue": "20px",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "padding-bottom",
+                      "primitiveToken": "space.space250",
+                      "rawValue": "20px",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    }
+                  ],
+                  "unidentified": [
+                    {
+                      "property": "border-width",
+                      "rawValue": "1",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticBorderWidth.default"
+                    }
+                  ]
+                },
+                "children": [
+                  {
+                    "id": "3439:90299",
+                    "name": "LinkedIn",
+                    "type": "TEXT",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [],
+                      "primitiveIdentified": [
+                        {
+                          "property": "fill",
+                          "primitiveToken": "color.black300",
+                          "rawValue": "rgba(10, 10, 15, 1)",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "unidentified": [
+                        {
+                          "property": "border-width",
+                          "rawValue": "1",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticBorderWidth.default"
+                        },
+                        {
+                          "property": "font-size",
+                          "rawValue": "20",
+                          "reason": "value-match",
+                          "suggestedToken": "icon.icon.size150"
+                        },
+                        {
+                          "property": "font-weight",
+                          "rawValue": "700",
+                          "reason": "value-match",
+                          "suggestedToken": "fontWeight.fontWeight700"
+                        },
+                        {
+                          "property": "line-height",
+                          "rawValue": "28",
+                          "reason": "out-of-tolerance",
+                          "closestMatch": {
+                            "token": "lineHeight.lineHeight125",
+                            "delta": "±26.444px"
+                          }
+                        }
+                      ]
+                    },
+                    "children": [],
+                    "layout": {
+                      "width": 71,
+                      "height": 28,
+                      "layoutSizingHorizontal": "HUG",
+                      "layoutSizingVertical": "HUG",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "strokeWeight": 1,
+                      "strokeAlign": "OUTSIDE"
+                    },
+                    "textStyle": {
+                      "characters": "LinkedIn",
+                      "fontSize": 20,
+                      "fontFamily": "Rajdhani",
+                      "fontStyle": "Bold",
+                      "fontWeight": 700,
+                      "lineHeight": 28,
+                      "textAlignHorizontal": "LEFT",
+                      "textAlignVertical": "TOP"
+                    }
+                  },
+                  {
+                    "id": "3440:90352",
+                    "name": "Frame 511",
+                    "type": "FRAME",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [],
+                      "primitiveIdentified": [],
+                      "unidentified": [
+                        {
+                          "property": "padding-top",
+                          "rawValue": "0",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticSpace.grouped.none"
+                        },
+                        {
+                          "property": "padding-right",
+                          "rawValue": "0",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticSpace.grouped.none"
+                        },
+                        {
+                          "property": "padding-bottom",
+                          "rawValue": "0",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticSpace.grouped.none"
+                        },
+                        {
+                          "property": "padding-left",
+                          "rawValue": "0",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticSpace.grouped.none"
+                        },
+                        {
+                          "property": "border-width",
+                          "rawValue": "1",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticBorderWidth.default"
+                        }
+                      ]
+                    },
+                    "children": [
+                      {
+                        "id": "3440:90353",
+                        "name": "external-link 1",
+                        "type": "FRAME",
+                        "depth": 5,
+                        "ancestorChain": [
+                          "FRAME",
+                          "FRAME",
+                          "FRAME",
+                          "FRAME",
+                          "FRAME"
+                        ],
+                        "tokenClassifications": {
+                          "semanticIdentified": [],
+                          "primitiveIdentified": [],
+                          "unidentified": [
+                            {
+                              "property": "padding-top",
+                              "rawValue": "0",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticSpace.grouped.none"
+                            },
+                            {
+                              "property": "padding-right",
+                              "rawValue": "0",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticSpace.grouped.none"
+                            },
+                            {
+                              "property": "padding-bottom",
+                              "rawValue": "0",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticSpace.grouped.none"
+                            },
+                            {
+                              "property": "padding-left",
+                              "rawValue": "0",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticSpace.grouped.none"
+                            },
+                            {
+                              "property": "fill",
+                              "rawValue": "rgba(255, 255, 255, 1)",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticColor.color.feedback.notification.text"
+                            },
+                            {
+                              "property": "border-width",
+                              "rawValue": "1",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticBorderWidth.default"
+                            }
+                          ]
+                        },
+                        "children": [
+                          {
+                            "id": "3440:90354",
+                            "name": "Vector",
+                            "type": "FRAME",
+                            "depth": 6,
+                            "ancestorChain": [
+                              "FRAME",
+                              "FRAME",
+                              "FRAME",
+                              "FRAME",
+                              "FRAME",
+                              "FRAME"
+                            ],
+                            "tokenClassifications": {
+                              "semanticIdentified": [],
+                              "primitiveIdentified": [
+                                {
+                                  "property": "stroke",
+                                  "primitiveToken": "color.black200",
+                                  "rawValue": "rgba(34, 34, 42, 1)",
+                                  "matchMethod": "binding",
+                                  "confidence": "exact"
+                                }
+                              ],
+                              "unidentified": [
+                                {
+                                  "property": "border-width",
+                                  "rawValue": "2",
+                                  "reason": "value-match",
+                                  "suggestedToken": "semanticBorderWidth.emphasis"
+                                }
+                              ]
+                            },
+                            "children": [],
+                            "layout": {
+                              "cornerRadius": 0,
+                              "width": 10,
+                              "height": 10,
+                              "layoutSizingHorizontal": "FIXED",
+                              "layoutSizingVertical": "FIXED",
+                              "layoutAlign": "INHERIT",
+                              "layoutGrow": 0,
+                              "strokeWeight": 2,
+                              "strokeAlign": "CENTER"
+                            },
+                            "strokes": [
+                              {
+                                "color": "rgba(34, 34, 42, 1)"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "3440:90355",
+                            "name": "Vector",
+                            "type": "FRAME",
+                            "depth": 6,
+                            "ancestorChain": [
+                              "FRAME",
+                              "FRAME",
+                              "FRAME",
+                              "FRAME",
+                              "FRAME",
+                              "FRAME"
+                            ],
+                            "tokenClassifications": {
+                              "semanticIdentified": [],
+                              "primitiveIdentified": [
+                                {
+                                  "property": "stroke",
+                                  "primitiveToken": "color.black200",
+                                  "rawValue": "rgba(34, 34, 42, 1)",
+                                  "matchMethod": "binding",
+                                  "confidence": "exact"
+                                }
+                              ],
+                              "unidentified": [
+                                {
+                                  "property": "border-width",
+                                  "rawValue": "2",
+                                  "reason": "value-match",
+                                  "suggestedToken": "semanticBorderWidth.emphasis"
+                                }
+                              ]
+                            },
+                            "children": [],
+                            "layout": {
+                              "cornerRadius": 0,
+                              "width": 4,
+                              "height": 4,
+                              "layoutSizingHorizontal": "FIXED",
+                              "layoutSizingVertical": "FIXED",
+                              "layoutAlign": "INHERIT",
+                              "layoutGrow": 0,
+                              "strokeWeight": 2,
+                              "strokeAlign": "CENTER"
+                            },
+                            "strokes": [
+                              {
+                                "color": "rgba(34, 34, 42, 1)"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "3440:90356",
+                            "name": "Vector",
+                            "type": "FRAME",
+                            "depth": 6,
+                            "ancestorChain": [
+                              "FRAME",
+                              "FRAME",
+                              "FRAME",
+                              "FRAME",
+                              "FRAME",
+                              "FRAME"
+                            ],
+                            "tokenClassifications": {
+                              "semanticIdentified": [],
+                              "primitiveIdentified": [
+                                {
+                                  "property": "stroke",
+                                  "primitiveToken": "color.black200",
+                                  "rawValue": "rgba(34, 34, 42, 1)",
+                                  "matchMethod": "binding",
+                                  "confidence": "exact"
+                                }
+                              ],
+                              "unidentified": [
+                                {
+                                  "property": "border-width",
+                                  "rawValue": "2",
+                                  "reason": "value-match",
+                                  "suggestedToken": "semanticBorderWidth.emphasis"
+                                }
+                              ]
+                            },
+                            "children": [],
+                            "layout": {
+                              "cornerRadius": 0,
+                              "width": 7.333333492279053,
+                              "height": 7.333333492279053,
+                              "layoutSizingHorizontal": "FIXED",
+                              "layoutSizingVertical": "FIXED",
+                              "layoutAlign": "INHERIT",
+                              "layoutGrow": 0,
+                              "strokeWeight": 2,
+                              "strokeAlign": "CENTER"
+                            },
+                            "strokes": [
+                              {
+                                "color": "rgba(34, 34, 42, 1)"
+                              }
+                            ]
+                          }
+                        ],
+                        "layout": {
+                          "layoutMode": "NONE",
+                          "padding": {
+                            "top": 0,
+                            "right": 0,
+                            "bottom": 0,
+                            "left": 0
+                          },
+                          "itemSpacing": 0,
+                          "counterAxisSpacing": 0,
+                          "cornerRadius": 0,
+                          "width": 16,
+                          "height": 16,
+                          "layoutSizingHorizontal": "FIXED",
+                          "layoutSizingVertical": "FIXED",
+                          "primaryAxisAlignItems": "MIN",
+                          "counterAxisAlignItems": "MIN",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "strokeWeight": 1,
+                          "strokeAlign": "INSIDE"
+                        }
+                      }
+                    ],
+                    "layout": {
+                      "layoutMode": "NONE",
+                      "padding": {
+                        "top": 0,
+                        "right": 0,
+                        "bottom": 0,
+                        "left": 0
+                      },
+                      "itemSpacing": 8,
+                      "counterAxisSpacing": 0,
+                      "cornerRadius": 0,
+                      "width": 16,
+                      "height": 28,
+                      "layoutSizingHorizontal": "FIXED",
+                      "layoutSizingVertical": "FIXED",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "strokeWeight": 1,
+                      "strokeAlign": "INSIDE"
+                    }
+                  }
+                ],
+                "layout": {
+                  "layoutMode": "HORIZONTAL",
+                  "padding": {
+                    "top": 20,
+                    "right": 16,
+                    "bottom": 20,
+                    "left": 16
+                  },
+                  "itemSpacing": 4,
+                  "counterAxisSpacing": 0,
+                  "cornerRadius": 0,
+                  "width": 123,
+                  "height": 68,
+                  "layoutSizingHorizontal": "HUG",
+                  "layoutSizingVertical": "HUG",
+                  "primaryAxisAlignItems": "CENTER",
+                  "counterAxisAlignItems": "CENTER",
+                  "layoutAlign": "INHERIT",
+                  "layoutGrow": 0,
+                  "strokeWeight": 1,
+                  "strokeAlign": "INSIDE"
+                }
+              }
+            ],
+            "layout": {
+              "layoutMode": "HORIZONTAL",
+              "padding": {
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "itemSpacing": 8,
+              "counterAxisSpacing": 0,
+              "cornerRadius": 0,
+              "width": 424,
+              "height": 68,
+              "layoutSizingHorizontal": "FILL",
+              "layoutSizingVertical": "HUG",
+              "primaryAxisAlignItems": "MAX",
+              "counterAxisAlignItems": "CENTER",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 1,
+              "strokeWeight": 1,
+              "strokeAlign": "INSIDE"
+            }
+          }
+        ],
+        "layout": {
+          "layoutMode": "HORIZONTAL",
+          "padding": {
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 40
+          },
+          "itemSpacing": 24,
+          "counterAxisSpacing": 0,
+          "cornerRadius": 0,
+          "width": 1360,
+          "height": 68,
+          "layoutSizingHorizontal": "FIXED",
+          "layoutSizingVertical": "HUG",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "strokeAlign": "INSIDE"
+        },
+        "strokes": [
+          {
+            "color": "rgba(0, 255, 136, 1)"
+          }
+        ]
+      },
+      {
+        "id": "3440:90332",
+        "name": "Subnav Container",
+        "type": "FRAME",
+        "depth": 1,
+        "ancestorChain": [
+          "FRAME"
+        ],
+        "tokenClassifications": {
+          "semanticIdentified": [
+            {
+              "property": "padding-top",
+              "semanticToken": "semanticSpace.inset.200",
+              "primitiveToken": "space.space200",
+              "rawValue": "{space.space200}",
+              "matchMethod": "binding",
+              "confidence": "exact"
+            },
+            {
+              "property": "padding-bottom",
+              "semanticToken": "semanticSpace.inset.200",
+              "primitiveToken": "space.space200",
+              "rawValue": "{space.space200}",
+              "matchMethod": "binding",
+              "confidence": "exact"
+            }
+          ],
+          "primitiveIdentified": [
+            {
+              "property": "item-spacing",
+              "primitiveToken": "space.space100",
+              "rawValue": "8px",
+              "matchMethod": "binding",
+              "confidence": "exact"
+            },
+            {
+              "property": "fill",
+              "primitiveToken": "color.green100",
+              "rawValue": "rgba(230, 255, 245, 1)",
+              "matchMethod": "binding",
+              "confidence": "exact"
+            }
+          ],
+          "unidentified": [
+            {
+              "property": "padding-right",
+              "rawValue": "0",
+              "reason": "value-match",
+              "suggestedToken": "semanticSpace.grouped.none"
+            },
+            {
+              "property": "padding-left",
+              "rawValue": "0",
+              "reason": "value-match",
+              "suggestedToken": "semanticSpace.grouped.none"
+            },
+            {
+              "property": "border-width",
+              "rawValue": "1",
+              "reason": "value-match",
+              "suggestedToken": "semanticBorderWidth.default"
+            }
+          ]
+        },
+        "children": [
+          {
+            "id": "3440:90331",
+            "name": "Subnav Button List",
+            "type": "FRAME",
+            "depth": 2,
+            "ancestorChain": [
+              "FRAME",
+              "FRAME"
+            ],
+            "tokenClassifications": {
+              "semanticIdentified": [
+                {
+                  "property": "item-spacing",
+                  "semanticToken": "semanticSpace.grouped.normal",
+                  "primitiveToken": "space.space100",
+                  "rawValue": "{space.space100}",
+                  "matchMethod": "binding",
+                  "confidence": "exact"
+                }
+              ],
+              "primitiveIdentified": [],
+              "unidentified": [
+                {
+                  "property": "padding-top",
+                  "rawValue": "0",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticSpace.grouped.none"
+                },
+                {
+                  "property": "padding-right",
+                  "rawValue": "0",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticSpace.grouped.none"
+                },
+                {
+                  "property": "padding-bottom",
+                  "rawValue": "0",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticSpace.grouped.none"
+                },
+                {
+                  "property": "padding-left",
+                  "rawValue": "0",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticSpace.grouped.none"
+                },
+                {
+                  "property": "border-width",
+                  "rawValue": "1",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticBorderWidth.default"
+                }
+              ]
+            },
+            "children": [
+              {
+                "id": "3440:90307",
+                "name": "Subnav Button",
+                "type": "FRAME",
+                "depth": 3,
+                "ancestorChain": [
+                  "FRAME",
+                  "FRAME",
+                  "FRAME"
+                ],
+                "tokenClassifications": {
+                  "semanticIdentified": [
+                    {
+                      "property": "padding-top",
+                      "semanticToken": "semanticSpace.inset.100",
+                      "primitiveToken": "space.space100",
+                      "rawValue": "{space.space100}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "padding-right",
+                      "semanticToken": "semanticSpace.inset.300",
+                      "primitiveToken": "space.space300",
+                      "rawValue": "{space.space300}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "padding-bottom",
+                      "semanticToken": "semanticSpace.inset.100",
+                      "primitiveToken": "space.space100",
+                      "rawValue": "{space.space100}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "padding-left",
+                      "semanticToken": "semanticSpace.inset.300",
+                      "primitiveToken": "space.space300",
+                      "rawValue": "{space.space300}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "item-spacing",
+                      "semanticToken": "semanticSpace.grouped.tight",
+                      "primitiveToken": "space.space050",
+                      "rawValue": "{space.space050}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    }
+                  ],
+                  "primitiveIdentified": [],
+                  "unidentified": [
+                    {
+                      "property": "border-width",
+                      "rawValue": "1",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticBorderWidth.default"
+                    }
+                  ]
+                },
+                "children": [
+                  {
+                    "id": "3439:90305",
+                    "name": "//",
+                    "type": "TEXT",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [],
+                      "primitiveIdentified": [
+                        {
+                          "property": "fill",
+                          "primitiveToken": "color.black300",
+                          "rawValue": "rgba(10, 10, 15, 1)",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "unidentified": [
+                        {
+                          "property": "border-width",
+                          "rawValue": "1",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticBorderWidth.default"
+                        },
+                        {
+                          "property": "font-size",
+                          "rawValue": "23",
+                          "reason": "value-match",
+                          "suggestedToken": "icon.icon.size200"
+                        },
+                        {
+                          "property": "font-weight",
+                          "rawValue": "700",
+                          "reason": "value-match",
+                          "suggestedToken": "fontWeight.fontWeight700"
+                        },
+                        {
+                          "property": "line-height",
+                          "rawValue": "31.989999771118164",
+                          "reason": "out-of-tolerance",
+                          "closestMatch": {
+                            "token": "lineHeight.lineHeight125",
+                            "delta": "±30.433999771118163px"
+                          }
+                        }
+                      ]
+                    },
+                    "children": [],
+                    "layout": {
+                      "width": 20,
+                      "height": 32,
+                      "layoutSizingHorizontal": "FIXED",
+                      "layoutSizingVertical": "HUG",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "strokeWeight": 1,
+                      "strokeAlign": "OUTSIDE"
+                    },
+                    "textStyle": {
+                      "characters": "//",
+                      "fontSize": 23,
+                      "fontFamily": "Rajdhani",
+                      "fontStyle": "Bold",
+                      "fontWeight": 700,
+                      "lineHeight": 31.989999771118164,
+                      "textAlignHorizontal": "CENTER",
+                      "textAlignVertical": "TOP"
+                    }
+                  },
+                  {
+                    "id": "3440:90315",
+                    "name": "Why build this system?",
+                    "type": "TEXT",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [],
+                      "primitiveIdentified": [
+                        {
+                          "property": "fill",
+                          "primitiveToken": "color.black300",
+                          "rawValue": "rgba(10, 10, 15, 1)",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        },
+                        {
+                          "property": "font-size",
+                          "primitiveToken": "fontSize.fontSize200",
+                          "rawValue": "23px",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        },
+                        {
+                          "property": "font-weight",
+                          "primitiveToken": "fontWeight.fontWeight700",
+                          "rawValue": "700",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "unidentified": [
+                        {
+                          "property": "border-width",
+                          "rawValue": "1",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticBorderWidth.default"
+                        },
+                        {
+                          "property": "line-height",
+                          "rawValue": "31.989999771118164",
+                          "reason": "out-of-tolerance",
+                          "closestMatch": {
+                            "token": "lineHeight.lineHeight125",
+                            "delta": "±30.433999771118163px"
+                          }
+                        }
+                      ]
+                    },
+                    "children": [],
+                    "layout": {
+                      "width": 220,
+                      "height": 32,
+                      "layoutSizingHorizontal": "HUG",
+                      "layoutSizingVertical": "HUG",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "strokeWeight": 1,
+                      "strokeAlign": "OUTSIDE"
+                    },
+                    "textStyle": {
+                      "characters": "Why build this system?",
+                      "fontSize": 23,
+                      "fontFamily": "Rajdhani",
+                      "fontStyle": "Bold",
+                      "fontWeight": 700,
+                      "lineHeight": 31.989999771118164,
+                      "textAlignHorizontal": "LEFT",
+                      "textAlignVertical": "TOP"
+                    }
+                  }
+                ],
+                "layout": {
+                  "layoutMode": "HORIZONTAL",
+                  "padding": {
+                    "top": 8,
+                    "right": 24,
+                    "bottom": 8,
+                    "left": 24
+                  },
+                  "itemSpacing": 4,
+                  "counterAxisSpacing": 0,
+                  "cornerRadius": 0,
+                  "width": 667,
+                  "height": 48,
+                  "layoutSizingHorizontal": "FILL",
+                  "layoutSizingVertical": "HUG",
+                  "primaryAxisAlignItems": "MIN",
+                  "counterAxisAlignItems": "CENTER",
+                  "layoutAlign": "STRETCH",
+                  "layoutGrow": 0,
+                  "strokeWeight": 1,
+                  "strokeAlign": "INSIDE"
+                }
+              },
+              {
+                "id": "3440:90316",
+                "name": "Subnav Button",
+                "type": "FRAME",
+                "depth": 3,
+                "ancestorChain": [
+                  "FRAME",
+                  "FRAME",
+                  "FRAME"
+                ],
+                "tokenClassifications": {
+                  "semanticIdentified": [
+                    {
+                      "property": "padding-top",
+                      "semanticToken": "semanticSpace.inset.100",
+                      "primitiveToken": "space.space100",
+                      "rawValue": "{space.space100}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "padding-right",
+                      "semanticToken": "semanticSpace.inset.300",
+                      "primitiveToken": "space.space300",
+                      "rawValue": "{space.space300}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "padding-bottom",
+                      "semanticToken": "semanticSpace.inset.100",
+                      "primitiveToken": "space.space100",
+                      "rawValue": "{space.space100}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "padding-left",
+                      "semanticToken": "semanticSpace.inset.300",
+                      "primitiveToken": "space.space300",
+                      "rawValue": "{space.space300}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "item-spacing",
+                      "semanticToken": "semanticSpace.grouped.tight",
+                      "primitiveToken": "space.space050",
+                      "rawValue": "{space.space050}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    }
+                  ],
+                  "primitiveIdentified": [],
+                  "unidentified": [
+                    {
+                      "property": "border-width",
+                      "rawValue": "1",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticBorderWidth.default"
+                    }
+                  ]
+                },
+                "children": [
+                  {
+                    "id": "3440:90317",
+                    "name": "//",
+                    "type": "TEXT",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [],
+                      "primitiveIdentified": [
+                        {
+                          "property": "fill",
+                          "primitiveToken": "color.black300",
+                          "rawValue": "rgba(10, 10, 15, 1)",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "unidentified": [
+                        {
+                          "property": "border-width",
+                          "rawValue": "1",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticBorderWidth.default"
+                        },
+                        {
+                          "property": "font-size",
+                          "rawValue": "23",
+                          "reason": "value-match",
+                          "suggestedToken": "icon.icon.size200"
+                        },
+                        {
+                          "property": "font-weight",
+                          "rawValue": "700",
+                          "reason": "value-match",
+                          "suggestedToken": "fontWeight.fontWeight700"
+                        },
+                        {
+                          "property": "line-height",
+                          "rawValue": "31.989999771118164",
+                          "reason": "out-of-tolerance",
+                          "closestMatch": {
+                            "token": "lineHeight.lineHeight125",
+                            "delta": "±30.433999771118163px"
+                          }
+                        }
+                      ]
+                    },
+                    "children": [],
+                    "layout": {
+                      "width": 20,
+                      "height": 32,
+                      "layoutSizingHorizontal": "FIXED",
+                      "layoutSizingVertical": "HUG",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "strokeWeight": 1,
+                      "strokeAlign": "OUTSIDE"
+                    },
+                    "textStyle": {
+                      "characters": "//",
+                      "fontSize": 23,
+                      "fontFamily": "Rajdhani",
+                      "fontStyle": "Bold",
+                      "fontWeight": 700,
+                      "lineHeight": 31.989999771118164,
+                      "textAlignHorizontal": "CENTER",
+                      "textAlignVertical": "TOP"
+                    }
+                  },
+                  {
+                    "id": "3440:90318",
+                    "name": "What is this ecosystem?",
+                    "type": "TEXT",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [],
+                      "primitiveIdentified": [
+                        {
+                          "property": "fill",
+                          "primitiveToken": "color.black300",
+                          "rawValue": "rgba(10, 10, 15, 1)",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        },
+                        {
+                          "property": "font-size",
+                          "primitiveToken": "fontSize.fontSize200",
+                          "rawValue": "23px",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        },
+                        {
+                          "property": "font-weight",
+                          "primitiveToken": "fontWeight.fontWeight700",
+                          "rawValue": "700",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "unidentified": [
+                        {
+                          "property": "border-width",
+                          "rawValue": "1",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticBorderWidth.default"
+                        },
+                        {
+                          "property": "line-height",
+                          "rawValue": "31.989999771118164",
+                          "reason": "out-of-tolerance",
+                          "closestMatch": {
+                            "token": "lineHeight.lineHeight125",
+                            "delta": "±30.433999771118163px"
+                          }
+                        }
+                      ]
+                    },
+                    "children": [],
+                    "layout": {
+                      "width": 230,
+                      "height": 32,
+                      "layoutSizingHorizontal": "HUG",
+                      "layoutSizingVertical": "HUG",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "strokeWeight": 1,
+                      "strokeAlign": "OUTSIDE"
+                    },
+                    "textStyle": {
+                      "characters": "What is this ecosystem?",
+                      "fontSize": 23,
+                      "fontFamily": "Rajdhani",
+                      "fontStyle": "Bold",
+                      "fontWeight": 700,
+                      "lineHeight": 31.989999771118164,
+                      "textAlignHorizontal": "LEFT",
+                      "textAlignVertical": "TOP"
+                    }
+                  }
+                ],
+                "layout": {
+                  "layoutMode": "HORIZONTAL",
+                  "padding": {
+                    "top": 8,
+                    "right": 24,
+                    "bottom": 8,
+                    "left": 24
+                  },
+                  "itemSpacing": 4,
+                  "counterAxisSpacing": 0,
+                  "cornerRadius": 0,
+                  "width": 667,
+                  "height": 48,
+                  "layoutSizingHorizontal": "FILL",
+                  "layoutSizingVertical": "HUG",
+                  "primaryAxisAlignItems": "MIN",
+                  "counterAxisAlignItems": "CENTER",
+                  "layoutAlign": "STRETCH",
+                  "layoutGrow": 0,
+                  "strokeWeight": 1,
+                  "strokeAlign": "INSIDE"
+                }
+              },
+              {
+                "id": "3440:90319",
+                "name": "Subnav Button",
+                "type": "FRAME",
+                "depth": 3,
+                "ancestorChain": [
+                  "FRAME",
+                  "FRAME",
+                  "FRAME"
+                ],
+                "tokenClassifications": {
+                  "semanticIdentified": [
+                    {
+                      "property": "padding-top",
+                      "semanticToken": "semanticSpace.inset.100",
+                      "primitiveToken": "space.space100",
+                      "rawValue": "{space.space100}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "padding-right",
+                      "semanticToken": "semanticSpace.inset.300",
+                      "primitiveToken": "space.space300",
+                      "rawValue": "{space.space300}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "padding-bottom",
+                      "semanticToken": "semanticSpace.inset.100",
+                      "primitiveToken": "space.space100",
+                      "rawValue": "{space.space100}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "padding-left",
+                      "semanticToken": "semanticSpace.inset.300",
+                      "primitiveToken": "space.space300",
+                      "rawValue": "{space.space300}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "item-spacing",
+                      "semanticToken": "semanticSpace.grouped.tight",
+                      "primitiveToken": "space.space050",
+                      "rawValue": "{space.space050}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    }
+                  ],
+                  "primitiveIdentified": [],
+                  "unidentified": [
+                    {
+                      "property": "border-width",
+                      "rawValue": "1",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticBorderWidth.default"
+                    }
+                  ]
+                },
+                "children": [
+                  {
+                    "id": "3440:90320",
+                    "name": "!!",
+                    "type": "TEXT",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [],
+                      "primitiveIdentified": [
+                        {
+                          "property": "fill",
+                          "primitiveToken": "color.black300",
+                          "rawValue": "rgba(10, 10, 15, 1)",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "unidentified": [
+                        {
+                          "property": "border-width",
+                          "rawValue": "1",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticBorderWidth.default"
+                        },
+                        {
+                          "property": "font-size",
+                          "rawValue": "23",
+                          "reason": "value-match",
+                          "suggestedToken": "icon.icon.size200"
+                        },
+                        {
+                          "property": "font-weight",
+                          "rawValue": "700",
+                          "reason": "value-match",
+                          "suggestedToken": "fontWeight.fontWeight700"
+                        },
+                        {
+                          "property": "line-height",
+                          "rawValue": "31.989999771118164",
+                          "reason": "out-of-tolerance",
+                          "closestMatch": {
+                            "token": "lineHeight.lineHeight125",
+                            "delta": "±30.433999771118163px"
+                          }
+                        }
+                      ]
+                    },
+                    "children": [],
+                    "layout": {
+                      "width": 20,
+                      "height": 32,
+                      "layoutSizingHorizontal": "FIXED",
+                      "layoutSizingVertical": "HUG",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "strokeWeight": 1,
+                      "strokeAlign": "OUTSIDE"
+                    },
+                    "textStyle": {
+                      "characters": "!!",
+                      "fontSize": 23,
+                      "fontFamily": "Rajdhani",
+                      "fontStyle": "Bold",
+                      "fontWeight": 700,
+                      "lineHeight": 31.989999771118164,
+                      "textAlignHorizontal": "CENTER",
+                      "textAlignVertical": "TOP"
+                    }
+                  },
+                  {
+                    "id": "3440:90321",
+                    "name": "Critical system features",
+                    "type": "TEXT",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [],
+                      "primitiveIdentified": [
+                        {
+                          "property": "fill",
+                          "primitiveToken": "color.black300",
+                          "rawValue": "rgba(10, 10, 15, 1)",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        },
+                        {
+                          "property": "font-size",
+                          "primitiveToken": "fontSize.fontSize200",
+                          "rawValue": "23px",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        },
+                        {
+                          "property": "font-weight",
+                          "primitiveToken": "fontWeight.fontWeight700",
+                          "rawValue": "700",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "unidentified": [
+                        {
+                          "property": "border-width",
+                          "rawValue": "1",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticBorderWidth.default"
+                        },
+                        {
+                          "property": "line-height",
+                          "rawValue": "31.989999771118164",
+                          "reason": "out-of-tolerance",
+                          "closestMatch": {
+                            "token": "lineHeight.lineHeight125",
+                            "delta": "±30.433999771118163px"
+                          }
+                        }
+                      ]
+                    },
+                    "children": [],
+                    "layout": {
+                      "width": 227,
+                      "height": 32,
+                      "layoutSizingHorizontal": "HUG",
+                      "layoutSizingVertical": "HUG",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "strokeWeight": 1,
+                      "strokeAlign": "OUTSIDE"
+                    },
+                    "textStyle": {
+                      "characters": "Critical system features",
+                      "fontSize": 23,
+                      "fontFamily": "Rajdhani",
+                      "fontStyle": "Bold",
+                      "fontWeight": 700,
+                      "lineHeight": 31.989999771118164,
+                      "textAlignHorizontal": "LEFT",
+                      "textAlignVertical": "TOP"
+                    }
+                  }
+                ],
+                "layout": {
+                  "layoutMode": "HORIZONTAL",
+                  "padding": {
+                    "top": 8,
+                    "right": 24,
+                    "bottom": 8,
+                    "left": 24
+                  },
+                  "itemSpacing": 4,
+                  "counterAxisSpacing": 0,
+                  "cornerRadius": 0,
+                  "width": 667,
+                  "height": 48,
+                  "layoutSizingHorizontal": "FILL",
+                  "layoutSizingVertical": "HUG",
+                  "primaryAxisAlignItems": "MIN",
+                  "counterAxisAlignItems": "CENTER",
+                  "layoutAlign": "STRETCH",
+                  "layoutGrow": 0,
+                  "strokeWeight": 1,
+                  "strokeAlign": "INSIDE"
+                }
+              },
+              {
+                "id": "3440:90322",
+                "name": "Subnav Button",
+                "type": "FRAME",
+                "depth": 3,
+                "ancestorChain": [
+                  "FRAME",
+                  "FRAME",
+                  "FRAME"
+                ],
+                "tokenClassifications": {
+                  "semanticIdentified": [
+                    {
+                      "property": "padding-top",
+                      "semanticToken": "semanticSpace.inset.100",
+                      "primitiveToken": "space.space100",
+                      "rawValue": "{space.space100}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "padding-right",
+                      "semanticToken": "semanticSpace.inset.300",
+                      "primitiveToken": "space.space300",
+                      "rawValue": "{space.space300}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "padding-bottom",
+                      "semanticToken": "semanticSpace.inset.100",
+                      "primitiveToken": "space.space100",
+                      "rawValue": "{space.space100}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "padding-left",
+                      "semanticToken": "semanticSpace.inset.300",
+                      "primitiveToken": "space.space300",
+                      "rawValue": "{space.space300}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "item-spacing",
+                      "semanticToken": "semanticSpace.grouped.tight",
+                      "primitiveToken": "space.space050",
+                      "rawValue": "{space.space050}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    }
+                  ],
+                  "primitiveIdentified": [],
+                  "unidentified": [
+                    {
+                      "property": "border-width",
+                      "rawValue": "1",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticBorderWidth.default"
+                    }
+                  ]
+                },
+                "children": [
+                  {
+                    "id": "3440:90323",
+                    "name": "//",
+                    "type": "TEXT",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [],
+                      "primitiveIdentified": [
+                        {
+                          "property": "fill",
+                          "primitiveToken": "color.black300",
+                          "rawValue": "rgba(10, 10, 15, 1)",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "unidentified": [
+                        {
+                          "property": "border-width",
+                          "rawValue": "1",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticBorderWidth.default"
+                        },
+                        {
+                          "property": "font-size",
+                          "rawValue": "23",
+                          "reason": "value-match",
+                          "suggestedToken": "icon.icon.size200"
+                        },
+                        {
+                          "property": "font-weight",
+                          "rawValue": "700",
+                          "reason": "value-match",
+                          "suggestedToken": "fontWeight.fontWeight700"
+                        },
+                        {
+                          "property": "line-height",
+                          "rawValue": "31.989999771118164",
+                          "reason": "out-of-tolerance",
+                          "closestMatch": {
+                            "token": "lineHeight.lineHeight125",
+                            "delta": "±30.433999771118163px"
+                          }
+                        }
+                      ]
+                    },
+                    "children": [],
+                    "layout": {
+                      "width": 20,
+                      "height": 32,
+                      "layoutSizingHorizontal": "FIXED",
+                      "layoutSizingVertical": "HUG",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "strokeWeight": 1,
+                      "strokeAlign": "OUTSIDE"
+                    },
+                    "textStyle": {
+                      "characters": "//",
+                      "fontSize": 23,
+                      "fontFamily": "Rajdhani",
+                      "fontStyle": "Bold",
+                      "fontWeight": 700,
+                      "lineHeight": 31.989999771118164,
+                      "textAlignHorizontal": "CENTER",
+                      "textAlignVertical": "TOP"
+                    }
+                  },
+                  {
+                    "id": "3440:90324",
+                    "name": "How was this built?",
+                    "type": "TEXT",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [],
+                      "primitiveIdentified": [
+                        {
+                          "property": "fill",
+                          "primitiveToken": "color.black300",
+                          "rawValue": "rgba(10, 10, 15, 1)",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        },
+                        {
+                          "property": "font-size",
+                          "primitiveToken": "fontSize.fontSize200",
+                          "rawValue": "23px",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        },
+                        {
+                          "property": "font-weight",
+                          "primitiveToken": "fontWeight.fontWeight700",
+                          "rawValue": "700",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "unidentified": [
+                        {
+                          "property": "border-width",
+                          "rawValue": "1",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticBorderWidth.default"
+                        },
+                        {
+                          "property": "line-height",
+                          "rawValue": "31.989999771118164",
+                          "reason": "out-of-tolerance",
+                          "closestMatch": {
+                            "token": "lineHeight.lineHeight125",
+                            "delta": "±30.433999771118163px"
+                          }
+                        }
+                      ]
+                    },
+                    "children": [],
+                    "layout": {
+                      "width": 185,
+                      "height": 32,
+                      "layoutSizingHorizontal": "HUG",
+                      "layoutSizingVertical": "HUG",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "strokeWeight": 1,
+                      "strokeAlign": "OUTSIDE"
+                    },
+                    "textStyle": {
+                      "characters": "How was this built?",
+                      "fontSize": 23,
+                      "fontFamily": "Rajdhani",
+                      "fontStyle": "Bold",
+                      "fontWeight": 700,
+                      "lineHeight": 31.989999771118164,
+                      "textAlignHorizontal": "LEFT",
+                      "textAlignVertical": "TOP"
+                    }
+                  }
+                ],
+                "layout": {
+                  "layoutMode": "HORIZONTAL",
+                  "padding": {
+                    "top": 8,
+                    "right": 24,
+                    "bottom": 8,
+                    "left": 24
+                  },
+                  "itemSpacing": 4,
+                  "counterAxisSpacing": 0,
+                  "cornerRadius": 0,
+                  "width": 667,
+                  "height": 48,
+                  "layoutSizingHorizontal": "FILL",
+                  "layoutSizingVertical": "HUG",
+                  "primaryAxisAlignItems": "MIN",
+                  "counterAxisAlignItems": "CENTER",
+                  "layoutAlign": "STRETCH",
+                  "layoutGrow": 0,
+                  "strokeWeight": 1,
+                  "strokeAlign": "INSIDE"
+                }
+              },
+              {
+                "id": "3440:90328",
+                "name": "Subnav Button",
+                "type": "FRAME",
+                "depth": 3,
+                "ancestorChain": [
+                  "FRAME",
+                  "FRAME",
+                  "FRAME"
+                ],
+                "tokenClassifications": {
+                  "semanticIdentified": [
+                    {
+                      "property": "padding-top",
+                      "semanticToken": "semanticSpace.inset.100",
+                      "primitiveToken": "space.space100",
+                      "rawValue": "{space.space100}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "padding-right",
+                      "semanticToken": "semanticSpace.inset.300",
+                      "primitiveToken": "space.space300",
+                      "rawValue": "{space.space300}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "padding-bottom",
+                      "semanticToken": "semanticSpace.inset.100",
+                      "primitiveToken": "space.space100",
+                      "rawValue": "{space.space100}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "padding-left",
+                      "semanticToken": "semanticSpace.inset.300",
+                      "primitiveToken": "space.space300",
+                      "rawValue": "{space.space300}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "item-spacing",
+                      "semanticToken": "semanticSpace.grouped.tight",
+                      "primitiveToken": "space.space050",
+                      "rawValue": "{space.space050}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    }
+                  ],
+                  "primitiveIdentified": [],
+                  "unidentified": [
+                    {
+                      "property": "border-width",
+                      "rawValue": "1",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticBorderWidth.default"
+                    }
+                  ]
+                },
+                "children": [
+                  {
+                    "id": "3440:90329",
+                    "name": "//",
+                    "type": "TEXT",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [],
+                      "primitiveIdentified": [
+                        {
+                          "property": "fill",
+                          "primitiveToken": "color.black300",
+                          "rawValue": "rgba(10, 10, 15, 1)",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "unidentified": [
+                        {
+                          "property": "border-width",
+                          "rawValue": "1",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticBorderWidth.default"
+                        },
+                        {
+                          "property": "font-size",
+                          "rawValue": "23",
+                          "reason": "value-match",
+                          "suggestedToken": "icon.icon.size200"
+                        },
+                        {
+                          "property": "font-weight",
+                          "rawValue": "700",
+                          "reason": "value-match",
+                          "suggestedToken": "fontWeight.fontWeight700"
+                        },
+                        {
+                          "property": "line-height",
+                          "rawValue": "31.989999771118164",
+                          "reason": "out-of-tolerance",
+                          "closestMatch": {
+                            "token": "lineHeight.lineHeight125",
+                            "delta": "±30.433999771118163px"
+                          }
+                        }
+                      ]
+                    },
+                    "children": [],
+                    "layout": {
+                      "width": 20,
+                      "height": 32,
+                      "layoutSizingHorizontal": "FIXED",
+                      "layoutSizingVertical": "HUG",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "strokeWeight": 1,
+                      "strokeAlign": "OUTSIDE"
+                    },
+                    "textStyle": {
+                      "characters": "//",
+                      "fontSize": 23,
+                      "fontFamily": "Rajdhani",
+                      "fontStyle": "Bold",
+                      "fontWeight": 700,
+                      "lineHeight": 31.989999771118164,
+                      "textAlignHorizontal": "CENTER",
+                      "textAlignVertical": "TOP"
+                    }
+                  },
+                  {
+                    "id": "3440:90330",
+                    "name": "Who built this system?",
+                    "type": "TEXT",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [],
+                      "primitiveIdentified": [
+                        {
+                          "property": "fill",
+                          "primitiveToken": "color.black300",
+                          "rawValue": "rgba(10, 10, 15, 1)",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        },
+                        {
+                          "property": "font-size",
+                          "primitiveToken": "fontSize.fontSize200",
+                          "rawValue": "23px",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        },
+                        {
+                          "property": "font-weight",
+                          "primitiveToken": "fontWeight.fontWeight700",
+                          "rawValue": "700",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "unidentified": [
+                        {
+                          "property": "border-width",
+                          "rawValue": "1",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticBorderWidth.default"
+                        },
+                        {
+                          "property": "line-height",
+                          "rawValue": "31.989999771118164",
+                          "reason": "out-of-tolerance",
+                          "closestMatch": {
+                            "token": "lineHeight.lineHeight125",
+                            "delta": "±30.433999771118163px"
+                          }
+                        }
+                      ]
+                    },
+                    "children": [],
+                    "layout": {
+                      "width": 217,
+                      "height": 32,
+                      "layoutSizingHorizontal": "HUG",
+                      "layoutSizingVertical": "HUG",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "strokeWeight": 1,
+                      "strokeAlign": "OUTSIDE"
+                    },
+                    "textStyle": {
+                      "characters": "Who built this system?",
+                      "fontSize": 23,
+                      "fontFamily": "Rajdhani",
+                      "fontStyle": "Bold",
+                      "fontWeight": 700,
+                      "lineHeight": 31.989999771118164,
+                      "textAlignHorizontal": "LEFT",
+                      "textAlignVertical": "TOP"
+                    }
+                  }
+                ],
+                "layout": {
+                  "layoutMode": "HORIZONTAL",
+                  "padding": {
+                    "top": 8,
+                    "right": 24,
+                    "bottom": 8,
+                    "left": 24
+                  },
+                  "itemSpacing": 4,
+                  "counterAxisSpacing": 0,
+                  "cornerRadius": 0,
+                  "width": 667,
+                  "height": 48,
+                  "layoutSizingHorizontal": "FILL",
+                  "layoutSizingVertical": "HUG",
+                  "primaryAxisAlignItems": "MIN",
+                  "counterAxisAlignItems": "CENTER",
+                  "layoutAlign": "STRETCH",
+                  "layoutGrow": 0,
+                  "strokeWeight": 1,
+                  "strokeAlign": "INSIDE"
+                }
+              },
+              {
+                "id": "3440:90325",
+                "name": "Subnav Button",
+                "type": "FRAME",
+                "depth": 3,
+                "ancestorChain": [
+                  "FRAME",
+                  "FRAME",
+                  "FRAME"
+                ],
+                "tokenClassifications": {
+                  "semanticIdentified": [
+                    {
+                      "property": "padding-top",
+                      "semanticToken": "semanticSpace.inset.100",
+                      "primitiveToken": "space.space100",
+                      "rawValue": "{space.space100}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "padding-right",
+                      "semanticToken": "semanticSpace.inset.300",
+                      "primitiveToken": "space.space300",
+                      "rawValue": "{space.space300}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "padding-bottom",
+                      "semanticToken": "semanticSpace.inset.100",
+                      "primitiveToken": "space.space100",
+                      "rawValue": "{space.space100}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "padding-left",
+                      "semanticToken": "semanticSpace.inset.300",
+                      "primitiveToken": "space.space300",
+                      "rawValue": "{space.space300}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "item-spacing",
+                      "semanticToken": "semanticSpace.grouped.tight",
+                      "primitiveToken": "space.space050",
+                      "rawValue": "{space.space050}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    }
+                  ],
+                  "primitiveIdentified": [],
+                  "unidentified": [
+                    {
+                      "property": "border-width",
+                      "rawValue": "1",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticBorderWidth.default"
+                    }
+                  ]
+                },
+                "children": [
+                  {
+                    "id": "3440:90326",
+                    "name": "//",
+                    "type": "TEXT",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [],
+                      "primitiveIdentified": [
+                        {
+                          "property": "fill",
+                          "primitiveToken": "color.black300",
+                          "rawValue": "rgba(10, 10, 15, 1)",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "unidentified": [
+                        {
+                          "property": "border-width",
+                          "rawValue": "1",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticBorderWidth.default"
+                        },
+                        {
+                          "property": "font-size",
+                          "rawValue": "23",
+                          "reason": "value-match",
+                          "suggestedToken": "icon.icon.size200"
+                        },
+                        {
+                          "property": "font-weight",
+                          "rawValue": "700",
+                          "reason": "value-match",
+                          "suggestedToken": "fontWeight.fontWeight700"
+                        },
+                        {
+                          "property": "line-height",
+                          "rawValue": "31.989999771118164",
+                          "reason": "out-of-tolerance",
+                          "closestMatch": {
+                            "token": "lineHeight.lineHeight125",
+                            "delta": "±30.433999771118163px"
+                          }
+                        }
+                      ]
+                    },
+                    "children": [],
+                    "layout": {
+                      "width": 20,
+                      "height": 32,
+                      "layoutSizingHorizontal": "FIXED",
+                      "layoutSizingVertical": "HUG",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "strokeWeight": 1,
+                      "strokeAlign": "OUTSIDE"
+                    },
+                    "textStyle": {
+                      "characters": "//",
+                      "fontSize": 23,
+                      "fontFamily": "Rajdhani",
+                      "fontStyle": "Bold",
+                      "fontWeight": 700,
+                      "lineHeight": 31.989999771118164,
+                      "textAlignHorizontal": "CENTER",
+                      "textAlignVertical": "TOP"
+                    }
+                  },
+                  {
+                    "id": "3440:90327",
+                    "name": "What can I accomplish with your team?",
+                    "type": "TEXT",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [],
+                      "primitiveIdentified": [
+                        {
+                          "property": "fill",
+                          "primitiveToken": "color.black300",
+                          "rawValue": "rgba(10, 10, 15, 1)",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        },
+                        {
+                          "property": "font-size",
+                          "primitiveToken": "fontSize.fontSize200",
+                          "rawValue": "23px",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        },
+                        {
+                          "property": "font-weight",
+                          "primitiveToken": "fontWeight.fontWeight700",
+                          "rawValue": "700",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "unidentified": [
+                        {
+                          "property": "border-width",
+                          "rawValue": "1",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticBorderWidth.default"
+                        },
+                        {
+                          "property": "line-height",
+                          "rawValue": "31.989999771118164",
+                          "reason": "out-of-tolerance",
+                          "closestMatch": {
+                            "token": "lineHeight.lineHeight125",
+                            "delta": "±30.433999771118163px"
+                          }
+                        }
+                      ]
+                    },
+                    "children": [],
+                    "layout": {
+                      "width": 372,
+                      "height": 32,
+                      "layoutSizingHorizontal": "HUG",
+                      "layoutSizingVertical": "HUG",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "strokeWeight": 1,
+                      "strokeAlign": "OUTSIDE"
+                    },
+                    "textStyle": {
+                      "characters": "What can I accomplish with your team?",
+                      "fontSize": 23,
+                      "fontFamily": "Rajdhani",
+                      "fontStyle": "Bold",
+                      "fontWeight": 700,
+                      "lineHeight": 31.989999771118164,
+                      "textAlignHorizontal": "LEFT",
+                      "textAlignVertical": "TOP"
+                    }
+                  }
+                ],
+                "layout": {
+                  "layoutMode": "HORIZONTAL",
+                  "padding": {
+                    "top": 8,
+                    "right": 24,
+                    "bottom": 8,
+                    "left": 24
+                  },
+                  "itemSpacing": 4,
+                  "counterAxisSpacing": 0,
+                  "cornerRadius": 0,
+                  "width": 667,
+                  "height": 48,
+                  "layoutSizingHorizontal": "FILL",
+                  "layoutSizingVertical": "HUG",
+                  "primaryAxisAlignItems": "MIN",
+                  "counterAxisAlignItems": "CENTER",
+                  "layoutAlign": "STRETCH",
+                  "layoutGrow": 0,
+                  "strokeWeight": 1,
+                  "strokeAlign": "INSIDE"
+                }
+              }
+            ],
+            "layout": {
+              "layoutMode": "VERTICAL",
+              "padding": {
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "itemSpacing": 8,
+              "counterAxisSpacing": 0,
+              "cornerRadius": 0,
+              "width": 667,
+              "height": 328,
+              "layoutSizingHorizontal": "FILL",
+              "layoutSizingVertical": "HUG",
+              "primaryAxisAlignItems": "MIN",
+              "counterAxisAlignItems": "MIN",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 1,
+              "strokeWeight": 1,
+              "strokeAlign": "INSIDE"
+            }
+          }
+        ],
+        "layout": {
+          "layoutMode": "HORIZONTAL",
+          "padding": {
+            "top": 16,
+            "right": 0,
+            "bottom": 16,
+            "left": 0
+          },
+          "itemSpacing": 8,
+          "counterAxisSpacing": 0,
+          "width": 667,
+          "height": 360,
+          "layoutSizingHorizontal": "FIXED",
+          "layoutSizingVertical": "HUG",
+          "primaryAxisAlignItems": "MIN",
+          "counterAxisAlignItems": "MIN",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "strokeWeight": 1,
+          "strokeAlign": "INSIDE"
+        }
+      }
+    ],
+    "layout": {
+      "layoutMode": "NONE",
+      "padding": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "itemSpacing": 0,
+      "counterAxisSpacing": 0,
+      "cornerRadius": 0,
+      "width": 1440,
+      "height": 466,
+      "layoutSizingHorizontal": "FIXED",
+      "layoutSizingVertical": "FIXED",
+      "primaryAxisAlignItems": "MIN",
+      "counterAxisAlignItems": "MIN",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "strokeWeight": 1,
+      "strokeAlign": "INSIDE"
+    }
+  },
+  "classificationSummary": {
+    "semanticIdentified": 45,
+    "primitiveIdentified": 53,
+    "unidentified": 168
+  },
+  "compositionPatterns": [],
+  "unresolvedBindings": [],
+  "recommendations": {
+    "variantMapping": {
+      "componentName": "Nav",
+      "behavioralClassification": "styling",
+      "recommendations": [
+        {
+          "option": "A",
+          "description": "Single component with a variant prop",
+          "rationale": "Variants differ only in visual styling, making a single component with a variant prop the simplest API surface.",
+          "recommended": true,
+          "alignsWith": [
+            "Behavioral analysis: variants are styling-only"
+          ],
+          "tradeoffs": [
+            "Simpler consumer API — one import, one tag.",
+            "Internal complexity grows if behavioral differences emerge later.",
+            "Harder to tree-shake unused variants."
+          ]
+        },
+        {
+          "option": "B",
+          "description": "Primitive + semantic component structure (Stemma pattern)",
+          "rationale": "A split structure future-proofs the component for behavioral divergence, though current variants are styling-only.",
+          "recommended": false,
+          "alignsWith": [],
+          "tradeoffs": [
+            "Clean separation of behavioral contracts per component.",
+            "Aligns with Stemma inheritance pattern used across DesignerPunk.",
+            "More components to maintain and document."
+          ]
+        }
+      ],
+      "conflicts": [],
+      "familyPattern": null,
+      "existingComponents": []
+    },
+    "componentTokens": [
+      {
+        "primitiveToken": "space.space000",
+        "usageCount": 3,
+        "locations": [
+          "padding-top",
+          "padding-right",
+          "padding-bottom"
+        ],
+        "illustrativeSuggestion": "nav.padding = space.space000",
+        "rationale": "space.space000 is used across 3 properties (padding-top, padding-right, padding-bottom). Consistent usage suggests semantic intent that could be encoded as a component token."
+      }
+    ]
+  },
+  "screenshots": [
+    {
+      "filePath": "./images/nav.png",
+      "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/dbedae43-8ad1-4606-9e2a-993a299967e7",
+      "format": "png",
+      "scale": 2,
+      "capturedAt": "2026-05-08T21:38:12.741Z"
+    }
+  ],
+  "extractedAt": "2026-05-08T21:38:12.747Z",
+  "extractorVersion": "6.3.0"
+}

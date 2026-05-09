@@ -1,0 +1,27 @@
+purpose: "Collect an email address with built-in format validation, email keyboard type, and autocomplete support."
+
+usage:
+  when_to_use:
+    - "Email address fields in registration, login, or contact forms"
+    - "Any input that needs email format validation"
+  when_not_to_use:
+    - "General text that happens to contain an email — use Input-Text-Base"
+    - "Username fields that may or may not be email — use Input-Text-Base"
+
+contexts:
+  - "forms"
+  - "onboarding-flows"
+
+alternatives:
+  - component: Input-Text-Password
+    reason: "When password entry"
+  - component: Input-Text-PhoneNumber
+    reason: "When phone number collection"
+  - component: Input-Text-Base
+    reason: "When generic text input"
+  - component: Input-Checkbox-Legal
+    reason: "When terms of service acceptance"
+  - component: Input-Checkbox-Base
+    reason: "When generic binary selection"
+  - component: Input-Radio-Base
+    reason: "When standalone radio (rare)"

@@ -1,0 +1,70 @@
+version: "1.0.0"
+component: Progress-Indicator-Connector-Base
+family: Progress-Indicator
+
+contracts:
+  visual_state_colors:
+    category: visual
+    description: Applies correct color tokens based on connector state
+    behavior: |
+      Each state maps to semantic color.progress.*.connector tokens:
+      - active: color.progress.completed.connector (green100)
+      - inactive: color.progress.pending.connector (white200)
+    wcag: "1.4.11 Non-text Contrast"
+    platforms: [web, ios, android]
+    validation:
+      - Active connector uses completed.connector token (green100)
+      - Inactive connector uses pending.connector token (white200)
+      - Colors use design tokens, not hardcoded values
+    test_approach: |
+      Render active connector — verify green100. Render inactive — verify white200.
+    required: true
+
+  visual_thickness:
+    category: visual
+    description: Uses 1px thickness from borderDefault token
+    behavior: |
+      Connector renders at 1px height using the progress.connector.thickness
+      token which references borderDefault (borderWidth100).
+    wcag: null
+    platforms: [web, ios, android]
+    validation:
+      - Thickness is 1px/1pt/1dp across platforms
+      - Value references borderDefault token
+    test_approach: |
+      Render connector. Verify height is 1px and references borderDefault token.
+    required: true
+
+  layout_flexible_length:
+    category: layout
+    description: Fills available space between nodes
+    behavior: |
+      Connector stretches to fill the horizontal space between adjacent
+      progress indicator nodes. Uses flex: 1 (web), maxWidth .infinity (iOS),
+      or fillMaxWidth (Android).
+    wcag: null
+    platforms: [web, ios, android]
+    validation:
+      - Connector fills available horizontal space
+      - No fixed width constraint
+    test_approach: |
+      Render connector between two nodes. Verify it fills available space
+      with no fixed width.
+    required: true
+
+  accessibility_decorative:
+    category: accessibility
+    description: Primitive is decorative; semantic variants handle a11y
+    behavior: |
+      Connector-Base is marked as decorative (aria-hidden on web,
+      accessibilityHidden on iOS, clearAndSetSemantics on Android).
+      Semantic variants provide ARIA roles and labels.
+    wcag: null
+    platforms: [web, ios, android]
+    validation:
+      - Connector has aria-hidden="true" (web)
+      - Connector is hidden from assistive technology
+    test_approach: |
+      Render connector. Verify aria-hidden="true" (web). Verify not in
+      accessibility tree.
+    required: true

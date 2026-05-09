@@ -1,0 +1,595 @@
+/**
+ * Avatar Component Styles for Web Platform
+ * 
+ * Token-based styling using CSS custom properties from the mathematical token system.
+ * All values reference semantic, primitive, or component tokens - zero hard-coded values.
+ * 
+ * Stemma System Naming: [Family]-[Type] = Avatar
+ * Component Type: Primitive (Base)
+ * 
+ * @module Avatar/platforms/web/styles
+ * @see .kiro/specs/042-avatar-component/design.md for styling details
+ * @see .kiro/specs/042-avatar-component/requirements.md for requirements
+ */
+
+/* ==========================================================================
+   Base Avatar Styles
+   ========================================================================== */
+
+/**
+ * Base avatar element styling.
+ * 
+ * - Flexbox layout for centering icon/image content
+ * - Token-based sizing, colors, and borders
+ * - Box-sizing for predictable dimensions
+ * - Overflow hidden for image clipping
+ */
+.avatar {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Box model */
+  box-sizing: border-box;
+  overflow: hidden;
+  
+  /* Ensure avatar doesn't shrink in flex containers */
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Shape Variants
+   ========================================================================== */
+
+/**
+ * Human avatar shape (circle).
+ * 
+ * - Perfect circle via radiusHalf token (50%)
+ * - Represents organic, natural human users
+ * - Clips images to circular shape
+ * 
+ * @see Requirements: 1.1 - Human type renders as perfect circle
+ */
+.avatar--human {
+  /* Use radiusHalf token for perfect circle - explicitly designed for avatars */
+  border-radius: var(--radius-half);
+}
+
+/**
+ * Agent avatar shape (hexagon).
+ * 
+ * Uses inline SVG with Bézier curves for true rounded corners.
+ * The SVG approach replaces CSS clip-path to avoid border clipping issues.
+ * 
+ * - Represents synthetic, constructed AI agents
+ * - Pointy-top orientation for dynamic, crystalline feel
+ * - True rounded corners via quadratic Bézier curves
+ * - 1:1 aspect ratio (square bounding box, hexagon fits inside)
+ * 
+ * @see Requirements: 1.2, 1.3, 1.4 - Hexagon shape with correct aspect ratio
+ * @see Requirements: 11.1, 11.2, 11.3, 11.4 - SVG implementation
+ */
+.avatar--agent {
+  /* Square bounding box - hexagon fits inside with proper proportions */
+  aspect-ratio: 1;
+  
+  /* Position relative for absolute positioning of content overlay */
+  position: relative;
+  
+  /* Remove default border - handled by SVG stroke */
+  /* Using !important to override base .avatar border rules */
+  border: none !important;
+  
+  /* Transparent background - SVG provides the fill */
+  background-color: transparent;
+}
+
+/* ==========================================================================
+   Size Variants
+   ========================================================================== */
+
+/**
+ * Size variants derived from icon tokens using calc() multipliers.
+ * 
+ * Avatar size = icon size × multiplier. This approach:
+ * - Maintains the mathematical relationship (avatar = 2× icon size)
+ * - Gets proper px units from icon tokens (not rem from spacing tokens)
+ * - Keeps token chain explicit and traceable
+ * 
+ * For agent type (hexagon), height is set and width is derived from aspect-ratio.
+ * For human type (circle), both width and height must be set explicitly.
+ * 
+ * Icon-to-Avatar Size Mapping:
+ * - xs: icon.size050 (16px) × 1.5 = 24px
+ * - sm: icon.size050 (16px) × 2 = 32px
+ * - md: icon.size075 (20px) × 2 = 40px
+ * - lg: icon.size100 (24px) × 2 = 48px
+ * - xl: icon.size500 (40px) × 2 = 80px
+ * - xxl: icon.size050 (16px) × 8 = 128px
+ * 
+ * @see Requirements: 2.1-2.6 - Size variants
+ */
+
+/**
+ * Extra small avatar (24px).
+ * 
+ * Derived from icon.size050 (16px) × 1.5 = 24px
+ * For inline mentions and compact UI contexts where minimal visual footprint is needed.
+ * 
+ * @see Requirements: 2.1 - xs size (24px)
+ */
+.avatar--size-xs {
+  height: calc(var(--icon-size-050) * 1.5);
+}
+
+/* Human type needs explicit width since it doesn't use aspect-ratio */
+.avatar--human.avatar--size-xs {
+  width: calc(var(--icon-size-050) * 1.5);
+}
+
+/**
+ * Small avatar (32px).
+ * 
+ * Derived from icon.size050 (16px) × 2 = 32px
+ * For list items and secondary UI contexts with moderate visual presence.
+ * 
+ * @see Requirements: 2.2 - sm size (32px)
+ */
+.avatar--size-sm {
+  height: calc(var(--icon-size-050) * 2);
+}
+
+.avatar--human.avatar--size-sm {
+  width: calc(var(--icon-size-050) * 2);
+}
+
+/**
+ * Medium avatar (40px) - Default size.
+ * 
+ * Derived from icon.size075 (20px) × 2 = 40px
+ * Provides balanced visual weight for most UI contexts.
+ * 
+ * @see Requirements: 2.3 - md size (40px)
+ * @see Requirements: 2.7 - Default to "md" size when prop omitted
+ */
+.avatar--size-md {
+  height: calc(var(--icon-size-075) * 2);
+}
+
+.avatar--human.avatar--size-md {
+  width: calc(var(--icon-size-075) * 2);
+}
+
+/**
+ * Large avatar (48px).
+ * 
+ * Derived from icon.size100 (24px) × 2 = 48px
+ * For profile headers and primary UI contexts requiring prominent visual presence.
+ * 
+ * @see Requirements: 2.4 - lg size (48px)
+ */
+.avatar--size-lg {
+  height: calc(var(--icon-size-100) * 2);
+}
+
+.avatar--human.avatar--size-lg {
+  width: calc(var(--icon-size-100) * 2);
+}
+
+/**
+ * Extra large avatar (80px).
+ * 
+ * Derived from icon.size500 (40px) × 2 = 80px
+ * For profile pages and hero sections where avatar is a focal point.
+ * 
+ * @see Requirements: 2.5 - xl size (80px)
+ */
+.avatar--size-xl {
+  height: calc(var(--icon-size-500) * 2);
+}
+
+.avatar--human.avatar--size-xl {
+  width: calc(var(--icon-size-500) * 2);
+}
+
+/**
+ * Extra extra large avatar (128px).
+ * 
+ * Derived from icon.size050 (16px) × 8 = 128px
+ * For hero profiles and full-page profile views requiring maximum visual impact.
+ * 
+ * @see Requirements: 2.6 - xxl size (128px)
+ */
+.avatar--size-xxl {
+  height: calc(var(--icon-size-050) * 8);
+}
+
+.avatar--human.avatar--size-xxl {
+  width: calc(var(--icon-size-050) * 8);
+}
+
+/* ==========================================================================
+   Background Colors
+   ========================================================================== */
+
+/**
+ * Background colors for avatar types.
+ * 
+ * Uses semantic color tokens for avatar backgrounds.
+ * Background is hidden when an image is displayed.
+ * 
+ * @see Requirements: 4.1, 4.2 - Background colors per type
+ */
+
+/**
+ * Human avatar background (orange).
+ * 
+ * Spec 058 Migration: Now references semantic token directly.
+ * Component token mapping: human.background → color.identity.human
+ * 
+ * @see Requirements: 4.1 - Human type uses color.identity.human token
+ * @see src/components/core/Avatar-Base/avatar.tokens.ts for component token mapping
+ */
+.avatar--human {
+  background-color: var(--color-identity-human);
+}
+
+/**
+ * Agent avatar background (teal).
+ * 
+ * Note: Agent avatars use SVG fill (avatar__hexagon-bg) instead of CSS background-color.
+ * The background-color is set to transparent in the shape variant section to prevent
+ * a square background from showing behind the hexagon shape.
+ * 
+ * @see Requirements: 4.2 - Agent type uses color.avatar.agent token (applied via SVG fill)
+ */
+/* .avatar--agent background handled by SVG fill - see .avatar__hexagon-bg */
+
+/* ==========================================================================
+   Border Styles
+   ========================================================================== */
+
+/**
+ * Border styles for avatars.
+ * 
+ * Borders provide visual definition and scale appropriately for hero sizes.
+ * 
+ * Size Range xs-xl:
+ * - Border width: borderDefault (1px)
+ * - Border color: color.avatar.border with opacity.heavy (48%)
+ * 
+ * Size xxl:
+ * - Border width: borderEmphasis (2px)
+ * - Border color: color.contrast.onSurface with full opacity
+ * 
+ * Note: Border opacity is applied using color-mix() to blend the border color
+ * with transparent, achieving the opacity effect without affecting the entire element.
+ * 
+ * @see Requirements: 7.1, 7.2, 7.3, 7.4 - Border styles per size
+ */
+
+/**
+ * Default border for xs through xl sizes.
+ * 
+ * Uses borderDefault width with color.structure.border at opacity.heavy (48%).
+ * Since opacity tokens are decimal values (0.48), we use a fallback approach
+ * with a hardcoded percentage that matches the opacity.heavy token value.
+ * 
+ * Spec 058 Migration: Now references semantic token directly.
+ * Component token mapping: default.border → color.structure.border
+ * 
+ * @see Requirements: 7.1, 7.2 - xs-xl border styles
+ * @see src/components/core/Avatar-Base/avatar.tokens.ts for component token mapping
+ */
+.avatar {
+  border-width: var(--border-default);
+  border-style: solid;
+  /* Apply opacity.heavy (48%) to border color using color-mix
+   * Note: opacity.heavy = 0.48, so we use 48% directly since color-mix
+   * doesn't support calc() with decimal-to-percentage conversion */
+  border-color: color-mix(in srgb, var(--color-structure-border) 48%, transparent);
+}
+
+/**
+ * Enhanced border for xxl size.
+ * 
+ * Uses borderEmphasis width with color.contrast.onDark at full opacity.
+ * 
+ * @see Requirements: 7.3, 7.4 - xxl border styles
+ * @see design-outline.md - Border Styles section specifies white100 for xxl
+ */
+.avatar--size-xxl {
+  border-width: var(--border-emphasis);
+  border-color: var(--color-contrast-on-dark);
+}
+
+/* ==========================================================================
+   Interactive State
+   ========================================================================== */
+
+/**
+ * Interactive avatar hover state.
+ * 
+ * When interactive prop is true, avatar shows visual feedback on hover
+ * by increasing border width from borderDefault to borderEmphasis.
+ * 
+ * Uses motion.focusTransition semantic token (150ms, standard easing) for
+ * fast, responsive interactive state transitions.
+ * 
+ * @see Requirements: 8.1, 8.2, 8.3, 8.4 - Interactive hover state
+ */
+.avatar--interactive {
+  cursor: pointer;
+  transition: border-width var(--motion-focus-transition-duration) var(--motion-focus-transition-easing);
+}
+
+/**
+ * Hover state for interactive avatars.
+ * 
+ * Increases border width to borderEmphasis for visual feedback.
+ * 
+ * @see Requirements: 8.1 - Hover increases border width
+ */
+.avatar--interactive:hover {
+  border-width: var(--border-emphasis);
+}
+
+/* ==========================================================================
+   Reduced Motion Support
+   ========================================================================== */
+
+/**
+ * Respect user preference for reduced motion.
+ * 
+ * - Remove transitions and animations
+ * - Maintain functionality without motion
+ */
+@media (prefers-reduced-motion: reduce) {
+  .avatar--interactive {
+    transition: none;
+  }
+}
+
+/* ==========================================================================
+   High Contrast Mode Support
+   ========================================================================== */
+
+/**
+ * Ensure avatars remain visible in Windows High Contrast Mode.
+ * 
+ * - Force borders for all avatar types
+ * - Ensure focus indicators are visible when in interactive wrapper
+ */
+@media (prefers-contrast: high) {
+  .avatar {
+    border: var(--border-emphasis) solid currentColor;
+  }
+}
+
+/* ==========================================================================
+   Icon Content Styles
+   ========================================================================== */
+
+/**
+ * Icon container within avatar.
+ * 
+ * Centers the icon within the avatar and applies appropriate sizing.
+ * Icon color is set based on avatar type for proper contrast.
+ * 
+ * @see Requirements: 3.1-3.8 - Icon content and sizing
+ * @see Requirements: 6.1, 6.2 - Icon colors for contrast
+ */
+.avatar__icon {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Ensure icon doesn't overflow avatar bounds */
+  flex-shrink: 0;
+  
+  /* Line height reset for proper vertical centering */
+  line-height: 0;
+}
+
+/**
+ * Icon color for human avatar type.
+ * 
+ * Uses color.contrast.onDark semantic token for proper contrast
+ * against the orange background.
+ * 
+ * Spec 058 Migration: Now references semantic token directly.
+ * Component token mapping: human.icon → color.contrast.onDark
+ * 
+ * @see Requirements: 6.1 - Human type icon uses color.contrast.onDark
+ * @see src/components/core/Avatar-Base/avatar.tokens.ts for component token mapping
+ */
+.avatar__icon--human {
+  color: var(--color-contrast-on-dark);
+}
+
+/**
+ * Icon color for agent avatar type.
+ * 
+ * Uses color.contrast.onDark semantic token for proper contrast
+ * against the teal background.
+ * 
+ * Spec 058 Migration: Now references semantic token directly.
+ * Component token mapping: agent.icon → color.contrast.onDark
+ * 
+ * @see Requirements: 6.2 - Agent type icon uses color.contrast.onDark
+ * @see src/components/core/Avatar-Base/avatar.tokens.ts for component token mapping
+ */
+.avatar__icon--agent {
+  color: var(--color-contrast-on-dark);
+}
+
+/**
+ * SVG icon styling for custom-sized icons (xs and xxl).
+ * 
+ * Ensures SVG fills its container and inherits color from parent.
+ */
+.avatar__icon-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/**
+ * Icon-Base component styling within avatar.
+ * 
+ * Ensures the Icon-Base component inherits color from the avatar__icon container.
+ * The Icon-Base uses currentColor for stroke, so setting color on the container
+ * propagates to the icon.
+ */
+.avatar__icon .icon-base {
+  color: inherit;
+}
+
+/* ==========================================================================
+   Image Content Styles
+   ========================================================================== */
+
+/**
+ * Image content within avatar.
+ * 
+ * Displays profile images for human avatars. Images are:
+ * - Scaled to cover the entire avatar area (object-fit: cover)
+ * - Clipped to circle shape via parent border-radius
+ * - Full width/height to fill avatar container
+ * 
+ * @see Requirements: 5.1, 5.2, 5.3 - Image display and scaling
+ */
+.avatar__image {
+  /* Fill the entire avatar container */
+  width: 100%;
+  height: 100%;
+  
+  /* Scale image to cover container while maintaining aspect ratio */
+  /* @see Requirements: 5.2 - Use object-fit: cover for image scaling */
+  object-fit: cover;
+  
+  /* Ensure image doesn't overflow avatar bounds */
+  display: block;
+}
+
+/**
+ * Avatar with image - hide background color.
+ * 
+ * When an image is displayed, the background color should be hidden
+ * so the image is fully visible.
+ * 
+ * @see Requirements: 4.3 - Hide background when image is displayed
+ */
+.avatar--has-image {
+  background-color: transparent;
+}
+
+
+/* ==========================================================================
+   Agent Avatar SVG Styles
+   ========================================================================== */
+
+/**
+ * SVG container for agent hexagon.
+ * 
+ * Positioned absolutely to fill the avatar container.
+ * The SVG contains the hexagon path with fill and stroke.
+ */
+.avatar__hexagon-svg {
+  /* Position at top-left of container */
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  /* Ensure SVG doesn't capture pointer events meant for content */
+  pointer-events: none;
+}
+
+/**
+ * Hexagon background fill.
+ * 
+ * Uses the agent avatar color token for fill.
+ */
+.avatar__hexagon-bg {
+  /* Fill color set inline via style attribute */
+}
+
+/**
+ * Hexagon border stroke.
+ * 
+ * Border is applied via SVG stroke instead of CSS border to avoid
+ * clipping issues with clip-path.
+ * 
+ * @see Requirements: 7.1-7.4 - Border styles per size
+ */
+.avatar__hexagon-border {
+  /* Stroke properties set inline via style attributes */
+  /* Transition for interactive hover state */
+  transition: stroke-width var(--motion-focus-transition-duration) var(--motion-focus-transition-easing);
+}
+
+/**
+ * Interactive hover state for agent hexagon border.
+ * 
+ * Increases stroke width on hover for visual feedback.
+ * 
+ * @see Requirements: 8.1, 8.2 - Interactive hover state
+ */
+.avatar--agent.avatar--interactive:hover .avatar__hexagon-border {
+  stroke-width: var(--border-emphasis);
+}
+
+/**
+ * Content container for agent avatar.
+ * 
+ * Positioned over the SVG hexagon and clipped to the hexagon shape.
+ * Contains the icon content.
+ */
+.avatar__content {
+  /* Position absolutely over the SVG */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  /* Center content */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Ensure content is above SVG */
+  z-index: 1;
+}
+
+/**
+ * Agent avatar size overrides.
+ * 
+ * For agent type, we need explicit width since aspect-ratio is 1:1.
+ * Height is set by the base size classes, width matches height.
+ */
+.avatar--agent.avatar--size-xs {
+  width: calc(var(--icon-size-050) * 1.5);
+}
+
+.avatar--agent.avatar--size-sm {
+  width: calc(var(--icon-size-050) * 2);
+}
+
+.avatar--agent.avatar--size-md {
+  width: calc(var(--icon-size-075) * 2);
+}
+
+.avatar--agent.avatar--size-lg {
+  width: calc(var(--icon-size-100) * 2);
+}
+
+.avatar--agent.avatar--size-xl {
+  width: calc(var(--icon-size-500) * 2);
+}
+
+.avatar--agent.avatar--size-xxl {
+  width: calc(var(--icon-size-050) * 8);
+}

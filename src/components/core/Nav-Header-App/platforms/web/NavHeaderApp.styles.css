@@ -1,0 +1,47 @@
+/**
+ * Nav-Header-App Styles for Web Platform
+ *
+ * Adds App-level styling on top of Nav-Header-Base.
+ * Base remains a pure slot relay with no padding.
+ *
+ * @see contracts: visual_background_override, visual_glow
+ * @see tokens: navHeader.padding.inline → space500 (40px)
+ */
+
+/* ==========================================================================
+   Content region padding
+   ========================================================================== */
+
+nav-header {
+  padding-inline: var(--navheaderapp-nav-header-padding-inline, var(--space-500));
+}
+
+/* ==========================================================================
+   Background override (visual_background_override contract)
+   --nav-bg-override: product sets this via JS during scroll transitions.
+   Fallback resolves to inherited --color-structure-canvas from parent context.
+   ========================================================================== */
+
+:host {
+  --color-structure-canvas: var(--nav-bg-override, var(--color-structure-canvas));
+}
+
+/* ==========================================================================
+   Underglow (visual_glow contract)
+   Always present. --nav-glow-color expects rgba with opacity pre-baked.
+   Default: glow.neonGreen (green500) at glowOpacity300 (0.4).
+   ========================================================================== */
+
+nav-header {
+  box-shadow: 0 0 var(--blur-200, 32px) var(--nav-glow-color, rgba(0, 204, 110, 0.4));
+}
+
+/* ==========================================================================
+   Border color override (visual_separator contract, App-level default)
+   Overrides Base's color.structure.border.subtle with green400.
+   --nav-border-color: product sets this via JS during scroll transitions.
+   ========================================================================== */
+
+:host {
+  --color-structure-border-subtle: var(--nav-border-color, var(--green-400));
+}

@@ -1,0 +1,92 @@
+version: "1.0.0"
+component: Badge-Count-Notification
+family: Badge
+inherits: Badge-Count-Base
+
+contracts:
+  visual_notification_color:
+    category: visual
+    description: Conveys notification/alert meaning through color
+    behavior: |
+      Uses fixed notification colors conveying urgency:
+      - Background: color.badge.background.notification (pink400 #CC2257)
+      - Text: color.badge.text.notification (white100 #FFFFFF)
+      Colors are not configurable by consumers. Contrast ratio: 6.33:1
+      (exceeds WCAG AA 4.5:1 minimum).
+    wcag: "1.3.1 Info and Relationships"
+    platforms: [web, ios, android]
+    validation:
+      - Background color is pink400 (#CC2257)
+      - Text color is white100 (#FFFFFF)
+      - Colors are not configurable via props
+      - Contrast ratio meets WCAG AA (4.5:1)
+    test_approach: |
+      Render badge. Verify background is #CC2257, text is #FFFFFF.
+      Verify no props exist to change notification colors.
+    required: true
+
+  accessibility_announces_changes:
+    category: accessibility
+    description: Announces count changes to screen readers when enabled
+    behavior: |
+      When announceChanges is true (default), announces count changes via
+      platform-specific live region implementations:
+      - Web: aria-live="polite", aria-atomic="true"
+      - iOS: .accessibilityAddTraits(.updatesFrequently)
+      - Android: LiveRegionMode.Polite
+      Conditions: announceChanges=true, previous count exists, count changed.
+      When announceChanges=false, no live region attributes applied.
+    wcag: "4.1.3 Status Messages"
+    platforms: [web, ios, android]
+    validation:
+      - Live region attributes present when announceChanges=true
+      - aria-live="polite" on web when announceChanges=true
+      - aria-atomic="true" on web when announceChanges=true
+      - Announcements occur on count changes
+      - No announcements on initial render
+      - No announcements when announceChanges=false
+    test_approach: |
+      Render with announceChanges=true. Verify aria-live="polite" (web).
+      Change count — verify announcement. Render with announceChanges=false —
+      verify no aria-live attribute.
+    required: true
+
+  accessibility_pluralized_announcements:
+    category: accessibility
+    description: Uses correct pluralization in announcements
+    behavior: |
+      Uses grammatically correct pluralization in screen reader announcements:
+      - count=1: "1 notification" (singular)
+      - count>1: "[count] notifications" (plural)
+      - count>max: "[max] or more notifications"
+      - count=0 (showZero=true): "0 notifications"
+    wcag: "4.1.3 Status Messages"
+    platforms: [web, ios, android]
+    validation:
+      - count=1 announces "1 notification" (singular)
+      - count=5 announces "5 notifications" (plural)
+      - count=100 with max=99 announces "99 or more notifications"
+      - count=0 announces "0 notifications" (plural)
+    test_approach: |
+      Render with count=1 — verify "1 notification". Render with count=5 —
+      verify "5 notifications". Render with count=100/max=99 —
+      verify "99 or more notifications".
+    required: true
+
+excludes:
+  interaction_focusable:
+    reason: "Badges are visual indicators, not interactive elements."
+    category: interaction
+    reference: "062 audit intentional-exclusions.md"
+  interaction_pressable:
+    reason: "Badges are visual indicators, not interactive elements."
+    category: interaction
+    reference: "062 audit intentional-exclusions.md"
+  interaction_hover:
+    reason: "Badges are visual indicators — no hover feedback expected."
+    category: interaction
+    reference: "062 audit intentional-exclusions.md"
+  interaction_pressed:
+    reason: "Badges are visual indicators — no press feedback expected."
+    category: interaction
+    reference: "062 audit intentional-exclusions.md"

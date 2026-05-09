@@ -1,0 +1,214 @@
+# Chip-Base Component Schema
+#
+# Stemma System: Chip Family
+# Component Type: Primitive (Base)
+# Naming Convention: [Family]-[Type] = Chip-Base
+#
+# This schema defines the behavioral contracts and properties for the
+# Chip-Base component, which serves as the foundational primitive
+# for all chip components in the Chip family.
+#
+# Rationale: Chip-Base is a primitive component that provides compact,
+# interactive elements for filtering, selection, or input management.
+# It serves as the building block for semantic chip variants (Chip-Filter,
+# Chip-Input) by providing consistent sizing, styling, and interaction patterns.
+#
+# DesignerPunk Philosophy: NO DISABLED STATES
+# This component does not support disabled states. If an action is unavailable,
+# the component should not be rendered. This ensures users always see actionable
+# UI elements.
+
+name: Chip-Base
+type: primitive
+family: Chip
+version: "1.0.0"
+readiness:
+  web:
+    reviewed: true
+  ios:
+    reviewed: true
+  android:
+    reviewed: true
+
+composition:
+  internal:
+    - component: Icon-Base
+      role: Optional leading icon
+      required: false
+
+# Component description
+description: |
+  Foundational chip component providing compact, interactive elements for
+  filtering, selection, or input management. Serves as the primitive base
+  for all chip components in the Chip family.
+  
+  Key Characteristics:
+  - Compact: 32px visual height with 48px tap area for accessibility
+  - Interactive: Responds to press/click/tap events
+  - Pill-shaped: Uses radius.full for rounded appearance
+  - Token-first: All styling via design tokens, no hard-coded values
+  
+  Chip-Base supports optional leading icons via Icon-Base at icon.size075,
+  consistent state styling (default, hover, pressed), and full keyboard
+  accessibility.
+  
+  DesignerPunk Philosophy: NO DISABLED STATES
+  If an action is unavailable, the component should not be rendered.
+
+# Reusable behaviors this component implements
+behaviors:
+  - renderable
+  - pressable
+  - focusable
+  - accessible
+
+# Component properties (public API)
+properties:
+  label:
+    type: string
+    required: true
+    description: |
+      Chip text content (required). The label text to display inside the chip.
+      Text uses typography.buttonSm token for consistent styling.
+  
+  icon:
+    type: IconName
+    required: false
+    description: |
+      Optional leading icon. When provided, renders an icon before the label
+      text using Icon-Base at icon.size075 (20px). Icon and label are separated
+      by space.grouped.tight (4px) gap.
+  
+  onPress:
+    type: "() => void"
+    required: false
+    description: |
+      Called when chip is pressed. Invoked on:
+      - Mouse click (web)
+      - Touch tap (all platforms)
+      - Keyboard Enter or Space (web)
+      When not provided, chip is display-only but still focusable.
+  
+  testID:
+    type: string
+    required: false
+    description: |
+      Test identifier for automated testing. Platform-specific implementation:
+      - Web: data-testid attribute
+      - iOS: accessibilityIdentifier
+      - Android: testTag
+
+# Behavioral contracts moved to contracts.yaml
+# Design tokens this component requires
+tokens:
+  component:
+    - chip.paddingBlock
+  typography:
+    - typography.buttonSm
+  color:
+    - color.structure.surface
+    - color.structure.border
+    - color.text.default
+    - color.action.primary
+  spacing:
+    - space.inset.150
+    - space.grouped.tight
+  border:
+    - borderDefault
+    - radius.full
+  motion:
+    - motion.selectionTransition
+  blend:
+    - blend.hoverDarker
+    - blend.pressedDarker
+  accessibility:
+    - tapAreaRecommended
+    - accessibility.focus.width
+    - accessibility.focus.offset
+    - accessibility.focus.color
+  icon:
+    - icon.size075
+
+# Supported platforms
+platforms:
+  - web
+  - ios
+  - android
+
+# Platform-specific implementation notes
+platform_notes:
+  web:
+    element: "<chip-base>"
+    implementation: Web Component with Shadow DOM
+    file: platforms/web/ChipBase.web.ts
+    notes: |
+      - Uses Shadow DOM for style encapsulation
+      - CSS custom properties for token consumption
+      - role="button" and tabindex="0" for accessibility
+      - ::before pseudo-element for expanded tap area
+      - :focus-visible for keyboard-only focus indication
+      - Logical properties (padding-block, padding-inline) for RTL support
+  ios:
+    implementation: SwiftUI View
+    file: platforms/ios/ChipBase.ios.swift
+    notes: |
+      - Uses SwiftUI Button with custom styling
+      - Token consumption via DesignTokens constants
+      - Capsule shape for pill appearance
+      - frame(minHeight:) for 48px tap area
+      - accessibilityIdentifier for testID
+  android:
+    implementation: Jetpack Compose Composable
+    file: platforms/android/ChipBase.android.kt
+    notes: |
+      - Uses Compose Surface with onClick handler
+      - Token consumption via DesignTokens object
+      - RoundedCornerShape(50) for pill shape
+      - Modifier.sizeIn(minHeight = 48.dp) for tap area
+      - testTag for testID
+
+# Semantic components that inherit from this primitive
+semantic_variants:
+  - name: Chip-Filter
+    extends: Toggle chip with selected state for filtering content
+    status: implemented
+    inherits: Chip-Base
+    additional_props:
+      - selected (boolean)
+      - onSelectionChange (callback)
+    additional_behaviors:
+      - Toggle selected state on press
+      - Checkmark icon when selected (replaces leading icon)
+      - aria-pressed for accessibility
+  - name: Chip-Input
+    extends: Dismissible chip for user-entered values like tags
+    status: implemented
+    inherits: Chip-Base
+    additional_props:
+      - onDismiss (callback)
+    additional_behaviors:
+      - Always shows X icon as trailing element
+      - Tap anywhere dismisses (calls onDismiss)
+      - Accessible label "Remove [label]" on X icon
+
+# Accessibility compliance
+accessibility:
+  wcag_level: AA
+  compliance:
+    - "1.4.3 Contrast (Minimum) - Text meets 4.5:1 contrast ratio"
+    - "1.4.11 Non-text Contrast - Border and focus ring meet 3:1 contrast"
+    - "2.1.1 Keyboard - Fully keyboard accessible (Tab, Enter, Space)"
+    - "2.4.7 Focus Visible - Clear focus indicator with :focus-visible"
+    - "2.5.5 Target Size - 48px tap area exceeds 44px minimum"
+    - "4.1.2 Name, Role, Value - Proper role and accessible name"
+  aria_attributes:
+    - role: button
+    - tabindex: "0"
+  keyboard_navigation:
+    - Tab: Move focus to/from chip
+    - Enter: Activate chip (call onPress)
+    - Space: Activate chip (call onPress)
+  platform_accessibility:
+    web: "role='button', tabindex='0', :focus-visible for keyboard focus"
+    ios: "Button accessibility trait, accessibilityIdentifier for testing"
+    android: "Button semantics, testTag for testing"

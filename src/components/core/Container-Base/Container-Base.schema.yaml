@@ -1,0 +1,411 @@
+# Container-Base Component Schema
+#
+# Stemma System: Containers Family
+# Component Type: Primitive (Base)
+# Naming Convention: [Family]-[Type] = Container-Base
+#
+# This schema defines the behavioral contracts and properties for the
+# Container-Base component, which serves as the foundational primitive
+# for all container components in the Containers family.
+#
+# Rationale: Container-Base is a primitive component that provides structural
+# wrapping with individual styling capabilities. It serves as the building
+# block for semantic components (Card, Panel, Hero) by exposing granular
+# styling props that map to design system tokens.
+
+name: Container-Base
+type: primitive
+family: Container
+version: "1.0.0"
+readiness:
+  web:
+    reviewed: true
+  ios:
+    reviewed: true
+  android:
+    reviewed: true
+
+# Component description
+description: |
+  Foundational container component providing structural wrapping with individual
+  styling capabilities. Serves as the primitive base for all semantic container
+  components (Card, Panel, Hero, etc.) in the Containers family.
+  
+  Container-Base exposes granular styling props that map directly to design system
+  tokens, enabling flexible composition while maintaining design system consistency.
+  Supports semantic HTML elements (web), safe area handling (iOS), and native
+  elevation (Android).
+
+# Reusable behaviors this component implements
+behaviors:
+  - containable
+  - styleable
+  - accessible
+  - hoverable
+
+# Component properties (public API)
+properties:
+  padding:
+    type: "'none' | '050' | '100' | '150' | '200' | '300' | '400'"
+    required: false
+    default: undefined
+    description: |
+      Internal padding for the container. Maps to space.inset tokens.
+      Applied uniformly to all sides unless overridden by axis or edge props.
+      - none: No padding
+      - 050: 4px (space.inset.050)
+      - 100: 8px (space.inset.100)
+      - 150: 12px (space.inset.150)
+      - 200: 16px (space.inset.200)
+      - 300: 24px (space.inset.300)
+      - 400: 32px (space.inset.400)
+      
+      Override hierarchy (highest to lowest priority):
+      1. Individual edges (paddingBlockStart, paddingBlockEnd, paddingInlineStart, paddingInlineEnd)
+      2. Axis props (paddingVertical, paddingHorizontal)
+      3. Uniform padding (this prop)
+  
+  paddingVertical:
+    type: "'none' | '050' | '100' | '150' | '200' | '300' | '400'"
+    required: false
+    default: undefined
+    description: |
+      Vertical (block-axis) padding for the container. Maps to space.inset tokens.
+      Applies to block-start and block-end (top and bottom in LTR/RTL).
+      Overrides uniform padding for vertical axis; overridden by individual edge props.
+      - none: No padding
+      - 050: 4px (space.inset.050)
+      - 100: 8px (space.inset.100)
+      - 150: 12px (space.inset.150)
+      - 200: 16px (space.inset.200)
+      - 300: 24px (space.inset.300)
+      - 400: 32px (space.inset.400)
+      
+      Web implementation: Uses CSS logical property padding-block.
+  
+  paddingHorizontal:
+    type: "'none' | '050' | '100' | '150' | '200' | '300' | '400'"
+    required: false
+    default: undefined
+    description: |
+      Horizontal (inline-axis) padding for the container. Maps to space.inset tokens.
+      Applies to inline-start and inline-end (left and right in LTR; right and left in RTL).
+      Overrides uniform padding for horizontal axis; overridden by individual edge props.
+      - none: No padding
+      - 050: 4px (space.inset.050)
+      - 100: 8px (space.inset.100)
+      - 150: 12px (space.inset.150)
+      - 200: 16px (space.inset.200)
+      - 300: 24px (space.inset.300)
+      - 400: 32px (space.inset.400)
+      
+      Web implementation: Uses CSS logical property padding-inline.
+  
+  paddingBlockStart:
+    type: "'none' | '050' | '100' | '150' | '200' | '300' | '400'"
+    required: false
+    default: undefined
+    description: |
+      Block-start padding for the container. Maps to space.inset tokens.
+      Applies to block-start edge only (top in horizontal writing modes).
+      Highest priority - overrides both paddingVertical and uniform padding.
+      - none: No padding
+      - 050: 4px (space.inset.050)
+      - 100: 8px (space.inset.100)
+      - 150: 12px (space.inset.150)
+      - 200: 16px (space.inset.200)
+      - 300: 24px (space.inset.300)
+      - 400: 32px (space.inset.400)
+      
+      Web implementation: Uses CSS logical property padding-block-start.
+  
+  paddingBlockEnd:
+    type: "'none' | '050' | '100' | '150' | '200' | '300' | '400'"
+    required: false
+    default: undefined
+    description: |
+      Block-end padding for the container. Maps to space.inset tokens.
+      Applies to block-end edge only (bottom in horizontal writing modes).
+      Highest priority - overrides both paddingVertical and uniform padding.
+      - none: No padding
+      - 050: 4px (space.inset.050)
+      - 100: 8px (space.inset.100)
+      - 150: 12px (space.inset.150)
+      - 200: 16px (space.inset.200)
+      - 300: 24px (space.inset.300)
+      - 400: 32px (space.inset.400)
+      
+      Web implementation: Uses CSS logical property padding-block-end.
+  
+  paddingInlineStart:
+    type: "'none' | '050' | '100' | '150' | '200' | '300' | '400'"
+    required: false
+    default: undefined
+    description: |
+      Inline-start padding for the container. Maps to space.inset tokens.
+      Applies to inline-start edge only (left in LTR; right in RTL).
+      Highest priority - overrides both paddingHorizontal and uniform padding.
+      - none: No padding
+      - 050: 4px (space.inset.050)
+      - 100: 8px (space.inset.100)
+      - 150: 12px (space.inset.150)
+      - 200: 16px (space.inset.200)
+      - 300: 24px (space.inset.300)
+      - 400: 32px (space.inset.400)
+      
+      Web implementation: Uses CSS logical property padding-inline-start.
+  
+  paddingInlineEnd:
+    type: "'none' | '050' | '100' | '150' | '200' | '300' | '400'"
+    required: false
+    default: undefined
+    description: |
+      Inline-end padding for the container. Maps to space.inset tokens.
+      Applies to inline-end edge only (right in LTR; left in RTL).
+      Highest priority - overrides both paddingHorizontal and uniform padding.
+      - none: No padding
+      - 050: 4px (space.inset.050)
+      - 100: 8px (space.inset.100)
+      - 150: 12px (space.inset.150)
+      - 200: 16px (space.inset.200)
+      - 300: 24px (space.inset.300)
+      - 400: 32px (space.inset.400)
+      
+      Web implementation: Uses CSS logical property padding-inline-end.
+  
+  background:
+    type: ColorTokenName
+    required: false
+    default: undefined
+    description: |
+      Background color for the container. Accepts any semantic color token name.
+      Use generated ColorTokenName type for compile-time validation.
+  
+  shadow:
+    type: ShadowTokenName
+    required: false
+    default: undefined
+    description: |
+      Shadow for the container. Accepts any semantic shadow token name.
+      Note: On Android, if both shadow and layering props are provided,
+      layering takes precedence (elevation handles both stacking and shadow).
+  
+  border:
+    type: "'none' | 'default' | 'emphasis' | 'heavy'"
+    required: false
+    default: undefined
+    description: |
+      Border width for the container. Maps to border tokens.
+      - none: No border
+      - default: 1px (border.border.default)
+      - emphasis: 2px (border.border.emphasis)
+      - heavy: 4px (border.border.heavy)
+      Border color uses borderColor prop or defaults to color.border.default.
+  
+  borderColor:
+    type: ColorTokenName
+    required: false
+    default: undefined
+    description: |
+      Border color for the container. Accepts any semantic color token name.
+      Use generated ColorTokenName type for compile-time validation.
+      - When specified: Uses the provided color token for border color
+      - When undefined: Defaults to color.border.default
+      - When border is 'none': borderColor has no visible effect
+      
+      Common values:
+      - color.border.default: Standard border color
+      - color.structure.border.subtle: Subtle/muted border color
+      - color.border.emphasis: Emphasized border color
+  
+  borderRadius:
+    type: "'none' | 'tight' | 'normal' | 'loose'"
+    required: false
+    default: undefined
+    description: |
+      Border radius for the container. Maps to radius tokens.
+      - none: No border radius (0px)
+      - tight: 4px (radius-050)
+      - normal: 8px (radius-100)
+      - loose: 16px (radius-200)
+  
+  opacity:
+    type: OpacityTokenName
+    required: false
+    default: undefined
+    description: |
+      Opacity for the container. Accepts any semantic opacity token name.
+      Use generated OpacityTokenName type for compile-time validation.
+  
+  layering:
+    type: "'container' | 'navigation' | 'dropdown' | 'modal' | 'toast' | 'tooltip'"
+    required: false
+    default: undefined
+    description: |
+      Stacking order for the container. Maps to platform-specific tokens:
+      - Web/iOS: z-index tokens (zIndex.container through zIndex.tooltip)
+      - Android: elevation tokens (handles both stacking order and shadow)
+  
+  semantic:
+    type: "'div' | 'section' | 'article' | 'aside' | 'nav' | 'header' | 'footer' | 'main' | 'fieldset'"
+    required: false
+    default: "'div'"
+    description: |
+      Semantic HTML element to render (web only). Allows Container-Base to
+      render as semantic HTML elements for improved accessibility and SEO.
+      Ignored on iOS and Android platforms.
+    platform: web
+  
+  accessibilityLabel:
+    type: string
+    required: false
+    default: undefined
+    description: |
+      Accessibility label for the container. Platform-specific implementation:
+      - Web: aria-label attribute
+      - iOS: .accessibilityLabel() modifier
+      - Android: contentDescription in semantics
+  
+  ignoresSafeArea:
+    type: boolean
+    required: false
+    default: false
+    description: |
+      Whether to ignore safe area insets (iOS only). When true, Container-Base
+      extends into safe area regions (notch, home indicator).
+      Ignored on web and Android platforms.
+    platform: ios
+  
+  hoverable:
+    type: boolean
+    required: false
+    default: false
+    description: |
+      Whether hover state is enabled. When true, Container-Base shows a
+      darkened background on hover using darkerBlend(color.surface, blend.hoverDarker).
+      Platform-specific implementation:
+      - Web: CSS :hover pseudo-class with blend utility
+      - iOS: SwiftUI .onHover modifier (macOS/iPadOS with pointer)
+      - Android: Compose hoverable modifier (desktop/ChromeOS with pointer)
+  
+  children:
+    type: any
+    required: false
+    description: |
+      Child content to render inside the container. Platform-specific types:
+      - Web: HTMLElement children via slot
+      - iOS: SwiftUI View via @ViewBuilder
+      - Android: Composable content lambda
+
+
+# Behavioral contracts moved to contracts.yaml
+# Design tokens this component requires
+tokens:
+  spacing:
+    - space.inset.050
+    - space.inset.100
+    - space.inset.150
+    - space.inset.200
+    - space.inset.300
+    - space.inset.400
+  color:
+    - color.background
+    - color.surface
+    - color.border.default
+    - color.structure.border.subtle
+    - color.border.emphasis
+    - color.canvas
+  shadow:
+    - shadow.container
+    - shadow.navigation
+    - shadow.dropdown
+    - shadow.modal
+    - shadow.toast
+    - shadow.tooltip
+  border:
+    - border.border.default
+    - border.border.emphasis
+    - border.border.heavy
+  radius:
+    - radius-050
+    - radius-100
+    - radius-200
+  layering:
+    - zIndex.container
+    - zIndex.navigation
+    - zIndex.dropdown
+    - zIndex.modal
+    - zIndex.toast
+    - zIndex.tooltip
+  elevation:
+    - elevation.container
+    - elevation.navigation
+    - elevation.dropdown
+    - elevation.modal
+    - elevation.toast
+    - elevation.tooltip
+  motion:
+    - motion.focusTransition
+  blend:
+    - blend.hoverDarker
+
+# Supported platforms
+platforms:
+  - web
+  - ios
+  - android
+
+# Platform-specific implementation notes
+platform_notes:
+  web:
+    element: "<container-base>"
+    implementation: Web Component with Shadow DOM
+    file: platforms/web/ContainerBase.web.ts
+    notes: |
+      - Uses Shadow DOM for style encapsulation
+      - Supports semantic HTML elements via semantic prop
+      - Hover state uses CSS :hover with blend utilities
+  ios:
+    implementation: SwiftUI View
+    file: platforms/ios/ContainerBase.ios.swift
+    notes: |
+      - Uses SwiftUI modifier chains for styling
+      - Supports safe area control via ignoresSafeArea prop
+      - Hover state uses .onHover modifier (macOS/iPadOS with pointer)
+      - Uses @ViewBuilder for child content
+  android:
+    implementation: Jetpack Compose Composable
+    file: platforms/android/ContainerBase.android.kt
+    notes: |
+      - Uses Compose modifier chains for styling
+      - Elevation tokens handle both stacking order and shadow
+      - If both layering and shadow props provided, layering takes precedence
+      - Hover state uses hoverable modifier (desktop/ChromeOS with pointer)
+      - Development warning logged when both layering and shadow used
+
+# Semantic components that inherit from this primitive
+semantic_variants:
+  - name: Container-Card
+    extends: Card-specific styling and behaviors
+    status: planned
+  - name: Container-Panel
+    extends: Panel-specific styling and behaviors
+    status: planned
+  - name: Container-Hero
+    extends: Hero section styling and behaviors
+    status: planned
+
+# Accessibility compliance
+accessibility:
+  wcag_level: AA
+  compliance:
+    - "1.3.1 Info and Relationships - Semantic HTML elements supported (web)"
+    - "1.4.3 Contrast (Minimum) - Background colors use semantic tokens"
+    - "1.4.11 Non-text Contrast - Borders and shadows use semantic tokens"
+    - "1.4.12 Text Spacing - Padding uses semantic spacing tokens"
+    - "1.4.13 Content on Hover or Focus - Hover state provides visual feedback"
+  aria_attributes:
+    - aria-label: accessibilityLabel prop value (web)
+  platform_accessibility:
+    ios: ".accessibilityLabel() modifier for VoiceOver"
+    android: "contentDescription in semantics for TalkBack"

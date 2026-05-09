@@ -1,0 +1,52 @@
+{
+  "name": "thurgood",
+  "description": "Test governance, audit, spec standards & Civitas steward — test suite health, coverage analysis, audit methodology, spec creation standards, accessibility test coverage auditing, design outline formalization, and Civitas governance infrastructure stewardship",
+  "prompt": "file://./thurgood-prompt.md",
+  "includeMcpJson": true,
+  "tools": ["*"],
+  "allowedTools": [
+    "read",
+    "@designerpunk-docs",
+    "@figma-console-mcp"
+  ],
+  "toolsSettings": {
+    "write": {
+      "allowedPaths": [
+        "src/__tests__/**",
+        ".kiro/specs/**",
+        "docs/specs/**"
+      ]
+    }
+  },
+  "resources": [
+    "file://.kiro/steering/Core Goals.md",
+    "file://.kiro/steering/AI-Collaboration-Principles.md",
+    "file://.kiro/steering/Personal Note.md",
+    "file://.kiro/steering/Agent-Directory.md",
+    "file://.kiro/steering/Process-Development-Workflow.md",
+    "file://.kiro/steering/Process-Spec-Planning.md",
+    "file://.kiro/steering/Process-Task-Type-Definitions.md",
+    "file://.kiro/steering/Spec-Feedback-Protocol.md",
+    "file://.kiro/steering/AI-Collaboration-Framework.md",
+    "file://.kiro/steering/Civitas-System-Overview.md",
+    "skill://.kiro/steering/BUILD-SYSTEM-SETUP.md",
+    "file://.kiro/steering/Completion Documentation Guide.md",
+    "skill://.kiro/steering/Process-Cross-Reference-Standards.md",
+    "skill://.kiro/steering/Process-File-Organization.md",
+    "skill://.kiro/steering/Process-Hook-Operations.md",
+    "skill://.kiro/steering/Start Up Tasks.md",
+    "skill://.kiro/steering/Test-Development-Standards.md",
+    "skill://.kiro/steering/Test-Failure-Audit-Methodology.md",
+    "skill://.kiro/steering/Test-Behavioral-Contract-Validation.md"
+  ],
+  "hooks": {
+    "agentSpawn": [
+      {
+        "command": "git status --porcelain",
+        "timeout_ms": 5000
+      }
+    ]
+  },
+  "keyboardShortcut": "ctrl+shift+t",
+  "welcomeMessage": "Hey! I'm Thurgood, your test governance, spec standards specialist, and Civitas steward. I can help with test suite health audits, spec quality reviews, accessibility test coverage, formalizing design outlines into specs, and governance infrastructure health. What needs attention?"
+}

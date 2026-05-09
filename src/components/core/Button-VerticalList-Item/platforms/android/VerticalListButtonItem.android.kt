@@ -1,0 +1,594 @@
+/**
+ * Button-VerticalListItem Component for Android Platform
+ * 
+ * Stemma System: Buttons Family
+ * Component Type: Primitive (Base)
+ * Naming Convention: [Family]-[Type] = Button-VerticalListItem
+ * 
+ * A "dumb" presentational component that renders visual states based on props
+ * received from a parent container. Handles no selection logic internally —
+ * all state management is delegated to the parent pattern.
+ * 
+ * Supports three usage modes through its visualState prop:
+ * - Tap Mode: Simple action buttons (rest state only)
+ * - Select Mode: Single-selection radio-style behavior (rest, selected, notSelected)
+ * - Multi-Select Mode: Checkbox-style behavior (checked, unchecked)
+ * 
+ * Part of the DesignerPunk Button System infrastructure.
+ * 
+ * @module Button-VerticalListItem/platforms/android
+ * @see Requirements: 1.1-1.5, 2.1-2.5, 3.1-3.4, 4.1-4.7, 5.1-5.4, 6.1-6.3, 7.1-7.5
+ * @see Requirements: 10.6, 10.8, 11.5, 11.7, 12.1-12.3, 14.1-14.6
+ */
+
+package com.designerpunk.components.button
+
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.focusable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsFocusedAsState
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.ripple.rememberRipple
+import androidx.compose.material3.Text
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.*
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.designerpunk.tokens.DesignTokens
+import com.designerpunk.components.core.IconBase
+
+// MARK: - Design Token Provider
+
+// LocalDesignTokens and DesignTokensProvider removed (Spec 093).
+// All token access uses DesignTokens.* directly.
+
+// MARK: - VerticalListButtonItem Composable
+
+/**
+ * Button-VerticalListItem for Android platform.
+ * 
+ * Renders a vertical list button item with visual states controlled by props.
+ * Uses Jetpack Compose's native patterns for accessibility, RTL support, and animations.
+ * 
+ * Key Features:
+ * - Visual state rendering based on props (rest, selected, notSelected, checked, unchecked)
+ * - Error state overlay with mode-specific treatment
+ * - Padding compensation for height stability (48dp constant height)
+ * - Selection indicator (checkmark) with fade/instant transitions
+ * - TalkBack accessibility support
+ * - Automatic RTL layout adaptation
+ * - Smooth animations using motion.selectionTransition timing (250ms)
+ * - Material ripple effects
+ * - Event callbacks (onClick, onFocus, onBlur)
+ * 
+ * Usage:
+ * ```kotlin
+ * // Basic usage in Tap mode
+ * VerticalListButtonItem(
+ *     label = "Settings",
+ *     visualState = VisualState.REST,
+ *     onClick = { println("Tapped") }
+ * )
+ * 
+ * // Select mode with selection indicator
+ * VerticalListButtonItem(
+ *     label = "Option A",
+ *     description = "First option",
+ *     visualState = VisualState.SELECTED,
+ *     onClick = { println("Selected") }
+ * )
+ * 
+ * // Multi-Select mode with leading icon
+ * VerticalListButtonItem(
+ *     label = "Enable notifications",
+ *     leadingIcon = "bell",
+ *     visualState = VisualState.CHECKED,
+ *     onClick = { println("Toggled") }
+ * )
+ * 
+ * // With error state
+ * VerticalListButtonItem(
+ *     label = "Required selection",
+ *     visualState = VisualState.NOT_SELECTED,
+ *     error = true,
+ *     onClick = { println("Error state") }
+ * )
+ * ```
+ * 
+ * @param label Primary button text (required)
+ * @param visualState Current visual state controlled by parent
+ * @param modifier Modifier for the component
+ * @param description Secondary explanatory text (optional)
+ * @param leadingIcon Icon name for leading icon (optional)
+ * @param error Whether error styling should be applied
+ * @param checkmarkTransition How checkmark should animate when hiding
+ * @param transitionDelay Delay before transition starts (milliseconds)
+ * @param onClick Callback when button is clicked
+ * @param onFocus Callback when button receives focus
+ * @param onBlur Callback when button loses focus
+ * @param testTag Optional test tag for automated testing
+ * 
+ * Requirements:
+ * - 1.1-1.5: Visual state rendering (rest, selected, notSelected, checked, unchecked)
+ * - 2.1-2.5: Selection indicator display and styling
+ * - 3.1-3.4: Error state rendering with mode-specific treatment
+ * - 4.1-4.7: Content layout (label, description, icons, spacing)
+ * - 5.1-5.4: Sizing and touch targets (48dp minimum height)
+ * - 6.1-6.3: Height stability with padding compensation
+ * - 7.1-7.5: Animation and transitions
+ * - 10.6, 10.8: TalkBack accessibility
+ * - 11.5, 11.7: RTL support via Compose's automatic layout
+ * - 12.1-12.3: Event handling (onClick, onFocus, onBlur)
+ * - 14.1-14.6: Platform-specific rendering (Compose patterns, Material ripple)
+ */
+@Composable
+fun VerticalListButtonItem(
+    label: String,
+    visualState: VisualState,
+    modifier: Modifier = Modifier,
+    description: String? = null,
+    leadingIcon: String? = null,
+    error: Boolean = false,
+    checkmarkTransition: CheckmarkTransition = CheckmarkTransition.FADE,
+    transitionDelay: Int = 0,
+    onClick: (() -> Unit)? = null,
+    onFocus: (() -> Unit)? = null,
+    onBlur: (() -> Unit)? = null,
+    testTag: String? = null
+) {
+    val theme = LocalDPTheme.current
+    // MARK: - Token Access
+    
+    // Access design tokens via CompositionLocal
+    // Requirements: 14.2 - Use LocalDesignTokens.current for token access
+    // LocalDesignTokens removed — using DesignTokens.* directly
+    
+    // MARK: - RTL Support
+    
+    // Layout direction for RTL support
+    // Requirements: 11.5, 11.7 - Automatic RTL layout adaptation via LocalLayoutDirection
+    // 
+    // Compose's Row composable automatically handles RTL layout mirroring:
+    // - In LTR: [Leading Icon] [Label/Description] [Checkmark]
+    // - In RTL: [Checkmark] [Label/Description] [Leading Icon]
+    //
+    // The layout mirrors automatically because:
+    // 1. Row uses Arrangement.spacedBy which respects layout direction
+    // 2. Compose's layout system reverses horizontal arrangements in RTL
+    // 3. No additional configuration needed - it "just works"
+    //
+    // This variable is available for any RTL-specific logic if needed in the future,
+    // but the current implementation relies on Compose's automatic RTL handling.
+    val layoutDirection = LocalLayoutDirection.current
+    val isRtl = layoutDirection == LayoutDirection.Rtl
+    
+    // MARK: - Computed Styles
+    
+    // Compute styles based on visual state and error
+    // Requirements: 1.1-1.5, 3.1-3.4
+    val styles = remember(visualState, error) {
+        computeStyles(visualState, error, theme)
+    }
+    
+    // MARK: - Animation Specs
+    
+    // Animation spec for color transitions
+    // Requirements: 7.1 - motion.selectionTransition (250ms, standard easing)
+    val colorAnimationSpec = tween<Color>(
+        durationMillis = DesignTokens.MotionSelectionTransition.duration.toInt(),
+        easing = DesignTokens.Easing.EasingStandard,
+        delayMillis = transitionDelay
+    )
+    
+    // Animation spec for dimension transitions
+    val dpAnimationSpec = tween<Dp>(
+        durationMillis = DesignTokens.MotionSelectionTransition.duration.toInt(),
+        easing = DesignTokens.Easing.EasingStandard,
+        delayMillis = transitionDelay
+    )
+    
+    // Animation spec for float transitions (opacity)
+    val floatAnimationSpec = tween<Float>(
+        durationMillis = DesignTokens.MotionSelectionTransition.duration.toInt(),
+        easing = DesignTokens.Easing.EasingStandard,
+        delayMillis = transitionDelay
+    )
+    
+    // MARK: - Animated Values
+    
+    // Animated background color
+    // Requirements: 7.1 - Animate background color
+    val animatedBackground by animateColorAsState(
+        targetValue = styles.background,
+        animationSpec = colorAnimationSpec,
+        label = "background"
+    )
+    
+    // Animated border color
+    // Requirements: 7.1 - Animate border color
+    val animatedBorderColor by animateColorAsState(
+        targetValue = styles.borderColor,
+        animationSpec = colorAnimationSpec,
+        label = "borderColor"
+    )
+    
+    // Animated border width
+    // Requirements: 7.1 - Animate border width
+    val animatedBorderWidth by animateDpAsState(
+        targetValue = styles.borderWidth,
+        animationSpec = dpAnimationSpec,
+        label = "borderWidth"
+    )
+    
+    // Animated label color
+    // Requirements: 7.1 - Animate text color
+    val animatedLabelColor by animateColorAsState(
+        targetValue = styles.labelColor,
+        animationSpec = colorAnimationSpec,
+        label = "labelColor"
+    )
+    
+    // Animated icon color
+    // Requirements: 7.1 - Animate icon color
+    val animatedIconColor by animateColorAsState(
+        targetValue = styles.iconColor,
+        animationSpec = colorAnimationSpec,
+        label = "iconColor"
+    )
+    
+    // MARK: - Padding Compensation
+    
+    // Calculate padding based on border width for height stability
+    // Requirements: 6.1, 6.2, 6.3 - Maintain constant 48dp height
+    val paddingBlock = calculatePaddingBlock(styles.borderWidth)
+    
+    // Animated padding for smooth transitions
+    val animatedPaddingBlock by animateDpAsState(
+        targetValue = paddingBlock,
+        animationSpec = dpAnimationSpec,
+        label = "paddingBlock"
+    )
+    
+    // MARK: - Checkmark Animation
+    
+    // Track checkmark opacity for fade animation
+    // Requirements: 7.2, 7.3, 7.4 - Checkmark fade-in/fade-out
+    val targetCheckmarkOpacity = if (styles.checkmarkVisible) 1f else 0f
+    
+    // Determine if we should animate the checkmark
+    val checkmarkOpacity by animateFloatAsState(
+        targetValue = targetCheckmarkOpacity,
+        animationSpec = if (checkmarkTransition == CheckmarkTransition.FADE || styles.checkmarkVisible) {
+            // Fade in always, fade out only if checkmarkTransition is FADE
+            floatAnimationSpec
+        } else {
+            // Instant hide - use 0 duration
+            tween(durationMillis = 0)
+        },
+        label = "checkmarkOpacity"
+    )
+    
+    // MARK: - Interaction Source and Focus Tracking
+    
+    // Interaction source for ripple effect and focus tracking
+    // Requirements: 14.2 - Material ripple effects
+    // Requirements: 12.2, 12.3 - Focus/blur event tracking
+    val interactionSource = remember { MutableInteractionSource() }
+    
+    // Track focus state for onFocus/onBlur callbacks
+    // Requirements: 12.2 - WHEN Button_VerticalListItem receives focus THEN it SHALL call onFocus callback
+    // Requirements: 12.3 - WHEN Button_VerticalListItem loses focus THEN it SHALL call onBlur callback
+    // 
+    // The focus state is tracked via collectIsFocusedAsState() which observes
+    // FocusInteraction.Focus and FocusInteraction.Unfocus events from the interactionSource.
+    // The focusable modifier (applied in the component layout) ensures these events are emitted.
+    val isFocused by interactionSource.collectIsFocusedAsState()
+    
+    // Track previous focus state to detect changes and invoke callbacks
+    // This ensures we only call onFocus/onBlur when the state actually changes,
+    // not on every recomposition
+    var previousFocusState by remember { mutableStateOf(false) }
+    
+    // Handle focus state changes and invoke appropriate callbacks
+    // Requirements: 12.2, 12.3 - Emit focus/blur events to parent
+    LaunchedEffect(isFocused) {
+        if (isFocused != previousFocusState) {
+            if (isFocused) {
+                // Focus gained - invoke onFocus callback
+                // Requirements: 12.2 - Call onFocus callback when focus is received
+                onFocus?.invoke()
+            } else {
+                // Focus lost - invoke onBlur callback
+                // Requirements: 12.3 - Call onBlur callback when focus is lost
+                onBlur?.invoke()
+            }
+            previousFocusState = isFocused
+        }
+    }
+    
+    // MARK: - Accessibility
+    
+    // Accessibility state description for TalkBack
+    // Requirements: 10.3, 10.6, 10.8 - Screen readers announce label and current state
+    val accessibilityStateDesc = visualState.accessibilityStateDescription
+    
+    // Error state affects accessibility announcement
+    // When error is true, we should indicate the error state to TalkBack
+    val accessibilityErrorDesc = if (error && visualState != VisualState.REST) {
+        "Error"
+    } else {
+        ""
+    }
+    
+    // Combined state description for TalkBack
+    // Format: "[State], [Error]" or just "[State]" if no error
+    val combinedStateDescription = buildString {
+        if (accessibilityStateDesc.isNotEmpty()) {
+            append(accessibilityStateDesc)
+        }
+        if (accessibilityErrorDesc.isNotEmpty()) {
+            if (isNotEmpty()) append(", ")
+            append(accessibilityErrorDesc)
+        }
+    }
+    
+    // MARK: - Component Shape
+    
+    // Rounded corner shape for the component
+    // Requirements: 5.3 - radiusNormal (8dp)
+    val componentShape = RoundedCornerShape(DesignTokens.radius_normal)
+    
+    // MARK: - Component Layout
+    
+    Box(
+        modifier = modifier
+            .fillMaxWidth()
+            // Minimum height for touch target
+            // Requirements: 5.1, 14.6 - 48dp minimum height
+            .heightIn(min = DesignTokens.tap_area_recommended)
+            // Clip to rounded shape
+            .clip(componentShape)
+            // Background color
+            .background(animatedBackground)
+            // Border that draws inside composable bounds
+            // Requirements: 14.4 - Border modifier draws inside bounds
+            .border(
+                width = animatedBorderWidth,
+                color = animatedBorderColor,
+                shape = componentShape
+            )
+            // Clickable with Material ripple effect
+            // Requirements: 14.2, 14.5 - Material ripple effects via Modifier.clickable with indication
+            // Requirements: 12.1 - onClick callback via Modifier.clickable
+            .clickable(
+                interactionSource = interactionSource,
+                indication = null,  // DesignerPunk uses blend utilities, not Material ripple
+                onClick = { onClick?.invoke() }
+            )
+            // Focusable for keyboard navigation and focus tracking
+            // Requirements: 12.2, 12.3 - onFocus and onBlur callbacks via focus state
+            // The focusable modifier ensures the component can receive keyboard focus
+            // and properly tracks focus state changes via the interactionSource
+            .focusable(interactionSource = interactionSource)
+            // Padding compensation for height stability
+            // Requirements: 6.1, 6.2, 6.3
+            .padding(
+                vertical = animatedPaddingBlock,
+                horizontal = DesignTokens.space_inset_200
+            )
+            // Accessibility semantics for TalkBack
+            // Requirements: 10.3, 10.6, 10.8 - TalkBack support via Compose semantics
+            // contentDescription: Announces the label when focused
+            // stateDescription: Announces the selection state (Selected, Not selected, Checked, etc.)
+            // role: Identifies this as a button for accessibility
+            .semantics {
+                // Content description for TalkBack - announces the label
+                // Requirements: 10.3 - Screen readers announce the label
+                contentDescription = label
+                
+                // State description for TalkBack - announces selection state
+                // Requirements: 10.6 - TalkBack announces current selection state
+                if (combinedStateDescription.isNotEmpty()) {
+                    stateDescription = combinedStateDescription
+                }
+                
+                // Mark as button for accessibility
+                // Requirements: 10.8 - Use Compose semantics for TalkBack support
+                role = Role.Button
+            }
+            // Test tag for automated testing
+            .then(testTag?.let { Modifier.testTag(it) } ?: Modifier)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            // Internal spacing between elements
+            // Requirements: 4.6, 4.7 - space.grouped.loose (12dp)
+            // 
+            // RTL Support (Requirements: 11.5, 11.7):
+            // Arrangement.spacedBy automatically respects layout direction.
+            // In RTL mode, the row content order is visually reversed:
+            // - LTR: [Leading Icon] [Content] [Checkmark]
+            // - RTL: [Checkmark] [Content] [Leading Icon]
+            // This happens automatically via Compose's built-in RTL handling.
+            horizontalArrangement = Arrangement.spacedBy(DesignTokens.space_grouped_loose),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            // MARK: - Leading Icon (Optional)
+            
+            // Requirements: 4.4, 4.5, 9.1 - Leading icon with label color and optical balance
+            leadingIcon?.let { iconName ->
+                IconBase(
+                    name = iconName,
+                    size = DesignTokens.icon_size_100,
+                    color = animatedIconColor,
+                    opticalBalance = true,
+                    testTag = testTag?.let { "$it-leading-icon" }
+                )
+            }
+            
+            // MARK: - Content (Label + Description)
+            
+            Column(
+                modifier = Modifier.weight(1f),
+                verticalArrangement = Arrangement.Center
+            ) {
+                // Label - always present
+                // Requirements: 4.1 - typography.buttonMd styling
+                Text(
+                    text = label,
+                    color = animatedLabelColor,
+                    fontSize = DesignTokens.typography_button_md.fontSize,
+                    fontWeight = FontWeight.Medium,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+                
+                // Description - optional
+                // Requirements: 4.2, 4.3 - typography.bodySm, color.text.muted
+                description?.let { desc ->
+                    Text(
+                        text = desc,
+                        color = theme.color_text_muted,
+                        fontSize = DesignTokens.typography_body_sm.fontSize,
+                        fontWeight = FontWeight.Normal
+                    )
+                }
+            }
+            
+            // MARK: - Selection Indicator (Checkmark)
+            
+            // Requirements: 2.1-2.5, 9.2 - Checkmark with state-appropriate color
+            // Only render if visible or animating out
+            if (styles.checkmarkVisible || checkmarkOpacity > 0f) {
+                IconBase(
+                    name = "check",
+                    size = DesignTokens.icon_size_100,
+                    color = animatedIconColor,
+                    opticalBalance = true,
+                    modifier = Modifier
+                        .alpha(checkmarkOpacity)
+                        // Mark checkmark as decorative (not announced by TalkBack)
+                        // Requirements: 2.5 - Selection indicator marked as decorative
+                        // This is the Compose equivalent of aria-hidden="true"
+                        // The selection state is already announced via stateDescription
+                        .clearAndSetSemantics { },
+                    testTag = testTag?.let { "$it-checkmark" }
+                )
+            }
+        }
+    }
+}
+
+// MARK: - IconBase Placeholder
+
+// IconBase imported from com.designerpunk.components.core — placeholder removed
+
+// MARK: - Preview
+
+/**
+ * Preview composable for VerticalListButtonItem.
+ * 
+ * Demonstrates various configurations and states of the component.
+ */
+@Composable
+fun VerticalListButtonItemPreview() {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(DesignTokens.space_200),
+        verticalArrangement = Arrangement.spacedBy(DesignTokens.space_200)
+    ) {
+        // Tap Mode
+        Text("Tap Mode", fontWeight = FontWeight.Bold)
+        
+        VerticalListButtonItem(
+            label = "Settings",
+            visualState = VisualState.REST,
+            onClick = { println("Tapped Settings") }
+        )
+        
+        VerticalListButtonItem(
+            label = "With Description",
+            description = "Additional context for this option",
+            visualState = VisualState.REST,
+            onClick = { println("Tapped") }
+        )
+        
+        VerticalListButtonItem(
+            label = "With Icon",
+            leadingIcon = "gear",
+            visualState = VisualState.REST,
+            onClick = { println("Tapped") }
+        )
+        
+        // Select Mode
+        Text("Select Mode", fontWeight = FontWeight.Bold)
+        
+        VerticalListButtonItem(
+            label = "Selected Option",
+            description = "This option is currently selected",
+            visualState = VisualState.SELECTED,
+            onClick = { println("Selected") }
+        )
+        
+        VerticalListButtonItem(
+            label = "Not Selected Option",
+            visualState = VisualState.NOT_SELECTED,
+            onClick = { println("Not Selected") }
+        )
+        
+        // Multi-Select Mode
+        Text("Multi-Select Mode", fontWeight = FontWeight.Bold)
+        
+        VerticalListButtonItem(
+            label = "Checked Option",
+            leadingIcon = "bell",
+            visualState = VisualState.CHECKED,
+            onClick = { println("Checked") }
+        )
+        
+        VerticalListButtonItem(
+            label = "Unchecked Option",
+            leadingIcon = "bell",
+            visualState = VisualState.UNCHECKED,
+            onClick = { println("Unchecked") }
+        )
+        
+        // Error States
+        Text("Error States", fontWeight = FontWeight.Bold)
+        
+        VerticalListButtonItem(
+            label = "Select Mode Error",
+            description = "Full error treatment",
+            visualState = VisualState.NOT_SELECTED,
+            error = true,
+            onClick = { println("Error Select") }
+        )
+        
+        VerticalListButtonItem(
+            label = "Multi-Select Error",
+            description = "Colors only treatment",
+            visualState = VisualState.UNCHECKED,
+            error = true,
+            onClick = { println("Error Multi") }
+        )
+    }
+}

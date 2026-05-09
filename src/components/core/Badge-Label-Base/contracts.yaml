@@ -1,0 +1,148 @@
+version: "1.0.0"
+component: Badge-Label-Base
+family: Badge
+
+contracts:
+  content_displays_label:
+    category: content
+    description: Renders text label visibly
+    behavior: |
+      Renders the provided label text visibly within the badge.
+      Text uses typography tokens based on size variant:
+      - sm: typography.labelXs (13px, medium weight, 1.538 line-height)
+      - md: typography.labelSm (14px, medium weight, 1.429 line-height)
+      - lg: typography.labelMd (16px, medium weight, 1.5 line-height)
+      Text color uses color.text.default token.
+    wcag: "1.3.1 Info and Relationships"
+    platforms: [web, ios, android]
+    validation:
+      - Label text is visible in the rendered badge
+      - Typography matches size variant specification
+      - Text color uses design token, not hardcoded value
+      - Font weight is medium (500)
+    test_approach: |
+      Render badge with label prop. Verify text content matches label value,
+      computed font-size matches size variant.
+    required: true
+
+  content_supports_icon:
+    category: content
+    description: Optionally displays leading icon via Icon-Base
+    behavior: |
+      When icon prop is provided, renders a leading icon using Icon-Base.
+      Icon size by badge size: sm=icon.size050, md=icon.size075, lg=icon.size100.
+      Gap: sm=space.grouped.minimal (2px), md/lg=space.grouped.tight (4px).
+      Icon is decorative and hidden from assistive technology.
+    wcag: "1.3.1 Info and Relationships"
+    platforms: [web, ios, android]
+    validation:
+      - Icon renders before label text when icon prop provided
+      - Icon size matches badge size specification
+      - Icon color uses design token
+      - Icon is hidden from screen readers
+      - Gap between icon and text matches specification
+    test_approach: |
+      Render with icon prop. Verify icon-base present before label text,
+      has aria-hidden="true" (web), and size matches variant.
+    required: false
+
+  content_truncation:
+    category: content
+    description: Truncates with ellipsis when truncate=true; full text accessible
+    behavior: |
+      When truncate=true, truncates text at badge.label.maxWidth (120px)
+      with ellipsis. Full text accessible via:
+      - Web: title attribute
+      - iOS: accessibilityLabel
+      - Android: contentDescription
+      When truncate=false (default), badge grows to fit content.
+    wcag: "1.3.1 Info and Relationships"
+    platforms: [web, ios, android]
+    validation:
+      - Text truncates with ellipsis at 120px when truncate=true
+      - Full text accessible via platform-appropriate mechanism
+      - Badge grows to fit content when truncate=false
+    test_approach: |
+      Render with long label and truncate=true. Verify max-width 120px,
+      text-overflow ellipsis, title attribute has full label (web).
+    required: false
+
+  accessibility_non_interactive:
+    category: accessibility
+    description: Does not respond to user interaction
+    behavior: |
+      Badge-Label-Base is read-only and non-interactive:
+      - Not focusable via keyboard navigation (no tabindex)
+      - Does not respond to click, tap, or keyboard events
+      - No hover or press visual feedback
+      - pointer-events: none (web)
+      - No gesture handlers (native)
+    wcag: null
+    platforms: [web, ios, android]
+    validation:
+      - Badge cannot receive keyboard focus
+      - Click/tap events do not trigger any action
+      - No visual feedback on hover or press
+      - pointer-events is none (web)
+    test_approach: |
+      Attempt to focus via Tab — verify no focus. Click badge — verify
+      no handlers fire. Verify pointer-events: none (web).
+    required: true
+
+  accessibility_color_contrast:
+    category: accessibility
+    description: Meets WCAG AA contrast requirements (4.5:1)
+    behavior: |
+      Uses design tokens ensuring WCAG AA compliance:
+      - Text color (color.text.default) on background (color.surface)
+      - Contrast ratio >= 4.5:1 for normal text
+      - Icon color (color.icon.default) maintains visual consistency
+      High contrast mode support via CSS media query (web).
+    wcag: "1.4.3 Contrast (Minimum)"
+    platforms: [web, ios, android]
+    validation:
+      - Text/background contrast ratio >= 4.5:1
+      - Colors use design tokens, not hardcoded values
+      - High contrast mode applies border for visibility (web)
+    test_approach: |
+      Calculate contrast ratio between text and background. Verify >= 4.5:1.
+      Test with prefers-contrast: high (web).
+    required: true
+
+  accessibility_text_scaling:
+    category: accessibility
+    description: Scales proportionally with user font size preferences
+    behavior: |
+      Respects user font size preferences:
+      - Web: rem-based tokens scale with root font size
+      - iOS: Respects Dynamic Type settings
+      - Android: Respects system font scale settings
+      Badge dimensions scale proportionally without content clipping.
+    wcag: "1.4.4 Resize Text"
+    platforms: [web, ios, android]
+    validation:
+      - Badge scales when user increases system font size to 200%
+      - Content remains visible without clipping
+      - Layout maintains integrity at larger sizes
+    test_approach: |
+      Set root font-size to 200% (web). Verify badge scales proportionally
+      and text remains visible.
+    required: true
+
+excludes:
+  interaction_focusable:
+    reason: "Badges are visual indicators, not interactive elements."
+    category: interaction
+    reference: "contracts.yaml accessibility_non_interactive contract; 062 audit intentional-exclusions.md"
+  interaction_pressable:
+    reason: "Badges are visual indicators, not interactive elements."
+    category: interaction
+    reference: "contracts.yaml accessibility_non_interactive contract; 062 audit intentional-exclusions.md"
+  interaction_hover:
+    reason: "Badges are visual indicators — no hover feedback expected."
+    category: interaction
+    reference: "contracts.yaml accessibility_non_interactive contract; 062 audit intentional-exclusions.md"
+  interaction_pressed:
+    reason: "Badges are visual indicators — no press feedback expected."
+    category: interaction
+    reference: "contracts.yaml accessibility_non_interactive contract; 062 audit intentional-exclusions.md"

@@ -1,0 +1,21 @@
+purpose: "Production-ready app-level header with intrinsic underglow, three CSS custom property overrides for scroll-linked theming, and banner landmark semantics for root destination screens."
+
+usage:
+  when_to_use:
+    - "Root destination screens (home, inbox, dashboard) needing a top bar"
+    - "Web site headers with logo, navigation, and profile actions"
+    - "Any app-level chrome where the product defines the content"
+    - "Sticky navigation bars with scroll-linked color transitions"
+  when_not_to_use:
+    - "Pushed or presented screens with back/close navigation — use Nav-Header-Page"
+    - "Direct use of Nav-Header-Base primitive — use this or Nav-Header-Page instead"
+
+contexts:
+  - "navigation"
+  - "app-bars"
+  - "dashboards"
+  - "content-feeds"
+
+alternatives:
+  - component: Nav-Header-Page
+    reason: "When the screen is a pushed/presented page needing back/close navigation"

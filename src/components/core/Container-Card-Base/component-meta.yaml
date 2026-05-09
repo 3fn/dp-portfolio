@@ -1,0 +1,21 @@
+purpose: "Display content in an elevated card for dashboards, stat cards, content previews, and visually distinct content grouping with interactive behavior."
+
+usage:
+  when_to_use:
+    - "Product cards, profile cards, or content preview cards"
+    - "Elevated content sections that need visual separation from the background"
+    - "Interactive cards that respond to tap or click"
+  when_not_to_use:
+    - "Simple content wrapping without card styling — use Container-Base"
+    - "Full-width page sections without elevation"
+
+contexts:
+  - "dashboards"
+  - "content-feeds"
+  - "product-cards"
+  - "profile-sections"
+  - "settings-screens"
+
+alternatives:
+  - component: Container-Base
+    reason: "When generic content wrapper"

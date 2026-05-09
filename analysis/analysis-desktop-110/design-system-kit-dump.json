@@ -1,0 +1,26 @@
+{
+  "fileKey": "yU7908VXR1khQN5hZXC6Cy",
+  "generatedAt": "2026-05-08T16:06:38.113Z",
+  "format": "full",
+  "ai_instruction": "DESIGN SYSTEM SPECIFICATION — STRICT VISUAL FIDELITY REQUIRED\n\nContains: 0 components (0 sets), 0 styles.\n\nRULES:\n1. ONLY use colors, spacing, and typography values from this data. Do NOT invent, guess, or add any visual properties not explicitly present.\n2. Map 'visualSpec' directly to CSS:\n   - fills[].color → background-color (e.g. #181818)\n   - strokes[].color/weight → border (e.g. 1px solid #9747FF)\n   - effects[] → box-shadow (type DROP_SHADOW: offset.x offset.y radius spread color)\n   - cornerRadius → border-radius\n   - layout.mode HORIZONTAL → flex-direction:row, VERTICAL → flex-direction:column\n   - layout.paddingTop/Right/Bottom/Left → padding\n   - layout.itemSpacing → gap\n   - layout.primaryAxisAlign → justify-content, counterAxisAlign → align-items\n   - typography → font-family, font-size, font-weight, line-height, letter-spacing\n3. Do NOT add decorative elements (colored borders, accents, dividers, gradients) unless they appear in the visualSpec data.\n4. Use 'imageUrl' screenshots as the visual ground truth. If the screenshot shows a simple dark card, do not add colored side borders or other embellishments.\n5. Style 'resolvedValue' contains the exact design system colors and typography — match these values precisely, do not substitute similar colors.\n6. Component 'properties' define the component API (props). VARIANT type properties define the visual variants (e.g. Info, Danger, Success). BOOLEAN properties toggle features. TEXT properties accept string content.\n7. When applying to an existing component library (e.g. shadcn, MUI, Chakra), override the library's default theme values with the exact colors, spacing, and typography from this specification. Do not blend with library defaults.",
+  "components": {
+    "items": [],
+    "summary": {
+      "totalComponents": 0,
+      "totalComponentSets": 0
+    }
+  },
+  "styles": {
+    "items": [],
+    "summary": {
+      "totalStyles": 0,
+      "stylesByType": {}
+    }
+  },
+  "errors": [
+    {
+      "section": "tokens",
+      "message": "Figma API error (403): {\"status\":403,\"error\":true,\"message\":\"Invalid scope(s): current_user:read, file_comments:read, file_comments:write, file_content:read, file_metadata:read, file_versions:read, library_assets:read, library_content:read, team_library_content:read, file_dev_resources:read, file_dev_resources:write, projects:read, webhooks:read, webhooks:write. This endpoint requires the file_variables:read scope\"}"
+    }
+  ]
+}

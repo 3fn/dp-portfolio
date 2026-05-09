@@ -1,0 +1,181 @@
+# Chip-Filter Component Schema
+#
+# Stemma System: Chip Family
+# Component Type: Semantic Variant
+# Inherits: Chip-Base
+# Naming Convention: [Family]-[Type]-[Variant] = Chip-Filter
+#
+# This schema defines the behavioral contracts and properties for the
+# Chip-Filter component, which extends Chip-Base with toggle/selection
+# behavior for filtering content by multiple criteria.
+#
+# Rationale: Chip-Filter is a semantic variant that adds selection state
+# to the base chip. Users can toggle filter chips on and off to filter
+# content by multiple criteria. When selected, the chip displays a
+# checkmark icon and uses selected styling.
+#
+# DesignerPunk Philosophy: NO DISABLED STATES
+# This component does not support disabled states. If filtering is unavailable,
+# the component should not be rendered. This ensures users always see actionable
+# UI elements.
+
+name: Chip-Filter
+type: semantic
+family: Chip
+version: "1.0.0"
+readiness:
+  web:
+    reviewed: true
+  ios:
+    reviewed: true
+  android:
+    reviewed: true
+
+# Inheritance declaration
+inherits: Chip-Base
+
+composition:
+  internal:
+    - component: Icon-Base
+      role: Optional leading icon and selected-state checkmark
+      required: false
+
+# Component description
+description: |
+  Toggle chip with selected state for filtering content by multiple criteria.
+  Extends Chip-Base with selection behavior and visual feedback.
+  
+  Key Characteristics:
+  - Toggleable: Press to toggle between selected and unselected states
+  - Visual feedback: Selected state uses primary background and checkmark icon
+  - Checkmark replaces icon: When selected, checkmark replaces any leading icon
+  - Accessible: aria-pressed attribute communicates state to screen readers
+  
+  Chip-Filter inherits all Chip-Base styling and behavior, adding:
+  - selected prop for controlled selection state
+  - onSelectionChange callback for state changes
+  - Selected styling with primary background and onPrimary text
+  - Checkmark icon when selected (replaces leading icon if present)
+  
+  DesignerPunk Philosophy: NO DISABLED STATES
+  If filtering is unavailable, the component should not be rendered.
+
+# Reusable behaviors this component implements (inherited + new)
+behaviors:
+  - renderable
+  - pressable
+  - focusable
+  - accessible
+  - toggleable
+
+# Component properties (public API)
+# Note: Inherits label, icon, testID from Chip-Base
+# Note: onPress is inherited but behavior is modified to toggle selection
+properties:
+  selected:
+    type: boolean
+    required: false
+    default: false
+    description: |
+      Whether chip is in selected state. When true, chip displays:
+      - Selected styling (color.feedback.select.background.rest background,
+        color.feedback.select.border.rest border, color.feedback.select.text.rest text)
+      - Checkmark icon (replaces leading icon if present)
+      
+      This is a controlled prop - parent component manages state.
+  
+  onSelectionChange:
+    type: "(selected: boolean) => void"
+    required: false
+    description: |
+      Called when selection state changes. Receives the new selected state
+      as parameter. Invoked when user presses the chip to toggle selection.
+      
+      Example: onSelectionChange={(selected) => setFilters({...filters, category: selected})}
+
+# Behavioral contracts moved to contracts.yaml
+# Design tokens this component requires
+# Note: Inherits all tokens from Chip-Base, plus additional selected state tokens
+tokens:
+  inherited:
+    - chip.paddingBlock
+    - typography.buttonSm
+    - color.structure.surface
+    - color.structure.border
+    - color.text.default
+    - color.action.primary
+    - space.inset.150
+    - space.grouped.tight
+    - borderDefault
+    - radius.full
+    - motion.selectionTransition
+    - blend.hoverDarker
+    - blend.pressedDarker
+    - tapAreaRecommended
+    - accessibility.focus.width
+    - accessibility.focus.offset
+    - accessibility.focus.color
+    - icon.size075
+  selected_state:
+    - color.feedback.select.background.rest
+    - color.feedback.select.border.rest
+    - color.feedback.select.text.rest
+
+# Supported platforms
+platforms:
+  - web
+  - ios
+  - android
+
+# Platform-specific implementation notes
+platform_notes:
+  web:
+    element: "<chip-filter>"
+    implementation: Web Component with Shadow DOM
+    file: platforms/web/ChipFilter.web.ts
+    notes: |
+      - Extends ChipBaseElement behavior (composition pattern)
+      - Uses Shadow DOM for style encapsulation
+      - aria-pressed attribute for accessibility
+      - Checkmark icon rendered via Icon-Base web component
+      - Selected state styling via CSS custom properties
+  ios:
+    implementation: SwiftUI View
+    file: platforms/ios/ChipFilter.ios.swift
+    notes: |
+      - Uses SwiftUI Button with @Binding for selected state
+      - Token consumption via DesignTokens constants
+      - Checkmark icon via IconBase component
+      - Selected styling via conditional modifiers
+  android:
+    implementation: Jetpack Compose Composable
+    file: platforms/android/ChipFilter.android.kt
+    notes: |
+      - Uses Compose with remember for state management
+      - Token consumption via DesignTokens object
+      - Checkmark icon via IconBase composable
+      - Selected styling via conditional parameters
+
+# Accessibility compliance
+accessibility:
+  wcag_level: AA
+  compliance:
+    - "1.4.1 Use of Color - Selection indicated by checkmark, not just color"
+    - "1.4.3 Contrast (Minimum) - Selected text meets 4.5:1 contrast ratio"
+    - "1.4.11 Non-text Contrast - Selected border meets 3:1 contrast"
+    - "2.1.1 Keyboard - Fully keyboard accessible (Tab, Enter, Space)"
+    - "2.4.7 Focus Visible - Clear focus indicator with :focus-visible"
+    - "2.5.5 Target Size - 48px tap area exceeds 44px minimum"
+    - "4.1.2 Name, Role, Value - aria-pressed communicates toggle state"
+  aria_attributes:
+    - role: button
+    - tabindex: "0"
+    - aria-pressed: "true|false"
+  keyboard_navigation:
+    - Tab: Move focus to/from chip
+    - Enter: Toggle selection state
+    - Space: Toggle selection state
+  platform_accessibility:
+    web: "role='button', tabindex='0', aria-pressed for toggle state"
+    ios: "Button accessibility trait, toggle state announced"
+    android: "Button semantics, toggle state announced"

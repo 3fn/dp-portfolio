@@ -1,0 +1,22 @@
+purpose: "Provide a foundational structural wrapper to group and lay out child content with configurable edge spacing for page sections and content areas."
+
+usage:
+  when_to_use:
+    - "Generic content wrapper"
+    - "Page section"
+    - "Navigation wrapper"
+    - "Custom container needs"
+  when_not_to_use:
+    - "Card with elevation — use Container-Card-Base"
+    - "Creating interactive buttons (use Buttons instead)"
+    - "Building form inputs (use Form Inputs instead)"
+    - "Creating modals (use Modals when available)"
+
+contexts:
+  - "dashboards"
+  - "settings-screens"
+  - "forms"
+
+alternatives:
+  - component: Container-Card-Base
+    reason: "When card with elevation"

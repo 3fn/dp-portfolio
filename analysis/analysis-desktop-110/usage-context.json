@@ -1,0 +1,815 @@
+[
+  {
+    "name": "color/yellow/100",
+    "type": "COLOR",
+    "total": 5929,
+    "asFill": 5929,
+    "asStroke": 0,
+    "asSpacing": 0,
+    "asOther": 0,
+    "sampleNodes": [
+      "Vector",
+      "V",
+      "C",
+      "Rectangle 153",
+      "Line 127",
+      "Rectangle 147",
+      "Line 117",
+      "Rectangle 144"
+    ]
+  },
+  {
+    "name": "color/pink/300",
+    "type": "COLOR",
+    "total": 4842,
+    "asFill": 4825,
+    "asStroke": 0,
+    "asSpacing": 0,
+    "asOther": 17,
+    "sampleNodes": [
+      "Primary CTA",
+      "Vector",
+      "1",
+      "Why Build This System Container",
+      "Rectangle 163",
+      "Rectangle 149",
+      "Rectangle 159",
+      "Rectangle 157"
+    ]
+  },
+  {
+    "name": "color/cyan/100",
+    "type": "COLOR",
+    "total": 2973,
+    "asFill": 2973,
+    "asStroke": 0,
+    "asSpacing": 0,
+    "asOther": 0,
+    "sampleNodes": [
+      "Vector",
+      "Rectangle 152",
+      "Line 125",
+      "Rectangle 160",
+      "Rectangle 148",
+      "Rectangle 146",
+      "Line 115",
+      "Rectangle 143"
+    ]
+  },
+  {
+    "name": "color/purple/300",
+    "type": "COLOR",
+    "total": 2469,
+    "asFill": 2465,
+    "asStroke": 3,
+    "asSpacing": 0,
+    "asOther": 1,
+    "sampleNodes": [
+      "Vector",
+      "Rosetta Connector",
+      "Stemma Connector",
+      "Civitas Connector",
+      "Rectangle 164",
+      "Rectangle 162",
+      "Rectangle 161",
+      "Rectangle 158"
+    ]
+  },
+  {
+    "name": "color/yellow/300",
+    "type": "COLOR",
+    "total": 1517,
+    "asFill": 1517,
+    "asStroke": 0,
+    "asSpacing": 0,
+    "asOther": 0,
+    "sampleNodes": [
+      "What is this Ecosystem Container",
+      "Vector",
+      "How Was This Built Container",
+      "Rectangle 153",
+      "Line 127",
+      "Rectangle 147",
+      "Line 117",
+      "Rectangle 144"
+    ]
+  },
+  {
+    "name": "color/pink/100",
+    "type": "COLOR",
+    "total": 1415,
+    "asFill": 1415,
+    "asStroke": 0,
+    "asSpacing": 0,
+    "asOther": 0,
+    "sampleNodes": [
+      "Vector",
+      "Stats Full  Width Container",
+      "Rectangle 163",
+      "Rectangle 149",
+      "Rectangle 159",
+      "Rectangle 157",
+      "Rectangle 154"
+    ]
+  },
+  {
+    "name": "color/teal/300",
+    "type": "COLOR",
+    "total": 1205,
+    "asFill": 1204,
+    "asStroke": 0,
+    "asSpacing": 0,
+    "asOther": 1,
+    "sampleNodes": [
+      "Vector",
+      "DesignerPunk was built using multiple Claude models, including Opus 4.7, primarily through Kiro IDE and CLI tooling. All work was designed and planned myself utilizing a spec-driven methodology with iteratively developed Human-AI collaboration models."
+    ]
+  },
+  {
+    "name": "color/orange/300",
+    "type": "COLOR",
+    "total": 864,
+    "asFill": 861,
+    "asStroke": 1,
+    "asSpacing": 0,
+    "asOther": 2,
+    "sampleNodes": [
+      "Union",
+      "Vector",
+      "Hard $#@%ing work!",
+      "Agents Directory Container"
+    ]
+  },
+  {
+    "name": "color/green/100",
+    "type": "COLOR",
+    "total": 484,
+    "asFill": 484,
+    "asStroke": 0,
+    "asSpacing": 0,
+    "asOther": 0,
+    "sampleNodes": [
+      "Hero Container",
+      "Easter Egg - Because why not!?",
+      "Vector",
+      "Agents Directory Container",
+      "Pitch",
+      "Primary Content Container"
+    ]
+  },
+  {
+    "name": "color/teal/500",
+    "type": "COLOR",
+    "total": 400,
+    "asFill": 400,
+    "asStroke": 0,
+    "asSpacing": 0,
+    "asOther": 0,
+    "sampleNodes": [
+      "Vector"
+    ]
+  },
+  {
+    "name": "color/teal/100",
+    "type": "COLOR",
+    "total": 388,
+    "asFill": 388,
+    "asStroke": 0,
+    "asSpacing": 0,
+    "asOther": 0,
+    "sampleNodes": [
+      "Vector"
+    ]
+  },
+  {
+    "name": "color/pink/200",
+    "type": "COLOR",
+    "total": 240,
+    "asFill": 240,
+    "asStroke": 0,
+    "asSpacing": 0,
+    "asOther": 0,
+    "sampleNodes": [
+      "Rectangle 171",
+      "Vector",
+      "2",
+      "1"
+    ]
+  },
+  {
+    "name": "color/yellow/400",
+    "type": "COLOR",
+    "total": 230,
+    "asFill": 224,
+    "asStroke": 6,
+    "asSpacing": 0,
+    "asOther": 0,
+    "sampleNodes": [
+      "Vector",
+      "Rectangle 153",
+      "Line 127",
+      "Rectangle 147",
+      "Line 117",
+      "Rectangle 144",
+      "Line 112"
+    ]
+  },
+  {
+    "name": "color/black/200",
+    "type": "COLOR",
+    "total": 226,
+    "asFill": 225,
+    "asStroke": 0,
+    "asSpacing": 0,
+    "asOther": 1,
+    "sampleNodes": [
+      "Vector",
+      "Special thanks to:",
+      "Donnie D’Amato Amy Lam John Marshall Dimitri Otero",
+      "Nicole Fu Lauren LoPrete Kevin Muldoon TJ Pitre",
+      "Joshua Butner Design System Wednesday! Kiersten Lammerding Tracy Weiss",
+      "Margaret Allen Virginia Johnstone (Hi, mom!) Kinsley & Colton Kirwan Lindsay MacKenzie",
+      "DesignerPunk was built using multiple Claude models, including Opus 4.7, primarily through Kiro IDE and CLI tooling. All work was designed and planned myself utilizing a spec-driven methodology with iteratively developed Human-AI collaboration models.",
+      "After several failed attempts to orchestrate a traditional design system, I experimented with new practices aligned with agent tendencies that I developed over six months. Once the foundational tokens and components were established, I expanded the scope of the project to include exploring training agents to build with the system including incorporating Google’s A2UI specification that allows agents to render their own native widgets. This site is the first prototype to fully test DesignerPunk’s ability to be packaged as an ecosystem for distribution to any product development repository."
+    ]
+  },
+  {
+    "name": "color/black/500",
+    "type": "COLOR",
+    "total": 198,
+    "asFill": 196,
+    "asStroke": 1,
+    "asSpacing": 0,
+    "asOther": 1,
+    "sampleNodes": [
+      "The design system built for AI-Human collaboration",
+      "Vector",
+      "Rectangle 128",
+      "Rectangle 125",
+      "Rectangle 127",
+      "Rectangle 129",
+      "What is this ecosystem?",
+      "//"
+    ]
+  },
+  {
+    "name": "color/black/300",
+    "type": "COLOR",
+    "total": 187,
+    "asFill": 180,
+    "asStroke": 6,
+    "asSpacing": 0,
+    "asOther": 1,
+    "sampleNodes": [
+      "About",
+      "GitHub",
+      "LinkedIn",
+      "Vector",
+      "Subtract",
+      "Union",
+      "Secondary CTA",
+      "Learn more"
+    ]
+  },
+  {
+    "name": "color/purple/200",
+    "type": "COLOR",
+    "total": 106,
+    "asFill": 106,
+    "asStroke": 0,
+    "asSpacing": 0,
+    "asOther": 0,
+    "sampleNodes": [
+      "Vector"
+    ]
+  },
+  {
+    "name": "space/300",
+    "type": "FLOAT",
+    "total": 50,
+    "asFill": 0,
+    "asStroke": 0,
+    "asSpacing": 50,
+    "asOther": 0,
+    "sampleNodes": [
+      "Content Container",
+      "Header Container",
+      "Challenge Container",
+      "Insight Container",
+      "Approach Container",
+      "Goals Container",
+      "Design System Agents List Container",
+      "Ada Container"
+    ]
+  },
+  {
+    "name": "color/gray/400",
+    "type": "COLOR",
+    "total": 44,
+    "asFill": 44,
+    "asStroke": 0,
+    "asSpacing": 0,
+    "asOther": 0,
+    "sampleNodes": [
+      "Vector",
+      "Scaled design tokens, themes, and tools that generate and govern native code for iOS, Android, and Web platforms.",
+      "A component architecture that guides cross-platform development through a shared, property-based API.",
+      "Harness-less MCP servers, agents, and other automated intelligence mechanisms for accurate documentation and consistent implementation."
+    ]
+  },
+  {
+    "name": "space/050",
+    "type": "FLOAT",
+    "total": 36,
+    "asFill": 0,
+    "asStroke": 0,
+    "asSpacing": 20,
+    "asOther": 16,
+    "sampleNodes": [
+      "Frame 393",
+      "Frame 394",
+      "Frame 395",
+      "Frame 400",
+      "Frame 397",
+      "Frame 399",
+      "Frame 396",
+      "Frame 401"
+    ]
+  },
+  {
+    "name": "color/white/200",
+    "type": "COLOR",
+    "total": 34,
+    "asFill": 34,
+    "asStroke": 0,
+    "asSpacing": 0,
+    "asOther": 0,
+    "sampleNodes": [
+      "Secondary CTA",
+      "Why build this system?",
+      "//",
+      "Rosetta Description Container",
+      "Stemma Description Container",
+      "Civitas Description Container",
+      "Reddit",
+      "Venmo"
+    ]
+  },
+  {
+    "name": "space/100",
+    "type": "FLOAT",
+    "total": 32,
+    "asFill": 0,
+    "asStroke": 0,
+    "asSpacing": 28,
+    "asOther": 4,
+    "sampleNodes": [
+      "Ada Container",
+      "Lina Container",
+      "Thurgood Container",
+      "Leonardo Container",
+      "Stacy Container",
+      "Sparky Container",
+      "Kenya Container",
+      "Data Container"
+    ]
+  },
+  {
+    "name": "color/purple/400",
+    "type": "COLOR",
+    "total": 30,
+    "asFill": 18,
+    "asStroke": 12,
+    "asSpacing": 0,
+    "asOther": 0,
+    "sampleNodes": [
+      "Rectangle 164",
+      "Line 126",
+      "Rectangle 162",
+      "Line 123",
+      "Rectangle 161",
+      "Line 122",
+      "Rectangle 158",
+      "Line 116"
+    ]
+  },
+  {
+    "name": "color/pink/500",
+    "type": "COLOR",
+    "total": 28,
+    "asFill": 26,
+    "asStroke": 1,
+    "asSpacing": 0,
+    "asOther": 1,
+    "sampleNodes": [
+      "Stats Full  Width Container",
+      "Human",
+      "Primitive tokens",
+      "Semantic tokens",
+      "Component families",
+      "Foundation components",
+      "Contracts",
+      "AI Agents"
+    ]
+  },
+  {
+    "name": "color/gray/100",
+    "type": "COLOR",
+    "total": 26,
+    "asFill": 13,
+    "asStroke": 13,
+    "asSpacing": 0,
+    "asOther": 0,
+    "sampleNodes": [
+      "Line 133",
+      "Line 134",
+      "Line 135",
+      "Agents Directory Container",
+      "Ada Container",
+      "Lina Container",
+      "Thurgood Container",
+      "Leonardo Container"
+    ]
+  },
+  {
+    "name": "color/white/400",
+    "type": "COLOR",
+    "total": 26,
+    "asFill": 26,
+    "asStroke": 0,
+    "asSpacing": 0,
+    "asOther": 0,
+    "sampleNodes": [
+      "DP",
+      "3fn",
+      "Venmo + PP",
+      "Reddit",
+      "FT",
+      "eHealth",
+      "Magi",
+      "EA"
+    ]
+  },
+  {
+    "name": "color/gray/300",
+    "type": "COLOR",
+    "total": 23,
+    "asFill": 17,
+    "asStroke": 1,
+    "asSpacing": 0,
+    "asOther": 5,
+    "sampleNodes": [
+      "1 Human Container",
+      "Rosetta System Token creation, management, and documentation",
+      "Stemma System Component and contract creation, management, and documentation",
+      "Civitas System Auditing, governance, and spec management",
+      "Product planning and tech coordinator",
+      "Product governance, quality assurance, and applied learnings",
+      "Web product implementation lead",
+      "iOS product implementation lead"
+    ]
+  },
+  {
+    "name": "color/cyan/300",
+    "type": "COLOR",
+    "total": 23,
+    "asFill": 21,
+    "asStroke": 0,
+    "asSpacing": 0,
+    "asOther": 2,
+    "sampleNodes": [
+      "Rectangle 152",
+      "Line 125",
+      "Rectangle 160",
+      "Rectangle 148",
+      "Rectangle 146",
+      "Line 115",
+      "Rectangle 143",
+      "18 years of human context"
+    ]
+  },
+  {
+    "name": "space/150",
+    "type": "FLOAT",
+    "total": 23,
+    "asFill": 0,
+    "asStroke": 0,
+    "asSpacing": 23,
+    "asOther": 0,
+    "sampleNodes": [
+      "Frame 393",
+      "Frame 394",
+      "Frame 395",
+      "Frame 400",
+      "Frame 397",
+      "Frame 399",
+      "Frame 396",
+      "Frame 401"
+    ]
+  },
+  {
+    "name": "color/black/100",
+    "type": "COLOR",
+    "total": 22,
+    "asFill": 21,
+    "asStroke": 0,
+    "asSpacing": 0,
+    "asOther": 1,
+    "sampleNodes": [
+      "by 3fn Design",
+      "While modern teams explore how they might build AI-enabled design systems, I built something more. DesignerPunk is an ecosystem that pairs an enterprise-ready design system with built-in intelligence layers that guide AI agents to deliver craft at scale.",
+      "AI-Human collaboration models guide agents with specialized domain knowledge from tokens to implementation.",
+      "The internal MCPs guide agent execution of documentation, application, and product development in a minimally-monolithic environment.",
+      "Over 8k tests across 300+ testing suites with commit and release processes to support system health and governance.",
+      "WCAG 2.1 AA as a first-class requirement with theming infrastructure to support a11y attributes from color to spacing.",
+      "Architected and generated true native output of tokens and components in CSS, Swift, and Kotlin from a single source.",
+      "Integration with with canvas tools into spec development processes via Figma Console MCP and DTCG specification."
+    ]
+  },
+  {
+    "name": "color/cyan/400",
+    "type": "COLOR",
+    "total": 22,
+    "asFill": 12,
+    "asStroke": 10,
+    "asSpacing": 0,
+    "asOther": 0,
+    "sampleNodes": [
+      "Vector",
+      "Rectangle 152",
+      "Line 125",
+      "Rectangle 160",
+      "Line 121",
+      "Rectangle 148",
+      "Line 119",
+      "Rectangle 146"
+    ]
+  },
+  {
+    "name": "space/025",
+    "type": "FLOAT",
+    "total": 20,
+    "asFill": 0,
+    "asStroke": 0,
+    "asSpacing": 0,
+    "asOther": 20,
+    "sampleNodes": [
+      "Validated Frameworks Container",
+      "AI Intelligence Layers Container",
+      "Accessibility Container",
+      "Multi-Platform Scale Container",
+      "Design-Code Sync Container"
+    ]
+  },
+  {
+    "name": "color/pink/400",
+    "type": "COLOR",
+    "total": 20,
+    "asFill": 10,
+    "asStroke": 10,
+    "asSpacing": 0,
+    "asOther": 0,
+    "sampleNodes": [
+      "Rectangle 163",
+      "Line 124",
+      "Rectangle 149",
+      "Line 120",
+      "Rectangle 159",
+      "Line 118",
+      "Rectangle 157",
+      "Line 114"
+    ]
+  },
+  {
+    "name": "color/green/200",
+    "type": "COLOR",
+    "total": 16,
+    "asFill": 7,
+    "asStroke": 3,
+    "asSpacing": 0,
+    "asOther": 6,
+    "sampleNodes": [
+      "NavBar",
+      "Agent Portraits, Product Implementation",
+      "Agent Portraits, Product System Container",
+      "Agent Portraits, Design System Container",
+      "Vector",
+      "Rectangle 128",
+      "Rectangle 125",
+      "Rectangle 127"
+    ]
+  },
+  {
+    "name": "color/purple/100",
+    "type": "COLOR",
+    "total": 13,
+    "asFill": 13,
+    "asStroke": 0,
+    "asSpacing": 0,
+    "asOther": 0,
+    "sampleNodes": [
+      "Copy Container",
+      "What is this Ecosystem Container",
+      "Vector",
+      "Hard $#@%ing work!",
+      "Rectangle 164",
+      "Rectangle 162",
+      "Rectangle 161",
+      "Rectangle 158"
+    ]
+  },
+  {
+    "name": "space/200",
+    "type": "FLOAT",
+    "total": 13,
+    "asFill": 0,
+    "asStroke": 0,
+    "asSpacing": 13,
+    "asOther": 0,
+    "sampleNodes": [
+      "Challenge Container",
+      "Insight Container",
+      "Approach Container",
+      "Goals Container",
+      "Contact Container"
+    ]
+  },
+  {
+    "name": "color/white/300",
+    "type": "COLOR",
+    "total": 13,
+    "asFill": 10,
+    "asStroke": 0,
+    "asSpacing": 0,
+    "asOther": 3,
+    "sampleNodes": [
+      "Build with collaboration.",
+      "Lead by example.",
+      "Union",
+      "Peter Michaels Allen",
+      "◌",
+      "peter[at]designerpunk.ai",
+      "Problem solve with vision."
+    ]
+  },
+  {
+    "name": "color/cyan/200",
+    "type": "COLOR",
+    "total": 9,
+    "asFill": 2,
+    "asStroke": 0,
+    "asSpacing": 0,
+    "asOther": 7,
+    "sampleNodes": [
+      "Rosetta Bkgrnd",
+      "Rectangle 128",
+      "Rectangle 125",
+      "Rectangle 127"
+    ]
+  },
+  {
+    "name": "color/white/100",
+    "type": "COLOR",
+    "total": 8,
+    "asFill": 7,
+    "asStroke": 1,
+    "asSpacing": 0,
+    "asOther": 0,
+    "sampleNodes": [
+      "Desktop - 110",
+      "View the system",
+      "Multi-Platform Scale Container",
+      "Peter on LinkedIn"
+    ]
+  },
+  {
+    "name": "color/yellow/200",
+    "type": "COLOR",
+    "total": 7,
+    "asFill": 0,
+    "asStroke": 0,
+    "asSpacing": 0,
+    "asOther": 7,
+    "sampleNodes": [
+      "Rectangle 127",
+      "Rectangle 128",
+      "Rectangle 129"
+    ]
+  },
+  {
+    "name": "color/black/400",
+    "type": "COLOR",
+    "total": 6,
+    "asFill": 6,
+    "asStroke": 0,
+    "asSpacing": 0,
+    "asOther": 0,
+    "sampleNodes": [
+      "The inherent strength of AI is pattern matching, and its weakness is an inability to sustain persistent awareness and depth across sessions. To enable AI Agents to be my primary developer, the design system foundation would need to align to that strength while providing structured data capture-and-distribution systems to supplement the weakness.",
+      "Vector",
+      "Career Container"
+    ]
+  },
+  {
+    "name": "space/250",
+    "type": "FLOAT",
+    "total": 5,
+    "asFill": 0,
+    "asStroke": 0,
+    "asSpacing": 5,
+    "asOther": 0,
+    "sampleNodes": [
+      "Apple_logo_black 2",
+      "android-3 2",
+      "Subtract",
+      "Union"
+    ]
+  },
+  {
+    "name": "color/green/300",
+    "type": "COLOR",
+    "total": 5,
+    "asFill": 4,
+    "asStroke": 0,
+    "asSpacing": 0,
+    "asOther": 1,
+    "sampleNodes": [
+      "Vector",
+      "Stemma Bkgrnd",
+      "Easter Egg - Because why not!?"
+    ]
+  },
+  {
+    "name": "color/green/400",
+    "type": "COLOR",
+    "total": 4,
+    "asFill": 2,
+    "asStroke": 2,
+    "asSpacing": 0,
+    "asOther": 0,
+    "sampleNodes": [
+      "NavBar",
+      "Easter Egg - Because why not!?"
+    ]
+  },
+  {
+    "name": "color/gray/500",
+    "type": "COLOR",
+    "total": 2,
+    "asFill": 2,
+    "asStroke": 0,
+    "asSpacing": 0,
+    "asOther": 0,
+    "sampleNodes": [
+      "Subtract"
+    ]
+  },
+  {
+    "name": "color/orange/400",
+    "type": "COLOR",
+    "total": 2,
+    "asFill": 2,
+    "asStroke": 0,
+    "asSpacing": 0,
+    "asOther": 0,
+    "sampleNodes": [
+      "Vector"
+    ]
+  },
+  {
+    "name": "color/orange/100",
+    "type": "COLOR",
+    "total": 2,
+    "asFill": 2,
+    "asStroke": 0,
+    "asSpacing": 0,
+    "asOther": 0,
+    "sampleNodes": [
+      "Critical System Features Container"
+    ]
+  },
+  {
+    "name": "color/teal/200",
+    "type": "COLOR",
+    "total": 1,
+    "asFill": 1,
+    "asStroke": 0,
+    "asSpacing": 0,
+    "asOther": 0,
+    "sampleNodes": [
+      "How Was This Built Container"
+    ]
+  },
+  {
+    "name": "color/cyan/500",
+    "type": "COLOR",
+    "total": 1,
+    "asFill": 1,
+    "asStroke": 0,
+    "asSpacing": 0,
+    "asOther": 0,
+    "sampleNodes": [
+      "Binary Background"
+    ]
+  }
+]

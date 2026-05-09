@@ -1,0 +1,112 @@
+/**
+ * Input-Checkbox-Legal Component Styles for Web Platform
+ * 
+ * Token-based styling using CSS custom properties from the mathematical token system.
+ * All values reference semantic or primitive tokens - zero hard-coded values.
+ * Uses CSS logical properties for RTL support.
+ * 
+ * Stemma System Naming: [Family]-[Type]-[Variant] = Input-Checkbox-Legal
+ * Component Type: Semantic Variant (wraps Input-Checkbox-Base)
+ * 
+ * Implementation Pattern:
+ * This component wraps Input-Checkbox-Base, so most styling is inherited from Base.
+ * This CSS file only styles Legal-specific elements:
+ * - Required indicator (rendered by Legal, not Base)
+ * - Container layout adjustments
+ * 
+ * Fixed Configuration (handled by Base via attributes):
+ * - Box: 40px (lg size - icon.size100 + inset.100 × 2)
+ * - Typography: labelSm (via label-typography="sm" attribute)
+ * - Label alignment: top (via label-align="top" attribute)
+ * 
+ * DesignerPunk Philosophy: NO DISABLED STATES
+ * 
+ * @module Input-Checkbox-Legal/platforms/web/styles
+ * @see Requirements: 9.1-9.11
+ */
+
+/* ==========================================================================
+   Host Element
+   ========================================================================== */
+
+:host {
+  display: block;
+}
+
+/* ==========================================================================
+   Checkbox Container
+   ========================================================================== */
+
+/**
+ * Checkbox container - wraps required indicator and the Base checkbox.
+ * Uses flex column layout to stack required indicator above checkbox.
+ */
+.checkbox-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/**
+ * Legal variant marker class.
+ * Applied to container for potential future styling hooks.
+ */
+.checkbox--legal {
+  /* Legal-specific container styles if needed */
+}
+
+/* ==========================================================================
+   Required Indicator
+   ========================================================================== */
+
+/**
+ * Required indicator styling.
+ * Displays "Required" text above the checkbox for legal consent scenarios.
+ * 
+ * Uses caption typography with error color for visibility.
+ * Uses CSS logical properties for RTL support.
+ * 
+ * @see Requirements: 9.8-9.9 - Required indicator default visible
+ */
+.checkbox__required {
+  display: block;
+  margin-block-end: var(--space-grouped-minimal);
+  font-family: var(--typography-caption-font-family);
+  font-size: var(--typography-caption-font-size);
+  line-height: var(--typography-caption-line-height);
+  font-weight: var(--typography-caption-font-weight);
+  letter-spacing: var(--typography-caption-letter-spacing);
+  color: var(--color-feedback-error-text);
+}
+
+/* ==========================================================================
+   Wrapped Base Checkbox Styling
+   ========================================================================== */
+
+/**
+ * Ensure the wrapped Input-Checkbox-Base displays as block.
+ * The Base component handles all checkbox-specific styling.
+ */
+.checkbox-container input-checkbox-base {
+  display: block;
+}
+
+/* ==========================================================================
+   High Contrast Mode Support
+   ========================================================================== */
+
+@media (prefers-contrast: high) {
+  .checkbox__required {
+    color: currentColor;
+    font-weight: bold;
+  }
+}
+
+/* ==========================================================================
+   Print Styles
+   ========================================================================== */
+
+@media print {
+  .checkbox__required {
+    color: var(--color-print-default) !important;
+  }
+}

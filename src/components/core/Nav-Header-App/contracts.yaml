@@ -1,0 +1,70 @@
+version: "1.0.0"
+component: Nav-Header-App
+family: Navigation
+inherits: Nav-Header-Base
+
+contracts:
+  accessibility_no_heading:
+    category: accessibility
+    description: App-level header renders no heading element
+    behavior: |
+      Nav-Header-App does not render a heading element. App-level bars
+      may contain logos, search inputs, or other non-heading content.
+      Heading semantics are the responsibility of Nav-Header-Page (h1)
+      and future variants (Nav-Header-Modal: h2).
+    wcag: null
+    platforms: [web, ios, android]
+    validation:
+      - No h1/h2/h3 element rendered
+      - No heading accessibility trait/semantics applied
+    test_approach: |
+      Render Nav-Header-App, verify no heading elements in DOM/tree.
+    required: true
+
+  visual_background_override:
+    category: visual
+    description: Product-controlled background color via CSS custom property
+    behavior: |
+      Nav-Header-App exposes --nav-bg-override as a public CSS custom property.
+      When set, it overrides the default color.structure.canvas background.
+      When not set, the inherited color.structure.canvas value applies.
+      The component does not manage contrast — the product is responsible
+      for updating text/icon colors when the background changes.
+    wcag: null
+    platforms: [web, ios, android]
+    validation:
+      - Setting --nav-bg-override changes rendered background color
+      - Removing --nav-bg-override restores color.structure.canvas default
+      - Custom property pierces Shadow DOM boundary (web)
+    test_approach: |
+      Set --nav-bg-override on host element, verify background changes.
+      Remove property, verify default restores.
+    required: true
+
+  visual_glow:
+    category: visual
+    description: Always-present underglow beneath nav bar
+    behavior: |
+      Nav-Header-App renders a soft underglow effect beneath the nav bar.
+      The glow is intrinsic (always present, not optional). Default color
+      is glow.neonGreen (green500) at glowOpacity300 (0.4) with blur200
+      (32px) blur radius and zero x/y offset.
+      Product can override glow color via --nav-glow-color CSS custom
+      property. The value must be an rgba color with opacity pre-baked.
+    wcag: null
+    platforms: [web, ios, android]
+    validation:
+      - Underglow is always present without any custom property set
+      - Setting --nav-glow-color changes glow color
+      - Glow uses zero x/y offset (true radial glow)
+      - Default glow color is rgba(0, 204, 110, 0.4)
+    test_approach: |
+      Render Nav-Header-App, verify box-shadow present with correct
+      default values. Set --nav-glow-color, verify color changes.
+    required: true
+
+excludes:
+  state_disabled:
+    reason: "DesignerPunk does not support disabled states."
+    category: state
+    reference: "DesignerPunk Philosophy — no disabled states"

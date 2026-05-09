@@ -1,0 +1,219 @@
+# Input-Text-Base Component Schema
+#
+# Stemma System: Form Inputs Family
+# Component Type: Primitive (Base)
+# Naming Convention: [Family]-[Type]-[Variant] = Input-Text-Base
+#
+# This schema defines the behavioral contracts and properties for the
+# Input-Text-Base component, which serves as the foundational primitive
+# for all text input components in the Form Inputs family.
+
+name: Input-Text-Base
+type: primitive
+family: FormInput
+version: "1.0.0"
+readiness:
+  web:
+    reviewed: true
+  ios:
+    reviewed: true
+  android:
+    reviewed: true
+
+composition:
+  internal:
+    - component: Icon-Base
+      role: Trailing contextual icon (error, success, info)
+      required: false
+
+# Component description
+description: |
+  Foundational text input component implementing the float label pattern with
+  animated transitions. Serves as the primitive base for all semantic text input
+  components (Email, Password, PhoneNumber, etc.) in the Form Inputs family.
+
+# Reusable behaviors this component implements
+behaviors:
+  - focusable
+  - validatable
+  - float-label
+  - accessible
+
+# Component properties (public API)
+properties:
+  id:
+    type: string
+    required: true
+    description: Unique identifier for the input element
+  
+  label:
+    type: string
+    required: true
+    description: Label text (floats between placeholder and floated positions)
+  
+  value:
+    type: string
+    required: true
+    description: Current input value
+  
+  onChange:
+    type: "(value: string) => void"
+    required: true
+    description: Callback when value changes
+  
+  onFocus:
+    type: "() => void"
+    required: false
+    description: Callback when input receives focus
+  
+  onBlur:
+    type: "() => void"
+    required: false
+    description: Callback when input loses focus
+  
+  helperText:
+    type: string
+    required: false
+    description: Helper text displayed below input (persistent)
+  
+  errorMessage:
+    type: string
+    required: false
+    description: Error message displayed below helper text (conditional)
+  
+  isSuccess:
+    type: boolean
+    required: false
+    default: false
+    description: Success state indicator (shows success icon)
+  
+  showInfoIcon:
+    type: boolean
+    required: false
+    default: false
+    description: Info icon support (shows info icon, triggers helper text)
+  
+  type:
+    type: "'text' | 'email' | 'password' | 'tel' | 'url'"
+    required: false
+    default: "'text'"
+    description: Input type
+  
+  autocomplete:
+    type: string
+    required: false
+    description: Autocomplete attribute for browser autofill
+  
+  placeholder:
+    type: string
+    required: false
+    description: Placeholder text (only shown when label is floated and input is empty)
+  
+  readOnly:
+    type: boolean
+    required: false
+    default: false
+    description: Read-only state (alternative to disabled)
+  
+  required:
+    type: boolean
+    required: false
+    default: false
+    description: Required field indicator
+  
+  maxLength:
+    type: number
+    required: false
+    description: Maximum length for input value
+  
+  testID:
+    type: string
+    required: false
+    description: Test ID for automated testing
+  
+  className:
+    type: string
+    required: false
+    description: Additional CSS class names (web only)
+
+# Behavioral contracts moved to contracts.yaml
+# Design tokens this component requires
+tokens:
+  typography:
+    - typography.labelMd
+    - typography.labelMdFloat
+    - typography.input
+    - typography.caption
+  color:
+    - color.text.muted
+    - color.text.default
+    - color.primary
+    - color.error
+    - color.error.strong
+    - color.success.strong
+    - color.border
+    - color.background
+  spacing:
+    - space.inset.100
+    - space.grouped.tight
+    - space.grouped.minimal
+  motion:
+    - motion.floatLabel
+    - motion.focusTransition
+  border:
+    - borderDefault
+    - radius150
+  accessibility:
+    - tapAreaRecommended
+    - accessibility.focus.width
+    - accessibility.focus.offset
+    - accessibility.focus.color
+  icon:
+    - icon.size100
+  blend:
+    - blend.focusSaturate
+
+# Supported platforms
+platforms:
+  - web
+  - ios
+  - android
+
+# Platform-specific implementation notes
+platform_notes:
+  web:
+    element: "<input-text-base>"
+    implementation: Web Component with Shadow DOM
+    file: platforms/web/InputTextBase.web.ts
+  ios:
+    implementation: SwiftUI View
+    file: platforms/ios/InputTextBase.ios.swift
+  android:
+    implementation: Jetpack Compose Composable
+    file: platforms/android/InputTextBase.android.kt
+
+# Semantic components that inherit from this primitive
+semantic_variants:
+  - name: Input-Text-Email
+    extends: email_format validation, email autocomplete
+    status: planned
+  - name: Input-Text-Password
+    extends: secure input, password toggle
+    status: planned
+  - name: Input-Text-PhoneNumber
+    extends: phone formatting, international validation
+    status: planned
+
+# Accessibility compliance
+accessibility:
+  wcag_level: AA
+  compliance:
+    - "1.4.1 Use of Color - Error/success states use icons, not just color"
+    - "1.4.3 Contrast (Minimum) - All text meets 4.5:1 contrast"
+    - "1.4.11 Non-text Contrast - Focus ring meets 3:1 contrast"
+    - "2.1.1 Keyboard - Fully keyboard accessible"
+    - "2.4.7 Focus Visible - Clear focus indicator"
+    - "2.3.3 Animation from Interactions - Respects reduced motion"
+    - "3.3.1 Error Identification - Errors clearly identified"
+    - "3.3.2 Labels or Instructions - Label always visible"
+    - "4.1.2 Name, Role, Value - Proper ARIA attributes"

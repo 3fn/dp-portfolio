@@ -1,0 +1,20 @@
+const results = {};
+const ids = ["VariableID:1755:1063","VariableID:1755:1089","VariableID:1755:1091","VariableID:1755:1060","VariableID:1755:1048","VariableID:1755:1058","VariableID:1755:1088","VariableID:1755:1049","VariableID:1755:1062","VariableID:1755:1085","VariableID:1755:1042","VariableID:1755:1064","VariableID:1755:1084","VariableID:1755:1079","VariableID:1755:1083","VariableID:1755:1057","VariableID:1755:1059","VariableID:1755:1090","VariableID:1755:1075","VariableID:1755:1076","VariableID:1755:1056","VariableID:1755:1087","VariableID:1755:1055","VariableID:1755:1078","VariableID:1755:1080","VariableID:1755:1047","VariableID:1755:1053","VariableID:1755:1061","VariableID:1755:1070","VariableID:1755:1068","VariableID:1755:1102","VariableID:1755:1098","VariableID:1755:1071","VariableID:1755:1096","VariableID:1755:1093","VariableID:1755:1100","VariableID:1755:1044","VariableID:1755:1094","VariableID:1755:1069","VariableID:1755:1073","VariableID:1755:1041","VariableID:1755:1099","VariableID:1755:1095","VariableID:1755:1097","VariableID:1755:1066","VariableID:1755:1081","VariableID:1755:1086","VariableID:1755:1046","VariableID:1755:1065"];
+for (const id of ids) {
+  try {
+    const v = await figma.variables.getVariableByIdAsync(id);
+    if (v) {
+      const collection = await figma.variables.getVariableCollectionByIdAsync(v.variableCollectionId);
+      results[id] = {
+        name: v.name,
+        resolvedType: v.resolvedType,
+        collection: collection ? collection.name : 'unknown'
+      };
+    } else {
+      results[id] = { name: null, error: 'not found' };
+    }
+  } catch (e) {
+    results[id] = { name: null, error: String(e) };
+  }
+}
+return JSON.stringify(results);

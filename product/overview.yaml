@@ -1,0 +1,24 @@
+# DP-Portfolio — Product Overview
+
+## Product Context
+name: DP-Portfolio
+description: Single-page portfolio site showcasing the DesignerPunk ecosystem for hiring managers and potential collaborators
+domain: Portfolio / professional marketing
+audience: Hiring managers, design system practitioners, potential collaborators
+type: Single-page scroll-based website
+
+## Key Characteristics
+- Content-driven, narrative structure
+- Scroll-reveal progressive disclosure
+- Multi-colored, light, default theme with bold accent colors (cyan, pink, green, yellow, orange) that align with DesignerPunk's inherent color tokens
+- Extensive use of textures (noise, halftone circles and squares) with radial, diamond, and angular gradients
+- Strong use of animated data visualizations
+- Heavy use of blend modes for imagery
+- Custom typography (Rajdhani display, Figtree body, Commit Mono code)
+- Stats-forward credibility building
+- Personal, 1st-person voice and personality
+
+## Platform Status
+web: in-progress
+ios: not-applicable
+android: not-applicable

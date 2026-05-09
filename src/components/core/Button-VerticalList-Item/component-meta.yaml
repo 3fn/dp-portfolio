@@ -1,0 +1,24 @@
+purpose: "Represent a single action item within a vertical list menu, supporting tap, select, and multi-select modes."
+
+# Derived from family-level guidance (Component-Family-Button.md)
+usage:
+  when_to_use:
+    - "Triggering user actions (submit, save, cancel)"
+    - "Navigating to new views or pages"
+    - "Opening modals or dialogs"
+    - "Confirming or dismissing operations"
+  when_not_to_use:
+    - "Displaying read-only status (use Badges instead)"
+    - "Creating inline text links (use Link component when available)"
+    - "Building toggle controls (use Toggle component when available)"
+
+contexts:
+  - "settings-screens"
+  - "modals"
+  - "list-items"
+
+alternatives:
+  - component: Button-CTA
+    reason: "When the action is standalone, not part of a vertical list"
+  - component: Button-Icon
+    reason: "When only an icon-only compact action is needed"

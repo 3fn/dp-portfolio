@@ -1,0 +1,28 @@
+purpose: "Collect a phone number with automatic formatting, phone keyboard type, and country code support."
+
+usage:
+  when_to_use:
+    - "Phone number fields in registration, contact, or profile forms"
+    - "Any input that needs phone number formatting and validation"
+  when_not_to_use:
+    - "General numeric input without phone semantics — use Input-Text-Base"
+    - "Short numeric codes (OTP, PIN)"
+
+contexts:
+  - "forms"
+  - "onboarding-flows"
+  - "profile-sections"
+
+alternatives:
+  - component: Input-Text-Email
+    reason: "When email address collection"
+  - component: Input-Text-Password
+    reason: "When password entry"
+  - component: Input-Text-Base
+    reason: "When generic text input"
+  - component: Input-Checkbox-Legal
+    reason: "When terms of service acceptance"
+  - component: Input-Checkbox-Base
+    reason: "When generic binary selection"
+  - component: Input-Radio-Base
+    reason: "When standalone radio (rare)"

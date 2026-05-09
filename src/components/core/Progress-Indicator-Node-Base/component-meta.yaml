@@ -1,0 +1,18 @@
+purpose: "Render a single step indicator node showing completion state (incomplete, active, complete) within a progress sequence."
+
+# Derived from family-level guidance (Component-Family-Progress.md)
+usage:
+  when_to_use:
+    - "Showing position in a carousel or swipeable content (Pagination-Base)"
+    - "Displaying progress through a linear multi-step flow (Stepper-Base)"
+    - "Showing labeled steps with descriptions in complex workflows (Stepper-Detailed)"
+  when_not_to_use:
+    - "Navigation is the primary purpose (use navigation components instead)"
+    - "Progress is continuous/percentage-based (use a progress bar)"
+    - "Steps are non-linear or can be completed in any order"
+
+contexts:
+  - "onboarding-flows"
+  - "forms"
+
+alternatives: []

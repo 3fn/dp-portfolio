@@ -1,0 +1,247 @@
+{
+  "VariableID:1755:1063": {
+    "name": "color/white/100",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1089": {
+    "name": "color/green/200",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1091": {
+    "name": "color/green/400",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1060": {
+    "name": "color/black/300",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1048": {
+    "name": "space/250",
+    "resolvedType": "FLOAT",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1058": {
+    "name": "color/black/100",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1088": {
+    "name": "color/green/100",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1049": {
+    "name": "space/300",
+    "resolvedType": "FLOAT",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1062": {
+    "name": "color/black/500",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1085": {
+    "name": "color/pink/300",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1042": {
+    "name": "space/050",
+    "resolvedType": "FLOAT",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1064": {
+    "name": "color/white/200",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1084": {
+    "name": "color/pink/200",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1079": {
+    "name": "color/purple/200",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1083": {
+    "name": "color/pink/100",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1057": {
+    "name": "color/gray/500",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1059": {
+    "name": "color/black/200",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1090": {
+    "name": "color/green/300",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1075": {
+    "name": "color/orange/300",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1076": {
+    "name": "color/orange/400",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1056": {
+    "name": "color/gray/400",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1087": {
+    "name": "color/pink/500",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1055": {
+    "name": "color/gray/300",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1078": {
+    "name": "color/purple/100",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1080": {
+    "name": "color/purple/300",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1047": {
+    "name": "space/200",
+    "resolvedType": "FLOAT",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1053": {
+    "name": "color/gray/100",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1061": {
+    "name": "color/black/400",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1070": {
+    "name": "color/yellow/300",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1068": {
+    "name": "color/yellow/100",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1102": {
+    "name": "color/teal/500",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1098": {
+    "name": "color/teal/100",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1071": {
+    "name": "color/yellow/400",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1096": {
+    "name": "color/cyan/400",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1093": {
+    "name": "color/cyan/100",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1100": {
+    "name": "color/teal/300",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1044": {
+    "name": "space/100",
+    "resolvedType": "FLOAT",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1094": {
+    "name": "color/cyan/200",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1069": {
+    "name": "color/yellow/200",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1073": {
+    "name": "color/orange/100",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1041": {
+    "name": "space/025",
+    "resolvedType": "FLOAT",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1099": {
+    "name": "color/teal/200",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1095": {
+    "name": "color/cyan/300",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1097": {
+    "name": "color/cyan/500",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1066": {
+    "name": "color/white/400",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1081": {
+    "name": "color/purple/400",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1086": {
+    "name": "color/pink/400",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1046": {
+    "name": "space/150",
+    "resolvedType": "FLOAT",
+    "collection": "Primitives"
+  },
+  "VariableID:1755:1065": {
+    "name": "color/white/300",
+    "resolvedType": "COLOR",
+    "collection": "Primitives"
+  }
+}

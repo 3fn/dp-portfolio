@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@3fn/core": "^11.3.3",
+    "figma-console-mcp": "^1.22.4"
+  }
+}

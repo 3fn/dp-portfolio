@@ -1,0 +1,22 @@
+purpose: "Group Button-VerticalList-Item components into a vertical action menu with mode-driven selection behavior (tap, select, multi-select)."
+
+# Derived from family-level guidance (Component-Family-Button.md)
+usage:
+  when_to_use:
+    - "Triggering user actions (submit, save, cancel)"
+    - "Navigating to new views or pages"
+    - "Opening modals or dialogs"
+    - "Confirming or dismissing operations"
+  when_not_to_use:
+    - "Displaying read-only status (use Badges instead)"
+    - "Creating inline text links (use Link component when available)"
+    - "Building toggle controls (use Toggle component when available)"
+
+contexts:
+  - "settings-screens"
+  - "modals"
+  - "list-items"
+
+alternatives:
+  - component: Input-Radio-Set
+    reason: "When the selection is form data (radio-style) rather than action-driven"

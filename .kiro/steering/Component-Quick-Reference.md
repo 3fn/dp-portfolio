@@ -1,0 +1,302 @@
+---
+inclusion: manual
+name: Component-Quick-Reference
+description: Routing table for component documentation — maps component families to their MCP-queryable docs, readiness status, and semantic variants. Load when selecting components for UI compositions or finding the right component family doc.
+---
+
+# Component Quick Reference
+
+**Date**: 2026-01-01
+**Purpose**: Routing table for component documentation - helps AI agents find the right MCP document for each component family
+**Organization**: process-standard
+**Scope**: cross-project
+**Layer**: 2
+**Relevant Tasks**: component-development, ui-composition, feature-building
+**Last Reviewed**: 2026-02-07
+
+---
+
+## Stemma System Overview
+
+For comprehensive understanding of the Stemma System architecture, family inheritance patterns, and cross-platform strategy, see:
+- **Stemma System Principles**: `.kiro/steering/stemma-system-principles.md`
+- **Component Schema Format**: `.kiro/steering/Component-Schema-Format.md`
+
+## Purpose
+
+This document serves as a routing table for component documentation—it helps AI agents quickly find the right MCP document for each component family without loading full reference docs. This is not a reference itself; it routes to where component details are documented.
+
+## Component Documentation Map
+
+All 13 component families have MCP-queryable documentation. Production families have full implementation details; placeholder families have structural definitions for future development.
+
+| Component Family | Shared Need/Purpose | MCP Document Path | Status |
+|------------------|---------------------|-------------------|--------|
+| Buttons | User interaction and actions | `.kiro/steering/Component-Family-Button.md` | 🟢 Production |
+| Chips | Filtering, selection, and input management | `.kiro/steering/Component-Family-Chip.md` | 🟢 Production |
+| Form Inputs | Data collection and validation | `.kiro/steering/Component-Family-Form-Inputs.md` | 🟢 Production |
+| Checkboxes | Binary selection and legal consent | `.kiro/steering/Component-Family-Form-Inputs.md` | 🟢 Production |
+| Radio Buttons | Single-selection from mutually exclusive options | `.kiro/steering/Component-Family-Form-Inputs.md` | 🟢 Production |
+| Containers | Layout and content organization | `.kiro/steering/Component-Family-Container.md` | 🟢 Production |
+| Icons | Visual communication | `.kiro/steering/Component-Family-Icon.md` | 🟢 Production |
+| Avatars | Identity representation | `.kiro/steering/Component-Family-Avatar.md` | 🟢 Production |
+| Badges | Status and labeling | `.kiro/steering/Component-Family-Badge.md` | 🟢 Production |
+| Progress Indicators | Step tracking and pagination | `.kiro/steering/Component-Family-Progress.md` | 🟢 Production |
+| Modals | Overlay interactions | `.kiro/steering/Component-Family-Modal.md` | 🔴 Placeholder |
+| Data Displays | Information presentation | `.kiro/steering/Component-Family-Data-Display.md` | 🔴 Placeholder |
+| Dividers | Visual separation | `.kiro/steering/Component-Family-Divider.md` | 🔴 Placeholder |
+| Loading | Progress indication | `.kiro/steering/Component-Family-Loading.md` | 🔴 Placeholder |
+| Navigation | Wayfinding and view switching | `.kiro/steering/Component-Family-Navigation.md` | 🟡 Beta |
+
+**Status Legend**: 🟢 Production Ready | 🟡 Beta | 🔴 Placeholder | ⚠️ Deprecated
+
+**Family Count**: 9 Production Ready, 1 Beta, 4 Placeholder (structural definitions for future development)
+
+### Type Primitives
+
+Type primitives are specialized components within a family that provide opinionated defaults and curated prop subsets for specific use cases. They compose family primitives (like Container-Base) rather than inheriting from them.
+
+| Type Primitive | Family | Purpose | MCP Document Path | Status |
+|----------------|--------|---------|-------------------|--------|
+| Container-Card-Base | Containers | Card-specific styling with curated props and interactive behavior | `.kiro/steering/Component-Family-Container.md` | 🟢 Production |
+
+**Type Primitive Characteristics**:
+- **Curated API**: Exposes only use-case-appropriate props and values
+- **Opinionated Defaults**: Zero-config rendering with sensible defaults
+- **Composition Pattern**: Uses family primitive internally (not inheritance)
+- **Escape Hatch**: Developers can use family primitive directly for full flexibility
+
+For detailed Container-Card-Base documentation including props mapping, interactive behavior, and usage examples:
+```
+get_section({ path: ".kiro/steering/Component-Family-Container.md", heading: "Container-Card-Base" })
+```
+
+## Naming Convention
+
+Components follow the **[Family]-[Type]-[Variant]** pattern:
+- **Primitives**: Use "Base" suffix when semantic variants exist (e.g., `Input-Text-Base`, `Container-Base`, `Icon-Base`)
+- **Standalone Components**: No suffix when no behavioral variants exist (e.g., `Button-CTA`)
+- **Semantics**: Use descriptive variants (e.g., `Input-Text-Email`, `Input-Text-Password`)
+
+**Key Distinction**: The `-Base` suffix indicates a primitive that serves as foundation for semantic variants. Standalone components like `Button-CTA` don't need `-Base` because styling is handled via props, not behavioral inheritance.
+
+### Component Selection: Radio
+
+Radio components follow the **orchestration pattern** — the Set orchestrates Base children without duplicating rendering logic.
+
+| Component | Use When |
+|-----------|----------|
+| `Input-Radio-Base` | Embedding a single radio in a custom layout, or building a custom group orchestrator |
+| `Input-Radio-Set` | Displaying a group of mutually exclusive options (most common use case) |
+
+**Default choice**: Use `Input-Radio-Set` wrapping `Input-Radio-Base` children. The Set handles mutual exclusivity, keyboard navigation (arrow keys, Home/End), and group-level validation so you don't have to.
+
+**Use Base alone** only when you need full control over group behavior or are placing a single radio outside a standard group context.
+
+## Common Composition Patterns
+
+### Login Form
+- **Form Inputs**: `Input-Text-Email`, `Input-Text-Password`
+- **Buttons**: `Button-CTA` (submit, variant="primary")
+- **Containers**: `Container-Base` (form wrapper)
+- **Tokens**: `Token-Family-Spacing.md` → stack patterns, `Token-Family-Color.md` → form colors
+
+### Feed Post
+- **Avatars**: `Avatar-Base` (planned)
+- **Buttons**: `Button-CTA` (variant="secondary" for actions)
+- **Data Displays**: `Display-Base` (planned)
+- **Containers**: `Container-Card-Base` (card wrapper with interactive support)
+- **Tokens**: `Token-Family-Shadow.md` → card elevation, `Token-Family-Spacing.md` → content spacing
+
+### Settings Panel
+- **Form Inputs**: `Input-Text-Base` (for custom inputs)
+- **Containers**: `Container-Base` (section wrapper)
+- **Dividers**: `Divider-Base` (planned)
+- **Navigation**: `Nav-SegmentedChoice-Base` (segmented control), `Nav-TabBar-Base` (bottom tab bar)
+- **Tokens**: `Token-Family-Layering.md` → panel stacking, `Token-Family-Radius.md` → section corners
+
+### Filter Bar
+- **Chips**: `Chip-Filter` (multi-select filter toggles)
+- **Containers**: `Container-Base` (filter bar wrapper)
+- **Tokens**: `Token-Family-Spacing.md` → chip gaps, `Token-Family-Color.md` → selected state colors
+
+### Tag Input Field
+- **Chips**: `Chip-Input` (dismissible tags)
+- **Form Inputs**: `Input-Text-Base` (new tag entry)
+- **Containers**: `Container-Base` (field wrapper)
+- **Tokens**: `Token-Family-Spacing.md` → chip spacing, `Token-Family-Motion.md` → dismiss animation
+
+### Survey / Preferences Form
+- **Radio Buttons**: `Input-Radio-Set` wrapping `Input-Radio-Base` children (single-select questions)
+- **Checkboxes**: `Input-Checkbox-Base` (multi-select questions)
+- **Buttons**: `Button-CTA` (submit, variant="primary")
+- **Containers**: `Container-Base` (section wrapper)
+- **Tokens**: `Token-Family-Spacing.md` → group spacing, `Token-Family-Color.md` → selection feedback colors
+
+## MCP Query Examples
+
+Use these MCP queries to access component documentation progressively via the `designerpunk-docs` MCP server.
+
+### Progressive Disclosure Workflow
+
+The MCP documentation server supports a three-stage progressive disclosure workflow that optimizes token usage:
+
+| Stage | Tool | Token Cost | Use When |
+|-------|------|------------|----------|
+| 1. Summary | `get_document_summary` | ~200 tokens | Understanding document structure |
+| 2. Section | `get_section` | ~500-2,000 tokens | Getting targeted information |
+| 3. Full | `get_document_full` | ~2,000-10,000 tokens | Comprehensive reference needed |
+
+**Key Principle**: Start with summaries, drill into sections, only load full documents when necessary.
+
+### Stage 1: Get Document Summary
+
+Returns metadata and outline (~200 tokens) to understand document structure before loading full content:
+
+```
+// Understand Form Inputs family structure
+get_document_summary({ path: ".kiro/steering/Component-Family-Form-Inputs.md" })
+
+// Understand Button family structure
+get_document_summary({ path: ".kiro/steering/Component-Family-Button.md" })
+
+// Understand Container family structure
+get_document_summary({ path: ".kiro/steering/Component-Family-Container.md" })
+
+// Understand Icon family structure
+get_document_summary({ path: ".kiro/steering/Component-Family-Icon.md" })
+
+// Understand Chip family structure
+get_document_summary({ path: ".kiro/steering/Component-Family-Chip.md" })
+
+// Get Container-Card-Base type primitive details
+get_section({ path: ".kiro/steering/Component-Family-Container.md", heading: "Container-Card-Base" })
+```
+
+**Returns**: Document metadata (purpose, layer, relevant tasks) plus section outline with headings.
+
+### Stage 2: Get Specific Section
+
+Returns targeted content (~500-2,000 tokens) for specific information needs:
+
+```
+// Get component behavioral contracts
+get_section({ path: ".kiro/steering/Component-Family-Form-Inputs.md", heading: "Behavioral Contracts" })
+
+// Get contract system conventions (taxonomy, naming, format)
+get_section({ path: ".kiro/steering/Contract-System-Reference.md", heading: "Taxonomy" })
+get_section({ path: ".kiro/steering/Contract-System-Reference.md", heading: "Naming Convention" })
+get_section({ path: ".kiro/steering/Contract-System-Reference.md", heading: "Canonical Format" })
+
+// Get inheritance structure
+get_section({ path: ".kiro/steering/Component-Family-Button.md", heading: "Inheritance Structure" })
+
+// Get token dependencies
+get_section({ path: ".kiro/steering/Component-Family-Container.md", heading: "Token Dependencies" })
+
+// Get usage guidelines
+get_section({ path: ".kiro/steering/Component-Family-Icon.md", heading: "Usage Guidelines" })
+
+// Get Chip family behavioral contracts
+get_section({ path: ".kiro/steering/Component-Family-Chip.md", heading: "Behavioral Contracts" })
+
+// Get cross-platform notes
+get_section({ path: ".kiro/steering/Component-Family-Form-Inputs.md", heading: "Cross-Platform Notes" })
+
+// Get radio component details
+get_section({ path: ".kiro/steering/Component-Family-Form-Inputs.md", heading: "Input-Radio-Base" })
+get_section({ path: ".kiro/steering/Component-Family-Form-Inputs.md", heading: "Input-Radio-Set" })
+
+// Get component schema definitions
+get_section({ path: ".kiro/steering/Component-Family-Button.md", heading: "Component Schemas" })
+
+// Get placeholder family planned characteristics
+get_section({ path: ".kiro/steering/Component-Family-Modal.md", heading: "Planned Characteristics" })
+```
+
+**Returns**: Section content with parent heading context for document location.
+
+### Stage 3: Get Full Document
+
+Returns complete content (~2,000-10,000 tokens) when comprehensive reference is required:
+
+```
+// Full Form Inputs family reference
+get_document_full({ path: ".kiro/steering/Component-Family-Form-Inputs.md" })
+
+// Full Button family reference
+get_document_full({ path: ".kiro/steering/Component-Family-Button.md" })
+```
+
+**Use sparingly**: Only when you need complete component family documentation.
+
+### Additional MCP Tools
+
+The `designerpunk-docs` server provides additional tools for documentation management:
+
+```
+// Get complete documentation map with all documents organized by layer
+get_documentation_map()
+
+// List cross-references in a document
+list_cross_references({ path: ".kiro/steering/Component-Family-Form-Inputs.md" })
+
+// Validate document metadata schema
+validate_metadata({ path: ".kiro/steering/Component-Family-Button.md" })
+
+// Check documentation index health
+get_index_health()
+
+// Rebuild index if corrupted or out of sync
+rebuild_index()
+```
+
+### Recommended Workflow
+
+**For Component Selection:**
+1. **Start with this Quick Reference** to identify which component family you need
+2. **Query document summary** to understand the family's structure and available sections
+3. **Query specific sections** for behavioral contracts, inheritance, or token dependencies
+4. **Query full document** only when building complex compositions requiring comprehensive reference
+
+**For Building UI Compositions:**
+1. **Identify components** from Common Composition Patterns above
+2. **Query behavioral contracts** for each component to understand interactions
+3. **Query token dependencies** to ensure consistent styling
+4. **Cross-reference with Token Quick Reference** for token-specific guidance
+
+**Example: Building a Login Form:**
+```
+// Step 1: Get Form Inputs overview
+get_document_summary({ path: ".kiro/steering/Component-Family-Form-Inputs.md" })
+
+// Step 2: Get specific component contracts
+get_section({ path: ".kiro/steering/Component-Family-Form-Inputs.md", heading: "Input-Text-Email" })
+get_section({ path: ".kiro/steering/Component-Family-Form-Inputs.md", heading: "Input-Text-Password" })
+
+// Step 3: Get button for submit action
+get_section({ path: ".kiro/steering/Component-Family-Button.md", heading: "Button-CTA" })
+
+// Step 4: Get container for layout
+get_section({ path: ".kiro/steering/Component-Family-Container.md", heading: "Container-Base" })
+```
+
+**Example: Building a Survey with Radio Groups:**
+```
+// Step 1: Get radio component details
+get_section({ path: ".kiro/steering/Component-Family-Form-Inputs.md", heading: "Input-Radio-Base" })
+get_section({ path: ".kiro/steering/Component-Family-Form-Inputs.md", heading: "Input-Radio-Set" })
+
+// Step 2: Get container for section layout
+get_section({ path: ".kiro/steering/Component-Family-Container.md", heading: "Container-Base" })
+
+// Step 3: Get button for submit
+get_section({ path: ".kiro/steering/Component-Family-Button.md", heading: "Button-CTA" })
+```
+
+## Related Documentation
+
+- **Primitive vs Semantic Philosophy**: `.kiro/steering/Component-Primitive-vs-Semantic-Philosophy.md`
+- **Component Readiness System**: `.kiro/steering/Component-Readiness-Status.md`
+- **Token Quick Reference**: `.kiro/steering/Token-Quick-Reference.md`
+- **MCP Component Family Document Template**: `.kiro/steering/Component-MCP-Document-Template.md` - Template for creating new family documentation

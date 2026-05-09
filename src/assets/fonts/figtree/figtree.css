@@ -1,0 +1,25 @@
+/**
+ * Figtree Font Family - @font-face Declarations
+ *
+ * Purpose: Web font loading configuration for Figtree font family
+ * Weights: Variable (100–900)
+ * Formats: TrueType variable font
+ */
+
+/* Figtree Variable (all weights, normal) */
+@font-face {
+  font-family: 'Figtree';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../../../../primitive-assets/Figtree-VariableFont_wght.ttf') format('truetype');
+}
+
+/* Figtree Variable (all weights, italic) */
+@font-face {
+  font-family: 'Figtree';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../../../../primitive-assets/Figtree-Italic-VariableFont_wght.ttf') format('truetype');
+}
