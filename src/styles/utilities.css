@@ -1,0 +1,22 @@
+/* Product CSS utilities */
+
+/* Card-level hard shadow (space100 offset) */
+.hard-shadow {
+  box-shadow: var(--space-100) var(--space-100) var(--blur-000) var(--hard-shadow-color, var(--purple-300));
+}
+
+/* Text-level hard shadow (space025 offset) — Stats section */
+.text-shadow-hard {
+  text-shadow: var(--space-025) var(--space-025) var(--blur-000) var(--text-shadow-color, var(--pink-500));
+}
+
+/* Section heading prefix pattern */
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-grouped-tight);
+}
+
+.section-prefix {
+  flex-shrink: 0;
+}

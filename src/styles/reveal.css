@@ -1,0 +1,32 @@
+/* Scroll-reveal animation system */
+
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(var(--space-200));
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--duration-250) ease-out,
+              transform var(--duration-250) ease-out;
+}
+
+/* Stagger delay for card siblings */
+.reveal-stagger:nth-child(1) { transition-delay: 0ms; }
+.reveal-stagger:nth-child(2) { transition-delay: 75ms; }
+.reveal-stagger:nth-child(3) { transition-delay: 150ms; }
+.reveal-stagger:nth-child(4) { transition-delay: 225ms; }
+.reveal-stagger:nth-child(5) { transition-delay: 300ms; }
+.reveal-stagger:nth-child(6) { transition-delay: 375ms; }
+
+/* Reduced motion: no animation, immediate visibility */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-hidden {
+    opacity: 1;
+    transform: none;
+  }
+  .reveal-visible {
+    transition: none;
+  }
+}

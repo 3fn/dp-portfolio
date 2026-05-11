@@ -1,0 +1,70 @@
+/* Layout: Full-bleed sections with constrained content columns */
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100dvh;
+}
+
+/* Sticky nav */
+nav-header-app {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-index-navigation, 1000);
+}
+
+/* Full-bleed sections */
+main > section,
+main > footer,
+footer {
+  width: 100%;
+}
+
+/* Section backgrounds */
+#hero {
+  background-color: var(--green-100);
+  background-image: linear-gradient(-102deg, var(--black-500), var(--white-100));
+  background-blend-mode: normal;
+  position: relative;
+}
+#hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(-102deg, var(--black-500), var(--white-100));
+  opacity: var(--opacity-008);
+  pointer-events: none;
+}
+#stats { background-color: var(--pink-100); }
+#why-build { background-color: var(--green-100); }
+#ecosystem { background-color: var(--yellow-300); }
+#critical-features { background-color: var(--orange-100); }
+#code-screenshots { background-color: var(--orange-300); }
+#how-built { background-color: var(--teal-200); }
+#who-built { background-color: var(--black-300); }
+#cta { background-color: var(--green-100); }
+footer { background-color: var(--black-500); }
+
+/* Content column: max-width with inline padding */
+.content-column {
+  max-width: var(--breakpoint-lg);
+  margin-inline: auto;
+  padding-inline: var(--space-500);
+  width: 100%;
+}
+
+/* Nav scroll-linked color transition */
+nav-header-app {
+  transition: background-color var(--duration-150) ease-out,
+              box-shadow var(--duration-150) ease-out,
+              border-color var(--duration-150) ease-out;
+}
+
+/* Text mode snap — no transition on color, instant swap */
+nav-header-app.nav--dark-text { --nav-text-color: var(--color-contrast-on-light); }
+nav-header-app.nav--light-text { --nav-text-color: var(--color-contrast-on-dark); }
