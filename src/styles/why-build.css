@@ -1,0 +1,102 @@
+/* Why Build section styles */
+
+#why-build {
+  --hard-shadow-color: var(--purple-300);
+  background: radial-gradient(circle at center, var(--pink-300), var(--pink-500));
+  position: relative;
+}
+
+/* Exclusion texture overlay */
+#why-build::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    var(--pink-500) 0px,
+    var(--pink-500) 8px,
+    transparent 8px,
+    transparent 16px
+  ),
+  repeating-linear-gradient(
+    90deg,
+    var(--pink-500) 0px,
+    var(--pink-500) 8px,
+    transparent 8px,
+    transparent 16px
+  );
+  mix-blend-mode: exclusion;
+  pointer-events: none;
+}
+
+#why-build .content-column {
+  position: relative;
+  padding-block: var(--space-sectioned-normal);
+}
+
+#why-build .section-heading {
+  color: var(--color-contrast-on-dark);
+  margin-block-end: var(--space-sectioned-loose);
+}
+
+/* Card grid */
+.why-build-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-sectioned-loose);
+}
+
+.why-build-card {
+  background-color: var(--purple-100);
+  padding-block: var(--space-inset-200);
+  padding-inline: var(--space-inset-300);
+}
+
+.why-build-card h3 {
+  margin-block-end: var(--space-200);
+}
+
+.why-build-card p {
+  color: var(--color-text-default);
+}
+
+/* Easter egg zone */
+.easter-egg-zone {
+  background-color: var(--green-100);
+  padding: var(--space-inset-300);
+  text-align: center;
+}
+
+.easter-egg {
+  opacity: 0;
+  font-size: 72px;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.easter-egg-zone:hover .easter-egg {
+  animation: neon-flicker 500ms ease-out forwards;
+}
+
+@keyframes neon-flicker {
+  0%   { opacity: 0; }
+  15%  { opacity: 0.4; }
+  25%  { opacity: 0; }
+  45%  { opacity: 0.7; }
+  55%  { opacity: 0; }
+  70%  { opacity: 0.9; }
+  80%  { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .easter-egg-zone:hover .easter-egg {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* Hide easter egg on mobile (no hover) */
+@media (hover: none) {
+  .easter-egg-zone { display: none; }
+}

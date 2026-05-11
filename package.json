@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "build:page": "esbuild src/scripts/scroll-nav.ts src/scripts/reveal.ts --bundle --outdir=dist/scripts --format=esm --target=es2022",
-    "dev": "esbuild src/scripts/scroll-nav.ts src/scripts/reveal.ts --bundle --outdir=dist/scripts --format=esm --target=es2022 --watch"
+    "build:page": "esbuild src/scripts/scroll-nav.ts src/scripts/reveal.ts src/scripts/stats.ts --bundle --outdir=dist/scripts --format=esm --target=es2022",
+    "dev": "esbuild src/scripts/scroll-nav.ts src/scripts/reveal.ts src/scripts/stats.ts --bundle --outdir=dist/scripts --format=esm --target=es2022 --watch"
   },
   "dependencies": {
     "@3fn/core": "^11.5.2",

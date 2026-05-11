@@ -8,8 +8,11 @@
   <link rel="stylesheet" href="../styles/layout.css">
   <link rel="stylesheet" href="../styles/reveal.css">
   <link rel="stylesheet" href="../styles/utilities.css">
+  <link rel="stylesheet" href="../styles/stats.css">
+  <link rel="stylesheet" href="../styles/why-build.css">
   <script src="../../dist/scripts/scroll-nav.js" type="module" defer></script>
   <script src="../../dist/scripts/reveal.js" type="module" defer></script>
+  <script src="../../dist/scripts/stats.js" type="module" defer></script>
 </head>
 <body>
   <nav-header-app appearance="opaque"></nav-header-app>
@@ -28,13 +31,58 @@
 
     <section id="stats" data-nav-bg="pink100" data-nav-glow="neonPink" data-nav-border="pink400" data-nav-text="dark">
       <div class="content-column">
-        <!-- Stats bar: count-up numbers, labels (Task 4) -->
+        <div class="stats-grid reveal-hidden">
+          <div class="stats-hero-number">
+            <span class="stats-display" data-count="1">1</span>
+            <span class="stats-label">Human</span>
+          </div>
+          <div class="stats-items">
+            <div class="stats-group">
+              <div class="stats-item"><span class="stats-value" data-count="217">0</span><span class="stats-label">Primitive tokens</span></div>
+              <div class="stats-item"><span class="stats-value" data-count="193">0</span><span class="stats-label">Semantic tokens</span></div>
+              <div class="stats-item"><span class="stats-value" data-count="9">0</span><span class="stats-label">Component families</span></div>
+              <div class="stats-item"><span class="stats-value" data-count="34">0</span><span class="stats-label">Foundation components</span></div>
+              <div class="stats-item"><span class="stats-value" data-count="210">0</span><span class="stats-label">Contracts</span></div>
+            </div>
+            <div class="stats-group">
+              <div class="stats-item"><span class="stats-value" data-count="8">0</span><span class="stats-label">AI Agents</span></div>
+              <div class="stats-item"><span class="stats-value" data-count="3">0</span><span class="stats-label">MCP servers</span></div>
+              <div class="stats-item"><span class="stats-value" data-count="87" data-prefix="-" data-suffix="%">0</span><span class="stats-label">Context load</span></div>
+              <div class="stats-item"><span class="stats-value" data-count="300" data-suffix="+">0</span><span class="stats-label">Test suites</span></div>
+              <div class="stats-item"><span class="stats-value" data-count="8" data-suffix="k+">0</span><span class="stats-label">Governance tests</span></div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <section id="why-build" data-nav-bg="green100" data-nav-glow="neonGreen" data-nav-border="green400" data-nav-text="dark">
+      <div class="easter-egg-zone">
+        <span class="easter-egg">Because why not!?</span>
+      </div>
       <div class="content-column">
-        <!-- Why Build: four Container-Card-Base cards (Task 5) -->
+        <h2 class="section-heading reveal-hidden">
+          <span class="section-prefix" aria-hidden="true">//</span>
+          <span>Why build this system?</span>
+        </h2>
+        <div class="why-build-cards">
+          <div class="why-build-card hard-shadow reveal-hidden reveal-stagger">
+            <h3>Challenge</h3>
+            <p>Design systems fragment across platforms. Native implementations drift. Tokens lose mathematical relationships. Teams rebuild instead of reuse.</p>
+          </div>
+          <div class="why-build-card hard-shadow reveal-hidden reveal-stagger">
+            <h3>Insight</h3>
+            <p>A shared mathematical foundation — not shared code — is what creates true cross-platform consistency. Tokens are the universal language.</p>
+          </div>
+          <div class="why-build-card hard-shadow reveal-hidden reveal-stagger">
+            <h3>Approach</h3>
+            <p>Build-time platform separation. Mathematical token relationships. Behavioral contracts over visual snapshots. Human-AI partnership at every layer.</p>
+          </div>
+          <div class="why-build-card hard-shadow reveal-hidden reveal-stagger">
+            <h3>Goals</h3>
+            <p>One system, three platforms, zero runtime compromise. Every component native. Every token mathematically derived. Every decision traceable.</p>
+          </div>
+        </div>
       </div>
     </section>
 
