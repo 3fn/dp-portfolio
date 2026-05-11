@@ -10,6 +10,12 @@
   <link rel="stylesheet" href="../styles/utilities.css">
   <link rel="stylesheet" href="../styles/stats.css">
   <link rel="stylesheet" href="../styles/why-build.css">
+  <link rel="stylesheet" href="../styles/critical-features.css">
+  <link rel="stylesheet" href="../styles/code-screenshots.css">
+  <link rel="stylesheet" href="../styles/how-built.css">
+  <link rel="stylesheet" href="../styles/who-built.css">
+  <link rel="stylesheet" href="../styles/cta-footer.css">
+  <link rel="stylesheet" href="../styles/responsive.css">
   <script src="../../dist/scripts/scroll-nav.js" type="module" defer></script>
   <script src="../../dist/scripts/reveal.js" type="module" defer></script>
   <script src="../../dist/scripts/stats.js" type="module" defer></script>
@@ -22,7 +28,10 @@
       <div class="content-column">
         <h1 class="reveal-hidden">DesignerPunk</h1>
         <p class="reveal-hidden">A True Native cross-platform design system with mathematical foundations, built for Human-AI collaboration.</p>
-        <!-- CTAs: Task 10.1 (depends on Button-CTA href from Lina) -->
+        <div class="hero-ctas reveal-hidden">
+          <button-cta variant="primary" label="View the system" href="https://github.com/3fn/DesignerPunkv2" target="_blank" icon="external-link" icon-position="trailing"></button-cta>
+          <button-cta variant="secondary" label="Learn more" onclick="document.getElementById('why-build').scrollIntoView({behavior:'smooth'})"></button-cta>
+        </div>
         <div class="hero__chord-placeholder" aria-hidden="true">
           <!-- Chord diagram: Spec 002 -->
         </div>
@@ -100,37 +109,134 @@
 
     <section id="critical-features" data-nav-bg="orange100" data-nav-glow="neonPink" data-nav-border="pink400" data-nav-text="dark">
       <div class="content-column">
-        <!-- Critical Features: 2×3 card grid (Task 6) -->
+        <h2 class="section-heading reveal-hidden">
+          <span class="section-prefix" aria-hidden="true">!!</span>
+          <span>Critical system features</span>
+        </h2>
+        <div class="features-grid">
+          <div class="feature-card hard-shadow reveal-hidden reveal-stagger">
+            <h3>Validated frameworks</h3>
+            <p>AI-Human collaboration models guide agents with specialized domain knowledge from tokens to implementation.</p>
+          </div>
+          <div class="feature-card hard-shadow reveal-hidden reveal-stagger">
+            <h3>AI intelligence layers</h3>
+            <p>The internal MCPs guide agent execution of documentation, application, and product development in a minimally-monolithic environment.</p>
+          </div>
+          <div class="feature-card hard-shadow reveal-hidden reveal-stagger">
+            <h3>Encoded governance</h3>
+            <p>Over 8k tests across 300+ testing suites with commit and release processes to support system health and governance.</p>
+          </div>
+          <div class="feature-card hard-shadow reveal-hidden reveal-stagger">
+            <h3>Accessibility</h3>
+            <p>WCAG 2.1 AA as a first-class requirement with theming infrastructure to support a11y attributes from color to spacing.</p>
+          </div>
+          <div class="feature-card hard-shadow reveal-hidden reveal-stagger">
+            <h3>Multi-platform scale</h3>
+            <p>Architected and generated true native output of tokens and components in CSS, Swift, and Kotlin from a single source.</p>
+          </div>
+          <div class="feature-card hard-shadow reveal-hidden reveal-stagger">
+            <h3>Design-code sync</h3>
+            <p>Integration with canvas tools into spec development processes via Figma Console MCP and DTCG specification.</p>
+          </div>
+        </div>
       </div>
     </section>
 
     <section id="code-screenshots" data-nav-bg="orange300" data-nav-glow="neonCyan" data-nav-border="cyan400" data-nav-text="light">
       <div class="content-column">
-        <!-- Code Screenshots: blend-mode imagery (Task 7) -->
+        <div class="screenshots-grid reveal-hidden">
+          <div class="screenshot-item">
+            <img src="" alt="Code screenshot — token system" class="screenshot-img">
+          </div>
+          <div class="screenshot-item">
+            <img src="" alt="Code screenshot — component implementation" class="screenshot-img">
+          </div>
+        </div>
       </div>
     </section>
 
     <section id="how-built" data-nav-bg="teal200" data-nav-glow="neonCyan" data-nav-border="cyan400" data-nav-text="light">
+      <div class="easter-egg-zone easter-egg-zone--alt">
+        <span class="easter-egg">Hard $#@%ing work!</span>
+      </div>
       <div class="content-column">
-        <!-- How Built + Special Thanks (Task 8) -->
+        <h2 class="section-heading reveal-hidden">
+          <span class="section-prefix" aria-hidden="true">//</span>
+          <span>How was this built?</span>
+        </h2>
+        <div class="how-built-card hard-shadow reveal-hidden">
+          <div class="how-built-content">
+            <p class="how-built-featured"><strong>DesignerPunk was built using multiple Claude models, including Opus 4.7, primarily through Kiro IDE and CLI tooling.</strong> All work was designed and planned myself utilizing a spec-driven methodology with iteratively developed Human-AI collaboration models.</p>
+            <p>After several failed attempts to orchestrate a traditional design system, I experimented with new practices aligned with agent tendencies that I developed over six months. Once the foundational tokens and components were established, I expanded the scope of the project to include exploring training agents to build with the system including incorporating Google's A2UI specification that allows agents to render their own native widgets. This site is the first prototype to fully test DesignerPunk as a product-ready system.</p>
+          </div>
+        </div>
+        <div class="how-built-card hard-shadow reveal-hidden">
+          <p class="thanks-label">Special thanks to:</p>
+          <div class="credits-grid">
+            <div class="credits-group">
+              <span>Donnie D'Amato</span><span>Amy Lam</span><span>John Marshall</span><span>Dimitri Otero</span>
+            </div>
+            <div class="credits-group">
+              <span>Nicole Fu</span><span>Lauren LoPrete</span><span>Kevin Muldoon</span><span>TJ Pitre</span>
+            </div>
+            <div class="credits-group">
+              <span>Joshua Butner</span><span>Design System Wednesday!</span><span>Kiersten Lammerding</span><span>Tracy Weiss</span>
+            </div>
+            <div class="credits-group">
+              <span>Margaret Allen</span><span>Virginia Johnstone (Hi, mom!)</span><span>Kinsley &amp; Colton Kirwan</span><span>Lindsay MacKenzie</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <section id="who-built" data-nav-bg="black300" data-nav-glow="neonCyan" data-nav-border="cyan400" data-nav-text="light">
       <div class="content-column">
-        <!-- Who Built This: bio, badges, timeline placeholder for Spec 004 (Task 9) -->
+        <h2 class="section-heading reveal-hidden">
+          <span class="section-prefix" aria-hidden="true">//</span>
+          <span>Who built this system?</span>
+        </h2>
+        <div class="who-built-bio reveal-hidden">
+          <p class="who-built-name">Peter Michaels Allen</p>
+          <p class="who-built-title">Senior Product Designer — <span class="who-built-accent">Design Systems</span></p>
+          <div class="who-built-badges">
+            <badge-label-base label="Reddit"></badge-label-base>
+            <badge-label-base label="Venmo"></badge-label-base>
+            <badge-label-base label="PayPal"></badge-label-base>
+            <badge-label-base label="eHealth"></badge-label-base>
+          </div>
+        </div>
+        <div class="who-built-timeline-placeholder" aria-hidden="true">
+          <!-- Career timeline canvas: Spec 004 -->
+        </div>
       </div>
     </section>
 
     <section id="cta" data-nav-bg="green100" data-nav-glow="neonGreen" data-nav-border="green400" data-nav-text="dark">
       <div class="content-column">
-        <!-- CTA: value props + two Button-CTA with href (Task 10) -->
+        <div class="cta-content reveal-hidden">
+          <h2 class="section-heading">
+            <span class="section-prefix" aria-hidden="true">//</span>
+            <span>What can I accomplish with your team?</span>
+          </h2>
+          <p class="cta-body">Cross-platform design systems. Token architecture. Component governance. Human-AI collaboration frameworks. Let's talk about what's possible.</p>
+          <div class="cta-buttons">
+            <button-cta variant="primary" label="Peter on LinkedIn" href="https://linkedin.com/in/petermichaelsallen" target="_blank" icon="external-link" icon-position="trailing"></button-cta>
+            <button-cta variant="secondary" label="DesignerPunk on GitHub" href="https://github.com/3fn/DesignerPunkv2" target="_blank" icon="external-link" icon-position="trailing"></button-cta>
+          </div>
+        </div>
       </div>
     </section>
 
     <footer data-nav-bg="black500" data-nav-glow="neonCyan" data-nav-border="cyan400" data-nav-text="light">
       <div class="content-column">
-        <!-- Footer: logo, name, separator, email (Task 10.3) -->
+        <div class="footer-content">
+          <span class="footer-logo">DesignerPunk</span>
+          <span class="footer-separator" aria-hidden="true">◌</span>
+          <span>Peter Michaels Allen</span>
+          <span class="footer-separator" aria-hidden="true">◌</span>
+          <span>peter@3fn.co</span>
+        </div>
       </div>
     </footer>
   </main>

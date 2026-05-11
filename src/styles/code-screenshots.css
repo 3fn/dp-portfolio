@@ -1,0 +1,31 @@
+/* Code Screenshots section styles */
+
+#code-screenshots .content-column {
+  padding-block: var(--space-sectioned-normal);
+  position: relative;
+}
+
+/* Halftone overlay */
+#code-screenshots::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--black-500) 1px, transparent 1px);
+  background-size: 6px 6px;
+  opacity: var(--opacity-024);
+  pointer-events: none;
+}
+
+.screenshots-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-sectioned-loose);
+  position: relative;
+}
+
+.screenshot-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  mix-blend-mode: multiply;
+}

@@ -1,0 +1,20 @@
+/* Responsive breakpoints */
+
+/* sm (768–1023px): column reduction */
+@media (max-width: 1023px) {
+  .why-build-cards { grid-template-columns: repeat(2, 1fr); }
+  .features-grid { grid-template-columns: 1fr; }
+  .screenshots-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .stats-group { grid-template-columns: repeat(3, 1fr); }
+  .credits-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* xs (<768px): single column stack */
+@media (max-width: 767px) {
+  .why-build-cards { grid-template-columns: 1fr; }
+  .stats-group { grid-template-columns: repeat(2, 1fr); }
+  .credits-grid { grid-template-columns: 1fr; }
+  .cta-buttons { flex-direction: column; }
+  .footer-content { flex-direction: column; gap: var(--space-grouped-normal); }
+}
