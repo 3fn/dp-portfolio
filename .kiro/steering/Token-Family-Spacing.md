@@ -52,10 +52,13 @@ All spacing tokens derive from a base unit of **8px** (space100):
 | `space600` | 48px | 6 × base (space100) | Section separation |
 | `space700` | 56px | 7 × base (space100) | Gradient dimensions, large component sizing |
 | `space800` | 64px | 8 × base (space100) | Major section breaks |
+| `space900` | 72px | 9 × base (space100) | Section spacing |
+| `space1200` | 96px | 12 × base (space100) | Page section spacing |
+| `space1600` | 128px | 16 × base (space100) | Page section spacing |
 
 ### Baseline Grid Alignment
 
-**8px Baseline Grid**: Primary spacing tokens (050, 100, 150, 200, 300, 400, 500, 600, 700, 800) align to the 8px baseline grid, ensuring consistent vertical rhythm across layouts.
+**8px Baseline Grid**: Primary spacing tokens (050, 100, 150, 200, 300, 400, 500, 600, 700, 800, 900, 1200, 1600) align to the 8px baseline grid, ensuring consistent vertical rhythm across layouts.
 
 **4px Subgrid**: space050 (4px) provides subgrid alignment for fine-tuned spacing needs while maintaining mathematical relationships.
 
