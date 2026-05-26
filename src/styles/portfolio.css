@@ -46,10 +46,6 @@ body {
   transform: translateY(20px);
   transition: opacity var(--duration-350) var(--easing-standard), transform var(--duration-350) var(--easing-standard);
 }
-.reveal-hidden.revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 .section-prefix {
   position: absolute;

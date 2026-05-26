@@ -73,7 +73,7 @@
         <p class="hero__description reveal-hidden"><strong>DesignerPunk</strong> is an ecosystem that pairs an enterprise-ready design system with built-in intelligence layers that guide AI agents to deliver craft at scale.</p>
         <div class="hero__ctas reveal-hidden">
           <button-cta variant="primary" label="Explore the ideas" href="#why-build"></button-cta>
-          <button-cta variant="secondary" label="Investigate the code" href="https://github.com/3fn/DesignerPunkv2" target="_blank" rel="noopener"></button-cta>
+          <button-cta variant="secondary" label="Investigate the code (opens in new tab)" href="https://github.com/3fn/DesignerPunkv2" target="_blank" rel="noopener"></button-cta>
         </div>
       </div>
       <div class="hero__visual" aria-hidden="true">
@@ -343,8 +343,8 @@
             <p><span>Lead</span> by example.</p>
           </div>
           <div class="cta__actions">
-            <button-cta variant="primary" label="Peter on LinkedIn" href="https://linkedin.com/in/petermichaelsallen" target="_blank" rel="noopener"></button-cta>
-            <button-cta variant="secondary" label="DesignerPunk on GitHub" href="https://github.com/3fn/DesignerPunkv2" target="_blank" rel="noopener"></button-cta>
+            <button-cta variant="primary" label="Peter on LinkedIn (opens in new tab)" href="https://linkedin.com/in/petermichaelsallen" target="_blank" rel="noopener"></button-cta>
+            <button-cta variant="secondary" label="DesignerPunk on GitHub (opens in new tab)" href="https://github.com/3fn/DesignerPunkv2" target="_blank" rel="noopener"></button-cta>
           </div>
         </div>
       </div>
@@ -366,6 +366,11 @@
 
   <!-- Tooltips (positioned fixed, managed by scripts) -->
   <div id="chord-tip" aria-hidden="true"></div>
+
+  <!-- CTA background lazy-load -->
+  <script>
+    new IntersectionObserver(([e]) => { if (e.isIntersecting) { e.target.classList.add('bg-loaded'); } }, { threshold: 0.1 }).observe(document.getElementById('cta'));
+  </script>
 
 </body>
 </html>
