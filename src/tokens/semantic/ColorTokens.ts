@@ -316,10 +316,10 @@ export const colorTokens: Record<string, Omit<SemanticToken, 'primitiveTokens'>>
 
   'color.action.primary': {
     name: 'color.action.primary',
-    primitiveReferences: { value: 'cyan300' },
+    primitiveReferences: { value: 'pink300' },
     category: SemanticCategory.COLOR,
     context: 'Primary action color for emphasized interactive elements',
-    description: 'Cyan color for emphasized actions - hero CTAs, main buttons, primary interactive elements. Use for single, focused instances where visual prominence is desired.'
+    description: 'Pink color for emphasized actions - hero CTAs, main buttons, primary interactive elements. Use for single, focused instances where visual prominence is desired.'
   },
 
   'color.action.secondary': {
@@ -403,6 +403,14 @@ export const colorTokens: Record<string, Omit<SemanticToken, 'primitiveTokens'>>
     category: SemanticCategory.COLOR,
     context: 'Subtle text color for tertiary content',
     description: 'Subtle gray for tertiary and very subtle text elements'
+  },
+
+  'color.text.strong': {
+    name: 'color.text.strong',
+    primitiveReferences: { value: 'black300' },
+    category: SemanticCategory.COLOR,
+    context: 'Strong text color for headings and high-emphasis content — intentional two-tier contrast hierarchy',
+    description: 'Dark black for headings and high-emphasis text — provides stronger contrast than color.text.default (gray300) to establish visual hierarchy. Strongest tier in the text contrast scale: strong > default > muted > subtle'
   },
 
   // ============================================================================
@@ -800,7 +808,7 @@ export function getAllColorTokens(): Array<Omit<SemanticToken, 'primitiveTokens'
  * - Structure concept: 7 tokens (canvas, surface + surface.primary/secondary/tertiary, border, border.subtle)
  * - Attention/Highlight: 2 tokens
  * - Tech/Data: 2 tokens
- * - Text hierarchy: 3 tokens (default, muted, subtle)
+ * - Text hierarchy: 4 tokens (heading, default, muted, subtle)
  * - Icon: 1 token (default)
  * - Print: 1 token (default)
  * - Background: 1 token (primary.subtle)
@@ -810,7 +818,7 @@ export function getAllColorTokens(): Array<Omit<SemanticToken, 'primitiveTokens'
  * Total: 59 tokens
  */
 export function validateColorTokenCount(): boolean {
-  const expectedCount = 62;
+  const expectedCount = 63;
   const actualCount = colorTokenNames.length;
   if (actualCount !== expectedCount) {
     console.warn(`Color token count mismatch: expected ${expectedCount}, got ${actualCount}`);
