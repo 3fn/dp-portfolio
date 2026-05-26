@@ -1,0 +1,43 @@
+/* CTA section styles */
+
+#cta .content-column {
+  padding-block: var(--space-sectioned-normal);
+}
+
+.cta-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sectioned-loose);
+}
+
+.cta-body {
+  color: var(--color-contrast-on-light);
+  font-size: var(--font-size-600);
+  font-weight: var(--font-weight-700);
+}
+
+.cta-buttons {
+  display: flex;
+  gap: var(--space-grouped-normal);
+}
+
+/* Footer styles */
+
+footer .content-column {
+  padding-block: var(--space-inset-300);
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  gap: var(--space-related-normal);
+  color: var(--color-contrast-on-dark);
+}
+
+.footer-logo {
+  font-weight: var(--font-weight-700);
+}
+
+.footer-separator {
+  opacity: 0.4;
+}

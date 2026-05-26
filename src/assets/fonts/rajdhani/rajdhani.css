@@ -1,0 +1,31 @@
+/**
+ * Rajdhani Font Family - @font-face Declarations
+ *
+ * Purpose: Web font loading for Rajdhani display font
+ * Weights: 500 (Medium), 600 (SemiBold), 700 (Bold)
+ * Formats: WOFF2
+ */
+
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./Rajdhani-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('./Rajdhani-SemiBold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('./Rajdhani-Bold.woff2') format('woff2');
+}

@@ -1,0 +1,56 @@
+/* Layout: Full-bleed sections with constrained content columns */
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100dvh;
+  font-family: var(--typography-body-md-font-family);
+  font-size: var(--typography-body-md-font-size);
+  font-weight: var(--typography-body-md-font-weight);
+  line-height: var(--typography-body-md-line-height);
+  letter-spacing: var(--typography-body-md-letter-spacing);
+  color: var(--color-text-default);
+}
+
+/* Full-bleed sections */
+main > section,
+main > footer,
+footer {
+  width: 100%;
+}
+
+/* Section backgrounds */
+#hero {
+  background-color: var(--green-100);
+  position: relative;
+}
+#hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(-102deg, var(--black-500), var(--white-100));
+  opacity: var(--opacity-008);
+  pointer-events: none;
+}
+#stats { background-color: var(--pink-100); }
+#why-build { background-color: var(--green-100); }
+#ecosystem { background-color: var(--yellow-300); }
+#critical-features { background-color: var(--orange-100); }
+#code-screenshots { background-color: var(--orange-300); }
+#how-built { background-color: var(--teal-200); }
+#who-built { background-color: var(--black-300); }
+#cta { background-color: var(--green-100); }
+footer { background-color: var(--black-500); }
+
+/* Content column: max-width with inline padding */
+.content-column {
+  max-width: var(--breakpoint-lg);
+  margin-inline: auto;
+  padding-inline: var(--space-500);
+  width: 100%;
+}
