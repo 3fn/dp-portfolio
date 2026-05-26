@@ -146,8 +146,8 @@ export const shadowTokens: Record<string, ShadowToken> = {
     name: 'shadow.modal',
     primitiveReferences: {
       offsetX: 'shadowOffsetX.000',
-      offsetY: 'shadowOffsetY.200',
-      blur: 'blur100',
+      offsetY: 'shadowOffsetY.600',
+      blur: 'blur400',
       opacity: 'shadowOpacityDepth200',
       color: 'shadowBlack100'
     },
@@ -163,8 +163,8 @@ export const shadowTokens: Record<string, ShadowToken> = {
       }
     },
     category: SemanticCategory.SHADOW,
-    context: 'Modal shadow with noon lighting and depth 200',
-    description: 'Modal shadow with no horizontal offset, 8px vertical offset, 16px blur, slightly darker opacity'
+    context: 'Modal shadow with dramatic elevation for portfolio modal',
+    description: 'Modal shadow with no horizontal offset, 24px vertical offset, 64px blur, slightly darker opacity — dramatic elevation per portfolio prototype'
   },
   
   'shadow.toast': {
