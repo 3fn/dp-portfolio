@@ -9,17 +9,17 @@
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: var(--font-family-body); background: var(--white-100); color: var(--color-contrast-on-light); -webkit-font-smoothing: antialiased; }
-    .nav { position: sticky; top: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding-inline: var(--space-500); min-height: var(--tap-area-recommended); background: var(--black-300); border-bottom: var(--border-width-100) solid var(--color-structure-border-subtle); box-shadow: var(--shadow-container); }
+    .nav { position: sticky; top: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; padding-inline: var(--space-500); min-height: var(--tap-area-recommended); background: var(--black-300); border-bottom: var(--border-width-100) solid var(--color-structure-border-subtle); box-shadow: var(--shadow-container); }
+    .nav__inner { display: flex; align-items: center; justify-content: space-between; width: 100%; max-width: var(--product-layout-content-max-width); }
     .nav__logo { display: flex; align-items: center; gap: var(--space-100); }
-    .nav__logo img { height: 16px; width: auto; filter: invert(1); }
     .nav__logo-credit { font-size: var(--font-size-050); color: var(--color-contrast-on-dark); opacity: var(--opacity-064); line-height: 1; }
     .nav__links { display: flex; align-items: center; gap: var(--space-400); }
     .nav__links a { font-family: var(--font-family-body); font-size: var(--typography-label-md-font-size); font-weight: var(--typography-label-md-font-weight); color: var(--color-contrast-on-dark); text-decoration: none; opacity: var(--opacity-088); transition: opacity var(--duration-150) var(--easing-standard); }
     .nav__links a:hover { opacity: 1; }
     #hero { display: grid; grid-template-columns: 1fr 1fr; align-items: start; max-width: var(--product-layout-content-max-width); margin: 0 auto; padding-inline: var(--space-500); gap: var(--space-400); }
     .hero__content { display: flex; flex-direction: column; gap: var(--space-300); margin-top: var(--size-1000); padding-top: var(--space-800); }
-    .hero__headline { font-family: var(--font-family-display); font-size: var(--font-size-800); font-weight: var(--typography-display-font-weight); line-height: 1.1; color: var(--color-contrast-on-light); padding-inline-start: var(--product-layout-content-indent); }
-    .hero__headline em { font-style: normal; color: var(--color-action-primary); }
+    .hero__headline { font-family: var(--font-family-display); line-height: 1.1; color: var(--color-contrast-on-light); padding-inline-start: var(--product-layout-content-indent); }
+    .hero__headline em { font-style: normal; color: var(--color-action-primary); display: inline-block;}
     .hero__visual { position: relative; display: flex; align-items: flex-start; justify-content: flex-end; }
   </style>
 
@@ -51,29 +51,19 @@
   <a href="#hero" class="skip-to-content">Skip to content</a>
 
   <!-- Navigation -->
-  <nav class="nav" aria-label="Site navigation">
-    <div class="nav__logo">
-      <img src="/primitive-assets/designerPunkLogo.svg" alt="DesignerPunk">
-      <div class="nav__logo-credit">by 3fn Design</div>
-    </div>
-    <div class="nav__links">
-      <a href="#about">About</a>
-      <a href="https://github.com/3fn/DesignerPunkv2" target="_blank" rel="noopener" aria-label="GitHub (opens in new tab)">GitHub</a>
-      <a href="https://linkedin.com/in/petermichaelsallen" target="_blank" rel="noopener" aria-label="LinkedIn (opens in new tab)">LinkedIn</a>
-    </div>
-  </nav>
+  <nav-header-content></nav-header-content>
 
   <main>
 
     <!-- Hero -->
     <section id="hero">
       <div class="hero__content">
-        <h1 class="hero__headline reveal-hidden">The design system built for<br><em>AI-Human collaboration</em></h1>
+        <h1 class="hero__headline reveal-hidden">The design system built for<em>AI-Human collaboration</em></h1>
         <p class="hero__description reveal-hidden">While modern teams explore how they might build AI-enabled design systems, I built something more.</p>
         <p class="hero__description reveal-hidden"><strong>DesignerPunk</strong> is an ecosystem that pairs an enterprise-ready design system with built-in intelligence layers that guide AI agents to deliver craft at scale.</p>
         <div class="hero__ctas reveal-hidden">
           <button-cta variant="primary" label="Explore the ideas" href="#why-build"></button-cta>
-          <button-cta variant="secondary" label="Investigate the code (opens in new tab)" href="https://github.com/3fn/DesignerPunkv2" target="_blank" rel="noopener"></button-cta>
+          <button-cta variant="secondary" label="Check the code " icon="external-link" icon-position="trailing" href="https://github.com/3fn/DesignerPunkv2" target="_blank" rel="noopener"></button-cta>
         </div>
       </div>
       <div class="hero__visual" aria-hidden="true">
@@ -93,16 +83,16 @@
           <div class="stats__hero-label">Human</div>
         </div>
         <div class="stats__items">
-          <div class="stats__item"><span class="stats__value" data-count="217">0</span><span class="stats__label">Primitive tokens</span></div>
-          <div class="stats__item"><span class="stats__value" data-count="193">0</span><span class="stats__label">Semantic tokens</span></div>
-          <div class="stats__item"><span class="stats__value" data-count="9">0</span><span class="stats__label">Component families</span></div>
-          <div class="stats__item"><span class="stats__value" data-count="34">0</span><span class="stats__label">Foundation components</span></div>
-          <div class="stats__item"><span class="stats__value" data-count="210">0</span><span class="stats__label">Contracts</span></div>
-          <div class="stats__item"><span class="stats__value" data-count="8">0</span><span class="stats__label">AI Agents</span></div>
-          <div class="stats__item"><span class="stats__value" data-count="3">0</span><span class="stats__label">MCP servers</span></div>
-          <div class="stats__item"><span class="stats__value" data-count="87" data-prefix="-" data-suffix="%">0</span><span class="stats__label">Context load</span></div>
-          <div class="stats__item"><span class="stats__value" data-count="300" data-suffix="+">0</span><span class="stats__label">Test suites</span></div>
-          <div class="stats__item"><span class="stats__value" data-count="8" data-suffix="k+">0</span><span class="stats__label">Governance tests</span></div>
+          <div class="stats__item"><span class="stats__value" data-count="217">217</span><span class="stats__label">Primitive tokens</span></div>
+          <div class="stats__item"><span class="stats__value" data-count="193">193</span><span class="stats__label">Semantic tokens</span></div>
+          <div class="stats__item"><span class="stats__value" data-count="9">9</span><span class="stats__label">Component families</span></div>
+          <div class="stats__item"><span class="stats__value" data-count="34">34</span><span class="stats__label">Foundation components</span></div>
+          <div class="stats__item"><span class="stats__value" data-count="210">210</span><span class="stats__label">Contracts</span></div>
+          <div class="stats__item"><span class="stats__value" data-count="8">8</span><span class="stats__label">AI Agents</span></div>
+          <div class="stats__item"><span class="stats__value" data-count="3">3</span><span class="stats__label">MCP servers</span></div>
+          <div class="stats__item"><span class="stats__value" data-count="87" data-prefix="-" data-suffix="%">-87%</span><span class="stats__label">Context load</span></div>
+          <div class="stats__item"><span class="stats__value" data-count="300" data-suffix="+">300+</span><span class="stats__label">Test suites</span></div>
+          <div class="stats__item"><span class="stats__value" data-count="8" data-suffix="k+">8k+</span><span class="stats__label">Governance tests</span></div>
         </div>
       </div>
     </section>
@@ -111,7 +101,7 @@
     <section id="why-build">
       <h2 class="section-heading why-build__heading"><span class="section-prefix" aria-hidden="true">//</span> Why build this system?</h2>
       <p class="why-build__easter" aria-hidden="true">Because why not!?</p>
-      <blockquote class="why-build__quote">When I first tried to build something serious with AI, it became clear: the only way to build something sustainable is to build <em>on</em> something sustainable.</blockquote>
+      <blockquote class="why-build__quote">When I first tried to build something serious with AI, it became clear: the only way to build something sustainable is to <em>build on</em> something sustainable: <em>a design system</em>.</blockquote>
       <div class="why-build__cards">
         <div class="why-build__card">
           <h3>Challenge</h3>
@@ -120,19 +110,19 @@
         </div>
         <div class="why-build__card">
           <h3>Insight</h3>
-          <p>The inherent strength of AI is pattern matching, and its weakness is an inability to sustain persistent awareness and depth across sessions.</p>
-          <p>To enable AI Agents to be my primary developer, the design system foundation would need to align to that strength while providing structured data capture-and-distribution systems to supplement the weakness.</p>
+          <p>The inherent strength of AI is pattern matching, and its weakness is an inability to sustain context.</p>
+          <p>To enable AI Agents as a primary developer, the design system foundation would need to align to that strength while providing structured data capture-and-distribution systems to supplement the weakness.</p>
         </div>
         <div class="why-build__card">
           <h3>Approach</h3>
           <p>I would need to architect systems optimal for AI and clear to humans. Math is ingrained in machine learning, and provides infinite scale and flexibility for creative expression.</p>
-          <p>Experimentation and frameworks would be critical to develop methods for constructing a knowledge system that ensured agents could reference consistently and efficiently.</p>
+          <p>Intuitive infrastructure and collaborative workflows would be critical to craft a knowledge system that enable agents to reference context consistently and efficiently.</p>
         </div>
         <div class="why-build__card">
           <h3>Goals</h3>
-          <p>Build an enterprise-tier design system fully optimized for agent-driven development that partners with humans.</p>
-          <p>Design for plug-and-play adoption in a 0-1 environment and minimize aesthetic direction while maximizing capabilities.</p>
-          <p>Explore and evolve workflows for AI-centric collaboration and development processes with humans.</p>
+          <p>Build an enterprise-tier design system fully optimized for agent-driven development.</p>
+          <p>Design for plug-and-play development in a 0-1 product environment — enable small teams to work big.</p>
+          <p>Automate workflows for AI-centric collaboration and development processes with humans.</p>
         </div>
       </div>
     </section>
@@ -174,7 +164,7 @@
       <!-- Ecosystem modal -->
       <div class="ecosystem__modal-backdrop" id="eco-backdrop"></div>
       <div class="ecosystem__modal" id="eco-modal" role="dialog" aria-modal="true">
-        <button class="ecosystem__modal-close" aria-label="Close">&times;</button>
+        <button-icon class="ecosystem__modal-close" icon="x" aria-label="Close" variant="tertiary" size="small"></button-icon>
         <object class="ecosystem__modal-header" id="eco-modal-header" type="image/svg+xml" data="" aria-hidden="true"></object>
         <div class="ecosystem__modal-body">
           <div class="ecosystem__modal-copy">
@@ -242,10 +232,9 @@
         <p class="who-built__employers-label">Notable employers and clients</p>
         <div class="who-built__badges">
           <span class="badge badge--pink">Reddit</span>
-          <span class="badge badge--pink">Venmo</span>
-          <span class="badge badge--pink">PayPal</span>
+          <span class="badge badge--pink">Venmo + PayPal</span>
+          <span class="badge badge--pink">eHealth</span>
           <span class="badge badge--dark">Redfin</span>
-          <span class="badge badge--dark">eHealth</span>
           <span class="badge badge--dark">Expensify</span>
           <span class="badge badge--dark">Electronic Arts</span>
           <span class="badge badge--dark">Federal Deposit Insurance Corporation</span>
@@ -343,8 +332,8 @@
             <p><span>Lead</span> by example.</p>
           </div>
           <div class="cta__actions">
-            <button-cta variant="primary" label="Peter on LinkedIn (opens in new tab)" href="https://linkedin.com/in/petermichaelsallen" target="_blank" rel="noopener"></button-cta>
-            <button-cta variant="secondary" label="DesignerPunk on GitHub (opens in new tab)" href="https://github.com/3fn/DesignerPunkv2" target="_blank" rel="noopener"></button-cta>
+            <button-cta variant="primary" size="small" icon="external-link" icon-position="trailing" label="Peter on LinkedIn" href="https://linkedin.com/in/petermichaelsallen" target="_blank" rel="noopener"></button-cta>
+            <button-cta variant="secondary" size="small" icon="external-link" icon-position="trailing" label="DesignerPunk on GitHub" href="https://github.com/3fn/DesignerPunkv2" target="_blank" rel="noopener"></button-cta>
           </div>
         </div>
       </div>

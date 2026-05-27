@@ -10,13 +10,13 @@ interface SystemData {
 const MODAL_DATA: Record<string, SystemData> = {
   'ecosystem__system--rosetta': {
     header: '/src/assets/illustration/header-rosetta.svg',
-    desc: 'Rosetta is a mathematical token system that generates native code for iOS, Android, and Web from a single unitless source. Every token is a mathematical assertion — not a static value — enabling build-time validation, infinite scalability, and predictable theming.',
+    desc: 'Rosetta is a math-based token system that generates native code for iOS, Android, and Web from a single source. Rather than declaring static values (8, 16, 24), each token is a simple mathematical assertion (base * 1, base * 2, base * 3). This better enables AI agents to predict names, maintain proportions when base values change, and infinite scalability naming convernions.',
     viz: `<div class="ecosystem__modal-viz"><div class="viz-source">space200</div><div class="viz-indent"><span class="viz-keyword">formula:</span> <span class="viz-value">base × 2 = 8 × 2 = 16</span></div><div class="viz-indent"><span class="viz-keyword">value:</span> <span class="viz-value">16</span> <span class="viz-comment">// unitless</span></div><div style="margin:12px 0"><span class="viz-arrow">───── generate ─────▶</span></div><div class="viz-branch"><span class="viz-output">CSS</span><span class="viz-comment">--space-200: 1rem;</span><span class="viz-output">Swift</span><span class="viz-comment">static let space200: CGFloat = 16</span><span class="viz-output">Kotlin</span><span class="viz-comment">val Space200 = 16.dp</span><span class="viz-output">DTCG</span><span class="viz-comment">"space.200": { "$value": 16 }</span><span class="viz-output">Figma</span><span class="viz-comment">space/200 → 16</span></div></div>`,
     highlights: [
       'Tokens carry their own mathematical formulas, validated at build time — not key-value pairs, but auditable assertions',
       'Unitless throughout the entire pipeline; platform units (px, pt, dp) applied only at final generation',
-      'Dark mode is a two-level resolver, not duplicated tokens — adding theme support to a new token is usually zero work',
-      'Three-tier mathematical validation catches drift and scale violations before visual QA',
+      'Dark mode is a two-level resolver, not duplicated tokens — this expediates theming',
+      'Three-tier governance tests catch drift and scale violations before visual QA',
     ],
     stats: [{ value: '410', label: 'Source tokens' }, { value: '5', label: 'Platform outputs' }, { value: '1,900', label: 'Generated tokens' }],
   },
@@ -25,21 +25,21 @@ const MODAL_DATA: Record<string, SystemData> = {
     desc: 'Stemma is a component architecture that governs cross-platform development through behavioral contracts and a shared, property-based API. Components are defined by what they guarantee — not how they look — enabling true native implementations across platforms.',
     viz: `<div class="ecosystem__modal-viz"><div class="viz-source">Button-CTA</div><div class="viz-indent"><span class="viz-keyword">inherits:</span> <span class="viz-value">Button-Base</span></div><div style="margin:12px 0"><span class="viz-arrow">───── contracts ─────</span></div><div class="viz-indent"><span class="viz-output">✓</span> <span class="viz-comment">focusable · pressable · labeled · touch_target</span></div><div class="viz-indent"><span class="viz-output">✓</span> <span class="viz-comment">loading_state · screen_reader_announcement</span></div><div class="viz-indent"><span class="viz-value">✗</span> <span class="viz-comment">disabled</span> <span class="viz-keyword">// by design</span></div><div style="margin:12px 0"><span class="viz-arrow">───── implementations ─────</span></div><div class="viz-branch"><span class="viz-output">Web</span><span class="viz-comment">&lt;dp-button-cta&gt; · Shadow DOM</span><span class="viz-output">iOS</span><span class="viz-comment">ButtonCTA: View · scale + haptic</span><span class="viz-output">Android</span><span class="viz-comment">ButtonCta() · ripple + haptic</span></div></div>`,
     highlights: [
-      'Components ship with structured behavioral contracts — inheritable, queryable, with explicit exclusions and documented rationale',
-      'True native implementations per platform (Web Components, SwiftUI, Compose), governed by shared contracts',
-      'AI agents query for components by scenario and get recommendations with props, rationale, and assembly validation',
-      'Explicit exclusion documentation — components formally declare what they won\'t do and why',
+      'Components ship with structured behavioral contracts — documented behaviors (e.g. button hover, keyboard accessibility, etc.) that are reusable, queryable, with explicit exclusions and documented rationale',
+      'True native implementations per platform (HTML/CSS, Swift, Kotlin), governed by shared contracts',
+      'When searching for and identifying components, AI agents receive recommendations with props, direction, and assembly validation',
+      'Explicit exclusion documentation — components formally declare what they "won\'t do" and "why"',
     ],
     stats: [{ value: '9', label: 'Families' }, { value: '34', label: 'Components' }, { value: '210', label: 'Contracts' }],
   },
   'ecosystem__system--civitas': {
     header: '/src/assets/illustration/header-civitas.svg',
-    desc: 'Civitas is the governance infrastructure — MCP servers, specialized agents, and automated intelligence mechanisms that ensure accurate documentation and consistent implementation. Governance is a running system, not a reference library.',
+    desc: 'Civitas is the governance infrastructure — MCP servers, specialized agents, and automated intelligence mechanisms that ensure accurate documentation and consistent implementation. Governance is a active system, not a passive reference library.',
     viz: `<div class="ecosystem__modal-viz"><div class="viz-indent"><span class="viz-keyword">agent:</span> <span class="viz-source">Leonardo</span> <span class="viz-comment">// product architect</span></div><div class="viz-indent"><span class="viz-keyword">query:</span> <span class="viz-value">"component for a promoted action?"</span></div><div style="margin:12px 0"><span class="viz-arrow">───── Application MCP ─────▶</span></div><div class="viz-indent"><span class="viz-keyword">result:</span> <span class="viz-output">Button-CTA</span></div><div class="viz-indent"><span class="viz-keyword">props:</span> <span class="viz-comment">variant: "primary", size: "lg"</span></div><div style="margin:12px 0"><span class="viz-arrow">───── counter-argument ─────</span></div><div class="viz-indent"><span class="viz-value">⚠</span> <span class="viz-comment">"If multiple promoted actions exist, consider Button-Action"</span></div></div>`,
     highlights: [
-      'Governance rules served via MCP at the point of decision — 82% context reduction through progressive disclosure',
+      'Governance rules served via MCP at the point of decision — 82% reduction in token costs through progressive disclosure',
       'Agents are structurally required to provide counter-arguments and flag their own biases',
-      '8 domain-specialized agents with explicit boundaries, escalation paths, and separation of concerns',
+      '8 domain-specialized agents with explicit boundaries, escalation paths, and areas of focus base on knowledge — not role',
       'Behavioral contracts validated through automated tests — governance that fails when violated, not hoped-to-be-read',
     ],
     stats: [{ value: '3', label: 'MCP servers' }, { value: '8', label: 'Agents' }, { value: '8k+', label: 'Governance tests' }],
@@ -56,7 +56,7 @@ const modalStats = document.getElementById('eco-modal-stats');
 const modalViz = document.getElementById('eco-modal-viz');
 
 if (backdrop && modal) {
-  const closeBtn = modal.querySelector('.ecosystem__modal-close') as HTMLButtonElement;
+  const closeBtn = modal.querySelector('.ecosystem__modal-close') as HTMLElement;
   let activeCard: HTMLElement | null = null;
 
   function openModal(systemClass: string, card: HTMLElement) {
@@ -97,8 +97,17 @@ if (backdrop && modal) {
 
     // Focus trap via inert
     document.querySelectorAll('body > *:not(#eco-modal):not(#eco-backdrop)').forEach(el => {
-      (el as HTMLElement).setAttribute('inert', '');
+      if (!el.contains(modal!)) {
+        (el as HTMLElement).setAttribute('inert', '');
+      }
     });
+    // Inert siblings of modal within its parent
+    const modalParent = modal!.parentElement;
+    if (modalParent) {
+      Array.from(modalParent.children).forEach(el => {
+        if (el !== modal && el !== backdrop) (el as HTMLElement).setAttribute('inert', '');
+      });
+    }
     modal!.focus();
   }
 
