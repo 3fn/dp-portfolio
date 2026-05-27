@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DesignerPunk — The design system built for AI-Human collaboration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/dist/tokens/DesignTokens.web.css">
+  <link rel="stylesheet" href="/src/assets/fonts/figtree/figtree.css">
+  <link rel="stylesheet" href="/src/assets/fonts/commit-mono/commit-mono.css">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-family-body); background: var(--white-100); color: var(--black-100); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    .content { max-width: 1336px; margin: 0 auto; padding-inline: var(--space-500); }
+
+    /* NAV */
+    .nav { position: sticky; top: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding-inline: var(--space-500); height: 56px; background: var(--black-300); box-shadow: 0 4px 32px rgba(0,0,0,0.35); }
+    .nav__logo { display: flex; align-items: center; gap: 10px; }
+    .nav__logo img { height: 16px; filter: invert(1); }
+    .nav__logo-credit { font-size: 11px; color: rgba(255,255,255,0.5); }
+    .nav__links { display: flex; gap: var(--space-400); }
+    .nav__links a { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.15s; }
+    .nav__links a:hover { color: #fff; }
+
+    /* HERO — generous, asymmetric, confident */
+    .hero { display: grid; grid-template-columns: 5fr 6fr; min-height: calc(100vh - 56px); }
+    .hero__content { padding: 120px var(--space-500) 80px 0; display: flex; flex-direction: column; justify-content: center; gap: 24px; }
+    .hero__headline { font-family: var(--font-family-display); font-size: 48px; font-weight: 700; line-height: 1.05; color: var(--black-300); letter-spacing: -0.01em; }
+    .hero__headline em { font-style: normal; color: var(--color-action-primary); }
+    .hero__desc { font-size: 16px; line-height: 1.65; color: var(--black-100); max-width: 44ch; }
+    .hero__desc strong { color: var(--color-action-primary); font-weight: 400; }
+    .hero__ctas { display: flex; gap: 14px; margin-top: 16px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 13px 28px; font-family: var(--font-family-body); font-size: 15px; font-weight: 500; border-radius: 28px; text-decoration: none; cursor: pointer; transition: transform 0.1s, opacity 0.15s; }
+    .btn:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn--primary { background: var(--color-action-primary); color: var(--color-contrast-on-action); border: none; }
+    .btn--secondary { background: transparent; color: var(--black-300); border: 1.5px solid var(--gray-300); }
+    .hero__visual { position: relative; display: flex; align-items: flex-start; justify-content: flex-end; overflow: hidden; }
+    .hero__illustration { width: 100%; height: 100%; object-fit: cover; object-position: left center; }
+
+    /* STATS — compressed, dense, data-forward */
+    .stats { padding: 20px 0; position: relative; border-top: 1px solid var(--gray-300); border-bottom: 1px solid var(--gray-300); }
+    .stats::before { content: ''; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); opacity: 0.24; pointer-events: none; }
+    .stats__grid { display: grid; grid-template-columns: 100px 1fr; gap: 32px; align-items: center; position: relative; }
+    .stats__hero { text-align: center; border-right: 1px solid var(--gray-100); padding-right: 32px; }
+    .stats__hero-number { font-family: var(--font-family-display); font-size: 64px; font-weight: 700; color: var(--color-action-primary); line-height: 1; }
+    .stats__hero-label { font-size: 13px; font-weight: 600; color: var(--pink-500); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.04em; }
+    .stats__items { display: grid; grid-template-columns: repeat(5, 1fr); row-gap: 12px; }
+    .stats__item { text-align: center; }
+    .stats__value { font-family: var(--font-family-display); font-size: 22px; font-weight: 700; color: var(--black-300); }
+    .stats__label { font-size: 11px; font-weight: 500; color: var(--gray-300); letter-spacing: 0.01em; }
+
+    /* WHY BUILD — editorial with narrative arc */
+    .why-build { padding: 120px 0 96px; }
+    .why-build__easter { font-family: var(--font-family-display); font-size: 42px; font-weight: 700; color: var(--green-300); text-shadow: 0 0 24px rgba(51,255,153,0.5), 0 0 48px rgba(51,255,153,0.2); text-align: center; margin-bottom: 56px; }
+    .why-build h2 { font-size: 34px; margin-bottom: 56px; }
+    .why-build__cards { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr; gap: 0; }
+    .why-build__card { padding: 36px 28px; border-left: 3px solid var(--gray-100); }
+    .why-build__card:first-child { border-left: 3px solid var(--color-action-primary); padding-left: 28px; }
+    .why-build__card h3 { font-family: var(--font-family-display); font-size: 20px; font-weight: 700; color: var(--black-300); margin-bottom: 16px; }
+    .why-build__card:first-child h3 { font-size: 22px; }
+    .why-build__card p { font-size: 14px; line-height: 1.65; color: var(--black-100); }
+    .why-build__card p + p { margin-top: 12px; }
+
+    /* ECOSYSTEM — spatial, connected */
+    .ecosystem { padding: 128px 0; }
+    .ecosystem h2 { font-size: 34px; margin-bottom: 72px; }
+    .ecosystem__layout { display: grid; grid-template-columns: 1fr 1.4fr 1fr; grid-template-rows: auto auto; gap: 24px 40px; align-items: center; }
+    .ecosystem__civitas { grid-column: 1; grid-row: 1; }
+    .ecosystem__cube { grid-column: 2; grid-row: 1 / 3; text-align: center; }
+    .ecosystem__cube object { width: 100%; max-width: 380px; }
+    .ecosystem__rosetta { grid-column: 3; grid-row: 1; }
+    .ecosystem__stemma { grid-column: 1; grid-row: 2; }
+    .ecosystem__system-label object { width: 100%; max-width: 260px; margin-bottom: 10px; }
+    .ecosystem__system-desc { font-size: 13px; line-height: 1.55; color: var(--gray-300); }
+
+    /* HOW BUILT — weight on the left */
+    .how-built { padding: 128px 0; background: var(--white-200); }
+    .how-built__easter { font-family: var(--font-family-display); font-size: 42px; font-weight: 700; color: var(--color-action-primary); text-shadow: 0 0 24px rgba(255,42,109,0.4), 0 0 48px rgba(255,42,109,0.15); text-align: center; margin-bottom: 56px; }
+    .how-built h2 { font-size: 34px; margin-bottom: 56px; }
+    .how-built__grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 72px; align-items: start; }
+    .how-built__featured { font-family: var(--font-family-display); font-size: 24px; font-weight: 700; line-height: 1.35; color: var(--black-300); }
+    .how-built__featured span { color: var(--color-action-primary); }
+    .how-built__featured p + p { margin-top: 28px; }
+    .how-built__body p { font-size: 15px; line-height: 1.7; color: var(--black-100); }
+    .how-built__body p + p { margin-top: 16px; }
+
+    /* ENTERPRISE */
+    .enterprise { padding: 96px 0; }
+    .enterprise h2 { font-size: 34px; margin-bottom: 56px; }
+    .enterprise__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 72px; }
+    .enterprise__item h3 { font-family: var(--font-family-display); font-size: 17px; font-weight: 700; color: var(--black-300); margin-bottom: 6px; }
+    .enterprise__item p { font-size: 14px; line-height: 1.6; color: var(--gray-300); }
+
+    /* CODE SCREENSHOTS */
+    .code-shots { padding: 32px 0 96px; }
+    .code-shots__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .code-shots__grid object { width: 100%; height: auto; border-radius: 6px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+
+    /* WHO BUILT */
+    .who-built { padding: 96px 0; }
+    .who-built h2 { font-size: 34px; margin-bottom: 48px; }
+    .who-built__human-label { font-family: var(--font-family-display); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-200); }
+    .who-built__name { font-family: var(--font-family-display); font-size: 30px; font-weight: 700; color: var(--color-action-primary); margin-top: 6px; }
+    .who-built__title { font-size: 15px; color: var(--black-100); margin-top: 4px; }
+    .who-built__badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+    .badge { padding: 5px 14px; border-radius: 14px; font-size: 12px; font-weight: 500; color: #fff; }
+    .badge--pink { background: var(--color-action-primary); }
+    .badge--dark { background: var(--black-300); }
+
+    /* AGENTS */
+    .agents { padding: 96px 0; position: relative; }
+    .agents::before { content: ''; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); opacity: 0.24; pointer-events: none; }
+    .agents__inner { position: relative; }
+    .agents__title { font-family: var(--font-family-display); font-size: 22px; font-weight: 700; color: var(--black-300); margin-bottom: 32px; }
+    .agents__portraits { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 56px; }
+    .agents__portraits object { width: 100%; height: auto; }
+    .agents__roles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px; }
+    .agents__role-header { font-size: 12px; color: var(--gray-200); margin-bottom: 20px; letter-spacing: 0.02em; }
+    .agents__agent { margin-bottom: 20px; }
+    .agents__agent-name { font-weight: 600; font-size: 15px; color: var(--black-300); }
+    .agents__agent-system { font-size: 12px; font-weight: 600; color: var(--black-100); margin-top: 2px; }
+    .agents__agent-desc { font-size: 12px; color: var(--gray-300); margin-top: 2px; }
+
+    /* THANKS */
+    .thanks { padding: 56px 0; }
+    .thanks__title { font-family: var(--font-family-display); font-size: 18px; font-weight: 700; color: var(--black-300); border-bottom: 2px solid var(--black-300); display: inline-block; padding-bottom: 6px; margin-bottom: 28px; }
+    .thanks__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; font-size: 13px; color: var(--black-100); line-height: 1.8; }
+
+    /* CTA — asymmetric, right-heavy */
+    .cta { padding: 128px 0; }
+    .cta h2 { font-size: 34px; margin-bottom: 56px; }
+    .cta__grid { display: grid; grid-template-columns: 2fr 3fr; gap: 80px; align-items: center; }
+    .cta__body p { font-size: 15px; line-height: 1.7; color: var(--black-100); }
+    .cta__body p + p { margin-top: 14px; }
+    .cta__featured p { font-family: var(--font-family-display); font-size: 36px; font-weight: 700; line-height: 1.25; color: var(--black-300); }
+    .cta__featured p + p { margin-top: 10px; }
+    .cta__featured span { color: var(--color-action-primary); }
+    .cta__actions { margin-top: 36px; display: flex; flex-direction: column; gap: 12px; max-width: 280px; }
+
+    /* FOOTER */
+    .footer { background: var(--black-500); padding: 22px 0; }
+    .footer__inner { display: flex; justify-content: space-between; align-items: center; }
+    .footer__logo img { height: 13px; filter: invert(1); }
+    .footer__info { display: flex; align-items: center; gap: 14px; font-size: 12px; color: rgba(255,255,255,0.6); }
+    .footer__sep { opacity: 0.3; }
+  </style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Site navigation">
+  <div class="nav__logo"><img src="/primitive-assets/designerPunkLogo.svg" alt="DesignerPunk"><div class="nav__logo-credit">by 3fn Design</div></div>
+  <div class="nav__links"><a href="#about">About</a><a href="https://github.com/3fn/DesignerPunkv2" target="_blank" rel="noopener">GitHub</a><a href="https://linkedin.com/in/petermichaelsallen" target="_blank" rel="noopener">LinkedIn</a></div>
+</nav>
+
+<section class="hero">
+  <div class="hero__content content">
+    <h1 class="hero__headline">The design system built for<br><em>AI-Human collaboration</em></h1>
+    <p class="hero__desc">While modern teams explore how they might build AI-enabled design systems, I built something more.</p>
+    <p class="hero__desc"><strong>DesignerPunk</strong> is an ecosystem that pairs an enterprise-ready design system with built-in intelligence layers that guide AI agents to deliver craft at scale.</p>
+    <div class="hero__ctas">
+      <a href="#why-build" class="btn btn--primary">Explore the ideas</a>
+      <a href="https://github.com/3fn/DesignerPunkv2" class="btn btn--secondary" target="_blank" rel="noopener">Investigate the code</a>
+    </div>
+  </div>
+  <div class="hero__visual">
+    <object class="hero__illustration" type="image/svg+xml" data="/src/assets/illustration/heroIllustration.svg" aria-hidden="true"></object>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="content stats__grid">
+    <div class="stats__hero"><div class="stats__hero-number">1</div><div class="stats__hero-label">Human</div></div>
+    <div class="stats__items">
+      <div class="stats__item"><span class="stats__value">217</span><span class="stats__label">Primitive tokens</span></div>
+      <div class="stats__item"><span class="stats__value">193</span><span class="stats__label">Semantic tokens</span></div>
+      <div class="stats__item"><span class="stats__value">9</span><span class="stats__label">Component families</span></div>
+      <div class="stats__item"><span class="stats__value">34</span><span class="stats__label">Foundation components</span></div>
+      <div class="stats__item"><span class="stats__value">210</span><span class="stats__label">Contracts</span></div>
+      <div class="stats__item"><span class="stats__value">8</span><span class="stats__label">AI Agents</span></div>
+      <div class="stats__item"><span class="stats__value">3</span><span class="stats__label">MCP servers</span></div>
+      <div class="stats__item"><span class="stats__value">-87%</span><span class="stats__label">Context load</span></div>
+      <div class="stats__item"><span class="stats__value">300+</span><span class="stats__label">Test suites</span></div>
+      <div class="stats__item"><span class="stats__value">8k+</span><span class="stats__label">Governance tests</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="why-build" id="why-build">
+  <div class="content">
+    <p class="why-build__easter">Because why not!?</p>
+    <h2><span class="section-prefix" aria-hidden="true">//</span> Why build this system?</h2>
+    <div class="why-build__cards">
+      <div class="why-build__card">
+        <h3>Challenge</h3>
+        <p>AI enables me to create at hilarious speed in contrast to my past processes — like racing the starship Enterprise against a Ford Pinto.</p>
+        <p>While that speed is impressive, the outcomes of each prompt can be wildly unpredictable; and an agent's motivation to deliver results at any cost can fracture a healthy design and code environment at any time.</p>
+      </div>
+      <div class="why-build__card">
+        <h3>Insight</h3>
+        <p>The inherent strength of AI is pattern matching, and its weakness is an inability to sustain persistent awareness and depth across sessions.</p>
+        <p>To enable AI Agents to be my primary developer, the design system foundation would need to align to that strength while providing structured data capture-and-distribution systems to supplement the weakness.</p>
+      </div>
+      <div class="why-build__card">
+        <h3>Approach</h3>
+        <p>I would need to architect systems optimal for AI and clear to humans. Math provides infinite scale and flexibility for creative scale.</p>
+        <p>Experimentation and frameworks would be critical to develop methods for constructing a knowledge system that ensured agents would be able to reference consistently and efficiently.</p>
+      </div>
+      <div class="why-build__card">
+        <h3>Goals</h3>
+        <p>Build an enterprise-tier design system fully optimized for the AI Agent development that partners with humans.</p>
+        <p>Design for plug-and-play adoption and minimize aesthetic direction while maximizing capabilities.</p>
+        <p>Explore and evolve workflows for AI-centric collaboration and development processes with humans.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ecosystem">
+  <div class="content">
+    <h2><span class="section-prefix" aria-hidden="true">//</span> What is this ecosystem?</h2>
+    <div class="ecosystem__layout">
+      <div class="ecosystem__civitas ecosystem__system-label">
+        <object type="image/svg+xml" data="/src/assets/illustration/header-civitas.svg" aria-hidden="true"></object>
+        <p class="ecosystem__system-desc">Harness-less MCP servers, agents, and other automated intelligence mechanisms for accurate documentation and consistent implementation.</p>
+      </div>
+      <div class="ecosystem__cube">
+        <object type="image/svg+xml" data="/src/assets/illustration/systemIllustration.svg" aria-hidden="true"></object>
+      </div>
+      <div class="ecosystem__rosetta ecosystem__system-label">
+        <object type="image/svg+xml" data="/src/assets/illustration/header-rosetta.svg" aria-hidden="true"></object>
+        <p class="ecosystem__system-desc">Scaled design tokens, themes, and tools that generate and govern native code for iOS, Android, and Web platforms.</p>
+      </div>
+      <div class="ecosystem__stemma ecosystem__system-label">
+        <object type="image/svg+xml" data="/src/assets/illustration/header-stemma.svg" aria-hidden="true"></object>
+        <p class="ecosystem__system-desc">A component architecture that guides cross-platform development through a shared, property-based API.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how-built">
+  <div class="content">
+    <p class="how-built__easter">Hard $#@%ing work!</p>
+    <h2><span class="section-prefix" aria-hidden="true">//</span> How was this system built?</h2>
+    <div class="how-built__grid">
+      <div class="how-built__featured">
+        <p>DesignerPunk was built using multiple Claude models, including <span>Opus 4.7</span>, primarily through <span>Kiro IDE and CLI</span> tooling.</p>
+        <p>All work was designed and planned myself utilizing a spec-driven methodology with iteratively developed Human-AI collaboration models.</p>
+      </div>
+      <div class="how-built__body">
+        <p>After several failed attempts to orchestrate a traditional design system, I experimented with new practices aligned with agent tendencies that I developed over six months.</p>
+        <p>Once the foundational tokens and components were established, I expanded the scope of the project to include exploring training agents to build with the system including incorporating Google's A2UI specification that allows agents to render their own native widgets.</p>
+        <p>This site is the first prototype to fully test DesignerPunk's ability to be packaged as an ecosystem for distribution to any product development repository.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="enterprise">
+  <div class="content">
+    <h2><span class="section-prefix" aria-hidden="true">//</span> What makes this system enterprise-grade?</h2>
+    <div class="enterprise__grid">
+      <div class="enterprise__item"><h3>Validated frameworks</h3><p>AI-Human collaboration models guide agents with specialized domain knowledge from tokens to implementation.</p></div>
+      <div class="enterprise__item"><h3>Accessibility</h3><p>WCAG 2.1 AA as a first-class requirement with theming infrastructure to support a11y attributes from color to spacing.</p></div>
+      <div class="enterprise__item"><h3>AI intelligence layers</h3><p>The internal MCPs guide agent execution of documentation, application, and product development in a minimally-monolithic environment.</p></div>
+      <div class="enterprise__item"><h3>Multi-platform scale</h3><p>Architected and generated true native output of tokens and components in CSS, Swift, and Kotlin from a single source.</p></div>
+      <div class="enterprise__item"><h3>Encoded governance</h3><p>Over 8k tests across 300+ testing suites with commit and release processes to support system health and governance.</p></div>
+      <div class="enterprise__item"><h3>Design-code sync</h3><p>Integration with canvas tools into spec development processes via Console MCP and DTCG specification.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="code-shots">
+  <div class="content">
+    <div class="code-shots__grid">
+      <object type="image/svg+xml" data="/src/assets/illustration/codeblock-terminal-components.svg" aria-hidden="true"></object>
+      <object type="image/svg+xml" data="/src/assets/illustration/codeblock-terminal-mcp.svg" aria-hidden="true"></object>
+      <object type="image/svg+xml" data="/src/assets/illustration/codeblock-terminal-tokens.svg" aria-hidden="true"></object>
+      <object type="image/svg+xml" data="/src/assets/illustration/codeblock-terminal-contracts.svg" aria-hidden="true"></object>
+    </div>
+  </div>
+</section>
+
+<section class="who-built" id="about">
+  <div class="content">
+    <h2><span class="section-prefix" aria-hidden="true">//</span> Who built, and maintains, this system?</h2>
+    <div style="margin-top: 48px;">
+      <p class="who-built__human-label">Human</p>
+      <p class="who-built__name">Peter Michaels Allen</p>
+      <p class="who-built__title">Product UX &amp; Systems Architect + Design Engineer</p>
+      <p style="font-size: 13px; font-weight: 500; color: var(--gray-200); margin-top: 24px;">Notable employers and clients</p>
+      <div class="who-built__badges">
+        <span class="badge badge--pink">Reddit</span>
+        <span class="badge badge--pink">Venmo</span>
+        <span class="badge badge--pink">PayPal</span>
+        <span class="badge badge--dark">Redfin</span>
+        <span class="badge badge--dark">eHealth</span>
+        <span class="badge badge--dark">Expensify</span>
+        <span class="badge badge--dark">Electronic Arts</span>
+        <span class="badge badge--dark">Federal Deposit Insurance Corporation</span>
+        <span class="badge badge--dark">Comcast</span>
+        <span class="badge badge--dark">Raymond James</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="agents">
+  <div class="content agents__inner">
+    <p class="agents__title">Agents</p>
+    <div class="agents__portraits">
+      <object type="image/svg+xml" data="/src/assets/illustration/agentPortrait-system-core.svg" aria-hidden="true"></object>
+      <object type="image/svg+xml" data="/src/assets/illustration/agentPortrait-system-product.svg" aria-hidden="true"></object>
+      <object type="image/svg+xml" data="/src/assets/illustration/agentPortrait-system-implementation.svg" aria-hidden="true"></object>
+    </div>
+    <div class="agents__roles">
+      <div>
+        <p class="agents__role-header"><span class="section-prefix">//</span> Design system agents</p>
+        <div class="agents__agent"><p class="agents__agent-name">Ada</p><p class="agents__agent-system">Rosetta System</p><p class="agents__agent-desc">Token creation, management, and documentation</p></div>
+        <div class="agents__agent"><p class="agents__agent-name">Lina</p><p class="agents__agent-system">Stemma System</p><p class="agents__agent-desc">Component and contract creation, management, and documentation</p></div>
+        <div class="agents__agent"><p class="agents__agent-name">Thurgood</p><p class="agents__agent-system">Civitas System</p><p class="agents__agent-desc">Auditing, governance, and spec management</p></div>
+      </div>
+      <div>
+        <p class="agents__role-header"><span class="section-prefix">//</span> Product system agents</p>
+        <div class="agents__agent"><p class="agents__agent-name">Leonardo</p><p class="agents__agent-desc">Product planning and tech coordinator</p></div>
+        <div class="agents__agent"><p class="agents__agent-name">Stacy</p><p class="agents__agent-desc">Product governance, quality assurance, and applied learnings</p></div>
+      </div>
+      <div>
+        <p class="agents__role-header"><span class="section-prefix">//</span> Product implementation agents</p>
+        <div class="agents__agent"><p class="agents__agent-name">Sparky</p><p class="agents__agent-desc">Web product implementation lead</p></div>
+        <div class="agents__agent"><p class="agents__agent-name">Kenya</p><p class="agents__agent-desc">iOS product implementation lead</p></div>
+        <div class="agents__agent"><p class="agents__agent-name">Data</p><p class="agents__agent-desc">Android product implementation lead</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="thanks">
+  <div class="content">
+    <p class="thanks__title">Special thanks to:</p>
+    <div class="thanks__grid">
+      <div><p>Donnie D'Amato</p><p>Amy Lam</p><p>John Marshall</p><p>Dimitri Otero</p></div>
+      <div><p>Nicole Fu</p><p>Lauren LoPrete</p><p>Paul Bakaus &amp; Impeccable.style</p><p>TJ Pitre &amp; Console MCP</p></div>
+      <div><p>Joshua Butner</p><p>Design System Wednesday!</p><p>The haters and nonbelievers</p><p>Tracy Weiss</p></div>
+      <div><p>Margaret Allen</p><p>Virginia Johnstone (Hi, mom!)</p><p>Kinsley &amp; Colton Kirwan</p><p>Lindsay MacKenzie</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="content">
+    <h2><span class="section-prefix" aria-hidden="true">//</span> What can I accomplish with your team?</h2>
+    <div class="cta__grid">
+      <div class="cta__body">
+        <p>After 18 years as a product designer, 10 creating and managing design systems, I'm leveraging my experience in UX and research, product management, and front-end development to deliver solutions for Humans and AI Agents that meet the needs of the AI era.</p>
+        <p>I built an enterprise-grade design system with AI agents as my engineering team. Imagine what we could build with yours.</p>
+        <p>If you are member of such an organization and would like to discuss more, please reach out to me via LinkedIn.</p>
+      </div>
+      <div>
+        <div class="cta__featured">
+          <p><span>Problem solve</span> with vision.</p>
+          <p><span>Build</span> with collaboration.</p>
+          <p><span>Lead</span> by example.</p>
+        </div>
+        <div class="cta__actions">
+          <a href="https://linkedin.com/in/petermichaelsallen" class="btn btn--primary" target="_blank" rel="noopener">Peter on LinkedIn</a>
+          <a href="https://github.com/3fn/DesignerPunkv2" class="btn btn--secondary" target="_blank" rel="noopener">DesignerPunk on GitHub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="content footer__inner">
+    <div class="footer__logo"><img src="/primitive-assets/designerPunkLogo.svg" alt="DesignerPunk"></div>
+    <div class="footer__info">
+      <span>Peter Michaels Allen</span>
+      <span class="footer__sep">◇</span>
+      <span>peter[at]designerpunk.ai</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DesignerPunk — The design system built for AI-Human collaboration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/dist/tokens/DesignTokens.web.css">
+  <link rel="stylesheet" href="/src/assets/fonts/figtree/figtree.css">
+  <link rel="stylesheet" href="/src/assets/fonts/commit-mono/commit-mono.css">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-family-body); background: var(--white-100); color: var(--black-100); -webkit-font-smoothing: antialiased; }
+    .content { max-width: 1336px; margin: 0 auto; padding-inline: var(--space-500); }
+    section { padding-block: 96px; }
+    h2 { font-family: var(--font-family-display); font-weight: 700; font-size: 28px; line-height: 1.2; color: var(--black-300); }
+    .section-prefix { color: var(--gray-200); margin-right: 8px; }
+
+    /* NAV */
+    .nav { position: sticky; top: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding-inline: var(--space-500); min-height: 56px; background: var(--black-300); box-shadow: 0 4px 24px rgba(0,0,0,0.3); }
+    .nav__logo { display: flex; align-items: center; gap: var(--space-100); }
+    .nav__logo img { height: 16px; width: auto; filter: invert(1); }
+    .nav__logo-credit { font-size: 11px; color: rgba(255,255,255,0.6); }
+    .nav__links { display: flex; gap: var(--space-400); }
+    .nav__links a { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.85); text-decoration: none; transition: opacity 0.15s; }
+    .nav__links a:hover { opacity: 1; color: #fff; }
+
+    /* HERO */
+    .hero { display: grid; grid-template-columns: 1fr 1fr; align-items: start; min-height: calc(100vh - 56px); padding-block: 0; }
+    .hero__content { padding-top: 96px; display: flex; flex-direction: column; gap: var(--space-300); }
+    .hero__headline { font-family: var(--font-family-display); font-size: 42px; font-weight: 700; line-height: 1.1; color: var(--black-300); }
+    .hero__headline em { font-style: normal; color: var(--color-action-primary); }
+    .hero__desc { font-size: 16px; line-height: 1.6; color: var(--black-100); max-width: 48ch; }
+    .hero__desc strong { color: var(--color-action-primary); font-weight: 400; }
+    .hero__ctas { display: flex; gap: var(--space-200); margin-top: var(--space-300); }
+    .btn { display: inline-flex; align-items: center; padding: 12px 24px; font-family: var(--font-family-body); font-size: 15px; font-weight: 500; border-radius: 24px; text-decoration: none; cursor: pointer; transition: opacity 0.15s; }
+    .btn:hover { opacity: 0.88; }
+    .btn--primary { background: var(--color-action-primary); color: var(--color-contrast-on-action); border: none; }
+    .btn--secondary { background: transparent; color: var(--black-300); border: 1.5px solid var(--black-300); }
+    .hero__visual { position: relative; display: flex; align-items: flex-start; justify-content: flex-end; }
+    .hero__illustration { width: 100%; max-width: 580px; height: auto; }
+
+    /* STATS */
+    .stats { padding-block: 32px; position: relative; border-top: 1px solid var(--gray-300); border-bottom: 1px solid var(--gray-300); }
+    .stats::before { content: ''; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); opacity: 0.24; pointer-events: none; }
+    .stats__grid { display: grid; grid-template-columns: auto 1fr; gap: var(--space-500); align-items: center; position: relative; }
+    .stats__hero { text-align: center; padding-right: var(--space-500); border-right: 1px solid var(--gray-100); }
+    .stats__hero-number { font-family: var(--font-family-display); font-size: 72px; font-weight: 700; color: var(--color-action-primary); line-height: 1; }
+    .stats__hero-label { font-size: 14px; font-weight: 500; color: var(--pink-500); margin-top: 4px; }
+    .stats__items { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-200); }
+    .stats__item { text-align: center; }
+    .stats__value { font-family: var(--font-family-display); font-size: 24px; font-weight: 700; color: var(--black-300); display: block; }
+    .stats__label { font-size: 12px; font-weight: 500; color: var(--gray-300); margin-top: 2px; }
+  </style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Site navigation">
+  <div class="nav__logo">
+    <img src="/primitive-assets/designerPunkLogo.svg" alt="DesignerPunk">
+    <div class="nav__logo-credit">by 3fn Design</div>
+  </div>
+  <div class="nav__links">
+    <a href="#about">About</a>
+    <a href="https://github.com/3fn/DesignerPunkv2" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://linkedin.com/in/petermichaelsallen" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero__content content">
+    <h1 class="hero__headline">The design system built for<br><em>AI-Human collaboration</em></h1>
+    <p class="hero__desc">While modern teams explore how they might build AI-enabled design systems, I built something more.</p>
+    <p class="hero__desc"><strong>DesignerPunk</strong> is an ecosystem that pairs an enterprise-ready design system with built-in intelligence layers that guide AI agents to deliver craft at scale.</p>
+    <div class="hero__ctas">
+      <a href="#why-build" class="btn btn--primary">Explore the ideas</a>
+      <a href="https://github.com/3fn/DesignerPunkv2" class="btn btn--secondary" target="_blank" rel="noopener">Investigate the code</a>
+    </div>
+  </div>
+  <div class="hero__visual">
+    <object class="hero__illustration" type="image/svg+xml" data="/src/assets/illustration/heroIllustration.svg" aria-hidden="true"></object>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="content stats__grid">
+    <div class="stats__hero">
+      <div class="stats__hero-number">1</div>
+      <div class="stats__hero-label">Human</div>
+    </div>
+    <div class="stats__items">
+      <div class="stats__item"><span class="stats__value">217</span><span class="stats__label">Primitive tokens</span></div>
+      <div class="stats__item"><span class="stats__value">193</span><span class="stats__label">Semantic tokens</span></div>
+      <div class="stats__item"><span class="stats__value">9</span><span class="stats__label">Component families</span></div>
+      <div class="stats__item"><span class="stats__value">34</span><span class="stats__label">Foundation components</span></div>
+      <div class="stats__item"><span class="stats__value">210</span><span class="stats__label">Contracts</span></div>
+      <div class="stats__item"><span class="stats__value">8</span><span class="stats__label">AI Agents</span></div>
+      <div class="stats__item"><span class="stats__value">3</span><span class="stats__label">MCP servers</span></div>
+      <div class="stats__item"><span class="stats__value">-87%</span><span class="stats__label">Context load</span></div>
+      <div class="stats__item"><span class="stats__value">300+</span><span class="stats__label">Test suites</span></div>
+      <div class="stats__item"><span class="stats__value">8k+</span><span class="stats__label">Governance tests</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY BUILD -->
+<section id="why-build" style="padding-block: 96px;">
+  <div class="content">
+    <p style="font-family: var(--font-family-display); font-size: 36px; font-weight: 700; color: var(--green-300); text-shadow: 0 0 20px rgba(51,255,153,0.4); margin-bottom: 48px; text-align: center;">Because why not!?</p>
+    <h2><span class="section-prefix" aria-hidden="true">//</span> Why build this system?</h2>
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 48px; background: var(--gray-100);">
+      <div style="background: var(--white-100); padding: 32px 24px;">
+        <h3 style="font-family: var(--font-family-display); font-size: 18px; font-weight: 600; color: var(--black-300); padding-bottom: 16px; border-bottom: 2px solid var(--black-300); margin-bottom: 16px;">Challenge</h3>
+        <p style="font-size: 14px; line-height: 1.6; color: var(--black-100);">AI enables me to create at hilarious speed in contrast to my past processes — like racing the starship Enterprise against a Ford Pinto.</p>
+        <p style="font-size: 14px; line-height: 1.6; color: var(--black-100); margin-top: 12px;">While that speed is impressive, the outcomes of each prompt can be wildly unpredictable; and an agent's motivation to deliver results at any cost can fracture a healthy design and code environment at any time.</p>
+      </div>
+      <div style="background: var(--white-100); padding: 32px 24px;">
+        <h3 style="font-family: var(--font-family-display); font-size: 18px; font-weight: 600; color: var(--black-300); padding-bottom: 16px; border-bottom: 2px solid var(--black-300); margin-bottom: 16px;">Insight</h3>
+        <p style="font-size: 14px; line-height: 1.6; color: var(--black-100);">The inherent strength of AI is pattern matching, and its weakness is an inability to sustain persistent awareness and depth across sessions.</p>
+        <p style="font-size: 14px; line-height: 1.6; color: var(--black-100); margin-top: 12px;">To enable AI Agents to be my primary developer, the design system foundation would need to align to that strength while providing structured data capture-and-distribution systems to supplement the weakness.</p>
+      </div>
+      <div style="background: var(--white-100); padding: 32px 24px;">
+        <h3 style="font-family: var(--font-family-display); font-size: 18px; font-weight: 600; color: var(--black-300); padding-bottom: 16px; border-bottom: 2px solid var(--black-300); margin-bottom: 16px;">Approach</h3>
+        <p style="font-size: 14px; line-height: 1.6; color: var(--black-100);">I would need to architect systems optimal for AI and clear to humans. Math provides infinite scale and flexibility for creative scale.</p>
+        <p style="font-size: 14px; line-height: 1.6; color: var(--black-100); margin-top: 12px;">Experimentation and frameworks would be critical to develop methods for constructing a knowledge system that ensured agents would be able to reference consistently and efficiently.</p>
+      </div>
+      <div style="background: var(--white-100); padding: 32px 24px;">
+        <h3 style="font-family: var(--font-family-display); font-size: 18px; font-weight: 600; color: var(--black-300); padding-bottom: 16px; border-bottom: 2px solid var(--black-300); margin-bottom: 16px;">Goals</h3>
+        <p style="font-size: 14px; line-height: 1.6; color: var(--black-100);">Build an enterprise-tier design system fully optimized for the AI Agent development that partners with humans.</p>
+        <p style="font-size: 14px; line-height: 1.6; color: var(--black-100); margin-top: 12px;">Design for plug-and-play adoption and minimize aesthetic direction while maximizing capabilities.</p>
+        <p style="font-size: 14px; line-height: 1.6; color: var(--black-100); margin-top: 12px;">Explore and evolve workflows for AI-centric collaboration and development processes with humans.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ECOSYSTEM -->
+<section style="padding-block: 96px;">
+  <div class="content">
+    <h2><span class="section-prefix" aria-hidden="true">//</span> What is this ecosystem?</h2>
+    <div style="display: grid; grid-template-columns: 1fr 1.2fr 1fr; align-items: center; gap: 32px; margin-top: 64px;">
+      <div>
+        <object type="image/svg+xml" data="/src/assets/illustration/header-civitas.svg" style="width: 100%; max-width: 280px; height: auto;" aria-hidden="true"></object>
+        <p style="font-size: 14px; line-height: 1.5; color: var(--black-100); margin-top: 12px;">Harness-less MCP servers, agents, and other automated intelligence mechanisms for accurate documentation and consistent implementation.</p>
+      </div>
+      <div style="text-align: center;">
+        <object type="image/svg+xml" data="/src/assets/illustration/systemIllustration.svg" style="width: 100%; max-width: 360px; height: auto;" aria-hidden="true"></object>
+      </div>
+      <div>
+        <object type="image/svg+xml" data="/src/assets/illustration/header-rosetta.svg" style="width: 100%; max-width: 280px; height: auto;" aria-hidden="true"></object>
+        <p style="font-size: 14px; line-height: 1.5; color: var(--black-100); margin-top: 12px;">Scaled design tokens, themes, and tools that generate and govern native code for iOS, Android, and Web platforms.</p>
+      </div>
+    </div>
+    <div style="max-width: 380px; margin-top: -32px;">
+      <object type="image/svg+xml" data="/src/assets/illustration/header-stemma.svg" style="width: 100%; max-width: 280px; height: auto;" aria-hidden="true"></object>
+      <p style="font-size: 14px; line-height: 1.5; color: var(--black-100); margin-top: 12px;">A component architecture that guides cross-platform development through a shared, property-based API.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW BUILT -->
+<section style="padding-block: 96px; background: var(--white-200);">
+  <div class="content">
+    <p style="font-family: var(--font-family-display); font-size: 36px; font-weight: 700; color: var(--color-action-primary); text-shadow: 0 0 20px rgba(255,42,109,0.4); margin-bottom: 48px; text-align: center;">Hard $#@%ing work!</p>
+    <h2><span class="section-prefix" aria-hidden="true">//</span> How was this system built?</h2>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 48px; align-items: start;">
+      <div>
+        <p style="font-family: var(--font-family-display); font-size: 26px; font-weight: 700; line-height: 1.3; color: var(--black-300);">DesignerPunk was built using multiple Claude models, including <span style="color: var(--color-action-primary);">Opus 4.7</span>, primarily through <span style="color: var(--color-action-primary);">Kiro IDE and CLI</span> tooling.</p>
+        <p style="font-family: var(--font-family-display); font-size: 26px; font-weight: 700; line-height: 1.3; color: var(--black-300); margin-top: 24px;">All work was designed and planned myself utilizing a spec-driven methodology with iteratively developed Human-AI collaboration models.</p>
+      </div>
+      <div>
+        <p style="font-size: 15px; line-height: 1.7; color: var(--black-100);">After several failed attempts to orchestrate a traditional design system, I experimented with new practices aligned with agent tendencies that I developed over six months.</p>
+        <p style="font-size: 15px; line-height: 1.7; color: var(--black-100); margin-top: 16px;">Once the foundational tokens and components were established, I expanded the scope of the project to include exploring training agents to build with the system including incorporating Google's A2UI specification that allows agents to render their own native widgets.</p>
+        <p style="font-size: 15px; line-height: 1.7; color: var(--black-100); margin-top: 16px;">This site is the first prototype to fully test DesignerPunk's ability to be packaged as an ecosystem for distribution to any product development repository.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENTERPRISE GRADE -->
+<section style="padding-block: 96px;">
+  <div class="content">
+    <h2><span class="section-prefix" aria-hidden="true">//</span> What makes this system enterprise-grade?</h2>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px 64px; margin-top: 48px;">
+      <div><h3 style="font-family: var(--font-family-display); font-size: 18px; font-weight: 600; color: var(--black-300); margin-bottom: 8px;">Validated frameworks</h3><p style="font-size: 14px; line-height: 1.6; color: var(--black-100);">AI-Human collaboration models guide agents with specialized domain knowledge from tokens to implementation.</p></div>
+      <div><h3 style="font-family: var(--font-family-display); font-size: 18px; font-weight: 600; color: var(--black-300); margin-bottom: 8px;">Accessibility</h3><p style="font-size: 14px; line-height: 1.6; color: var(--black-100);">WCAG 2.1 AA as a first-class requirement with theming infrastructure to support a11y attributes from color to spacing.</p></div>
+      <div><h3 style="font-family: var(--font-family-display); font-size: 18px; font-weight: 600; color: var(--black-300); margin-bottom: 8px;">AI intelligence layers</h3><p style="font-size: 14px; line-height: 1.6; color: var(--black-100);">The internal MCPs guide agent execution of documentation, application, and product development in a minimally-monolithic environment.</p></div>
+      <div><h3 style="font-family: var(--font-family-display); font-size: 18px; font-weight: 600; color: var(--black-300); margin-bottom: 8px;">Multi-platform scale</h3><p style="font-size: 14px; line-height: 1.6; color: var(--black-100);">Architected and generated true native output of tokens and components in CSS, Swift, and Kotlin from a single source.</p></div>
+      <div><h3 style="font-family: var(--font-family-display); font-size: 18px; font-weight: 600; color: var(--black-300); margin-bottom: 8px;">Encoded governance</h3><p style="font-size: 14px; line-height: 1.6; color: var(--black-100);">Over 8k tests across 300+ testing suites with commit and release processes to support system health and governance.</p></div>
+      <div><h3 style="font-family: var(--font-family-display); font-size: 18px; font-weight: 600; color: var(--black-300); margin-bottom: 8px;">Design-code sync</h3><p style="font-size: 14px; line-height: 1.6; color: var(--black-100);">Integration with canvas tools into spec development processes via Console MCP and DTCG specification.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CODE SCREENSHOTS -->
+<section style="padding-block: 48px;">
+  <div class="content">
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+      <object type="image/svg+xml" data="/src/assets/illustration/codeblock-terminal-components.svg" style="width: 100%; height: auto; border-radius: 4px;" aria-hidden="true"></object>
+      <object type="image/svg+xml" data="/src/assets/illustration/codeblock-terminal-mcp.svg" style="width: 100%; height: auto; border-radius: 4px;" aria-hidden="true"></object>
+      <object type="image/svg+xml" data="/src/assets/illustration/codeblock-terminal-tokens.svg" style="width: 100%; height: auto; border-radius: 4px;" aria-hidden="true"></object>
+      <object type="image/svg+xml" data="/src/assets/illustration/codeblock-terminal-contracts.svg" style="width: 100%; height: auto; border-radius: 4px;" aria-hidden="true"></object>
+    </div>
+  </div>
+</section>
+
+<!-- WHO BUILT -->
+<section id="about" style="padding-block: 96px;">
+  <div class="content">
+    <h2><span class="section-prefix" aria-hidden="true">//</span> Who built, and maintains, this system?</h2>
+    <div style="margin-top: 48px;">
+      <p style="font-family: var(--font-family-display); font-size: 14px; font-weight: 600; color: var(--black-300); text-transform: uppercase; letter-spacing: 0.05em;">Human</p>
+      <p style="font-family: var(--font-family-display); font-size: 28px; font-weight: 700; color: var(--color-action-primary); margin-top: 8px;">Peter Michaels Allen</p>
+      <p style="font-size: 15px; color: var(--black-100); margin-top: 4px;">Product UX &amp; Systems Architect + Design Engineer</p>
+      <p style="font-size: 13px; font-weight: 500; color: var(--gray-300); margin-top: 16px;">Notable employers and clients</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px;">
+        <span style="background: var(--color-action-primary); color: #fff; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 500;">Reddit</span>
+        <span style="background: var(--color-action-primary); color: #fff; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 500;">Venmo</span>
+        <span style="background: var(--color-action-primary); color: #fff; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 500;">PayPal</span>
+        <span style="background: var(--black-300); color: #fff; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 500;">Redfin</span>
+        <span style="background: var(--black-300); color: #fff; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 500;">eHealth</span>
+        <span style="background: var(--black-300); color: #fff; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 500;">Expensify</span>
+        <span style="background: var(--black-300); color: #fff; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 500;">Electronic Arts</span>
+        <span style="background: var(--black-300); color: #fff; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 500;">Federal Deposit Insurance Corporation</span>
+        <span style="background: var(--black-300); color: #fff; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 500;">Comcast</span>
+        <span style="background: var(--black-300); color: #fff; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 500;">Raymond James</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AGENTS -->
+<section style="padding-block: 96px; position: relative;">
+  <div style="position: absolute; inset: 0; background-image: url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;); opacity: 0.24; pointer-events: none;"></div>
+  <div class="content" style="position: relative;">
+    <p style="font-family: var(--font-family-display); font-size: 18px; font-weight: 600; color: var(--black-300); margin-bottom: 32px;">Agents</p>
+    <div style="display: flex; gap: 16px; margin-bottom: 48px;">
+      <object type="image/svg+xml" data="/src/assets/illustration/agentPortrait-system-core.svg" style="flex: 1; height: auto; max-height: 200px;" aria-hidden="true"></object>
+      <object type="image/svg+xml" data="/src/assets/illustration/agentPortrait-system-product.svg" style="flex: 1; height: auto; max-height: 200px;" aria-hidden="true"></object>
+      <object type="image/svg+xml" data="/src/assets/illustration/agentPortrait-system-implementation.svg" style="flex: 1; height: auto; max-height: 200px;" aria-hidden="true"></object>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px;">
+      <div>
+        <p style="font-size: 13px; color: var(--gray-200); margin-bottom: 16px;"><span class="section-prefix">//</span> Design system agents</p>
+        <div style="margin-bottom: 16px;"><p style="font-weight: 600; color: var(--black-300);">Ada</p><p style="font-size: 13px; font-weight: 500; color: var(--black-100);">Rosetta System</p><p style="font-size: 13px; color: var(--gray-300);">Token creation, management, and documentation</p></div>
+        <div style="margin-bottom: 16px;"><p style="font-weight: 600; color: var(--black-300);">Lina</p><p style="font-size: 13px; font-weight: 500; color: var(--black-100);">Stemma System</p><p style="font-size: 13px; color: var(--gray-300);">Component and contract creation, management, and documentation</p></div>
+        <div><p style="font-weight: 600; color: var(--black-300);">Thurgood</p><p style="font-size: 13px; font-weight: 500; color: var(--black-100);">Civitas System</p><p style="font-size: 13px; color: var(--gray-300);">Auditing, governance, and spec management</p></div>
+      </div>
+      <div>
+        <p style="font-size: 13px; color: var(--gray-200); margin-bottom: 16px;"><span class="section-prefix">//</span> Product system agents</p>
+        <div style="margin-bottom: 16px;"><p style="font-weight: 600; color: var(--black-300);">Leonardo</p><p style="font-size: 13px; color: var(--gray-300);">Product planning and tech coordinator</p></div>
+        <div><p style="font-weight: 600; color: var(--black-300);">Stacy</p><p style="font-size: 13px; color: var(--gray-300);">Product governance, quality assurance, and applied learnings</p></div>
+      </div>
+      <div>
+        <p style="font-size: 13px; color: var(--gray-200); margin-bottom: 16px;"><span class="section-prefix">//</span> Product implementation agents</p>
+        <div style="margin-bottom: 16px;"><p style="font-weight: 600; color: var(--black-300);">Sparky</p><p style="font-size: 13px; color: var(--gray-300);">Web product implementation lead</p></div>
+        <div style="margin-bottom: 16px;"><p style="font-weight: 600; color: var(--black-300);">Kenya</p><p style="font-size: 13px; color: var(--gray-300);">iOS product implementation lead</p></div>
+        <div><p style="font-weight: 600; color: var(--black-300);">Data</p><p style="font-size: 13px; color: var(--gray-300);">Android product implementation lead</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIAL THANKS -->
+<section style="padding-block: 64px;">
+  <div class="content">
+    <h3 style="font-family: var(--font-family-display); font-size: 20px; font-weight: 700; color: var(--black-300); border-bottom: 2px solid var(--black-300); padding-bottom: 8px; display: inline-block; margin-bottom: 32px;">Special thanks to:</h3>
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; font-size: 13px; color: var(--black-100);">
+      <div><p>Donnie D'Amato</p><p>Amy Lam</p><p>John Marshall</p><p>Dimitri Otero</p></div>
+      <div><p>Nicole Fu</p><p>Lauren LoPrete</p><p>Paul Bakaus &amp; Impeccable.style</p><p>TJ Pitre &amp; Console MCP</p></div>
+      <div><p>Joshua Butner</p><p>Design System Wednesday!</p><p>The haters and nonbelievers</p><p>Tracy Weiss</p></div>
+      <div><p>Margaret Allen</p><p>Virginia Johnstone (Hi, mom!)</p><p>Kinsley &amp; Colton Kirwan</p><p>Lindsay MacKenzie</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding-block: 96px;">
+  <div class="content">
+    <h2><span class="section-prefix" aria-hidden="true">//</span> What can I accomplish with your team?</h2>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 48px; align-items: center;">
+      <div>
+        <p style="font-size: 15px; line-height: 1.7; color: var(--black-100);">After 18 years as a product designer, 10 creating and managing design systems, I'm leveraging my experience in UX and research, product management, and front-end development to deliver solutions for Humans and AI Agents that meet the needs of the AI era. I believe projects like DesignerPunk are just the starting point of this new frontier, and I'm excited to learn and share.</p>
+        <p style="font-size: 15px; line-height: 1.7; color: var(--black-100); margin-top: 16px;">I built an enterprise-grade design system with AI agents as my engineering team. Imagine what we could build with yours.</p>
+        <p style="font-size: 15px; line-height: 1.7; color: var(--black-100); margin-top: 16px;">If you are member of such an organization and would like to discuss more, please reach out to me via LinkedIn.</p>
+      </div>
+      <div>
+        <p style="font-family: var(--font-family-display); font-size: 32px; font-weight: 700; line-height: 1.3;"><span style="color: var(--color-action-primary);">Problem solve</span> with vision.</p>
+        <p style="font-family: var(--font-family-display); font-size: 32px; font-weight: 700; line-height: 1.3; margin-top: 8px;"><span style="color: var(--color-action-primary);">Build</span> with collaboration.</p>
+        <p style="font-family: var(--font-family-display); font-size: 32px; font-weight: 700; line-height: 1.3; margin-top: 8px;"><span style="color: var(--color-action-primary);">Lead</span> by example.</p>
+        <div style="margin-top: 32px; display: flex; flex-direction: column; gap: 12px;">
+          <a href="https://linkedin.com/in/petermichaelsallen" class="btn btn--primary" style="text-align: center; justify-content: center;" target="_blank" rel="noopener">Peter on LinkedIn</a>
+          <a href="https://github.com/3fn/DesignerPunkv2" class="btn btn--secondary" style="text-align: center; justify-content: center;" target="_blank" rel="noopener">DesignerPunk on GitHub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background: var(--black-500); padding: 24px 0;">
+  <div class="content" style="display: flex; justify-content: space-between; align-items: center;">
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <img src="/primitive-assets/designerPunkLogo.svg" alt="DesignerPunk" style="height: 14px; filter: invert(1);">
+    </div>
+    <div style="display: flex; align-items: center; gap: 16px; font-size: 13px; color: rgba(255,255,255,0.7);">
+      <span>Peter Michaels Allen</span>
+      <span style="opacity: 0.4;">◇</span>
+      <span>peter[at]designerpunk.ai</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

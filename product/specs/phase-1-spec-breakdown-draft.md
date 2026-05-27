@@ -21,12 +21,12 @@ DP-Portfolio uses mode B — it has a full `src/tokens/` directory with editable
 
 | # | Spec | Domain | Owner | Status |
 |---|------|--------|-------|--------|
-| 1 | Nav-Header-App Hardening | Stemma | Lina | Includes submenu interaction |
-| 2 | Link Component | Stemma | Lina | Needs design from Peter |
-| 3 | Portfolio Page Architecture | Product | Leonardo → Sparky | Shared behaviors, section scaffolding |
-| 4 | Hero Section | Product | Leonardo → Sparky | Queued — chord diagram (canvas) |
-| 5 | Ecosystem Section | Product | Leonardo → Sparky | Queued — 3D cube (CSS MVP, canvas stretch) |
-| 6 | Career Timeline Section | Product | Leonardo → Sparky | Queued — career arc (canvas) |
+| 000 | Nav-Header-App Hardening | Stemma | Lina | ✅ Complete |
+| ~~001~~ | ~~Link Component~~ | ~~Stemma~~ | ~~Lina~~ | ❌ Killed — folded into Page Architecture |
+| 001 | Portfolio Page Architecture | Product | Leonardo → Sparky | Ready to start |
+| 002 | Hero Section | Product | Leonardo → Sparky | Queued |
+| 003 | Ecosystem Section | Product | Leonardo → Sparky | Queued |
+| 004 | Career Timeline Section | Product | Leonardo → Sparky | Queued |
 
 Token work (fonts, new colors, shadows, gradients) is folded into whichever section spec surfaces the need. No standalone token spec required.
 
@@ -52,34 +52,30 @@ Token work (fonts, new colors, shadows, gradients) is folded into whichever sect
 
 ---
 
-## Spec 2: Link Component
+## ~~Spec 2: Link Component~~ — KILLED
 
-**Owner**: Lina
-**Why it's separate**: Outbound links appear throughout the page (nav, hero, CTA section, footer). Using Button-CTA as a link is semantically incorrect — `<a>` and `<button>` have different roles, keyboard behavior, and screen reader announcements. A proper Link component is needed.
+**Reason**: No standalone Link component needed. The portfolio has zero traditional inline links (one instance of "LinkedIn" in body text — product CSS handles it). Nav outbound links are button-styled `<a>` elements already handled by Spec 000. Hero/CTA outbound links need Button-CTA with `href` prop + Icon-Base composition — folded into Spec 001 (Page Architecture) as a subtask.
 
-**Scope**:
-- Link component with outbound-link icon variant
-- Proper `<a>` semantics (not button)
-- Accessibility (focus, visited state, external link announcement)
-- Behavioral contracts
-
-**Blocked on**: Design from Peter (link visual treatment, outbound icon pattern)
+**What was absorbed into Spec 001:**
+- Button-CTA `href` prop (renders as `<a>` when given URL, correct semantics)
+- External-link Icon-Base in trailing position for outbound CTAs
+- The single inline body text link ("reach out to me via LinkedIn") handled as product CSS
 
 ---
 
-## Spec 3: Portfolio Page Architecture
+## Spec 001: Portfolio Page Architecture
 
-**Owner**: Leonardo → Sparky
+**Owner**: Leonardo → Sparky (+ Lina for Button-CTA modification)
 **Why it's the core spec**: The "glue" spec — shared behaviors and section scaffolding that all sections depend on.
 
 **Scope**:
-- **Font swap task**: Edit `src/tokens/FontFamilyTokens.ts` (fontFamilyBody → Figtree, fontFamilyMono → Commit Mono)
-- Sticky nav integration (consuming hardened Nav-Header-App)
+- **Button-CTA polymorphic rendering**: Add `href` prop → renders as `<a>` with button styling. Compose with Icon-Base (external-link.svg) in trailing position for outbound CTAs.
+- Sticky nav integration (consuming hardened Nav-Header-App from Spec 000)
 - Scroll-linked nav color transitions
 - Scroll-reveal animation system (Intersection Observer + CSS transitions)
 - Parallax infrastructure
 - Easter egg hover reveals
-- Outbound link pattern (consuming Link component)
+- Outbound link pattern (Button-CTA with href + external-link icon)
 - Responsive strategy (desktop-first, mobile stacking)
 - Section scaffolding for simpler sections:
   - Stats Bar (count-up animation)
@@ -89,12 +85,12 @@ Token work (fonts, new colors, shadows, gradients) is folded into whichever sect
   - Code Screenshots (blend-mode imagery)
   - How Was It Built (two-column text)
   - Special Thanks (credits grid)
-  - CTA (buttons + imagery)
+  - CTA / "What can I accomplish" (buttons with outbound icons + imagery)
   - Footer
 - Token additions as needed (new colors, spacing, etc. — folded in)
 - `prefers-reduced-motion` wiring (Phase 4 WCAG, but infrastructure now)
 
-**Dependencies**: Spec 1 (nav component), Spec 2 (link component)
+**Dependencies**: Spec 000 (nav component) ✅ Complete
 
 **Explicitly deferred**: Hero, Ecosystem, Career Timeline (separate specs)
 
@@ -165,12 +161,12 @@ Token work (fonts, new colors, shadows, gradients) is folded into whichever sect
 ## Dependency Graph
 
 ```
-Spec 1 (Nav Hardening) ────┐
-                            ├──→ Spec 3 (Page Architecture) ──┬──→ Spec 4 (Hero)
-Spec 2 (Link Component) ──┘                                   ├──→ Spec 5 (Ecosystem)
-                                                               └──→ Spec 6 (Career Timeline)
+Spec 000 (Nav Hardening) ✅ ──→ Spec 001 (Page Architecture) ──┬──→ Spec 002 (Hero)
+                                                                ├──→ Spec 003 (Ecosystem)
+                                                                └──→ Spec 004 (Career Timeline)
 
-Token work folded into specs 3/4/5/6 as needed
+Button-CTA href + outbound icon folded into Spec 001
+Token work folded into specs 001/002/003/004 as needed
 ```
 
 ---

@@ -1,0 +1,1469 @@
+name: portfolio
+type: marketing-page
+tags: [portfolio, marketing, single-page, scroll-based, ai-collaboration]
+status:
+  spec: complete
+  web: not-started
+  ios: not-applicable
+  android: not-applicable
+
+ux-direction: |
+  Single-page portfolio showcasing the DesignerPunk design system.
+  Narrative arc: hook → credibility → problem/insight → ecosystem → methodology → value → social proof → CTA.
+  Desktop-priority with responsive behavior at 3 breakpoints.
+  Audience: hiring managers, design system professionals, engineering leaders.
+
+visual-reference: docs/specs/staticReview/hero-exploration.html
+visual-reference-note: |
+  The prototype is the visual/behavioral source of truth for appearance and interaction feel.
+  This screen spec is the implementation source of truth for semantic structure, token usage, and accessibility.
+  Where they conflict, this spec takes precedence for implementation decisions.
+
+# ─── PAGE-LEVEL ARCHITECTURE ──────────────────────────────────────
+
+page-architecture:
+  semantic-structure:
+    root: body
+    nav: nav[aria-label="Site navigation"] (sticky, z-index above all content)
+    main: main (wraps all sections)
+    sections: section × 11 (hero, stats, why-build, ecosystem, how-built, enterprise, code-shots, who-built, agents, thanks, cta)
+    footer: footer
+
+  heading-hierarchy:
+    h1: "The design system built for AI-Human collaboration" (hero, single instance)
+    h2: Section headings × 7 (why-build, ecosystem, how-built, enterprise, who-built, cta + agents title as h3)
+    h3: Card headings (why-build cards), enterprise item titles, agents role headers, thanks title
+    h4: Not used
+
+  skip-to-content:
+    target: "#hero"
+    label: "Skip to content"
+    position: first focusable element in body
+
+  css-load-order:
+    1: dist/tokens/DesignTokens.web.css
+    2: dist/tokens/product/ProductTokens.web.css
+    3: src/assets/fonts/figtree/figtree.css
+    4: src/assets/fonts/commit-mono/commit-mono.css
+    5: src/styles/layout.css
+    6: src/styles/sections.css (or per-section files)
+
+  script-architecture:
+    type: ES2022 modules
+    strategy: per-concern splitting
+    scripts:
+      - src/scripts/scroll-nav.ts (IntersectionObserver for nav color)
+      - src/scripts/reveal.ts (scroll-reveal animations)
+      - src/scripts/chord.ts (chord diagram canvas)
+      - src/scripts/career.ts (career chart canvas)
+      - src/scripts/ecosystem.ts (modal FLIP + connector lines)
+      - src/scripts/agents.ts (portrait hover interaction)
+    loading: defer on all scripts; canvas scripts lazy-loaded via IntersectionObserver
+
+  responsive-strategy:
+    breakpoints:
+      desktop: "≥1024px (breakpointLg) — primary design target, 12-column grid"
+      tablet: "768px–1023px (breakpointMd–breakpointLg) — 8-column grid, column reductions"
+      mobile: "<768px (below breakpointMd) — 4-column grid, single column, stacked"
+    content-max-width: product-layout-content-max-width (1336px)
+    content-indent: product-layout-content-indent (space300 = 24px)
+    section-pattern: full-bleed background, constrained content column centered
+
+  reduced-motion:
+    policy: "All animations disabled. Elements render in final state immediately."
+    affected:
+      - Scroll-reveal (elements visible without translateY/opacity transition)
+      - Chord diagram (static render, no idle spin, no pulse dots)
+      - Career chart (bars at full height immediately, no grow animation)
+      - Ecosystem modal (instant show/hide, no FLIP transform)
+      - Easter eggs (instant reveal at full opacity, no flicker keyframe)
+      - Nav color transitions (instant snap, no CSS transition)
+
+  performance:
+    above-fold: nav + hero section (critical rendering path)
+    critical-css: Inline nav + hero styles in <head> for fastest first paint; load remaining styles async
+    lazy-loaded:
+      - Chord diagram canvas (IntersectionObserver, threshold 0.1)
+      - Career chart canvas (IntersectionObserver, threshold 1.0)
+      - Ecosystem connector lines (drawn after illustration loads)
+      - CTA background image (IntersectionObserver — do not load via CSS background-image directly; apply class when in view)
+    font-display: swap (prevent FOIT)
+    font-strategy: |
+      Self-host Rajdhani (eliminate Google Fonts external request).
+      Subset to weights 500/600/700, Latin characters only (~30-40KB total).
+      Figtree and Commit Mono already self-hosted.
+
+  optimizations:
+    svg-loading: |
+      All SVGs use <object type="image/svg+xml"> — not <img>.
+      Rationale: <img> renders SVGs without CSS cascade access and often rasterizes poorly.
+      Code-block SVGs (purely decorative, below fold) may use loading="lazy" attribute on the <object> if supported, otherwise rely on natural document order.
+
+    canvas-lifecycle: |
+      Chord diagram: Add IntersectionObserver to pause requestAnimationFrame loop when not in viewport.
+      Career chart: Already pauses after animation completes — no change needed.
+      Ecosystem connectors: Static draw, no lifecycle concern.
+
+    canvas-technology: |
+      Chord diagram: Canvas 2D (continuous rotation, drag, pulse animations are frame-based).
+      Career chart: Canvas 2D (noise texture compositing via pattern fill — not achievable with equivalent quality in SVG).
+      Ecosystem connectors: SVG (simple lines + dots, benefits from DOM positioning).
+      Decision: Keep current technology choices. SVG alternatives evaluated and rejected for chord/career due to noise texture and continuous animation requirements.
+
+    section-consolidation: |
+      Reduce landmark count from 14 to 11:
+      - code-shots: becomes <div> within or after enterprise section (not its own <section>)
+      - agents + thanks: become subsections within who-built (using heading hierarchy, not separate <section> landmarks)
+      Rationale: Fewer landmarks = more navigable for screen reader users.
+
+    background-image: |
+      CTA section bkgrnd-peter.jpg (808KB source):
+      - Compress to quality 75-80 (target: 200-300KB)
+      - Resize to max rendered width (1336px)
+      - Convert to WebP with JPEG fallback (target: 150-200KB)
+      - Lazy-load via IntersectionObserver (apply background-image class when CTA section enters viewport)
+      - Use progressive encoding if JPEG fallback
+
+    css-strategy: |
+      Single combined stylesheet (not per-section files) — one request, HTTP/2 makes splitting negligible for single-page site.
+      Critical CSS (nav + hero) inlined in <head> for first paint.
+      Remaining styles loaded via <link rel="stylesheet"> with standard blocking (acceptable — above-fold is covered by inline).
+      No unused token elimination in v1 — full DesignTokens.web.css loaded. Tree-shaking is a future build optimization.
+
+    canvas-accessibility: |
+      Chord diagram: aria-hidden="true" on canvas. Add visually-hidden description summarizing the visualization's purpose:
+        "Interactive diagram showing relationships between DesignerPunk's MCP servers, AI agents, and system components."
+      Career chart: aria-hidden="true" on canvas. Add visually-hidden table with career data (employer, period, design%, engineering%) — data already exists in JS ALL_ROLES array.
+      Rationale: Canvas content is meaningful (not decorative) but cannot be made directly accessible. Text alternatives provide equivalent information.
+
+    focus-management: |
+      Ecosystem modal: Implement focus trap when open.
+      Approach: Apply inert attribute to all content behind the modal backdrop, or use a focus-trap utility that constrains Tab/Shift+Tab to modal contents.
+      On close: Return focus to the triggering card element.
+# ─── ASSETS ───────────────────────────────────────────────────────
+
+assets:
+  illustrations:
+    - src/assets/illustration/heroIllustration.svg
+    - src/assets/illustration/systemIllustration.svg
+    - src/assets/illustration/header-rosetta.svg
+    - src/assets/illustration/header-stemma.svg
+    - src/assets/illustration/header-civitas.svg
+    - src/assets/illustration/agentPortrait-system-core.svg
+    - src/assets/illustration/agentPortrait-system-product.svg
+    - src/assets/illustration/agentPortrait-system-implementation.svg
+    - src/assets/illustration/codeblock-terminal-components.svg
+    - src/assets/illustration/codeblock-terminal-mcp.svg
+    - src/assets/illustration/codeblock-terminal-tokens.svg
+    - src/assets/illustration/codeblock-terminal-contracts.svg
+  backgrounds:
+    - src/assets/background/bkgrnd-halftone.png
+    - src/assets/background/bkgrnd-peter.jpg
+  fonts:
+    - src/assets/fonts/figtree/figtree.css (body)
+    - src/assets/fonts/commit-mono/commit-mono.css (mono)
+    - Google Fonts: Rajdhani 500/600/700 (display)
+  logos:
+    - primitive-assets/designerPunkLogo.svg
+
+# ─── SECTIONS (detailed ui-tree follows) ──────────────────────────
+
+sections:
+  - nav
+  - hero
+  - stats
+  - why-build
+  - ecosystem
+  - how-built
+  - enterprise
+  - code-shots
+  - who-built
+  - agents
+  - thanks
+  - cta
+  - footer
+
+# ─── UI TREE: SIMPLE SECTIONS ─────────────────────────────────────
+
+ui-tree:
+
+  # ─── NAV ──────────────────────────────────────────────────────
+  - element: nav
+    aria-label: "Site navigation"
+    position: sticky
+    tokens:
+      background: black-300
+      border-bottom: border-width-100, color.structure.border.subtle
+      box-shadow: shadow.container
+      min-height: tapAreaRecommended
+      padding-inline: space500
+    children:
+      - element: div.nav__logo
+        tokens:
+          gap: space100
+        children:
+          - element: img
+            props:
+              src: primitive-assets/designerPunkLogo.svg
+              alt: "DesignerPunk"
+              filter: invert(1)
+            tokens:
+              height: 16px (icon sizing — no token, decorative logo)
+          - element: div.nav__logo-credit
+            content: "by 3fn Design"
+            tokens:
+              font-size: fontSize050
+              color: color.contrast.onDark
+              opacity: opacity064
+      - element: div.nav__links
+        tokens:
+          gap: space400
+        children:
+          - element: a
+            props: { href: "#about", content: "About" }
+            tokens:
+              font: typography.labelMd
+              color: color.contrast.onDark
+              opacity: opacity088
+              transition: opacity duration150 easingStandard
+          - element: a
+            props: { href: "https://github.com/3fn/DesignerPunkv2", target: "_blank", rel: "noopener", content: "GitHub" }
+          - element: a
+            props: { href: "https://linkedin.com/in/petermichaelsallen", target: "_blank", rel: "noopener", content: "LinkedIn" }
+    responsive:
+      mobile: padding-inline reduces to space300
+
+  # ─── HERO ─────────────────────────────────────────────────────
+  - element: section#hero
+    tokens:
+      max-width: product-layout-content-max-width
+      margin: 0 auto
+      padding-inline: space500
+      gap: space400
+    layout:
+      desktop: grid, 1fr 1fr, align-items start
+      tablet: grid, 1fr (single column, visual first via order -1)
+      mobile: grid, 1fr, padding-inline space300, padding-block space600
+    children:
+      - element: div.hero__content
+        tokens:
+          gap: space300
+          margin-top: size1000 (80px — snapped from 88px per Spec 002)
+          padding-top: space800
+        children:
+          - element: h1
+            content: "The design system built for<br><em>AI-Human collaboration</em>"
+            tokens:
+              font-family: font-family-display
+              font-size: fontSize800 (48px)
+              font-weight: typography-display-font-weight
+              line-height: 1.1
+              color: color.contrast.onLight
+              padding-left: product-layout-content-indent
+            children:
+              - element: em
+                tokens:
+                  font-style: normal
+                  color: color.action.primary
+          - element: p.hero__description
+            content: "While modern teams explore how they might build AI-enabled design systems, I built something more."
+            tokens:
+              font: typography.bodyMd
+              color: color.text.default
+              max-width: product-layout-prose-measure-max
+              padding-left: product-layout-content-indent
+          - element: p.hero__description
+            content: "<strong>DesignerPunk</strong> is an ecosystem that pairs an enterprise-ready design system with built-in intelligence layers that guide AI agents to deliver craft at scale."
+            tokens:
+              font: typography.bodyMd
+              color: color.text.default
+              max-width: product-layout-prose-measure-max
+              padding-left: product-layout-content-indent
+            children:
+              - element: strong
+                tokens:
+                  color: color.action.primary
+                  font-weight: fontWeight400
+          - element: div.hero__ctas
+            tokens:
+              gap: space200
+              margin-top: space200
+              margin-left: product-layout-content-indent
+            children:
+              - element: a (Button-CTA)
+                props: { variant: primary, label: "Explore the ideas", href: "#why-build" }
+                tokens:
+                  background: color.action.primary
+                  color: color.contrast.onAction
+                  padding: space150 space300
+                  font: typography.buttonMd
+                  border-radius: radius.small
+              - element: a (Button-CTA)
+                props: { variant: secondary, label: "Investigate the code", href: "https://github.com/3fn/DesignerPunkv2", target: "_blank", rel: "noopener" }
+                tokens:
+                  background: color.structure.surface
+                  color: color.contrast.onLight
+                  border: border-width-100, color.contrast.onLight
+                  padding: space150 space300
+                  font: typography.buttonMd
+                  border-radius: radius.small
+      - element: div.hero__visual
+        a11y: aria-hidden content (decorative illustration + chord diagram)
+        children:
+          - element: object
+            props: { type: "image/svg+xml", data: "src/assets/illustration/heroIllustration.svg", aria-hidden: "true" }
+          - element: div.hero__chord
+            interaction: chord-diagram (see Task 8.2)
+            children:
+              - element: canvas#chord
+                a11y: aria-hidden="true"
+    responsive:
+      tablet: single column, visual moves to order -1 (above content), max-width 400px
+      mobile: visual max-width 300px, padding-block space600
+
+  # ─── STATS ────────────────────────────────────────────────────
+  - element: section#stats
+    tokens:
+      padding-block: space250 (20px)
+      border-top: border-width-100, gray-300
+      border-bottom: border-width-100, gray-300
+    decoration:
+      noise-texture: feTurbulence baseFrequency 0.9, opacity056
+    layout:
+      desktop: grid, 3fr 9fr, max-width product-layout-content-max-width, margin 0 auto
+    children:
+      - element: div.stats__hero
+        tokens:
+          padding-right: space500
+          border-right: border-width-100, color.structure.border
+        children:
+          - element: div.stats__hero-number
+            content: "1"
+            tokens:
+              font-family: font-family-display
+              font-size: fontSize1200 (64px)
+              font-weight: fontWeight700
+              color: color.action.primary
+              line-height: 1
+          - element: div.stats__hero-label
+            content: "Human"
+            tokens:
+              font-size: fontSize050
+              font-weight: fontWeight600
+              color: pink-500
+              text-transform: uppercase
+              letter-spacing: 0.04em
+      - element: div.stats__items
+        layout: grid, repeat(5, 1fr), row-gap space150
+        children:
+          - element: div.stats__item
+            repeat: 10 items (217 Primitive tokens, 193 Semantic tokens, 9 Component families, 34 Foundation components, 210 Contracts, 8 AI Agents, 3 MCP servers, -87% Context load, 300+ Test suites, 8k+ Governance tests)
+            children:
+              - element: span.stats__value
+                tokens:
+                  font-family: font-family-display
+                  font-size: fontSize200 (22px — snapped from 22px per Spec 002)
+                  font-weight: fontWeight700
+                  color: color.text.heading
+              - element: span.stats__label
+                tokens:
+                  font-size: fontSize050
+                  font-weight: fontWeight500
+                  color: color.text.default
+
+  # ─── ENTERPRISE ───────────────────────────────────────────────
+  - element: section#enterprise
+    tokens:
+      padding-block: space.sectioned.generous (96px)
+      max-width: product-layout-content-max-width
+      margin: 0 auto
+      padding-inline: space500
+    children:
+      - element: h2
+        content: "What makes this system enterprise-grade?"
+        tokens:
+          font-family: font-family-display
+          font-size: typography.h2 (fontSize500 = 33px)
+          font-weight: fontWeight700
+          color: color.text.heading
+          margin-bottom: space700
+          margin-left: product-layout-content-indent
+        children:
+          - element: span.section-prefix
+            content: "//"
+            a11y: aria-hidden="true"
+            tokens:
+              position: absolute, left -36px
+              color: color.text.muted
+      - element: div.enterprise__grid
+        layout: grid, 1fr 1fr, gap 40px 72px (space500 × space900)
+        tokens:
+          padding-inline: product-layout-content-indent
+        children:
+          - element: div.enterprise__item
+            repeat: 6 items (Validated frameworks, Accessibility, AI intelligence layers, Multi-platform scale, Encoded governance, Design-code sync)
+            children:
+              - element: h3
+                tokens:
+                  font-family: font-family-display
+                  font-size: fontSize150 (17px)
+                  font-weight: fontWeight700
+                  color: color.text.heading
+                  margin-bottom: space075
+              - element: p
+                tokens:
+                  font-size: fontSize300 (18px)
+                  line-height: 1.52
+                  color: color.text.default
+
+  # ─── CODE SHOTS (div within enterprise flow, not a section landmark) ─
+  - element: div#code-shots
+    note: "Not a <section> landmark — decorative code screenshots"
+    tokens:
+      padding-top: space400
+      padding-bottom: space.sectioned.generous
+      overflow: hidden
+    layout: grid, repeat(4, 1fr), gap 0
+    children:
+      - element: object
+        repeat: 4 (codeblock-terminal-components, codeblock-terminal-mcp, codeblock-terminal-tokens, codeblock-terminal-contracts)
+        props: { type: "image/svg+xml", aria-hidden: "true" }
+        tokens:
+          width: calc(100% + (100% / 3))
+          border-radius: radius.075
+          box-shadow: shadow.container
+        decoration:
+          nth-child(2), nth-child(4): margin-top space400
+
+  # ─── FOOTER ───────────────────────────────────────────────────
+  - element: footer
+    tokens:
+      background: black-500
+      padding-block: space250 (22px — snapped from 22px)
+    children:
+      - element: div.footer__inner
+        tokens:
+          max-width: product-layout-content-max-width
+          margin: 0 auto
+          padding-inline: space500
+        layout: flex, justify-content space-between, align-items center
+        children:
+          - element: div.footer__logo
+            children:
+              - element: img
+                props: { src: "primitive-assets/designerPunkLogo.svg", alt: "DesignerPunk" }
+                tokens:
+                  height: fontSize050 (13px)
+                  filter: invert(1)
+          - element: div.footer__info
+            tokens:
+              gap: space175 (14px — nearest space175 if exists, else hard value)
+              font-size: fontSize050
+              color: rgba(255,255,255,0.6) (application-level — no semantic for footer muted text on dark)
+            children:
+              - element: span
+                content: "Peter Michaels Allen"
+              - element: span.footer__sep
+                content: "◇"
+                tokens:
+                  opacity: opacity032
+              - element: span
+                content: "peter[at]designerpunk.ai"
+
+# ─── UI TREE: CONTENT SECTIONS ────────────────────────────────────
+
+  # ─── WHY BUILD ────────────────────────────────────────────────
+  - element: section#why-build
+    tokens:
+      padding-top: space.sectioned.expansive (128px — snapped from 120px)
+      padding-bottom: space.sectioned.generous (96px)
+      max-width: product-layout-content-max-width
+      margin: 0 auto
+      padding-inline: space500
+    children:
+      - element: h2
+        content: "Why build this system?"
+        tokens:
+          font-family: font-family-display
+          font-size: typography.h2 (fontSize500)
+          font-weight: fontWeight700
+          color: color.text.heading
+          margin-bottom: space700
+          margin-left: product-layout-content-indent
+          cursor: default
+        children:
+          - element: span.section-prefix
+            content: "//"
+            a11y: aria-hidden="true"
+            tokens:
+              position: absolute, left -36px
+              color: color.text.muted
+        interaction:
+          trigger: hover
+          behavior: reveals easter egg sibling
+      - element: p.why-build__easter
+        content: "Because why not!?"
+        a11y: aria-hidden="true" (decorative)
+        tokens:
+          font-family: font-family-display
+          font-size: fontSize1200 (72px)
+          font-weight: fontWeight700
+          color: green-100
+          position: absolute, top 80px, right 155px
+          opacity: 0 (default hidden)
+        interaction: easter-egg (see Task 8.4)
+      - element: blockquote.why-build__quote
+        content: "When I first tried to build something serious with AI, it became clear: the only way to build something sustainable is to build <em>on</em> something sustainable."
+        tokens:
+          font-family: font-family-display
+          font-size: fontSize200 (22px)
+          font-weight: fontWeight500
+          line-height: 1.4
+          color: color.print.default
+          border-left: 3px solid color.action.primary
+          padding-left: product-layout-content-indent
+          margin: 0 0 space700 product-layout-content-indent
+          max-width: product-layout-quote-max-width
+        children:
+          - element: em
+            tokens:
+              font-style: normal
+              color: color.action.primary
+              font-weight: fontWeight700
+      - element: div.why-build__cards
+        layout: grid, repeat(4, 1fr), gap 0
+        children:
+          - element: div.why-build__card
+            repeat: 4 (Challenge, Insight, Approach, Goals)
+            tokens:
+              padding: space450 space350 (36px 28px — snapped to space400 32px block, space350 28px inline per Spec 002)
+              border-left: border-width-100, color.structure.border
+            decoration:
+              first-child: border-left transparent
+              hover: background green-300, border-left/right green-500, transition 150ms
+            children:
+              - element: h3
+                tokens:
+                  font-family: font-family-display
+                  font-size: fontSize175 (20px)
+                  font-weight: fontWeight700
+                  color: color.text.heading
+                  padding-bottom: space175 (14px)
+                  border-bottom: border-width-200, color.text.heading
+                  margin-bottom: space200
+              - element: p
+                repeat: 2-3 per card
+                tokens:
+                  font-size: fontSize100 (14px)
+                  line-height: 1.65
+                  color: color.print.default
+                  margin-top: space150 (between paragraphs via p + p)
+
+  # ─── HOW BUILT ───────────────────────────────────────────────
+  - element: section#how-built
+    props:
+      position: relative (for easter egg positioning)
+    tokens:
+      padding-block: space.sectioned.expansive (128px)
+      max-width: product-layout-content-max-width
+      margin: 0 auto
+      padding-inline: space500
+      background: color.structure.surface
+    children:
+      - element: h2
+        content: "How was this system built?"
+        tokens:
+          font-family: font-family-display
+          font-size: typography.h2 (fontSize500)
+          font-weight: fontWeight700
+          color: color.text.heading
+          margin-bottom: space700
+          margin-left: product-layout-content-indent
+          cursor: default
+        children:
+          - element: span.section-prefix
+            content: "//"
+            a11y: aria-hidden="true"
+            tokens:
+              position: absolute, left -36px
+              color: color.text.muted
+        interaction:
+          trigger: hover
+          behavior: reveals easter egg sibling
+      - element: p.how-built__easter
+        content: "Hard $#@%ing work!"
+        a11y: aria-hidden="true" (decorative)
+        tokens:
+          font-family: font-family-display
+          font-size: fontSize1200 (72px)
+          font-weight: fontWeight700
+          color: pink-100
+          position: absolute, top 80px, right 155px
+          opacity: 0 (default hidden)
+        interaction: easter-egg-pink (see Task 8.4)
+      - element: div.how-built__grid
+        layout: grid, 7fr 5fr, gap space900 (72px)
+        tokens:
+          padding-inline: product-layout-content-indent
+        children:
+          - element: div.how-built__featured
+            tokens:
+              font-family: font-family-display
+              font-size: fontSize700 (42px)
+              font-weight: fontWeight700
+              line-height: 1.24
+              color: color.text.heading
+            children:
+              - element: p
+                content: "DesignerPunk was built using Claude models, primarily through <span>Kiro CLI</span>."
+              - element: p
+                content: "All work was designed and planned myself utilizing a <span>spec-driven methodology</span> with <span>Human-AI collaboration models</span>."
+                tokens:
+                  margin-top: space350 (28px)
+              - children span:
+                  tokens:
+                    color: color.action.primary
+          - element: div.how-built__body
+            tokens:
+              margin-top: space150
+            children:
+              - element: p
+                content: "After three failed attempts to create a traditional design system, I explored new practices that leaned into agent tendencies."
+                tokens:
+                  font-size: typography.bodyMd (fontSize250 = 16px)
+                  line-height: 1.5
+              - element: p
+                content: "What came from those failures was a thesis of three principles:"
+                tokens:
+                  margin-top: space200
+              - element: ol
+                tokens:
+                  list-style-position: inside
+                  padding: space100 space200
+                children:
+                  - element: li
+                    repeat: 3 (Every decision must be queryable, Every decision must be validatable, Institutional context must persist across sessions)
+                    tokens:
+                      margin: space100
+                      font-weight: fontWeight700
+                      color: color.text.default
+              - element: p
+                content: "Once the foundations of tokens, components, and frameworks were established..."
+                tokens:
+                  margin-top: space200
+              - element: p
+                content: "DesignerPunk is not built to integrate with an existing system. It's a 0-1, AI-centric solution..."
+                tokens:
+                  margin-top: space200
+              - element: p
+                content: "Most big-box design systems drive a specific aesthetic. DesignerPunk is built to power <em>yours</em>."
+                tokens:
+                  margin-top: space200
+
+  # ─── WHO BUILT (includes agents + thanks as subsections) ──────
+  - element: section#who-built
+    id: about
+    tokens:
+      padding-top: space.sectioned.generous (96px)
+      max-width: product-layout-content-max-width
+      margin: 0 auto
+      padding-inline: space500
+    children:
+      - element: h2
+        content: "Who built, and maintains, this system?"
+        tokens:
+          font-family: font-family-display
+          font-size: typography.h2 (fontSize500)
+          font-weight: fontWeight700
+          color: color.text.heading
+          margin-bottom: space600
+          margin-left: product-layout-content-indent
+        children:
+          - element: span.section-prefix
+            content: "//"
+            a11y: aria-hidden="true"
+            tokens:
+              color: color.text.muted
+      - element: div.who-built__copy
+        tokens:
+          margin-inline: product-layout-content-indent
+        children:
+          - element: p.who-built__human-label
+            content: "Human"
+            tokens:
+              font-family: font-family-display
+              font-size: fontSize050
+              font-weight: fontWeight700
+              text-transform: uppercase
+              letter-spacing: 0.08em
+              color: color.text.muted
+          - element: p.who-built__name
+            content: "Peter Michaels Allen"
+            tokens:
+              font-family: font-family-display
+              font-size: fontSize400 (30px)
+              font-weight: fontWeight700
+              color: color.action.primary
+              margin-top: space075
+          - element: p.who-built__title
+            content: "Product UX & Systems Architect + Design Engineer"
+            tokens:
+              font-size: fontSize125 (15px)
+              color: color.print.default
+              margin-top: space050
+          - element: p.who-built__employers-label
+            content: "Notable employers and clients"
+            tokens:
+              font-size: fontSize050
+              font-weight: fontWeight500
+              color: color.text.muted
+              margin-top: space300
+          - element: div.who-built__badges
+            tokens:
+              gap: space100
+              margin-top: space150
+            layout: flex, wrap
+            children:
+              - element: span.badge.badge--pink
+                repeat: 3 (Reddit, Venmo, PayPal)
+                tokens:
+                  padding: space050 space175
+                  border-radius: radius150 (14px — nearest)
+                  font-size: fontSize050
+                  font-weight: fontWeight500
+                  color: white (hard — contrast on action)
+                  background: color.action.primary
+              - element: span.badge.badge--dark
+                repeat: 7 (Redfin, eHealth, Expensify, Electronic Arts, FDIC, Comcast, Raymond James)
+                tokens:
+                  same as badge--pink except background: black-300
+
+      # Career timeline
+      - element: div.who-built__timeline
+        tokens:
+          margin-top: space600
+        children:
+          - element: canvas#career-chart
+            interaction: career-chart (see Task 8.3)
+            a11y:
+              aria-hidden: "true"
+              visually-hidden-table: "Career timeline data — employer, period, design%, engineering%"
+      - element: div#career-tooltip
+        a11y: aria-hidden (tooltip, not focusable)
+        note: "Positioned fixed, shown on canvas hover via JS"
+
+      # ─── AGENTS (subsection within who-built) ─────────────────
+      - element: div#agents
+        tokens:
+          padding-top: space.sectioned.generous (96px)
+          padding-bottom: space700
+        children:
+          - element: h3.agents__title
+            content: "Agents"
+            tokens:
+              font-family: font-family-display
+              font-size: fontSize050
+              font-weight: fontWeight700
+              text-transform: uppercase
+              letter-spacing: 0.08em
+              color: color.text.muted
+              margin: space300 0 space100 product-layout-content-indent
+          - element: div.agents__portraits
+            tokens:
+              border-bottom: border-width-100, color.structure.border.subtle
+            layout: grid, repeat(3, 1fr)
+            children:
+              - element: object
+                repeat: 3 (agentPortrait-system-core, agentPortrait-system-product, agentPortrait-system-implementation)
+                props: { type: "image/svg+xml", aria-hidden: "true" }
+                tokens:
+                  mix-blend-mode: luminosity
+                  align-self: end
+            interaction: agent-portraits (see Task 8.4)
+          - element: div.agents__directory
+            tokens:
+              background: color.structure.surface
+              padding: space200 space300 space050 space300
+              border-radius: radius.small
+            layout: grid, repeat(3, 1fr), gap space700
+            children:
+              - element: div
+                repeat: 3 groups (Design system agents, Product system agents, Product implementation agents)
+                children:
+                  - element: h4.agents__role-header
+                    tokens:
+                      font-family: font-family-display
+                      margin-bottom: space250
+                      letter-spacing: 0.02em
+                    children:
+                      - element: span.section-prefix
+                        content: "//"
+                        a11y: aria-hidden="true"
+                  - element: ul.agents__list
+                    children:
+                      - element: li
+                        repeat: per group (Ada/Lina/Thurgood, Leonardo/Stacy, Sparky/Kenya/Data)
+                        tokens:
+                          margin-bottom: space250
+                          border-left: border-width-100, color.structure.border.subtle
+                          padding-left: space300
+                        children:
+                          - element: p.agents__agent-name
+                            tokens:
+                              font-weight: fontWeight600
+                              font-size: fontSize125
+                              color: color.text.heading
+                          - element: p.agents__agent-system (core agents only)
+                            tokens:
+                              font-size: fontSize050
+                              font-weight: fontWeight600
+                              color: color.print.default
+                              margin-top: space025
+                          - element: p.agents__agent-desc
+                            tokens:
+                              font-size: fontSize050
+                              color: color.text.default
+                              margin-top: space025
+
+      # ─── THANKS (subsection within who-built) ─────────────────
+      - element: div#thanks
+        tokens:
+          max-width: product-layout-content-max-width
+          padding: 0 space800 space700
+        children:
+          - element: h3.thanks__title
+            content: "Special thanks to:"
+            tokens:
+              font-family: font-family-display
+              font-size: fontSize175 (20px)
+              font-weight: fontWeight700
+              color: color.text.heading
+              border-bottom: border-width-200, color.text.heading
+              display: inline-block
+              padding-bottom: space075
+              margin-bottom: space300
+          - element: div.thanks__grid
+            layout: grid, repeat(4, 1fr), gap space300
+            tokens:
+              font-size: typography.bodyMd
+              color: color.print.default
+              line-height: 1.8
+            children:
+              - element: ul
+                repeat: 4 columns of names
+                tokens:
+                  list-style: none
+
+  # ─── CTA ─────────────────────────────────────────────────────
+  - element: section#cta
+    tokens:
+      max-width: product-layout-content-max-width
+      margin: 0 auto
+      padding-inline: space500
+      padding-top: space700
+      padding-bottom: product-layout-cta-bottom-padding (224px)
+    decoration:
+      background-image: src/assets/background/bkgrnd-peter.jpg (lazy-loaded via IntersectionObserver)
+      background-position: right bottom
+      background-size: auto 100%
+    children:
+      - element: h2
+        content: "What can I accomplish with your team?"
+        tokens:
+          font-family: font-family-display
+          font-size: typography.h2 (fontSize500)
+          font-weight: fontWeight700
+          color: color.text.heading
+          margin-bottom: space700
+          margin-left: product-layout-content-indent
+          max-width: calc((6/12 * 100%) - 24px)
+          background-color: white-100 (text readability over background image)
+        children:
+          - element: span.section-prefix
+            content: "//"
+            a11y: aria-hidden="true"
+            tokens:
+              color: color.text.muted
+      - element: div.cta__grid
+        layout: grid, 6fr 5fr, column-gap calc(100%/12)
+        tokens:
+          margin-inline: product-layout-content-indent
+        children:
+          - element: div.cta__body
+            tokens:
+              background-color: white-100 (readability over background image)
+              padding: space150 space200 space150 0
+            children:
+              - element: p
+                repeat: 4 paragraphs of CTA copy
+                tokens:
+                  font-size: typography.bodyMd
+                  line-height: 1.6
+                  color: color.print.default
+                  margin-top: space175 (between paragraphs via p + p)
+          - element: div.cta__right
+            children:
+              - element: div.cta__featured
+                children:
+                  - element: p
+                    repeat: 3 ("Problem solve with vision.", "Build with collaboration.", "Lead by example.")
+                    tokens:
+                      font-family: font-family-display
+                      font-size: fontSize600 (36px)
+                      font-weight: fontWeight700
+                      line-height: 1.25
+                      color: white-300
+                      margin-top: space125 (between items)
+                    children:
+                      - element: span
+                        tokens:
+                          color: color.action.primary
+              - element: div.cta__actions
+                tokens:
+                  margin-top: space450 (36px)
+                  max-width: product-layout-cta-actions-max-width
+                layout: flex, column, gap space150
+                children:
+                  - element: a (Button-CTA)
+                    props: { variant: primary, label: "Peter on LinkedIn", href: "https://linkedin.com/in/petermichaelsallen", target: "_blank", rel: "noopener" }
+                  - element: a (Button-CTA)
+                    props: { variant: secondary, label: "DesignerPunk on GitHub", href: "https://github.com/3fn/DesignerPunkv2", target: "_blank", rel: "noopener" }
+
+# ─── UI TREE: ECOSYSTEM SECTION ───────────────────────────────────
+
+  # ─── ECOSYSTEM ────────────────────────────────────────────────
+  - element: section#ecosystem
+    tokens:
+      padding-block: space.sectioned.expansive (128px)
+      max-width: product-layout-content-max-width
+      margin: 0 auto
+      padding-inline: space500
+    children:
+      - element: h2
+        content: "What is this ecosystem?"
+        tokens:
+          font-family: font-family-display
+          font-size: typography.h2 (fontSize500)
+          font-weight: fontWeight700
+          color: color.text.heading
+          margin-bottom: space700
+          margin-left: product-layout-content-indent
+        children:
+          - element: span.section-prefix
+            content: "//"
+            a11y: aria-hidden="true"
+            tokens:
+              color: color.text.muted
+      - element: div.ecosystem__layout
+        layout: grid, 1fr 1fr 1fr, rows auto auto, gap space400 0
+        props:
+          position: relative
+        children:
+          - element: svg.ecosystem__connectors
+            a11y: aria-hidden="true"
+            props: { position: absolute, inset 0, pointer-events none, z-index 0 }
+            interaction: ecosystem-connectors (drawn dynamically — see interaction spec below)
+
+          - element: div.ecosystem__system.ecosystem__system--rosetta
+            layout: grid-column 1, grid-row 1
+            interaction: ecosystem-modal-trigger (click opens modal)
+            tokens:
+              padding: space250 space300
+              border-radius: radius.small
+              background: color.structure.surface
+              box-shadow: shadow.container
+              z-index: 1
+              cursor: pointer
+              transition: transform duration150 easingStandard, box-shadow duration150 easingStandard
+            decoration:
+              noise-texture: feTurbulence baseFrequency 0.32, opacity024
+              hover: translateY(-2px), box-shadow 0 6px 32px rgba(0,0,0,0.35)
+            children:
+              - element: object.ecosystem__system-header
+                props: { type: "image/svg+xml", data: "src/assets/illustration/header-rosetta.svg", aria-label: "Rosetta" }
+                tokens:
+                  max-width: product-layout-card-header-max-width
+                  margin-bottom: space150
+              - element: p.ecosystem__system-desc
+                content: "A mathematical token system that generates native code for iOS, Android, and Web from a single unitless source."
+                tokens:
+                  font-size: fontSize050
+                  line-height: 1.55
+                  color: color.print.default
+                  margin-bottom: space175
+              - element: ul.ecosystem__system-highlights
+                children:
+                  - element: li
+                    repeat: 2 highlights
+                    tokens:
+                      font-size: fontSize050
+                      line-height: 1.5
+                      color: color.text.default
+                      padding-left: space125
+                      border-left: border-width-200, color.action.primary
+                      margin-bottom: space100
+
+          - element: div.ecosystem__illustration
+            layout: grid-column 2, grid-row 1/3, align-self center, text-align center
+            children:
+              - element: object
+                props: { type: "image/svg+xml", data: "src/assets/illustration/systemIllustration.svg", aria-hidden: "true" }
+                tokens:
+                  max-width: product-layout-illustration-max-width
+
+          - element: div.ecosystem__system.ecosystem__system--civitas
+            layout: grid-column 3, grid-row 1/3, align-self center
+            interaction: ecosystem-modal-trigger
+            tokens: (same as rosetta card)
+            children: (same pattern — header-civitas.svg, desc, highlights)
+
+          - element: div.ecosystem__system.ecosystem__system--stemma
+            layout: grid-column 1, grid-row 2
+            interaction: ecosystem-modal-trigger
+            tokens: (same as rosetta card)
+            children: (same pattern — header-stemma.svg, desc, highlights)
+
+      # Ecosystem modal (positioned fixed, outside layout flow)
+      - element: div#eco-backdrop.ecosystem__modal-backdrop
+        tokens:
+          position: fixed, inset 0
+          background: rgba(10, 10, 15, 0.6)
+          z-index: 2000
+          opacity: 0
+          pointer-events: none
+          transition: opacity duration250 easingStandard
+        interaction: ecosystem-modal (backdrop click closes)
+
+      - element: div#eco-modal.ecosystem__modal
+        tokens:
+          position: fixed
+          max-width: product-layout-modal-max-width
+          max-height: 80vh
+          overflow-y: auto
+          background: color.structure.canvas
+          border-radius: radius.small
+          box-shadow: shadow.modal
+          padding: space500
+          z-index: 2001
+          opacity: 0
+          pointer-events: none
+          transform-origin: top left
+          transition: opacity duration350 product-motion-flip-easing, transform duration350 product-motion-flip-easing
+        a11y:
+          role: dialog
+          aria-modal: "true"
+          focus-trap: required (use inert on background content)
+        interaction: ecosystem-modal (see interaction spec below)
+        children:
+          - element: button.ecosystem__modal-close
+            props: { aria-label: "Close" }
+            content: "×"
+            tokens:
+              position: absolute, top space200, right space200
+              background: none
+              border: none
+              font-size: fontSize300
+              color: color.text.default
+              cursor: pointer
+              hover: color color.text.heading
+          - element: object.ecosystem__modal-header
+            props: { type: "image/svg+xml", aria-hidden: "true" }
+            tokens:
+              max-width: 200px
+              margin-bottom: space200
+          - element: div.ecosystem__modal-body
+            layout: grid, 1fr 1fr, gap space400, align-items start
+            responsive:
+              mobile: grid-template-columns 1fr (stack)
+            children:
+              - element: div.ecosystem__modal-copy
+                children:
+                  - element: p.ecosystem__modal-desc
+                    tokens:
+                      font-size: fontSize125
+                      line-height: 1.6
+                      color: color.print.default
+                      margin-bottom: space250
+                  - element: ul.ecosystem__modal-highlights
+                    tokens:
+                      margin-bottom: space300
+                    children:
+                      - element: li
+                        repeat: 4 per system
+                        tokens:
+                          font-size: fontSize100
+                          line-height: 1.55
+                          color: color.print.default
+                          padding-left: space175
+                          border-left: border-width-200, color.action.primary
+                          margin-bottom: space150
+                  - element: div.ecosystem__modal-stats
+                    tokens:
+                      padding-top: space250
+                      border-top: border-width-100, color.structure.border
+                    layout: flex, gap space300
+                    children:
+                      - element: div.ecosystem__modal-stat
+                        repeat: 3 per system
+                        children:
+                          - element: span.stat-value
+                            tokens:
+                              font-family: font-family-display
+                              font-size: fontSize200
+                              font-weight: fontWeight700
+                              color: color.text.heading
+                          - element: span.stat-label
+                            tokens:
+                              font-size: fontSize025 (11px)
+                              color: color.text.default
+                              margin-top: space025
+              - element: div.ecosystem__modal-example
+                note: "Visualization block — dark code-style display"
+                tokens:
+                  background: black-500
+                  border-radius: radius.small
+                  padding: space300
+                  font-family: font-family-mono
+                  font-size: fontSize050
+                  line-height: 1.7
+                  height: 100%
+                  display: flex, flex-direction column, justify-content center
+                note: "Content populated dynamically per system (Rosetta pipeline viz, Stemma contract viz, Civitas query viz)"
+
+# ─── INTERACTION SPECIFICATIONS ───────────────────────────────────
+
+interactions:
+
+  # ─── ECOSYSTEM MODAL (FLIP) ───────────────────────────────────
+  - name: ecosystem-modal
+    technology: DOM + CSS transitions + JS FLIP measurement
+    trigger: click on any .ecosystem__system card
+    implementation-approach: |
+      FLIP pattern (First-Last-Invert-Play):
+      1. On click: capture card's getBoundingClientRect() (First)
+      2. Set modal content (header, desc, highlights, stats, viz)
+      3. Calculate modal's final centered position and size (Last)
+      4. Apply transform that maps modal from card position/size to its current position (Invert)
+      5. Force reflow (read offsetHeight)
+      6. Remove transform — CSS transition animates to final state (Play)
+      Reverse on close: calculate transform back to card, apply, fade out.
+    states:
+      closed:
+        modal: opacity 0, pointer-events none, transform none
+        backdrop: opacity 0, pointer-events none
+      opening:
+        js-action: capture card rect, set modal position/width, calculate inverse transform
+        modal: opacity 0 → 1, transform (card-position/scale) → (0,0)/scale(1)
+        backdrop: opacity 0 → 1
+        timing: product-motion-flip-duration (duration350), product-motion-flip-easing
+      open:
+        modal: opacity 1, pointer-events auto, transform translate(0,0) scale(1)
+        backdrop: opacity 1, pointer-events auto
+        focus: trapped within modal (inert on background)
+      closing:
+        js-action: calculate transform back to triggering card's current rect
+        modal: transform → (card-position/scale), opacity → 0
+        backdrop: opacity → 0
+        timing: same as opening
+        on-complete: remove active classes, restore pointer-events, remove inert, return focus to trigger card
+    close-triggers:
+      - backdrop click
+      - Escape key (document keydown listener)
+      - close button click
+    reduced-motion:
+      opening: instant show (opacity 0→1, no transform animation)
+      closing: instant hide (opacity 1→0, no transform)
+    a11y:
+      - Modal gets role="dialog", aria-modal="true"
+      - Focus moves to modal on open (first focusable element or modal container)
+      - Focus trapped via inert attribute on body content behind backdrop
+      - Focus returns to triggering card on close
+      - Escape key always closes
+
+  # ─── ECOSYSTEM CONNECTORS ─────────────────────────────────────
+  - name: ecosystem-connectors
+    technology: SVG (dynamically drawn via JS)
+    trigger: illustration <object> load event + window resize
+    implementation-approach: |
+      1. Wait for illustration object to load (load event + double requestAnimationFrame for layout stability)
+      2. Read pointer-location circle cx/cy from illustration's contentDocument
+      3. Scale cx/cy by (rendered size / viewBox size) to get page-relative coordinates
+      4. For each system card: calculate nearest edge midpoint
+      5. Draw SVG <line> from card edge to illustration target point
+      6. Draw shadow dot (larger, dark) + color dot (smaller, system color) at target
+      7. Redraw on window resize
+    colors:
+      rosetta: cyan-200 (#80F6FF)
+      stemma: green-200 (#80FFBB)
+      civitas: "#FCF680" (application-level — no yellow primitive)
+    line-properties:
+      stroke-width: 2.5
+      shadow-dot-radius: 7, fill rgba(10,10,15,0.3)
+      color-dot-radius: 5
+    svg-filter: feDropShadow dx=3 dy=2 stdDeviation=4 flood-color rgba(10,10,15,0.4)
+
+  # ─── CHORD DIAGRAM ───────────────────────────────────────────
+  - name: chord-diagram
+    technology: canvas-2d
+    note: "Canvas states are render-loop states, not DOM states"
+    trigger: page load (lazy — IntersectionObserver threshold 0.1)
+    lifecycle:
+      start: IntersectionObserver fires when canvas 10% visible → begin requestAnimationFrame loop
+      pause: IntersectionObserver fires when canvas exits viewport → cancel requestAnimationFrame
+      resume: IntersectionObserver fires when canvas re-enters → restart loop
+    states:
+      idle:
+        behavior: slow continuous rotation (IDLE_SPEED 0.0004 rad/frame)
+        pulse-dots: travel along chord paths (speed 0.0018 + random * 0.002)
+        node-labels: visible at reduced opacity (large 0.8, small 0.55)
+      hover-node:
+        trigger: mouse within 16px of a node center
+        behavior: |
+          - Spin decelerates to stop (lerp toward 0 at HOVER_DECEL 0.07)
+          - Hovered node: larger radius (+2.5), full opacity label, hover halo
+          - Connected chords: opacity increases to 0.62
+          - Unconnected chords: remain at 0.10
+          - Tooltip appears (positioned at cursor + 16px offset)
+        tooltip: shows node label + description, border-color matches node category
+      drag:
+        trigger: mousedown on center root node (within rootR + 8px)
+        behavior: |
+          - Cursor changes to grabbing
+          - Rotation follows mouse angle (spinVelocity = angle delta * 0.8)
+          - On mouseup: dragging stops, spin velocity decays naturally
+    rendering:
+      outer-ring: shortSide * 0.40 radius, 3 groups (MCP/Agents/Systems)
+      inner-ring: shortSide * 0.245 radius, 2 groups (Tokens/Components)
+      root-node: shortSide * 0.075 radius, "DESIGNER PUNK" label
+      arc-bands: group color at 0.15 opacity (outer) / 0.12 (inner)
+      chords: quadratic bezier curves, weight from connection data * 1.5
+      nodes: white fill (0.9 opacity), colored stroke (1.5px / 2px hover)
+    colors: application-level (PAL object — see Spec 002 canvas-chord.md for full palette)
+    fonts: 7-10px ui-monospace (documented exception — below type scale)
+    reduced-motion:
+      idle: static render at initial rotation (no spin, no pulse dots)
+      hover: still functional (tooltip, chord highlighting)
+      drag: still functional
+
+  # ─── CAREER CHART ─────────────────────────────────────────────
+  - name: career-chart
+    technology: canvas-2d
+    note: "Canvas states are render-loop states, not DOM states"
+    trigger: IntersectionObserver, threshold 1.0 (fully visible before animating)
+    lifecycle:
+      start: observer fires → begin grow animation
+      complete: animT reaches 1.0 AND no hover → stop requestAnimationFrame
+      re-enter: hover triggers restart of loop (for highlight rendering)
+    states:
+      pre-animation:
+        behavior: canvas blank (nothing rendered until intersection)
+      animating:
+        behavior: |
+          - Bars grow from baseline (mid) outward using easeOut curve
+          - Design bars grow upward, engineering bars grow downward
+          - Duration: ~2 seconds (animT increments at dt * 0.5)
+          - Noise texture pattern overlaid on bars during growth
+        timing: easeOut (1 - Math.pow(1-t, 3))
+      static:
+        behavior: bars at full height, labels visible, dots on baseline
+      hover:
+        trigger: mouse within segment bounds (sx1-4 to sx2+4, mid-dh-8 to mid+eh+8)
+        behavior: |
+          - Hovered segment: dot enlarges (3.5 → 5), label bolds, color full opacity
+          - Tooltip appears (positioned at cursor + 18px, flips left if near right edge)
+          - requestAnimationFrame restarts for re-render
+    rendering:
+      layout: PAD top=40, bottom=44, left=16, right=16
+      aspect-ratio: width * 0.32 height
+      baseline: horizontal line at vertical center
+      grid: vertical lines every year (2006-2026), 0.5px, rgba(178,188,196,0.15)
+      bars: full segment width, gradient fills (design: pink/purple, engineering: gray/dark)
+      noise: canvas pattern (256px, density 0.8, alpha 24)
+    colors: application-level (see Spec 002 canvas-career.md for full palette)
+    fonts: 9-10px ui-monospace (documented exception)
+    reduced-motion:
+      animating: skip to static state immediately (bars at full height, no grow)
+      hover: still functional
+
+  # ─── AGENT PORTRAITS ──────────────────────────────────────────
+  - name: agent-portraits
+    technology: DOM + SVG contentDocument manipulation
+    trigger: mouseenter/mouseleave on .agents__list li elements
+    prerequisite: all 3 portrait <object> elements must fire load event before interaction initializes
+    fallback: if any portrait fails to load, interaction is disabled (portraits remain in luminosity blend mode)
+    states:
+      idle:
+        portraits: mix-blend-mode luminosity (desaturated)
+      hover-agent:
+        trigger: mouseenter on a list item containing .agents__agent-name with id="directory__{name}"
+        behavior: |
+          - Derive portrait ID: "portrait__{name}" from the agent name element's ID
+          - Find matching element in portrait SVG contentDocuments
+          - Set matched portrait's parent <object> to mix-blend-mode normal
+          - Set all portrait__* elements to opacity 0.3 EXCEPT the matched one (opacity 1)
+          - Transition: opacity 0.2s ease
+        on-leave: |
+          - Reset all <object> mix-blend-mode to empty (reverts to luminosity)
+          - Reset all portrait__* elements to opacity 1
+    a11y: |
+      Interaction is hover-only (enhancement). No keyboard equivalent needed — the agent information
+      is fully accessible via the text list below the portraits. Portraits are aria-hidden.
+
+  # ─── EASTER EGGS ──────────────────────────────────────────────
+  - name: easter-eggs
+    technology: CSS (hover trigger + keyframe animation)
+    instances:
+      - section: why-build
+        trigger: hover on h2.why-build__heading
+        target: p.why-build__easter ("Because why not!?")
+        color: green-100
+        animation: neon-flicker (green glow — rgba(51,255,153))
+      - section: how-built
+        trigger: hover on h2.how-built__heading
+        target: p.how-built__easter ("Hard $#@%ing work!")
+        color: pink-100
+        animation: neon-flicker-pink (pink glow — rgba(255,42,109))
+    mechanism: |
+      CSS adjacent sibling selector: .heading:hover ~ .easter { opacity 1; animation: neon-flicker }
+      No JavaScript required.
+    animation-spec:
+      name: neon-flicker / neon-flicker-pink
+      duration: product-motion-flicker-duration (800ms)
+      easing: ease-out
+      fill-mode: forwards
+      keyframes: |
+        0%: opacity 0, no text-shadow
+        10%: opacity 1, small glow (8px)
+        15%: opacity 0.2, no glow
+        25%: opacity 1, medium glow (16px)
+        30%: opacity 0.4, tiny glow
+        40%: opacity 0, no glow
+        50%: opacity 1, large glow (24px + 40px)
+        55%: opacity 0.7, medium glow
+        65-100%: opacity 1, full glow (24px + 32px + 40px)
+    reduced-motion:
+      behavior: instant reveal at full opacity + full glow (no flicker animation)
+      implementation: "@media (prefers-reduced-motion: reduce) { animation: none; opacity: 1; text-shadow: full glow; }"
+    a11y: |
+      Easter egg text is aria-hidden="true" (decorative/humorous, not informational).
+      No keyboard trigger — hover-only enhancement.
+
+# ─── ACCESSIBILITY SPECIFICATION ──────────────────────────────────
+
+accessibility:
+
+  skip-to-content:
+    element: a
+    href: "#hero"
+    content: "Skip to content"
+    position: first focusable element in <body>, visually hidden until focused
+    tokens:
+      focused: position absolute, top space100, left space100, z-index 9999, background color.structure.canvas, padding space100 space200, border-radius radius.small
+
+  landmarks:
+    - nav[aria-label="Site navigation"]
+    - main (wraps all sections)
+    - section#hero
+    - section#stats
+    - section#why-build
+    - section#ecosystem
+    - section#how-built
+    - section#enterprise (includes code-shots as non-landmark div)
+    - section#who-built (includes agents + thanks as non-landmark divs)
+    - section#cta
+    - footer
+    total: 11 landmarks (reduced from 14 per optimization decision)
+
+  heading-hierarchy:
+    h1: "The design system built for AI-Human collaboration" (hero — single instance)
+    h2:
+      - "Why build this system?" (why-build)
+      - "What is this ecosystem?" (ecosystem)
+      - "How was this system built?" (how-built)
+      - "What makes this system enterprise-grade?" (enterprise)
+      - "Who built, and maintains, this system?" (who-built)
+      - "What can I accomplish with your team?" (cta)
+    h3:
+      - "Challenge", "Insight", "Approach", "Goals" (why-build cards)
+      - "Agents" (agents subsection title)
+      - "Special thanks to:" (thanks title)
+      - Enterprise feature titles × 6
+    h4:
+      - "Design system agents", "Product system agents", "Product implementation agents" (agent role headers)
+
+  focus-management:
+    ecosystem-modal:
+      on-open: move focus to modal container (or first focusable element within)
+      while-open: trap focus within modal (apply inert attribute to all content behind backdrop)
+      on-close: return focus to the triggering .ecosystem__system card
+      escape-key: closes modal (document-level keydown listener)
+    nav-links:
+      about-link: scrolls to #about (who-built section), focus moves to section heading
+    skip-to-content:
+      on-activate: focus moves to #hero section
+
+  decorative-elements:
+    aria-hidden-true:
+      - All .section-prefix spans ("//" decorative text)
+      - Hero illustration (<object>)
+      - Chord diagram canvas
+      - Career chart canvas
+      - Ecosystem system illustration (<object>)
+      - Ecosystem connector SVG
+      - Ecosystem system header SVGs (aria-label provides accessible name instead)
+      - Agent portrait SVGs
+      - Code-shot SVGs
+      - Easter egg text (decorative/humorous)
+      - Footer separator ("◇")
+      - Chord tooltip (positioned, not focusable)
+      - Career tooltip (positioned, not focusable)
+
+  text-alternatives:
+    chord-diagram:
+      type: visually-hidden description
+      content: "Interactive diagram showing relationships between DesignerPunk's MCP servers, AI agents, and system components including Rosetta (tokens), Stemma (components), and their connections."
+      element: p.sr-only (adjacent to or wrapping the canvas container)
+    career-chart:
+      type: visually-hidden data table
+      content: table with columns (Employer, Period, Design%, Engineering%)
+      data-source: ALL_ROLES array in career chart script
+      element: table.sr-only (adjacent to canvas, populated from same data)
+    ecosystem-illustration:
+      type: none needed (decorative — system descriptions are in adjacent text cards)
+
+  interactive-elements:
+    nav-links:
+      - "About" (a[href="#about"]) — accessible name from text content
+      - "GitHub" (a[href="..."][target="_blank"]) — consider aria-label "GitHub (opens in new tab)"
+      - "LinkedIn" (a[href="..."][target="_blank"]) — consider aria-label "LinkedIn (opens in new tab)"
+    hero-ctas:
+      - "Explore the ideas" (Button-CTA, primary) — accessible name from label
+      - "Investigate the code" (Button-CTA, secondary, external) — consider aria-label with "(opens in new tab)"
+    ecosystem-cards:
+      - Each .ecosystem__system card is clickable — needs role="button" or <button> wrapper
+      - Accessible name from the system header SVG's aria-label ("Rosetta", "Stemma", "Civitas")
+      - Keyboard: Enter/Space activates (opens modal)
+    ecosystem-modal:
+      - Close button: aria-label="Close"
+      - Modal container: role="dialog", aria-modal="true", aria-labelledby (header SVG's aria-label)
+    cta-buttons:
+      - "Peter on LinkedIn" (external) — aria-label "Peter on LinkedIn (opens in new tab)"
+      - "DesignerPunk on GitHub" (external) — aria-label "DesignerPunk on GitHub (opens in new tab)"
+
+  reduced-motion-summary:
+    trigger: "@media (prefers-reduced-motion: reduce)"
+    affected-elements:
+      - Scroll-reveal animations: disabled, elements immediately visible
+      - Nav color transitions: instant snap (no CSS transition)
+      - Chord diagram: static render, no idle spin, no pulse dots
+      - Career chart: bars render at full height immediately, no grow animation
+      - Ecosystem modal: instant show/hide, no FLIP transform animation
+      - Easter eggs: instant reveal at full opacity, no neon flicker keyframe
+      - Card hover transitions: instant state change (no 150ms transition)
+      - Button/link opacity transitions: instant (no 150ms ease)
+    implementation: |
+      Single media query block that:
+      1. Sets transition-duration: 0s on all animated elements
+      2. Sets animation: none on keyframe-animated elements
+      3. Sets reveal elements to their final visible state
+      4. Chord/career scripts check window.matchMedia('(prefers-reduced-motion: reduce)') at init

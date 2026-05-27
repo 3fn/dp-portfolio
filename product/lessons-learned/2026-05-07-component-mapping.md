@@ -80,3 +80,34 @@
 | 2 | Pattern coverage gap | Low (future) | Lina (post-Phase 1) |
 | 3 | Catalog scope observation | Informational | None |
 | 4 | Pipeline architecture gap | Blocking | Ada |
+
+---
+
+# Lessons Learned — DP-Portfolio Typography Gap
+
+**Date**: 2026-05-09
+**Phase**: Phase 1 spec planning (Spec 001 design outline)
+**Captured by**: Leonardo
+**For**: Ada (token creation)
+
+---
+
+## 5. Typography Scale Gap: Display Size 128px
+
+**What happened**: Figma analysis of the Stats section reveals the "1" in "1 Human" uses `font-size: 128px`. The current primitive type scale tops out at `fontSize700` (42px). There's no primitive token for display sizes in the 80-128px range.
+
+**Context**: This is a hero-level display number — the single largest text element on the page. It anchors the stats bar visually and needs to feel monumental.
+
+**What's needed**: One or more new fontSize primitives above `fontSize700` to cover large display use cases. Possible additions:
+- `fontSize800` (~56px?)
+- `fontSize900` (~75px?)
+- `fontSize1000` (~100px?)
+- `fontSize1100` (~128px?)
+
+The exact values should follow the existing modular scale mathematics. The 128px value in the mock may not land exactly on a scale step — Ada should determine the mathematically correct value closest to 128px.
+
+**May also need**: Corresponding `lineHeight` primitives for these sizes.
+
+**Impact**: Non-blocking for page scaffold (can use raw CSS value temporarily), but needed before final implementation for token compliance.
+
+**Route to**: Ada (Rosetta primitive token creation)

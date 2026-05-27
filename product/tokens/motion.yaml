@@ -1,0 +1,22 @@
+category: motion
+description: Product-specific motion characteristics
+
+tokens:
+  flipDuration:
+    ref: duration350
+    description: Card-to-modal FLIP expansion timing
+    platforms: [web, ios, android]
+
+  flipEasing:
+    value: "cubic-bezier(0.4, 0, 0.2, 1)"
+    unitType: easing
+    description: Card-to-modal FLIP expansion curve
+    rationale: "Material deceleration curve — fast departure, gentle arrival. Standard for expand/reveal animations."
+    platforms: [web]
+
+  flickerDuration:
+    value: 800
+    unitType: duration
+    description: Neon easter egg flicker animation cycle
+    rationale: "Tuned to 24fps flicker perception threshold. Decorative — not a functional transition."
+    platforms: [web]

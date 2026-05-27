@@ -1,0 +1,64 @@
+category: layout
+description: Structural layout constraints for the portfolio page
+
+tokens:
+  contentMaxWidth:
+    value: 1336
+    unitType: logical
+    description: Maximum content column width
+    rationale: "Optimized for 70-75 characters per line at body font size across common viewport widths. Not a base-8 multiple — product-specific layout decision."
+    platforms: [web, ios, android]
+
+  contentIndent:
+    ref: space300
+    description: Left indent for section content and headings
+    platforms: [web, ios, android]
+
+  proseMeasureMax:
+    value: 48
+    unitType: ch
+    description: Maximum line length for body text
+    rationale: "Typographic best practice for readability. Character-width unit — web-only concept."
+    platforms: [web]
+
+  quoteMaxWidth:
+    value: 640
+    unitType: logical
+    description: Maximum width for blockquote elements
+    rationale: "Narrower than content column for visual distinction. Not a base-8 multiple."
+    platforms: [web, ios, android]
+
+  modalMaxWidth:
+    value: 1020
+    unitType: logical
+    description: Maximum width for ecosystem detail modals
+    rationale: "Accommodates two-column layout (copy + visualization) at comfortable reading width."
+    platforms: [web, ios, android]
+
+  ctaActionsMaxWidth:
+    value: 280
+    unitType: logical
+    description: Maximum width for CTA button group
+    rationale: "Constrains button width for visual balance against adjacent featured text."
+    platforms: [web, ios, android]
+
+  illustrationMaxWidth:
+    value: 380
+    unitType: logical
+    description: Maximum width for ecosystem system illustration
+    rationale: "Balanced against flanking system cards in 3-column layout."
+    platforms: [web, ios, android]
+
+  cardHeaderMaxWidth:
+    value: 180
+    unitType: logical
+    description: Maximum width for system card SVG headers
+    rationale: "Proportional to card width — prevents header from dominating card content."
+    platforms: [web, ios, android]
+
+  ctaBottomPadding:
+    value: 224
+    unitType: logical
+    description: Bottom padding for CTA section
+    rationale: "Creates visual weight and space for background image reveal. Decorative — not derived from spacing scale."
+    platforms: [web]
