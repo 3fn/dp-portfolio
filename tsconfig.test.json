@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "esModuleInterop": true,
+    "allowJs": true,
+    "strict": true,
+    "noEmit": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "types": ["jest", "node"],
+    "baseUrl": ".",
+    "paths": {
+      "@3fn/core/blend": ["node_modules/@3fn/core/src/blend/index.ts"],
+      "@3fn/core/build": ["node_modules/@3fn/core/src/build/tokens/index.ts"],
+      "@3fn/core/testing": ["node_modules/@3fn/core/src/testing/index.ts"],
+      "@3fn/core/config": ["node_modules/@3fn/core/src/config/index.ts"],
+      "@3fn/core/types": ["node_modules/@3fn/core/src/types/index.ts"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
+}

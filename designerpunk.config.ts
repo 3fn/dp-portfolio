@@ -6,6 +6,7 @@ export default defineConfig({
   abbreviation: 'DPP',
   tokenSource: './src/tokens',
   componentTokens: ['./src/components/core'],
+  productTokens: './product/tokens',
   themes: [
     { name: 'wcag', mode: 'light', overrides: wcagSemanticOverrides },
   ],
