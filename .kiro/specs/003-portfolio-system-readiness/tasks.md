@@ -127,7 +127,7 @@ Three parallel layers with one soft dependency: Layer 2 validation must follow L
 
 ---
 
-- [ ] 4. Shadow.modal Semantic Update
+- [x] 4. Shadow.modal Semantic Update
 
   **Type**: Parent
   **Validation**: Tier 2 - Standard
@@ -144,7 +144,7 @@ Three parallel layers with one soft dependency: Layer 2 validation must follow L
   **Completion Documentation:**
   - `.kiro/specs/003-portfolio-system-readiness/completion/task-4-completion.md`
 
-  - [ ] 4.1 Update shadow.modal composition
+  - [x] 4.1 Update shadow.modal composition
     **Type**: Implementation
     **Validation**: Tier 2 - Standard
     **Agent**: Ada
@@ -155,7 +155,7 @@ Three parallel layers with one soft dependency: Layer 2 validation must follow L
 
 ---
 
-- [ ] 5. Product Token Pipeline Configuration
+- [x] 5. Product Token Pipeline Configuration
 
   **Type**: Parent
   **Validation**: Tier 2 - Standard
@@ -172,7 +172,7 @@ Three parallel layers with one soft dependency: Layer 2 validation must follow L
   **Completion Documentation:**
   - `.kiro/specs/003-portfolio-system-readiness/completion/task-5-completion.md`
 
-  - [ ] 5.1 Add productTokens config and verify generation
+  - [x] 5.1 Add productTokens config and verify generation
     **Type**: Implementation
     **Validation**: Tier 2 - Standard
     **Agent**: Leonardo
@@ -183,7 +183,7 @@ Three parallel layers with one soft dependency: Layer 2 validation must follow L
 
 ---
 
-- [ ] 6. Product Token Authoring
+- [x] 6. Product Token Authoring
 
   **Type**: Parent
   **Validation**: Tier 2 - Standard
@@ -203,7 +203,7 @@ Three parallel layers with one soft dependency: Layer 2 validation must follow L
   **Completion Documentation:**
   - `.kiro/specs/003-portfolio-system-readiness/completion/task-6-completion.md`
 
-  - [ ] 6.1 Author layout.yaml
+  - [x] 6.1 Author layout.yaml
     **Type**: Implementation
     **Validation**: Tier 2 - Standard
     **Agent**: Leonardo
@@ -211,7 +211,7 @@ Three parallel layers with one soft dependency: Layer 2 validation must follow L
     - Include rationale on all hard values
     - _Requirements: 6_
 
-  - [ ] 6.2 Author motion.yaml
+  - [x] 6.2 Author motion.yaml
     **Type**: Implementation
     **Validation**: Tier 1 - Minimal
     **Agent**: Leonardo
@@ -219,7 +219,7 @@ Three parallel layers with one soft dependency: Layer 2 validation must follow L
     - Include rationale on hard values
     - _Requirements: 7_
 
-  - [ ] 6.3 Validate and generate
+  - [x] 6.3 Validate and generate
     **Type**: Implementation
     **Validation**: Tier 2 - Standard
     **Agent**: Leonardo
@@ -230,7 +230,7 @@ Three parallel layers with one soft dependency: Layer 2 validation must follow L
 
 ---
 
-- [ ] 7. Screen Spec — Page Structure and Layout
+- [x] 7. Screen Spec — Page Structure and Layout
 
   **Type**: Parent
   **Validation**: Tier 3 - Comprehensive
@@ -250,7 +250,7 @@ Three parallel layers with one soft dependency: Layer 2 validation must follow L
   **Completion Documentation:**
   - `.kiro/specs/003-portfolio-system-readiness/completion/task-7-completion.md`
 
-  - [ ] 7.1 Page-level scaffold
+  - [x] 7.1 Page-level scaffold
     **Type**: Architecture
     **Validation**: Tier 2 - Standard
     **Agent**: Leonardo
@@ -260,7 +260,7 @@ Three parallel layers with one soft dependency: Layer 2 validation must follow L
     - Define page-level accessibility (skip-to-content, landmark structure, heading hierarchy)
     - _Requirements: 8, 10, 11_
 
-  - [ ] 7.2 Simple sections ui-tree (hero, stats, enterprise, code-shots, thanks, footer)
+  - [x] 7.2 Simple sections ui-tree (hero, stats, enterprise, code-shots, thanks, footer)
     **Type**: Implementation
     **Validation**: Tier 2 - Standard
     **Agent**: Leonardo
@@ -270,7 +270,7 @@ Three parallel layers with one soft dependency: Layer 2 validation must follow L
     - Include responsive behavior per section
     - _Requirements: 8_
 
-  - [ ] 7.3 Content sections ui-tree (why-build, how-built, who-built, cta, agents)
+  - [x] 7.3 Content sections ui-tree (why-build, how-built, who-built, cta, agents)
     **Type**: Implementation
     **Validation**: Tier 2 - Standard
     **Agent**: Leonardo
@@ -281,7 +281,7 @@ Three parallel layers with one soft dependency: Layer 2 validation must follow L
 
 ---
 
-- [ ] 8. Screen Spec — Complex Interactions
+- [x] 8. Screen Spec — Complex Interactions
 
   **Type**: Parent
   **Validation**: Tier 3 - Comprehensive
@@ -299,7 +299,7 @@ Three parallel layers with one soft dependency: Layer 2 validation must follow L
   **Completion Documentation:**
   - `.kiro/specs/003-portfolio-system-readiness/completion/task-8-completion.md`
 
-  - [ ] 8.1 Ecosystem modal interaction spec
+  - [x] 8.1 Ecosystem modal interaction spec
     **Type**: Architecture
     **Validation**: Tier 2 - Standard
     **Agent**: Leonardo
@@ -308,7 +308,7 @@ Three parallel layers with one soft dependency: Layer 2 validation must follow L
     - Document focus trap, close triggers, reduced-motion fallback
     - _Requirements: 9_
 
-  - [ ] 8.2 Chord diagram interaction spec
+  - [x] 8.2 Chord diagram interaction spec
     **Type**: Architecture
     **Validation**: Tier 2 - Standard
     **Agent**: Leonardo
@@ -317,7 +317,7 @@ Three parallel layers with one soft dependency: Layer 2 validation must follow L
     - Document reduced-motion (stop idle spin, disable pulse)
     - _Requirements: 9_
 
-  - [ ] 8.3 Career chart interaction spec
+  - [x] 8.3 Career chart interaction spec
     **Type**: Architecture
     **Validation**: Tier 2 - Standard
     **Agent**: Leonardo
@@ -326,7 +326,7 @@ Three parallel layers with one soft dependency: Layer 2 validation must follow L
     - Document reduced-motion (instant render, no grow animation)
     - _Requirements: 9_
 
-  - [ ] 8.4 Agent portrait and easter egg interaction specs
+  - [x] 8.4 Agent portrait and easter egg interaction specs
     **Type**: Implementation
     **Validation**: Tier 1 - Minimal
     **Agent**: Leonardo
@@ -337,7 +337,7 @@ Three parallel layers with one soft dependency: Layer 2 validation must follow L
 
 ---
 
-- [ ] 9. Screen Spec — Accessibility
+- [x] 9. Screen Spec — Accessibility
 
   **Type**: Parent
   **Validation**: Tier 2 - Standard
@@ -357,7 +357,7 @@ Three parallel layers with one soft dependency: Layer 2 validation must follow L
   **Completion Documentation:**
   - `.kiro/specs/003-portfolio-system-readiness/completion/task-9-completion.md`
 
-  - [ ] 9.1 Page-level accessibility specification
+  - [x] 9.1 Page-level accessibility specification
     **Type**: Implementation
     **Validation**: Tier 2 - Standard
     **Agent**: Leonardo
@@ -370,7 +370,7 @@ Three parallel layers with one soft dependency: Layer 2 validation must follow L
 
 ---
 
-- [ ] 10. Screen Spec — Assets and Performance
+- [x] 10. Screen Spec — Assets and Performance
 
   **Type**: Parent
   **Validation**: Tier 2 - Standard
@@ -389,7 +389,7 @@ Three parallel layers with one soft dependency: Layer 2 validation must follow L
   **Completion Documentation:**
   - `.kiro/specs/003-portfolio-system-readiness/completion/task-10-completion.md`
 
-  - [ ] 10.1 Asset enumeration and performance specification
+  - [x] 10.1 Asset enumeration and performance specification
     **Type**: Implementation
     **Validation**: Tier 2 - Standard
     **Agent**: Leonardo
@@ -401,7 +401,7 @@ Three parallel layers with one soft dependency: Layer 2 validation must follow L
 
 ---
 
-- [ ] 11. Product Context Updates
+- [x] 11. Product Context Updates
 
   **Type**: Parent
   **Validation**: Tier 1 - Minimal
@@ -418,7 +418,7 @@ Three parallel layers with one soft dependency: Layer 2 validation must follow L
   **Completion Documentation:**
   - `.kiro/specs/003-portfolio-system-readiness/completion/task-11-completion.md`
 
-  - [ ] 11.1 Update overview.yaml and roadmap.md
+  - [x] 11.1 Update overview.yaml and roadmap.md
     **Type**: Documentation
     **Validation**: Tier 1 - Minimal
     **Agent**: Leonardo

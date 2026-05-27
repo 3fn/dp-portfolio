@@ -80,7 +80,7 @@
 
 ---
 
-- [ ] 2. Interactions — Canvas
+- [x] 2. Interactions — Canvas
 
   **Type**: Parent
   **Validation**: Tier 3 - Comprehensive (includes success criteria)
@@ -105,7 +105,7 @@
   - Commit changes: `./.kiro/hooks/commit-task.sh "Task 2 Complete: Canvas Interactions"`
   - Verify: Check GitHub for committed changes
 
-  - [ ] 2.1 Extract and implement chord diagram
+  - [x] 2.1 Extract and implement chord diagram
     **Type**: Implementation
     **Validation**: Tier 2 - Standard
     **Agent**: Sparky
@@ -116,7 +116,7 @@
     - Verify visual fidelity matches prototype (node layout, chord curves, pulse dots, drag behavior)
     - _Requirements: 5.1, 5.2, 5.3, 5.4, 5.5, 5.6_
 
-  - [ ] 2.2 Extract and implement career chart
+  - [x] 2.2 Extract and implement career chart
     **Type**: Implementation
     **Validation**: Tier 2 - Standard
     **Agent**: Sparky
@@ -130,7 +130,7 @@
 
 ---
 
-- [ ] 3. Interactions — DOM
+- [x] 3. Interactions — DOM
 
   **Type**: Parent
   **Validation**: Tier 3 - Comprehensive (includes success criteria)
@@ -155,7 +155,7 @@
   - Commit changes: `./.kiro/hooks/commit-task.sh "Task 3 Complete: DOM Interactions"`
   - Verify: Check GitHub for committed changes
 
-  - [ ] 3.1 Extract and implement ecosystem modal + connectors
+  - [x] 3.1 Extract and implement ecosystem modal + connectors
     **Type**: Implementation
     **Validation**: Tier 2 - Standard
     **Agent**: Sparky
@@ -171,7 +171,7 @@
     - Handle SVG load failure gracefully (no connectors drawn, no error)
     - _Requirements: 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 9.5_
 
-  - [ ] 3.2 Extract and implement agent portrait interaction
+  - [x] 3.2 Extract and implement agent portrait interaction
     **Type**: Implementation
     **Validation**: Tier 2 - Standard
     **Agent**: Sparky
@@ -184,7 +184,7 @@
 
 ---
 
-- [ ] 4. Accessibility & Performance Polish
+- [x] 4. Accessibility & Performance Polish
 
   **Type**: Parent
   **Validation**: Tier 3 - Comprehensive (includes success criteria)
@@ -210,7 +210,7 @@
   - Commit changes: `./.kiro/hooks/commit-task.sh "Task 4 Complete: Accessibility & Performance Polish"`
   - Verify: Check GitHub for committed changes
 
-  - [ ] 4.1 Accessibility audit and fixes
+  - [x] 4.1 Accessibility audit and fixes
     **Type**: Implementation
     **Validation**: Tier 2 - Standard
     **Agent**: Sparky
@@ -225,7 +225,7 @@
     - Test focus trap: verify Tab/Shift+Tab stays within modal when open
     - _Requirements: 9.1, 9.2, 9.3, 9.4, 9.5, 9.7_
 
-  - [ ] 4.2 Performance verification
+  - [x] 4.2 Performance verification
     **Type**: Implementation
     **Validation**: Tier 2 - Standard
     **Agent**: Sparky
@@ -236,7 +236,7 @@
     - Verify all SVGs use `<object>` not `<img>`
     - _Requirements: 10.1, 10.2, 10.4, 10.5, 10.6_
 
-  - [ ] 4.3 Token compliance validation
+  - [x] 4.3 Token compliance validation
     **Type**: Implementation
     **Validation**: Tier 2 - Standard
     **Agent**: Sparky
@@ -247,7 +247,7 @@
     - Cross-reference against Spec 002 accepted deviations list
     - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5_
 
-  - [ ] 4.4 Reduced-motion and scroll-reveal verification
+  - [x] 4.4 Reduced-motion and scroll-reveal verification
     **Type**: Implementation
     **Validation**: Tier 2 - Standard
     **Agent**: Sparky
