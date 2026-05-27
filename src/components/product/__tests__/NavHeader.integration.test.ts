@@ -3,15 +3,12 @@
  * @purpose Integration tests for Nav-Header-App + NavAboutPopover composition
  * @jest-environment jsdom
  */
-/**
- * Integration tests verifying cross-component behavior
- *
- * Tests: three-property coordination, popover z-index above nav,
- * prefix hidden from accessible name, logo renders in leading slot.
- */
 
 import { NavHeaderApp } from '../../core/Nav-Header-App/platforms/web/NavHeaderApp.web';
 import { NavAboutPopover } from '../NavAboutPopover/NavAboutPopover.web';
+import { readComponentCSS } from '@3fn/core/testing';
+
+const navAppCss = readComponentCSS(__dirname, '../../core/Nav-Header-App/platforms/web/NavHeaderApp.styles.css');
 
 describe('Nav-Header Integration Tests', () => {
   let container: HTMLElement;
@@ -26,27 +23,17 @@ describe('Nav-Header Integration Tests', () => {
   });
 
   describe('three custom properties coordinate', () => {
-    it('should accept all three override properties simultaneously', () => {
-      const nav = new NavHeaderApp();
-      container.appendChild(nav);
-      nav.connectedCallback();
-
-      const style = nav.shadowRoot!.querySelector('style')!.textContent!;
-      expect(style).toContain('--nav-bg-override');
-      expect(style).toContain('--nav-glow-color');
-      expect(style).toContain('--nav-border-color');
+    it('should accept all three override properties in CSS', () => {
+      expect(navAppCss).toContain('--nav-bg-override');
+      expect(navAppCss).toContain('--nav-glow-color');
+      expect(navAppCss).toContain('--nav-border-color');
     });
 
-    it('should define all three overrides on :host scope', () => {
-      const nav = new NavHeaderApp();
-      container.appendChild(nav);
-      nav.connectedCallback();
-
-      const style = nav.shadowRoot!.querySelector('style')!.textContent!;
-      const hostBlock = style.match(/:host\s*\{([^}]+)\}/s);
-      expect(hostBlock).not.toBeNull();
-      expect(hostBlock![1]).toContain('--color-structure-canvas');
-      expect(hostBlock![1]).toContain('--color-structure-border-subtle');
+    it('should define background and border overrides on :host scope', () => {
+      const hostBlocks = navAppCss.match(/:host\s*\{[^}]+\}/gs) || [];
+      const combined = hostBlocks.join('');
+      expect(combined).toContain('--color-structure-canvas');
+      expect(combined).toContain('--color-structure-border-subtle');
     });
   });
 

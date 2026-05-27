@@ -135,3 +135,48 @@ contracts:
       - Tab to button, verify focus ring visible
       - Test in each variant
     required: true
+
+  content_renders_link:
+    category: content
+    description: Renders as link element when href is provided
+    behavior: |
+      When href prop is set, component renders as <a> instead of <button>.
+      All visual styling remains identical. Keyboard behavior changes to
+      native link semantics (Enter activates, Space does not). The disabled
+      prop is ignored when href is set. When target="_blank", rel is auto-set
+      to "noopener noreferrer" if not explicitly provided.
+    wcag: "4.1.2 Name, Role, Value"
+    platforms: [web, ios, android]
+    validation:
+      - href set renders <a> element (web)
+      - href absent renders <button> element (web)
+      - <a> has correct href attribute value
+      - target="_blank" produces rel="noopener noreferrer"
+      - Space key does NOT activate when rendered as <a>
+      - Enter key activates when rendered as <a>
+      - disabled prop ignored when href is set
+    test_approach: |
+      - Set href, verify <a> rendered with correct href
+      - Remove href, verify <button> rendered
+      - Set target="_blank", verify rel auto-applied
+      - Focus <a>, press Space, verify no activation
+      - Focus <a>, press Enter, verify activation
+    required: false
+
+  layout_icon_position:
+    category: layout
+    description: Icon renders at leading or trailing position
+    behavior: |
+      When iconPosition is "leading" (default), the icon renders before
+      the label text. When "trailing", the icon renders after the label.
+      Trailing position is used for outbound link indicators (external-link icon).
+    wcag: null
+    platforms: [web, ios, android]
+    validation:
+      - Default (leading) renders icon before label in DOM order
+      - Trailing renders icon after label in DOM order
+      - Visual order matches DOM order
+    test_approach: |
+      - Render with icon and default position, verify icon precedes label
+      - Render with iconPosition="trailing", verify label precedes icon
+    required: false

@@ -30,11 +30,12 @@
   gap: var(--space-grouped-normal); /* Default icon-text spacing: 8px */
   
   /* Typography - Default to medium size (labelMd for UI controls) */
-  font-family: var(--typography-label-md-font-family);
-  font-size: var(--typography-label-md-font-size);
-  font-weight: var(--typography-label-md-font-weight);
+  font-family: var(--typography-display-label-md-family);
+  font-size: var(--typography-display-label-md-font-size);
+  font-weight: var(--typography-display-label-md-font-weight);
   line-height: var(--typography-label-md-line-height);
   letter-spacing: var(--typography-label-md-letter-spacing);
+  text-box-trim: trim-end;
   
   /* Text alignment */
   text-align: center;
@@ -86,9 +87,9 @@
   gap: var(--space-grouped-tight); /* 4px for icon-text spacing */
   
   /* Typography: labelMd (medium weight for UI controls) */
-  font-family: var(--typography-label-md-font-family);
-  font-size: var(--typography-label-md-font-size);
-  font-weight: var(--typography-label-md-font-weight);
+  font-family: var(--typography-display-label-md-font-family);
+  font-size: var(--typography-display-label-md-font-size);
+  font-weight: var(--typography-display-label-md-font-weight);
   line-height: var(--typography-label-md-line-height);
   letter-spacing: var(--typography-label-md-letter-spacing);
 }
@@ -114,8 +115,8 @@
   gap: var(--space-grouped-normal); /* 8px for icon-text spacing */
   
   /* Typography: labelMd (medium weight for UI controls) */
-  font-family: var(--typography-label-md-font-family);
-  font-size: var(--typography-label-md-font-size);
+  font-family: var(--typography-display-label-md-font-family);
+  font-size: var(--typography-display-label-md-font-size);
   font-weight: var(--typography-label-md-font-weight);
   line-height: var(--typography-label-md-line-height);
   letter-spacing: var(--typography-label-md-letter-spacing);
@@ -142,9 +143,9 @@
   gap: var(--space-grouped-normal); /* 8px for icon-text spacing */
   
   /* Typography: labelLg (medium weight for UI controls) */
-  font-family: var(--typography-label-lg-font-family);
-  font-size: var(--typography-label-lg-font-size);
-  font-weight: var(--typography-label-lg-font-weight);
+  font-family: var(--typography-display-label-lg-font-family);
+  font-size: var(--typography--display-label-lg-font-size);
+  font-weight: var(--typography-display-label-lg-font-weight);
   line-height: var(--typography-label-lg-line-height);
   letter-spacing: var(--typography-label-lg-letter-spacing);
 }
@@ -245,6 +246,7 @@
   white-space: normal;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  text-box-trim: trim-end;
 }
 
 /**

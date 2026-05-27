@@ -6,14 +6,17 @@
 /**
  * Contract tests for Nav-Header-App component
  *
- * Tests: visual_background_override, visual_glow, accessibility_no_heading,
- * border color override (separator behavior at App level).
+ * Tests: visual_background_override, visual_shadow, accessibility_no_heading,
+ * border removal (App-level separator hidden).
  *
  * Stemma System: Navigation Family, Semantic (App)
  * Contracts tested: 3 own + 1 inherited override behavior
  */
 
 import { NavHeaderApp } from '../platforms/web/NavHeaderApp.web';
+import { readComponentCSS } from '@3fn/core/testing';
+
+const cssSource = readComponentCSS(__dirname, '../platforms/web/NavHeaderApp.styles.css');
 
 describe('Nav-Header-App Contract Tests', () => {
   let container: HTMLElement;
@@ -36,45 +39,30 @@ describe('Nav-Header-App Contract Tests', () => {
   // ==========================================================================
 
   describe('visual_background_override', () => {
-    it('should expose --nav-bg-override custom property via :host style', () => {
-      const style = element.shadowRoot!.querySelector('style');
-      expect(style!.textContent).toContain('--nav-bg-override');
+    it('should expose --nav-bg-override custom property', () => {
+      expect(cssSource).toContain('--nav-bg-override');
     });
 
-    it('should reference --color-structure-canvas as fallback', () => {
-      const style = element.shadowRoot!.querySelector('style');
-      expect(style!.textContent).toContain('var(--nav-bg-override, var(--color-structure-canvas))');
+    it('should use black-300 as default background', () => {
+      expect(cssSource).toContain('var(--nav-bg-override, var(--black-300))');
     });
 
     it('should redefine --color-structure-canvas on :host', () => {
-      const style = element.shadowRoot!.querySelector('style');
-      expect(style!.textContent).toMatch(/:host\s*\{[^}]*--color-structure-canvas/);
+      expect(cssSource).toMatch(/:host\s*\{[^}]*--color-structure-canvas/);
     });
   });
 
   // ==========================================================================
-  // visual_glow contract
+  // visual_shadow contract
   // ==========================================================================
 
-  describe('visual_glow', () => {
-    it('should always render a box-shadow (underglow is intrinsic)', () => {
-      const style = element.shadowRoot!.querySelector('style');
-      expect(style!.textContent).toContain('box-shadow');
+  describe('visual_shadow', () => {
+    it('should always render a box-shadow (shadow is intrinsic)', () => {
+      expect(cssSource).toContain('box-shadow');
     });
 
-    it('should use blur-200 token for glow blur radius', () => {
-      const style = element.shadowRoot!.querySelector('style');
-      expect(style!.textContent).toContain('--blur-200');
-    });
-
-    it('should use pre-baked rgba default with 0.4 opacity', () => {
-      const style = element.shadowRoot!.querySelector('style');
-      expect(style!.textContent).toContain('rgba(0, 204, 110, 0.4)');
-    });
-
-    it('should expose --nav-glow-color custom property', () => {
-      const style = element.shadowRoot!.querySelector('style');
-      expect(style!.textContent).toContain('--nav-glow-color');
+    it('should use shadow.navigation semantic token', () => {
+      expect(cssSource).toContain('var(--shadow-navigation)');
     });
   });
 
@@ -90,23 +78,16 @@ describe('Nav-Header-App Contract Tests', () => {
   });
 
   // ==========================================================================
-  // Border color override (App-level separator default)
+  // Border removal (App-level separator hidden)
   // ==========================================================================
 
-  describe('border color override', () => {
-    it('should expose --nav-border-color custom property', () => {
-      const style = element.shadowRoot!.querySelector('style');
-      expect(style!.textContent).toContain('--nav-border-color');
-    });
-
-    it('should override --color-structure-border-subtle with green-400 default', () => {
-      const style = element.shadowRoot!.querySelector('style');
-      expect(style!.textContent).toContain('var(--nav-border-color, var(--green-400))');
+  describe('border removal', () => {
+    it('should set --color-structure-border-subtle to transparent', () => {
+      expect(cssSource).toContain('--color-structure-border-subtle: transparent');
     });
 
     it('should redefine --color-structure-border-subtle on :host', () => {
-      const style = element.shadowRoot!.querySelector('style');
-      expect(style!.textContent).toMatch(/:host\s*\{[^}]*--color-structure-border-subtle/);
+      expect(cssSource).toMatch(/:host\s*\{[^}]*--color-structure-border-subtle/);
     });
   });
 });

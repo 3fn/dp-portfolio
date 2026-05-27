@@ -30,7 +30,7 @@ import { IconBaseSize, iconBaseSizes } from '../../../Icon-Base/types';
 // Import theme-aware blend utilities for state color calculations
 // Uses getBlendUtilities() factory for consistent state styling across components
 // @see Requirements: 11.1, 11.2, 11.3 - Theme-aware utilities
-import { getBlendUtilities, BlendUtilitiesResult } from '../../../../../blend/ThemeAwareBlendUtilities.web';
+import { getBlendUtilities, BlendUtilitiesResult } from '@3fn/core/blend';
 
 // Import CSS as string for browser bundle compatibility
 // The esbuild CSS-as-string plugin transforms this import into a JS string export
@@ -153,7 +153,7 @@ export class ButtonCTA extends HTMLElement {
    * When these attributes change, attributeChangedCallback is invoked.
    */
   static get observedAttributes(): string[] {
-    return ['label', 'size', 'variant', 'icon', 'no-wrap', 'disabled', 'test-id'];
+    return ['label', 'size', 'variant', 'icon', 'icon-position', 'no-wrap', 'disabled', 'test-id', 'href', 'target', 'rel'];
   }
   
   constructor() {
@@ -406,6 +406,50 @@ export class ButtonCTA extends HTMLElement {
       this.removeAttribute('test-id');
     }
   }
+
+  get href(): string | null {
+    return this.getAttribute('href');
+  }
+
+  set href(value: string | null) {
+    if (value) {
+      this.setAttribute('href', value);
+    } else {
+      this.removeAttribute('href');
+    }
+  }
+
+  get target(): string | null {
+    return this.getAttribute('target');
+  }
+
+  set target(value: string | null) {
+    if (value) {
+      this.setAttribute('target', value);
+    } else {
+      this.removeAttribute('target');
+    }
+  }
+
+  get rel(): string | null {
+    return this.getAttribute('rel');
+  }
+
+  set rel(value: string | null) {
+    if (value) {
+      this.setAttribute('rel', value);
+    } else {
+      this.removeAttribute('rel');
+    }
+  }
+
+  get iconPosition(): 'leading' | 'trailing' {
+    return this.getAttribute('icon-position') === 'trailing' ? 'trailing' : 'leading';
+  }
+
+  set iconPosition(value: 'leading' | 'trailing') {
+    this.setAttribute('icon-position', value);
+  }
   
   // ============================================================================
   // Rendering (Incremental Update Architecture)
@@ -489,27 +533,47 @@ export class ButtonCTA extends HTMLElement {
     // Uses <icon-base> web component for icon rendering (component composition pattern)
     // This matches iOS and Android platforms which use IconBase() component composition
     // @see Requirements: 8.2, 8.3 (components render correctly with interactivity)
-    this._shadowRoot.innerHTML = `
-      <style>${buttonStyles}</style>
-      <button 
-        class="${buttonClasses}"
+    const isLink = !!this.href;
+    const tag = isLink ? 'a' : 'button';
+    const iconPos = this.iconPosition;
+
+    // Link-specific attributes
+    let linkAttrs = '';
+    if (isLink) {
+      linkAttrs = ` href="${this.href}"`;
+      if (this.target) linkAttrs += ` target="${this.target}"`;
+      const rel = this.rel || (this.target === '_blank' ? 'noopener noreferrer' : null);
+      if (rel) linkAttrs += ` rel="${rel}"`;
+    }
+
+    // Button-specific attributes (ignored for links)
+    const buttonAttrs = isLink ? '' : `
         type="button"
         role="button"
-        ${disabled ? 'disabled aria-disabled="true"' : 'aria-disabled="false"'}
+        ${disabled ? 'disabled aria-disabled="true"' : 'aria-disabled="false"'}`;
+
+    const iconHtml = `<span class="button-cta__icon" aria-hidden="true" style="${icon ? '' : 'display: none;'}">
+          <icon-base name="${icon || ''}" size="${iconSize}" color="inherit"></icon-base>
+        </span>`;
+    const labelHtml = `<span class="${labelClass}">${label}</span>`;
+
+    this._shadowRoot.innerHTML = `
+      <style>${buttonStyles}</style>
+      <${tag} 
+        class="${buttonClasses}"
+        ${buttonAttrs}
         ${testIDAttr}
+        ${linkAttrs}
         aria-label="${label}"
         style="${blendColorStyles}"
       >
-        <span class="button-cta__icon" aria-hidden="true" style="${icon ? '' : 'display: none;'}">
-          <icon-base name="${icon || ''}" size="${iconSize}" color="inherit"></icon-base>
-        </span>
-        <span class="${labelClass}">${label}</span>
-      </button>
+        ${iconPos === 'leading' ? iconHtml + labelHtml : labelHtml + iconHtml}
+      </${tag}>
     `;
     
     // Cache element references for incremental updates
     // @see Requirements: 2.4 - Cache references to DOM elements that will be updated
-    this._button = this._shadowRoot.querySelector('button');
+    this._button = this._shadowRoot.querySelector(tag) as HTMLButtonElement;
     this._labelEl = this._shadowRoot.querySelector('.button-cta__label, .button-cta__label--no-wrap');
     this._iconContainer = this._shadowRoot.querySelector('.button-cta__icon');
     this._iconEl = this._iconContainer?.querySelector('icon-base') || null;
@@ -555,13 +619,15 @@ export class ButtonCTA extends HTMLElement {
     ].filter(Boolean).join(' ');
     this._button.className = buttonClasses;
     
-    // Update disabled state
-    if (disabled) {
-      this._button.setAttribute('disabled', '');
-      this._button.setAttribute('aria-disabled', 'true');
-    } else {
-      this._button.removeAttribute('disabled');
-      this._button.setAttribute('aria-disabled', 'false');
+    // Update disabled state (ignored for links)
+    if (!this.href) {
+      if (disabled) {
+        this._button.setAttribute('disabled', '');
+        this._button.setAttribute('aria-disabled', 'true');
+      } else {
+        this._button.removeAttribute('disabled');
+        this._button.setAttribute('aria-disabled', 'false');
+      }
     }
     
     // Update aria-label

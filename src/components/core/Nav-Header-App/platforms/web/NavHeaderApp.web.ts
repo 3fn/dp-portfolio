@@ -29,9 +29,10 @@ export class NavHeaderApp extends HTMLElement {
     if (this.getAttribute('test-id')) header.setAttribute('test-id', this.getAttribute('test-id')!);
 
     header.innerHTML = `
-      <slot name="leading" slot="leading"></slot>
-      <slot name="center" slot="title"></slot>
-      <slot name="trailing" slot="trailing"></slot>
+      <div slot="title" style="display:flex;align-items:center;justify-content:space-between;width:100%;max-width:var(--product-layout-content-max-width);margin-inline:auto;">
+        <slot name="leading"></slot>
+        <slot name="trailing"></slot>
+      </div>
     `;
 
     this._shadowRoot.appendChild(header);

@@ -23,9 +23,9 @@ readiness:
 description: |
   App-level header for root destination screens. Inherits safe area,
   background, layout, and landmark semantics from Nav-Header-Base.
-  Exposes three CSS custom properties for product-controlled theming
-  (--nav-bg-override, --nav-glow-color, --nav-border-color) and renders
-  an intrinsic underglow effect. Content is product-defined via slots.
+  Exposes --nav-bg-override for product-controlled background theming
+  and renders a drop shadow via shadow.navigation token. Default
+  background is black-300. Content is product-defined via slots.
 
 behaviors:
   - renderable
@@ -69,25 +69,8 @@ customProperties:
     required: false
     description: |
       Overrides the nav background color. Product sets this via JS during
-      scroll transitions. When not set, defaults to color.structure.canvas.
-    default: "color.structure.canvas (inherited)"
-
-  --nav-glow-color:
-    type: string
-    required: false
-    description: |
-      Overrides the underglow color. Expects an rgba value with opacity
-      pre-baked (e.g., rgba(255, 42, 109, 0.4)). When not set, defaults
-      to glow.neonGreen at glowOpacity300.
-    default: "rgba(0, 204, 110, 0.4)"
-
-  --nav-border-color:
-    type: string
-    required: false
-    description: |
-      Overrides the separator border color. Product sets this via JS during
-      scroll transitions. When not set, defaults to green400.
-    default: "green400"
+      scroll transitions. When not set, defaults to black-300.
+    default: "black-300"
 
 tokens:
   component:

@@ -41,26 +41,22 @@ contracts:
       Remove property, verify default restores.
     required: true
 
-  visual_glow:
+  visual_shadow:
     category: visual
-    description: Always-present underglow beneath nav bar
+    description: Always-present drop shadow beneath nav bar
     behavior: |
-      Nav-Header-App renders a soft underglow effect beneath the nav bar.
-      The glow is intrinsic (always present, not optional). Default color
-      is glow.neonGreen (green500) at glowOpacity300 (0.4) with blur200
-      (32px) blur radius and zero x/y offset.
-      Product can override glow color via --nav-glow-color CSS custom
-      property. The value must be an rgba color with opacity pre-baked.
+      Nav-Header-App renders a drop shadow beneath the nav bar using the
+      shadow.navigation semantic token. The shadow is intrinsic (always
+      present, not optional). It provides depth separation between the
+      nav bar and page content below.
     wcag: null
     platforms: [web, ios, android]
     validation:
-      - Underglow is always present without any custom property set
-      - Setting --nav-glow-color changes glow color
-      - Glow uses zero x/y offset (true radial glow)
-      - Default glow color is rgba(0, 204, 110, 0.4)
+      - Drop shadow is always present
+      - Shadow uses shadow.navigation token (--shadow-navigation on web)
     test_approach: |
-      Render Nav-Header-App, verify box-shadow present with correct
-      default values. Set --nav-glow-color, verify color changes.
+      Render Nav-Header-App, verify box-shadow matches shadow.navigation
+      token value.
     required: true
 
 excludes:
