@@ -9,13 +9,12 @@
 
 body {
   min-height: 100dvh;
-}
-
-/* Sticky nav */
-nav-header-app {
-  position: sticky;
-  top: 0;
-  z-index: var(--z-index-navigation, 1000);
+  font-family: var(--typography-body-md-font-family);
+  font-size: var(--typography-body-md-font-size);
+  font-weight: var(--typography-body-md-font-weight);
+  line-height: var(--typography-body-md-line-height);
+  letter-spacing: var(--typography-body-md-letter-spacing);
+  color: var(--color-text-default);
 }
 
 /* Full-bleed sections */
@@ -28,8 +27,6 @@ footer {
 /* Section backgrounds */
 #hero {
   background-color: var(--green-100);
-  background-image: linear-gradient(-102deg, var(--black-500), var(--white-100));
-  background-blend-mode: normal;
   position: relative;
 }
 #hero::before {
@@ -57,14 +54,3 @@ footer { background-color: var(--black-500); }
   padding-inline: var(--space-500);
   width: 100%;
 }
-
-/* Nav scroll-linked color transition */
-nav-header-app {
-  transition: background-color var(--duration-150) ease-out,
-              box-shadow var(--duration-150) ease-out,
-              border-color var(--duration-150) ease-out;
-}
-
-/* Text mode snap — no transition on color, instant swap */
-nav-header-app.nav--dark-text { --nav-text-color: var(--color-contrast-on-light); }
-nav-header-app.nav--light-text { --nav-text-color: var(--color-contrast-on-dark); }

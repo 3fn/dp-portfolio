@@ -1,0 +1,59 @@
+/* Critical Features section styles */
+
+#critical-features {
+  --hard-shadow-color: var(--pink-300);
+  position: relative;
+}
+
+/* Angular gradient overlay */
+#critical-features::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(-115deg, var(--black-500), var(--white-100));
+  opacity: var(--opacity-024);
+  pointer-events: none;
+}
+
+/* Diamond lattice pattern */
+#critical-features::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(45deg, transparent, transparent 14px, var(--orange-300) 14px, var(--orange-300) 15px),
+    repeating-linear-gradient(-45deg, transparent, transparent 14px, var(--orange-300) 14px, var(--orange-300) 15px);
+  opacity: var(--opacity-024);
+  pointer-events: none;
+}
+
+#critical-features .content-column {
+  position: relative;
+  padding-block: var(--space-sectioned-normal);
+}
+
+#critical-features .section-heading {
+  margin-block-end: var(--space-sectioned-loose);
+}
+
+/* 2×3 card grid */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-sectioned-loose);
+}
+
+.feature-card {
+  background-color: var(--color-structure-surface);
+  opacity: var(--opacity-080);
+  padding: var(--space-inset-300);
+}
+
+.feature-card h3 {
+  color: var(--color-contrast-on-light);
+  margin-block-end: var(--space-grouped-normal);
+}
+
+.feature-card p {
+  color: var(--color-text-muted);
+}

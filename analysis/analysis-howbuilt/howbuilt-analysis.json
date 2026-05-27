@@ -1,0 +1,1688 @@
+{
+  "componentName": "HowBuilt",
+  "componentType": "COMPONENT",
+  "figmaId": "3492:2853",
+  "fileKey": "yU7908VXR1khQN5hZXC6Cy",
+  "nodeTree": {
+    "id": "3492:2853",
+    "name": "HowBuilt",
+    "type": "FRAME",
+    "depth": 0,
+    "ancestorChain": [],
+    "tokenClassifications": {
+      "semanticIdentified": [],
+      "primitiveIdentified": [],
+      "unidentified": [
+        {
+          "property": "padding-top",
+          "rawValue": "0",
+          "reason": "value-match",
+          "suggestedToken": "semanticSpace.grouped.none"
+        },
+        {
+          "property": "padding-right",
+          "rawValue": "0",
+          "reason": "value-match",
+          "suggestedToken": "semanticSpace.grouped.none"
+        },
+        {
+          "property": "padding-bottom",
+          "rawValue": "0",
+          "reason": "value-match",
+          "suggestedToken": "semanticSpace.grouped.none"
+        },
+        {
+          "property": "padding-left",
+          "rawValue": "0",
+          "reason": "value-match",
+          "suggestedToken": "semanticSpace.grouped.none"
+        },
+        {
+          "property": "border-width",
+          "rawValue": "1",
+          "reason": "value-match",
+          "suggestedToken": "semanticBorderWidth.default"
+        }
+      ]
+    },
+    "children": [
+      {
+        "id": "3492:3202",
+        "name": "How Was This Built Container",
+        "type": "FRAME",
+        "depth": 1,
+        "ancestorChain": [
+          "FRAME"
+        ],
+        "tokenClassifications": {
+          "semanticIdentified": [],
+          "primitiveIdentified": [],
+          "unidentified": [
+            {
+              "property": "padding-top",
+              "rawValue": "0",
+              "reason": "value-match",
+              "suggestedToken": "semanticSpace.grouped.none"
+            },
+            {
+              "property": "padding-right",
+              "rawValue": "0",
+              "reason": "value-match",
+              "suggestedToken": "semanticSpace.grouped.none"
+            },
+            {
+              "property": "padding-bottom",
+              "rawValue": "0",
+              "reason": "value-match",
+              "suggestedToken": "semanticSpace.grouped.none"
+            },
+            {
+              "property": "padding-left",
+              "rawValue": "0",
+              "reason": "value-match",
+              "suggestedToken": "semanticSpace.grouped.none"
+            },
+            {
+              "property": "border-width",
+              "rawValue": "1",
+              "reason": "value-match",
+              "suggestedToken": "semanticBorderWidth.default"
+            }
+          ]
+        },
+        "children": [
+          {
+            "id": "3492:3203",
+            "name": "Background Pattern Container",
+            "type": "FRAME",
+            "depth": 2,
+            "ancestorChain": [
+              "FRAME",
+              "FRAME"
+            ],
+            "tokenClassifications": {
+              "semanticIdentified": [],
+              "primitiveIdentified": [],
+              "unidentified": [
+                {
+                  "property": "padding-top",
+                  "rawValue": "0",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticSpace.grouped.none"
+                },
+                {
+                  "property": "padding-right",
+                  "rawValue": "0",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticSpace.grouped.none"
+                },
+                {
+                  "property": "padding-bottom",
+                  "rawValue": "0",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticSpace.grouped.none"
+                },
+                {
+                  "property": "padding-left",
+                  "rawValue": "0",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticSpace.grouped.none"
+                },
+                {
+                  "property": "border-width",
+                  "rawValue": "1",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticBorderWidth.default"
+                }
+              ]
+            },
+            "children": [
+              {
+                "id": "3492:3204",
+                "name": "2",
+                "type": "FRAME",
+                "depth": 3,
+                "ancestorChain": [
+                  "FRAME",
+                  "FRAME",
+                  "FRAME"
+                ],
+                "tokenClassifications": {
+                  "semanticIdentified": [],
+                  "primitiveIdentified": [
+                    {
+                      "property": "fill",
+                      "primitiveToken": "color.pink200",
+                      "rawValue": "rgba(255, 130, 180, 1)",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    }
+                  ],
+                  "unidentified": [
+                    {
+                      "property": "opacity",
+                      "rawValue": "0.20000000298023224",
+                      "reason": "value-match",
+                      "suggestedToken": "opacity.opacity024"
+                    },
+                    {
+                      "property": "border-width",
+                      "rawValue": "0.7032260894775391",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticBorderWidth.default"
+                    }
+                  ]
+                },
+                "children": [],
+                "layout": {
+                  "cornerRadius": 0,
+                  "width": 1439.098388671875,
+                  "height": 760.4237060546875,
+                  "layoutSizingHorizontal": "FIXED",
+                  "layoutSizingVertical": "FIXED",
+                  "layoutAlign": "INHERIT",
+                  "layoutGrow": 0,
+                  "opacity": 0.20000000298023224,
+                  "strokeWeight": 0.7032260894775391,
+                  "strokeAlign": "INSIDE"
+                }
+              },
+              {
+                "id": "3492:3205",
+                "name": "1",
+                "type": "FRAME",
+                "depth": 3,
+                "ancestorChain": [
+                  "FRAME",
+                  "FRAME",
+                  "FRAME"
+                ],
+                "tokenClassifications": {
+                  "semanticIdentified": [],
+                  "primitiveIdentified": [
+                    {
+                      "property": "fill",
+                      "primitiveToken": "color.pink200",
+                      "rawValue": "rgba(255, 130, 180, 1)",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    }
+                  ],
+                  "unidentified": [
+                    {
+                      "property": "opacity",
+                      "rawValue": "0.20000000298023224",
+                      "reason": "value-match",
+                      "suggestedToken": "opacity.opacity024"
+                    },
+                    {
+                      "property": "border-width",
+                      "rawValue": "0.7032260894775391",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticBorderWidth.default"
+                    }
+                  ]
+                },
+                "children": [],
+                "layout": {
+                  "cornerRadius": 0,
+                  "width": 1439.098388671875,
+                  "height": 760.4237060546875,
+                  "layoutSizingHorizontal": "FIXED",
+                  "layoutSizingVertical": "FIXED",
+                  "layoutAlign": "INHERIT",
+                  "layoutGrow": 0,
+                  "opacity": 0.20000000298023224,
+                  "strokeWeight": 0.7032260894775391,
+                  "strokeAlign": "INSIDE"
+                }
+              }
+            ],
+            "layout": {
+              "layoutMode": "NONE",
+              "padding": {
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "itemSpacing": 0,
+              "counterAxisSpacing": 0,
+              "cornerRadius": 0,
+              "width": 1440,
+              "height": 999,
+              "layoutSizingHorizontal": "FIXED",
+              "layoutSizingVertical": "FIXED",
+              "primaryAxisAlignItems": "MIN",
+              "counterAxisAlignItems": "MIN",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "strokeWeight": 1,
+              "strokeAlign": "INSIDE"
+            }
+          },
+          {
+            "id": "3492:3206",
+            "name": "Content Container",
+            "type": "FRAME",
+            "depth": 2,
+            "ancestorChain": [
+              "FRAME",
+              "FRAME"
+            ],
+            "tokenClassifications": {
+              "semanticIdentified": [
+                {
+                  "property": "item-spacing",
+                  "semanticToken": "semanticSpace.sectioned.loose",
+                  "primitiveToken": "space.space600",
+                  "rawValue": "{space.space600}",
+                  "matchMethod": "binding",
+                  "confidence": "exact"
+                }
+              ],
+              "primitiveIdentified": [],
+              "unidentified": [
+                {
+                  "property": "padding-top",
+                  "rawValue": "0",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticSpace.grouped.none"
+                },
+                {
+                  "property": "padding-right",
+                  "rawValue": "40",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticSpace.sectioned.normal"
+                },
+                {
+                  "property": "padding-bottom",
+                  "rawValue": "0",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticSpace.grouped.none"
+                },
+                {
+                  "property": "padding-left",
+                  "rawValue": "40",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticSpace.sectioned.normal"
+                },
+                {
+                  "property": "border-width",
+                  "rawValue": "1",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticBorderWidth.default"
+                }
+              ]
+            },
+            "children": [
+              {
+                "id": "3492:3219",
+                "name": "Header",
+                "type": "FRAME",
+                "depth": 3,
+                "ancestorChain": [
+                  "FRAME",
+                  "FRAME",
+                  "FRAME"
+                ],
+                "tokenClassifications": {
+                  "semanticIdentified": [],
+                  "primitiveIdentified": [],
+                  "unidentified": [
+                    {
+                      "property": "padding-top",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "padding-right",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "padding-bottom",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "padding-left",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "item-spacing",
+                      "rawValue": "8",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.normal"
+                    },
+                    {
+                      "property": "border-width",
+                      "rawValue": "1",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticBorderWidth.default"
+                    }
+                  ]
+                },
+                "children": [
+                  {
+                    "id": "3492:3220",
+                    "name": "How was this built?",
+                    "type": "TEXT",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [],
+                      "primitiveIdentified": [
+                        {
+                          "property": "fill",
+                          "primitiveToken": "color.black300",
+                          "rawValue": "rgba(10, 10, 15, 1)",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "unidentified": [
+                        {
+                          "property": "border-width",
+                          "rawValue": "1",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticBorderWidth.default"
+                        },
+                        {
+                          "property": "font-size",
+                          "rawValue": "33",
+                          "reason": "value-match",
+                          "suggestedToken": "icon.icon.size500"
+                        },
+                        {
+                          "property": "font-weight",
+                          "rawValue": "700",
+                          "reason": "value-match",
+                          "suggestedToken": "fontWeight.fontWeight700"
+                        },
+                        {
+                          "property": "line-height",
+                          "rawValue": "40",
+                          "reason": "out-of-tolerance",
+                          "closestMatch": {
+                            "token": "lineHeight.lineHeight125",
+                            "delta": "±38.444px"
+                          }
+                        }
+                      ]
+                    },
+                    "children": [],
+                    "layout": {
+                      "width": 1360,
+                      "height": 40,
+                      "layoutSizingHorizontal": "FILL",
+                      "layoutSizingVertical": "HUG",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 1,
+                      "strokeWeight": 1,
+                      "strokeAlign": "OUTSIDE"
+                    },
+                    "textStyle": {
+                      "characters": "How was this built?",
+                      "fontSize": 33,
+                      "fontFamily": "Rajdhani",
+                      "fontStyle": "Bold",
+                      "fontWeight": 700,
+                      "lineHeight": 40,
+                      "textAlignHorizontal": "LEFT",
+                      "textAlignVertical": "TOP"
+                    }
+                  },
+                  {
+                    "id": "3492:3221",
+                    "name": "//",
+                    "type": "TEXT",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [],
+                      "primitiveIdentified": [
+                        {
+                          "property": "fill",
+                          "primitiveToken": "color.black300",
+                          "rawValue": "rgba(10, 10, 15, 1)",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "unidentified": [
+                        {
+                          "property": "border-width",
+                          "rawValue": "1",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticBorderWidth.default"
+                        },
+                        {
+                          "property": "font-size",
+                          "rawValue": "33",
+                          "reason": "value-match",
+                          "suggestedToken": "icon.icon.size500"
+                        },
+                        {
+                          "property": "font-weight",
+                          "rawValue": "700",
+                          "reason": "value-match",
+                          "suggestedToken": "fontWeight.fontWeight700"
+                        },
+                        {
+                          "property": "line-height",
+                          "rawValue": "40",
+                          "reason": "out-of-tolerance",
+                          "closestMatch": {
+                            "token": "lineHeight.lineHeight125",
+                            "delta": "±38.444px"
+                          }
+                        }
+                      ]
+                    },
+                    "children": [],
+                    "layout": {
+                      "width": 28,
+                      "height": 40,
+                      "layoutSizingHorizontal": "FIXED",
+                      "layoutSizingVertical": "FIXED",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "strokeWeight": 1,
+                      "strokeAlign": "OUTSIDE"
+                    },
+                    "textStyle": {
+                      "characters": "//",
+                      "fontSize": 33,
+                      "fontFamily": "Rajdhani",
+                      "fontStyle": "Bold",
+                      "fontWeight": 700,
+                      "lineHeight": 40,
+                      "textAlignHorizontal": "LEFT",
+                      "textAlignVertical": "TOP"
+                    }
+                  }
+                ],
+                "layout": {
+                  "layoutMode": "HORIZONTAL",
+                  "padding": {
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "itemSpacing": 8,
+                  "counterAxisSpacing": 0,
+                  "cornerRadius": 0,
+                  "width": 1360,
+                  "height": 40,
+                  "layoutSizingHorizontal": "FILL",
+                  "layoutSizingVertical": "FIXED",
+                  "primaryAxisAlignItems": "MIN",
+                  "counterAxisAlignItems": "CENTER",
+                  "layoutAlign": "STRETCH",
+                  "layoutGrow": 0,
+                  "strokeWeight": 1,
+                  "strokeAlign": "INSIDE"
+                }
+              },
+              {
+                "id": "3492:3214",
+                "name": "Container Container",
+                "type": "FRAME",
+                "depth": 3,
+                "ancestorChain": [
+                  "FRAME",
+                  "FRAME",
+                  "FRAME"
+                ],
+                "tokenClassifications": {
+                  "semanticIdentified": [
+                    {
+                      "property": "padding-top",
+                      "semanticToken": "semanticSpace.inset.300",
+                      "primitiveToken": "space.space300",
+                      "rawValue": "{space.space300}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "padding-bottom",
+                      "semanticToken": "semanticSpace.inset.300",
+                      "primitiveToken": "space.space300",
+                      "rawValue": "{space.space300}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "item-spacing",
+                      "semanticToken": "semanticSpace.separated.normal",
+                      "primitiveToken": "space.space300",
+                      "rawValue": "{space.space300}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    }
+                  ],
+                  "primitiveIdentified": [],
+                  "unidentified": [
+                    {
+                      "property": "padding-right",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "padding-left",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "fill",
+                      "rawValue": "rgba(255, 229, 220, 0.6000000238418579)",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticColor.color.feedback.warning.background"
+                    }
+                  ]
+                },
+                "children": [
+                  {
+                    "id": "3492:3215",
+                    "name": "Feature Content Container",
+                    "type": "FRAME",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [
+                        {
+                          "property": "padding-right",
+                          "semanticToken": "semanticSpace.inset.300",
+                          "primitiveToken": "space.space300",
+                          "rawValue": "{space.space300}",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        },
+                        {
+                          "property": "padding-left",
+                          "semanticToken": "semanticSpace.inset.300",
+                          "primitiveToken": "space.space300",
+                          "rawValue": "{space.space300}",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "primitiveIdentified": [],
+                      "unidentified": [
+                        {
+                          "property": "padding-top",
+                          "rawValue": "0",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticSpace.grouped.none"
+                        },
+                        {
+                          "property": "padding-bottom",
+                          "rawValue": "0",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticSpace.grouped.none"
+                        },
+                        {
+                          "property": "item-spacing",
+                          "rawValue": "0",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticSpace.grouped.none"
+                        },
+                        {
+                          "property": "border-radius",
+                          "rawValue": "8",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticRadius.normal"
+                        }
+                      ]
+                    },
+                    "children": [
+                      {
+                        "id": "3492:3216",
+                        "name": "DesignerPunk was built using multiple Claude models, including Opus 4.7, primarily through Kiro IDE and CLI tooling. All work was designed and planned myself utilizing a spec-driven methodology with iteratively developed Human-AI collaboration models.",
+                        "type": "TEXT",
+                        "depth": 5,
+                        "ancestorChain": [
+                          "FRAME",
+                          "FRAME",
+                          "FRAME",
+                          "FRAME",
+                          "FRAME"
+                        ],
+                        "tokenClassifications": {
+                          "semanticIdentified": [],
+                          "primitiveIdentified": [],
+                          "unidentified": [
+                            {
+                              "property": "border-width",
+                              "rawValue": "1",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticBorderWidth.default"
+                            },
+                            {
+                              "property": "font-size",
+                              "rawValue": "42",
+                              "reason": "value-match",
+                              "suggestedToken": "icon.icon.size700"
+                            },
+                            {
+                              "property": "font-weight",
+                              "rawValue": "700",
+                              "reason": "value-match",
+                              "suggestedToken": "fontWeight.fontWeight700"
+                            },
+                            {
+                              "property": "line-height",
+                              "rawValue": "48.0099983215332",
+                              "reason": "out-of-tolerance",
+                              "closestMatch": {
+                                "token": "lineHeight.lineHeight125",
+                                "delta": "±46.453998321533206px"
+                              }
+                            }
+                          ]
+                        },
+                        "children": [],
+                        "layout": {
+                          "width": 735,
+                          "height": 385,
+                          "layoutSizingHorizontal": "FILL",
+                          "layoutSizingVertical": "HUG",
+                          "layoutAlign": "STRETCH",
+                          "layoutGrow": 0,
+                          "strokeWeight": 1,
+                          "strokeAlign": "OUTSIDE"
+                        },
+                        "textStyle": {
+                          "characters": "DesignerPunk was built using multiple Claude models, including Opus 4.7, primarily through Kiro IDE and CLI tooling. \n\nAll work was designed and planned myself utilizing a spec-driven methodology with iteratively developed Human-AI collaboration models.",
+                          "fontSize": 42,
+                          "fontFamily": "Rajdhani",
+                          "fontStyle": "Bold",
+                          "fontWeight": 700,
+                          "lineHeight": 48.0099983215332,
+                          "textAlignHorizontal": "LEFT",
+                          "textAlignVertical": "TOP"
+                        }
+                      }
+                    ],
+                    "layout": {
+                      "layoutMode": "VERTICAL",
+                      "padding": {
+                        "top": 0,
+                        "right": 24,
+                        "bottom": 0,
+                        "left": 24
+                      },
+                      "itemSpacing": 0,
+                      "counterAxisSpacing": 0,
+                      "cornerRadius": 8,
+                      "width": 783,
+                      "height": 385,
+                      "layoutSizingHorizontal": "FIXED",
+                      "layoutSizingVertical": "HUG",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "strokeAlign": "INSIDE"
+                    }
+                  },
+                  {
+                    "id": "3492:3217",
+                    "name": "Supporting Contentent Container",
+                    "type": "FRAME",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [
+                        {
+                          "property": "padding-right",
+                          "semanticToken": "semanticSpace.inset.300",
+                          "primitiveToken": "space.space300",
+                          "rawValue": "{space.space300}",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        },
+                        {
+                          "property": "padding-left",
+                          "semanticToken": "semanticSpace.inset.300",
+                          "primitiveToken": "space.space300",
+                          "rawValue": "{space.space300}",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "primitiveIdentified": [],
+                      "unidentified": [
+                        {
+                          "property": "padding-top",
+                          "rawValue": "0",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticSpace.grouped.none"
+                        },
+                        {
+                          "property": "padding-bottom",
+                          "rawValue": "0",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticSpace.grouped.none"
+                        },
+                        {
+                          "property": "item-spacing",
+                          "rawValue": "8",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticSpace.grouped.normal"
+                        },
+                        {
+                          "property": "border-width",
+                          "rawValue": "1",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticBorderWidth.default"
+                        }
+                      ]
+                    },
+                    "children": [
+                      {
+                        "id": "3492:3218",
+                        "name": "After several failed attempts to orchestrate a traditional design system, I experimented with new practices aligned with agent tendencies that I developed over six months. Once the foundational tokens and components were established, I expanded the scope of the project to include exploring training agents to build with the system including incorporating Google’s A2UI specification that allows agents to render their own native widgets. This site is the first prototype to fully test DesignerPunk’s ability to be packaged as an ecosystem for distribution to any product development repository.",
+                        "type": "TEXT",
+                        "depth": 5,
+                        "ancestorChain": [
+                          "FRAME",
+                          "FRAME",
+                          "FRAME",
+                          "FRAME",
+                          "FRAME"
+                        ],
+                        "tokenClassifications": {
+                          "semanticIdentified": [],
+                          "primitiveIdentified": [
+                            {
+                              "property": "fill",
+                              "primitiveToken": "color.black300",
+                              "rawValue": "rgba(10, 10, 15, 1)",
+                              "matchMethod": "binding",
+                              "confidence": "exact"
+                            }
+                          ],
+                          "unidentified": [
+                            {
+                              "property": "border-width",
+                              "rawValue": "1",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticBorderWidth.default"
+                            },
+                            {
+                              "property": "font-size",
+                              "rawValue": "18",
+                              "reason": "value-match",
+                              "suggestedToken": "icon.icon.size125"
+                            },
+                            {
+                              "property": "font-weight",
+                              "rawValue": "400",
+                              "reason": "value-match",
+                              "suggestedToken": "fontWeight.fontWeight400"
+                            },
+                            {
+                              "property": "line-height",
+                              "rawValue": "28.010000228881836",
+                              "reason": "out-of-tolerance",
+                              "closestMatch": {
+                                "token": "lineHeight.lineHeight125",
+                                "delta": "±26.454000228881835px"
+                              }
+                            }
+                          ]
+                        },
+                        "children": [],
+                        "layout": {
+                          "width": 505,
+                          "height": 365,
+                          "layoutSizingHorizontal": "FILL",
+                          "layoutSizingVertical": "HUG",
+                          "layoutAlign": "STRETCH",
+                          "layoutGrow": 0,
+                          "strokeWeight": 1,
+                          "strokeAlign": "OUTSIDE"
+                        },
+                        "textStyle": {
+                          "characters": "After several failed attempts to orchestrate a traditional design system, I experimented with new practices aligned with agent tendencies that I developed over six months.\n\nOnce the foundational tokens and components were established, I expanded the scope of the project to include exploring training agents to build with the system including incorporating Google’s A2UI specification that allows agents to render their own native widgets.\n\nThis site is the first prototype to fully test DesignerPunk’s ability to be packaged as an ecosystem for distribution to any product development repository.",
+                          "fontSize": 18,
+                          "fontFamily": "Figtree",
+                          "fontStyle": "Regular",
+                          "fontWeight": 400,
+                          "lineHeight": 28.010000228881836,
+                          "textAlignHorizontal": "LEFT",
+                          "textAlignVertical": "TOP"
+                        }
+                      }
+                    ],
+                    "layout": {
+                      "layoutMode": "VERTICAL",
+                      "padding": {
+                        "top": 0,
+                        "right": 24,
+                        "bottom": 0,
+                        "left": 24
+                      },
+                      "itemSpacing": 8,
+                      "counterAxisSpacing": 0,
+                      "cornerRadius": 0,
+                      "width": 553,
+                      "height": 365,
+                      "layoutSizingHorizontal": "FILL",
+                      "layoutSizingVertical": "HUG",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 1,
+                      "strokeWeight": 1,
+                      "strokeAlign": "INSIDE"
+                    }
+                  }
+                ],
+                "layout": {
+                  "layoutMode": "HORIZONTAL",
+                  "padding": {
+                    "top": 24,
+                    "right": 0,
+                    "bottom": 24,
+                    "left": 0
+                  },
+                  "itemSpacing": 24,
+                  "counterAxisSpacing": 0,
+                  "cornerRadius": 0,
+                  "width": 1360,
+                  "height": 433,
+                  "layoutSizingHorizontal": "FILL",
+                  "layoutSizingVertical": "FIXED",
+                  "primaryAxisAlignItems": "MIN",
+                  "counterAxisAlignItems": "MIN",
+                  "layoutAlign": "STRETCH",
+                  "layoutGrow": 0,
+                  "strokeAlign": "INSIDE"
+                }
+              },
+              {
+                "id": "3492:3207",
+                "name": "Special Thanks Container",
+                "type": "FRAME",
+                "depth": 3,
+                "ancestorChain": [
+                  "FRAME",
+                  "FRAME",
+                  "FRAME"
+                ],
+                "tokenClassifications": {
+                  "semanticIdentified": [
+                    {
+                      "property": "padding-top",
+                      "semanticToken": "semanticSpace.inset.300",
+                      "primitiveToken": "space.space300",
+                      "rawValue": "{space.space300}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "padding-right",
+                      "semanticToken": "semanticSpace.inset.300",
+                      "primitiveToken": "space.space300",
+                      "rawValue": "{space.space300}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "padding-bottom",
+                      "semanticToken": "semanticSpace.inset.300",
+                      "primitiveToken": "space.space300",
+                      "rawValue": "{space.space300}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    },
+                    {
+                      "property": "item-spacing",
+                      "semanticToken": "semanticSpace.related.loose",
+                      "primitiveToken": "space.space300",
+                      "rawValue": "{space.space300}",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    }
+                  ],
+                  "primitiveIdentified": [],
+                  "unidentified": [
+                    {
+                      "property": "padding-left",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "fill",
+                      "rawValue": "rgba(255, 229, 220, 0.6000000238418579)",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticColor.color.feedback.warning.background"
+                    }
+                  ]
+                },
+                "children": [
+                  {
+                    "id": "3492:3208",
+                    "name": "Header Container",
+                    "type": "FRAME",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [],
+                      "primitiveIdentified": [
+                        {
+                          "property": "padding-left",
+                          "primitiveToken": "space.space300",
+                          "rawValue": "24px",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "unidentified": [
+                        {
+                          "property": "padding-top",
+                          "rawValue": "0",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticSpace.grouped.none"
+                        },
+                        {
+                          "property": "padding-right",
+                          "rawValue": "0",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticSpace.grouped.none"
+                        },
+                        {
+                          "property": "padding-bottom",
+                          "rawValue": "0",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticSpace.grouped.none"
+                        },
+                        {
+                          "property": "item-spacing",
+                          "rawValue": "8",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticSpace.grouped.normal"
+                        },
+                        {
+                          "property": "border-radius",
+                          "rawValue": "8",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticRadius.normal"
+                        }
+                      ]
+                    },
+                    "children": [
+                      {
+                        "id": "3492:3209",
+                        "name": "Special thanks to:",
+                        "type": "TEXT",
+                        "depth": 5,
+                        "ancestorChain": [
+                          "FRAME",
+                          "FRAME",
+                          "FRAME",
+                          "FRAME",
+                          "FRAME"
+                        ],
+                        "tokenClassifications": {
+                          "semanticIdentified": [],
+                          "primitiveIdentified": [
+                            {
+                              "property": "fill",
+                              "primitiveToken": "color.black300",
+                              "rawValue": "rgba(10, 10, 15, 1)",
+                              "matchMethod": "binding",
+                              "confidence": "exact"
+                            }
+                          ],
+                          "unidentified": [
+                            {
+                              "property": "border-width",
+                              "rawValue": "1",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticBorderWidth.default"
+                            },
+                            {
+                              "property": "font-size",
+                              "rawValue": "42",
+                              "reason": "value-match",
+                              "suggestedToken": "icon.icon.size700"
+                            },
+                            {
+                              "property": "font-weight",
+                              "rawValue": "700",
+                              "reason": "value-match",
+                              "suggestedToken": "fontWeight.fontWeight700"
+                            },
+                            {
+                              "property": "line-height",
+                              "rawValue": "48.0099983215332",
+                              "reason": "out-of-tolerance",
+                              "closestMatch": {
+                                "token": "lineHeight.lineHeight125",
+                                "delta": "±46.453998321533206px"
+                              }
+                            }
+                          ]
+                        },
+                        "children": [],
+                        "layout": {
+                          "width": 183,
+                          "height": 97,
+                          "layoutSizingHorizontal": "FILL",
+                          "layoutSizingVertical": "HUG",
+                          "layoutAlign": "STRETCH",
+                          "layoutGrow": 0,
+                          "strokeWeight": 1,
+                          "strokeAlign": "OUTSIDE"
+                        },
+                        "textStyle": {
+                          "characters": "Special thanks to:",
+                          "fontSize": 42,
+                          "fontFamily": "Rajdhani",
+                          "fontStyle": "Bold",
+                          "fontWeight": 700,
+                          "lineHeight": 48.0099983215332,
+                          "textAlignHorizontal": "LEFT",
+                          "textAlignVertical": "TOP"
+                        }
+                      }
+                    ],
+                    "layout": {
+                      "layoutMode": "VERTICAL",
+                      "padding": {
+                        "top": 0,
+                        "right": 0,
+                        "bottom": 0,
+                        "left": 24
+                      },
+                      "itemSpacing": 8,
+                      "counterAxisSpacing": 0,
+                      "cornerRadius": 8,
+                      "width": 207,
+                      "height": 97,
+                      "layoutSizingHorizontal": "FIXED",
+                      "layoutSizingVertical": "HUG",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "MIN",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "strokeAlign": "INSIDE"
+                    }
+                  },
+                  {
+                    "id": "3492:3210",
+                    "name": "Donnie D’Amato Amy Lam John Marshall Dimitri Otero",
+                    "type": "TEXT",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [],
+                      "primitiveIdentified": [
+                        {
+                          "property": "fill",
+                          "primitiveToken": "color.black300",
+                          "rawValue": "rgba(10, 10, 15, 1)",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "unidentified": [
+                        {
+                          "property": "border-width",
+                          "rawValue": "1",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticBorderWidth.default"
+                        },
+                        {
+                          "property": "font-size",
+                          "rawValue": "16",
+                          "reason": "value-match",
+                          "suggestedToken": "icon.icon.size100"
+                        },
+                        {
+                          "property": "font-weight",
+                          "rawValue": "400",
+                          "reason": "value-match",
+                          "suggestedToken": "fontWeight.fontWeight400"
+                        },
+                        {
+                          "property": "line-height",
+                          "rawValue": "24",
+                          "reason": "out-of-tolerance",
+                          "closestMatch": {
+                            "token": "lineHeight.lineHeight125",
+                            "delta": "±22.444px"
+                          }
+                        }
+                      ]
+                    },
+                    "children": [],
+                    "layout": {
+                      "width": 258.25,
+                      "height": 96,
+                      "layoutSizingHorizontal": "FILL",
+                      "layoutSizingVertical": "HUG",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 1,
+                      "strokeWeight": 1,
+                      "strokeAlign": "OUTSIDE"
+                    },
+                    "textStyle": {
+                      "characters": "Donnie D’Amato\nAmy Lam\nJohn Marshall\nDimitri Otero",
+                      "fontSize": 16,
+                      "fontFamily": "Figtree",
+                      "fontStyle": "Regular",
+                      "fontWeight": 400,
+                      "lineHeight": 24,
+                      "textAlignHorizontal": "LEFT",
+                      "textAlignVertical": "TOP"
+                    }
+                  },
+                  {
+                    "id": "3492:3211",
+                    "name": "Nicole Fu Lauren LoPrete Kevin Muldoon TJ Pitre",
+                    "type": "TEXT",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [],
+                      "primitiveIdentified": [
+                        {
+                          "property": "fill",
+                          "primitiveToken": "color.black300",
+                          "rawValue": "rgba(10, 10, 15, 1)",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "unidentified": [
+                        {
+                          "property": "border-width",
+                          "rawValue": "1",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticBorderWidth.default"
+                        },
+                        {
+                          "property": "font-size",
+                          "rawValue": "16",
+                          "reason": "value-match",
+                          "suggestedToken": "icon.icon.size100"
+                        },
+                        {
+                          "property": "font-weight",
+                          "rawValue": "400",
+                          "reason": "value-match",
+                          "suggestedToken": "fontWeight.fontWeight400"
+                        },
+                        {
+                          "property": "line-height",
+                          "rawValue": "24",
+                          "reason": "out-of-tolerance",
+                          "closestMatch": {
+                            "token": "lineHeight.lineHeight125",
+                            "delta": "±22.444px"
+                          }
+                        }
+                      ]
+                    },
+                    "children": [],
+                    "layout": {
+                      "width": 258.25,
+                      "height": 96,
+                      "layoutSizingHorizontal": "FILL",
+                      "layoutSizingVertical": "HUG",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 1,
+                      "strokeWeight": 1,
+                      "strokeAlign": "OUTSIDE"
+                    },
+                    "textStyle": {
+                      "characters": "Nicole Fu\nLauren LoPrete\nKevin Muldoon\nTJ Pitre",
+                      "fontSize": 16,
+                      "fontFamily": "Figtree",
+                      "fontStyle": "Regular",
+                      "fontWeight": 400,
+                      "lineHeight": 24,
+                      "textAlignHorizontal": "LEFT",
+                      "textAlignVertical": "TOP"
+                    }
+                  },
+                  {
+                    "id": "3492:3212",
+                    "name": "Joshua Butner Design System Wednesday! Kiersten Lammerding Tracy Weiss",
+                    "type": "TEXT",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [],
+                      "primitiveIdentified": [
+                        {
+                          "property": "fill",
+                          "primitiveToken": "color.black300",
+                          "rawValue": "rgba(10, 10, 15, 1)",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "unidentified": [
+                        {
+                          "property": "border-width",
+                          "rawValue": "1",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticBorderWidth.default"
+                        },
+                        {
+                          "property": "font-size",
+                          "rawValue": "16",
+                          "reason": "value-match",
+                          "suggestedToken": "icon.icon.size100"
+                        },
+                        {
+                          "property": "font-weight",
+                          "rawValue": "400",
+                          "reason": "value-match",
+                          "suggestedToken": "fontWeight.fontWeight400"
+                        },
+                        {
+                          "property": "line-height",
+                          "rawValue": "24",
+                          "reason": "out-of-tolerance",
+                          "closestMatch": {
+                            "token": "lineHeight.lineHeight125",
+                            "delta": "±22.444px"
+                          }
+                        }
+                      ]
+                    },
+                    "children": [],
+                    "layout": {
+                      "width": 258.25,
+                      "height": 96,
+                      "layoutSizingHorizontal": "FILL",
+                      "layoutSizingVertical": "HUG",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 1,
+                      "strokeWeight": 1,
+                      "strokeAlign": "OUTSIDE"
+                    },
+                    "textStyle": {
+                      "characters": "Joshua Butner\nDesign System Wednesday!\nKiersten Lammerding\nTracy Weiss",
+                      "fontSize": 16,
+                      "fontFamily": "Figtree",
+                      "fontStyle": "Regular",
+                      "fontWeight": 400,
+                      "lineHeight": 24,
+                      "textAlignHorizontal": "LEFT",
+                      "textAlignVertical": "TOP"
+                    }
+                  },
+                  {
+                    "id": "3492:3213",
+                    "name": "Margaret Allen Virginia Johnstone (Hi, mom!) Kinsley & Colton Kirwan Lindsay MacKenzie",
+                    "type": "TEXT",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [],
+                      "primitiveIdentified": [
+                        {
+                          "property": "fill",
+                          "primitiveToken": "color.black300",
+                          "rawValue": "rgba(10, 10, 15, 1)",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "unidentified": [
+                        {
+                          "property": "border-width",
+                          "rawValue": "1",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticBorderWidth.default"
+                        },
+                        {
+                          "property": "font-size",
+                          "rawValue": "16",
+                          "reason": "value-match",
+                          "suggestedToken": "icon.icon.size100"
+                        },
+                        {
+                          "property": "font-weight",
+                          "rawValue": "400",
+                          "reason": "value-match",
+                          "suggestedToken": "fontWeight.fontWeight400"
+                        },
+                        {
+                          "property": "line-height",
+                          "rawValue": "24",
+                          "reason": "out-of-tolerance",
+                          "closestMatch": {
+                            "token": "lineHeight.lineHeight125",
+                            "delta": "±22.444px"
+                          }
+                        }
+                      ]
+                    },
+                    "children": [],
+                    "layout": {
+                      "width": 258.25,
+                      "height": 96,
+                      "layoutSizingHorizontal": "FILL",
+                      "layoutSizingVertical": "HUG",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 1,
+                      "strokeWeight": 1,
+                      "strokeAlign": "OUTSIDE"
+                    },
+                    "textStyle": {
+                      "characters": "Margaret Allen\nVirginia Johnstone (Hi, mom!)\nKinsley & Colton Kirwan\nLindsay MacKenzie",
+                      "fontSize": 16,
+                      "fontFamily": "Figtree",
+                      "fontStyle": "Regular",
+                      "fontWeight": 400,
+                      "lineHeight": 24,
+                      "textAlignHorizontal": "LEFT",
+                      "textAlignVertical": "TOP"
+                    }
+                  }
+                ],
+                "layout": {
+                  "layoutMode": "HORIZONTAL",
+                  "padding": {
+                    "top": 24,
+                    "right": 24,
+                    "bottom": 24,
+                    "left": 0
+                  },
+                  "itemSpacing": 24,
+                  "counterAxisSpacing": 0,
+                  "cornerRadius": 0,
+                  "width": 1360,
+                  "height": 145,
+                  "layoutSizingHorizontal": "FILL",
+                  "layoutSizingVertical": "HUG",
+                  "primaryAxisAlignItems": "MIN",
+                  "counterAxisAlignItems": "MIN",
+                  "layoutAlign": "STRETCH",
+                  "layoutGrow": 0,
+                  "strokeAlign": "INSIDE"
+                }
+              }
+            ],
+            "layout": {
+              "layoutMode": "VERTICAL",
+              "padding": {
+                "top": 0,
+                "right": 40,
+                "bottom": 0,
+                "left": 40
+              },
+              "itemSpacing": 48,
+              "counterAxisSpacing": 0,
+              "cornerRadius": 0,
+              "width": 1440,
+              "height": 714,
+              "layoutSizingHorizontal": "FIXED",
+              "layoutSizingVertical": "HUG",
+              "primaryAxisAlignItems": "MIN",
+              "counterAxisAlignItems": "MAX",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "strokeWeight": 1,
+              "strokeAlign": "INSIDE"
+            }
+          },
+          {
+            "id": "3492:3222",
+            "name": "Hard $#@%ing work!",
+            "type": "TEXT",
+            "depth": 2,
+            "ancestorChain": [
+              "FRAME",
+              "FRAME"
+            ],
+            "tokenClassifications": {
+              "semanticIdentified": [],
+              "primitiveIdentified": [
+                {
+                  "property": "fill",
+                  "primitiveToken": "color.purple100",
+                  "rawValue": "rgba(243, 224, 255, 1)",
+                  "matchMethod": "binding",
+                  "confidence": "exact"
+                },
+                {
+                  "property": "stroke",
+                  "primitiveToken": "color.orange300",
+                  "rawValue": "rgba(255, 107, 53, 1)",
+                  "matchMethod": "binding",
+                  "confidence": "exact"
+                }
+              ],
+              "unidentified": [
+                {
+                  "property": "border-width",
+                  "rawValue": "1",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticBorderWidth.default"
+                },
+                {
+                  "property": "font-size",
+                  "rawValue": "74",
+                  "reason": "out-of-tolerance",
+                  "closestMatch": {
+                    "token": "fontSize.fontSize700",
+                    "delta": "±32px"
+                  }
+                },
+                {
+                  "property": "font-weight",
+                  "rawValue": "700",
+                  "reason": "value-match",
+                  "suggestedToken": "fontWeight.fontWeight700"
+                }
+              ]
+            },
+            "children": [],
+            "layout": {
+              "width": 640,
+              "height": 111,
+              "layoutSizingHorizontal": "FIXED",
+              "layoutSizingVertical": "FIXED",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "strokeWeight": 1,
+              "strokeAlign": "OUTSIDE"
+            },
+            "textStyle": {
+              "characters": "Hard $#@%ing work!",
+              "fontSize": 74,
+              "fontFamily": "Rajdhani",
+              "fontStyle": "Bold",
+              "fontWeight": 700,
+              "textAlignHorizontal": "CENTER",
+              "textAlignVertical": "TOP"
+            },
+            "strokes": [
+              {
+                "color": "rgba(255, 107, 53, 1)"
+              }
+            ]
+          }
+        ],
+        "layout": {
+          "layoutMode": "NONE",
+          "padding": {
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "itemSpacing": 0,
+          "counterAxisSpacing": 0,
+          "cornerRadius": 0,
+          "width": 1440,
+          "height": 1000,
+          "layoutSizingHorizontal": "FIXED",
+          "layoutSizingVertical": "FIXED",
+          "primaryAxisAlignItems": "MIN",
+          "counterAxisAlignItems": "MIN",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "strokeWeight": 1,
+          "strokeAlign": "INSIDE"
+        }
+      }
+    ],
+    "layout": {
+      "layoutMode": "NONE",
+      "padding": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "itemSpacing": 0,
+      "counterAxisSpacing": 0,
+      "cornerRadius": 0,
+      "width": 1440,
+      "height": 1000,
+      "layoutSizingHorizontal": "FIXED",
+      "layoutSizingVertical": "FIXED",
+      "primaryAxisAlignItems": "MIN",
+      "counterAxisAlignItems": "MIN",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "strokeWeight": 1,
+      "strokeAlign": "INSIDE"
+    }
+  },
+  "classificationSummary": {
+    "semanticIdentified": 12,
+    "primitiveIdentified": 13,
+    "unidentified": 87
+  },
+  "compositionPatterns": [],
+  "unresolvedBindings": [],
+  "recommendations": {
+    "variantMapping": {
+      "componentName": "HowBuilt",
+      "behavioralClassification": "styling",
+      "recommendations": [
+        {
+          "option": "A",
+          "description": "Single component with a variant prop",
+          "rationale": "Variants differ only in visual styling, making a single component with a variant prop the simplest API surface.",
+          "recommended": true,
+          "alignsWith": [
+            "Behavioral analysis: variants are styling-only"
+          ],
+          "tradeoffs": [
+            "Simpler consumer API — one import, one tag.",
+            "Internal complexity grows if behavioral differences emerge later.",
+            "Harder to tree-shake unused variants."
+          ]
+        },
+        {
+          "option": "B",
+          "description": "Primitive + semantic component structure (Stemma pattern)",
+          "rationale": "A split structure future-proofs the component for behavioral divergence, though current variants are styling-only.",
+          "recommended": false,
+          "alignsWith": [],
+          "tradeoffs": [
+            "Clean separation of behavioral contracts per component.",
+            "Aligns with Stemma inheritance pattern used across DesignerPunk.",
+            "More components to maintain and document."
+          ]
+        }
+      ],
+      "conflicts": [],
+      "familyPattern": null,
+      "existingComponents": []
+    },
+    "componentTokens": [
+      {
+        "primitiveToken": "space.space000",
+        "usageCount": 5,
+        "locations": [
+          "item-spacing",
+          "padding-top",
+          "padding-right",
+          "padding-bottom",
+          "padding-left"
+        ],
+        "illustrativeSuggestion": "how.item-spacing = space.space000",
+        "rationale": "space.space000 is used across 5 properties (item-spacing, padding-top, padding-right, padding-bottom, padding-left). Consistent usage suggests semantic intent that could be encoded as a component token."
+      }
+    ]
+  },
+  "screenshots": [
+    {
+      "filePath": "./images/howbuilt.png",
+      "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/6582d4e1-a260-4327-a44b-95b8614d9eb9",
+      "format": "png",
+      "scale": 2,
+      "capturedAt": "2026-05-10T14:56:55.829Z"
+    }
+  ],
+  "extractedAt": "2026-05-10T14:56:55.832Z",
+  "extractorVersion": "6.3.0"
+}

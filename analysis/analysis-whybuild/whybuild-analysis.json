@@ -1,0 +1,2186 @@
+{
+  "componentName": "WhyBuild",
+  "componentType": "COMPONENT",
+  "figmaId": "3492:1250",
+  "fileKey": "yU7908VXR1khQN5hZXC6Cy",
+  "nodeTree": {
+    "id": "3492:1250",
+    "name": "WhyBuild",
+    "type": "FRAME",
+    "depth": 0,
+    "ancestorChain": [],
+    "tokenClassifications": {
+      "semanticIdentified": [],
+      "primitiveIdentified": [],
+      "unidentified": [
+        {
+          "property": "padding-top",
+          "rawValue": "0",
+          "reason": "value-match",
+          "suggestedToken": "semanticSpace.grouped.none"
+        },
+        {
+          "property": "padding-right",
+          "rawValue": "0",
+          "reason": "value-match",
+          "suggestedToken": "semanticSpace.grouped.none"
+        },
+        {
+          "property": "padding-bottom",
+          "rawValue": "0",
+          "reason": "value-match",
+          "suggestedToken": "semanticSpace.grouped.none"
+        },
+        {
+          "property": "padding-left",
+          "rawValue": "0",
+          "reason": "value-match",
+          "suggestedToken": "semanticSpace.grouped.none"
+        },
+        {
+          "property": "border-width",
+          "rawValue": "1",
+          "reason": "value-match",
+          "suggestedToken": "semanticBorderWidth.default"
+        }
+      ]
+    },
+    "children": [
+      {
+        "id": "3492:2458",
+        "name": "Why Build This System Container",
+        "type": "FRAME",
+        "depth": 1,
+        "ancestorChain": [
+          "FRAME"
+        ],
+        "tokenClassifications": {
+          "semanticIdentified": [],
+          "primitiveIdentified": [],
+          "unidentified": [
+            {
+              "property": "padding-top",
+              "rawValue": "0",
+              "reason": "value-match",
+              "suggestedToken": "semanticSpace.grouped.none"
+            },
+            {
+              "property": "padding-right",
+              "rawValue": "0",
+              "reason": "value-match",
+              "suggestedToken": "semanticSpace.grouped.none"
+            },
+            {
+              "property": "padding-bottom",
+              "rawValue": "0",
+              "reason": "value-match",
+              "suggestedToken": "semanticSpace.grouped.none"
+            },
+            {
+              "property": "padding-left",
+              "rawValue": "0",
+              "reason": "value-match",
+              "suggestedToken": "semanticSpace.grouped.none"
+            },
+            {
+              "property": "border-width",
+              "rawValue": "1",
+              "reason": "value-match",
+              "suggestedToken": "semanticBorderWidth.default"
+            }
+          ]
+        },
+        "children": [
+          {
+            "id": "3492:2459",
+            "name": "Vector",
+            "type": "FRAME",
+            "depth": 2,
+            "ancestorChain": [
+              "FRAME",
+              "FRAME"
+            ],
+            "tokenClassifications": {
+              "semanticIdentified": [],
+              "primitiveIdentified": [
+                {
+                  "property": "fill",
+                  "primitiveToken": "color.pink500",
+                  "rawValue": "rgba(128, 21, 55, 1)",
+                  "matchMethod": "binding",
+                  "confidence": "exact"
+                }
+              ],
+              "unidentified": [
+                {
+                  "property": "border-width",
+                  "rawValue": "0.7031903862953186",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticBorderWidth.default"
+                }
+              ]
+            },
+            "children": [],
+            "layout": {
+              "cornerRadius": 0,
+              "width": 1435.8070068359375,
+              "height": 750.835693359375,
+              "layoutSizingHorizontal": "FIXED",
+              "layoutSizingVertical": "FIXED",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "strokeWeight": 0.7031903862953186,
+              "strokeAlign": "INSIDE"
+            }
+          },
+          {
+            "id": "3492:2460",
+            "name": "Content Container",
+            "type": "FRAME",
+            "depth": 2,
+            "ancestorChain": [
+              "FRAME",
+              "FRAME"
+            ],
+            "tokenClassifications": {
+              "semanticIdentified": [
+                {
+                  "property": "item-spacing",
+                  "semanticToken": "semanticSpace.sectioned.loose",
+                  "primitiveToken": "space.space600",
+                  "rawValue": "{space.space600}",
+                  "matchMethod": "binding",
+                  "confidence": "exact"
+                }
+              ],
+              "primitiveIdentified": [],
+              "unidentified": [
+                {
+                  "property": "padding-top",
+                  "rawValue": "40",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticSpace.sectioned.normal"
+                },
+                {
+                  "property": "padding-right",
+                  "rawValue": "40",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticSpace.sectioned.normal"
+                },
+                {
+                  "property": "padding-bottom",
+                  "rawValue": "40",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticSpace.sectioned.normal"
+                },
+                {
+                  "property": "padding-left",
+                  "rawValue": "40",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticSpace.sectioned.normal"
+                },
+                {
+                  "property": "border-width",
+                  "rawValue": "1",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticBorderWidth.default"
+                }
+              ]
+            },
+            "children": [
+              {
+                "id": "3492:2461",
+                "name": "Header Container",
+                "type": "FRAME",
+                "depth": 3,
+                "ancestorChain": [
+                  "FRAME",
+                  "FRAME",
+                  "FRAME"
+                ],
+                "tokenClassifications": {
+                  "semanticIdentified": [],
+                  "primitiveIdentified": [
+                    {
+                      "property": "padding-left",
+                      "primitiveToken": "space.space300",
+                      "rawValue": "24px",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    }
+                  ],
+                  "unidentified": [
+                    {
+                      "property": "padding-top",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "padding-right",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "padding-bottom",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "item-spacing",
+                      "rawValue": "8",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.normal"
+                    },
+                    {
+                      "property": "border-width",
+                      "rawValue": "1",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticBorderWidth.default"
+                    }
+                  ]
+                },
+                "children": [
+                  {
+                    "id": "3492:2462",
+                    "name": "Header Content Container",
+                    "type": "FRAME",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [],
+                      "primitiveIdentified": [],
+                      "unidentified": [
+                        {
+                          "property": "padding-top",
+                          "rawValue": "0",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticSpace.grouped.none"
+                        },
+                        {
+                          "property": "padding-right",
+                          "rawValue": "0",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticSpace.grouped.none"
+                        },
+                        {
+                          "property": "padding-bottom",
+                          "rawValue": "0",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticSpace.grouped.none"
+                        },
+                        {
+                          "property": "padding-left",
+                          "rawValue": "0",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticSpace.grouped.none"
+                        },
+                        {
+                          "property": "item-spacing",
+                          "rawValue": "8",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticSpace.grouped.normal"
+                        },
+                        {
+                          "property": "border-width",
+                          "rawValue": "1",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticBorderWidth.default"
+                        }
+                      ]
+                    },
+                    "children": [
+                      {
+                        "id": "3492:2463",
+                        "name": "Why build this system?",
+                        "type": "TEXT",
+                        "depth": 5,
+                        "ancestorChain": [
+                          "FRAME",
+                          "FRAME",
+                          "FRAME",
+                          "FRAME",
+                          "FRAME"
+                        ],
+                        "tokenClassifications": {
+                          "semanticIdentified": [],
+                          "primitiveIdentified": [
+                            {
+                              "property": "fill",
+                              "primitiveToken": "color.white200",
+                              "rawValue": "rgba(245, 245, 250, 1)",
+                              "matchMethod": "binding",
+                              "confidence": "exact"
+                            }
+                          ],
+                          "unidentified": [
+                            {
+                              "property": "border-width",
+                              "rawValue": "1",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticBorderWidth.default"
+                            },
+                            {
+                              "property": "font-size",
+                              "rawValue": "33",
+                              "reason": "value-match",
+                              "suggestedToken": "icon.icon.size500"
+                            },
+                            {
+                              "property": "font-weight",
+                              "rawValue": "700",
+                              "reason": "value-match",
+                              "suggestedToken": "fontWeight.fontWeight700"
+                            },
+                            {
+                              "property": "line-height",
+                              "rawValue": "40",
+                              "reason": "out-of-tolerance",
+                              "closestMatch": {
+                                "token": "lineHeight.lineHeight125",
+                                "delta": "±38.444px"
+                              }
+                            }
+                          ]
+                        },
+                        "children": [],
+                        "layout": {
+                          "width": 316,
+                          "height": 40,
+                          "layoutSizingHorizontal": "HUG",
+                          "layoutSizingVertical": "HUG",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "strokeWeight": 1,
+                          "strokeAlign": "OUTSIDE"
+                        },
+                        "textStyle": {
+                          "characters": "Why build this system?",
+                          "fontSize": 33,
+                          "fontFamily": "Rajdhani",
+                          "fontStyle": "Bold",
+                          "fontWeight": 700,
+                          "lineHeight": 40,
+                          "textAlignHorizontal": "LEFT",
+                          "textAlignVertical": "TOP"
+                        }
+                      },
+                      {
+                        "id": "3492:2464",
+                        "name": "//",
+                        "type": "TEXT",
+                        "depth": 5,
+                        "ancestorChain": [
+                          "FRAME",
+                          "FRAME",
+                          "FRAME",
+                          "FRAME",
+                          "FRAME"
+                        ],
+                        "tokenClassifications": {
+                          "semanticIdentified": [],
+                          "primitiveIdentified": [
+                            {
+                              "property": "fill",
+                              "primitiveToken": "color.white200",
+                              "rawValue": "rgba(245, 245, 250, 1)",
+                              "matchMethod": "binding",
+                              "confidence": "exact"
+                            }
+                          ],
+                          "unidentified": [
+                            {
+                              "property": "border-width",
+                              "rawValue": "1",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticBorderWidth.default"
+                            },
+                            {
+                              "property": "font-size",
+                              "rawValue": "33",
+                              "reason": "value-match",
+                              "suggestedToken": "icon.icon.size500"
+                            },
+                            {
+                              "property": "font-weight",
+                              "rawValue": "700",
+                              "reason": "value-match",
+                              "suggestedToken": "fontWeight.fontWeight700"
+                            },
+                            {
+                              "property": "line-height",
+                              "rawValue": "40",
+                              "reason": "out-of-tolerance",
+                              "closestMatch": {
+                                "token": "lineHeight.lineHeight125",
+                                "delta": "±38.444px"
+                              }
+                            }
+                          ]
+                        },
+                        "children": [],
+                        "layout": {
+                          "width": 28,
+                          "height": 40,
+                          "layoutSizingHorizontal": "FIXED",
+                          "layoutSizingVertical": "FIXED",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "strokeWeight": 1,
+                          "strokeAlign": "OUTSIDE"
+                        },
+                        "textStyle": {
+                          "characters": "//",
+                          "fontSize": 33,
+                          "fontFamily": "Rajdhani",
+                          "fontStyle": "Bold",
+                          "fontWeight": 700,
+                          "lineHeight": 40,
+                          "textAlignHorizontal": "LEFT",
+                          "textAlignVertical": "TOP"
+                        }
+                      }
+                    ],
+                    "layout": {
+                      "layoutMode": "HORIZONTAL",
+                      "padding": {
+                        "top": 0,
+                        "right": 0,
+                        "bottom": 0,
+                        "left": 0
+                      },
+                      "itemSpacing": 8,
+                      "counterAxisSpacing": 0,
+                      "cornerRadius": 0,
+                      "width": 316,
+                      "height": 40,
+                      "layoutSizingHorizontal": "HUG",
+                      "layoutSizingVertical": "HUG",
+                      "primaryAxisAlignItems": "MIN",
+                      "counterAxisAlignItems": "CENTER",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "strokeWeight": 1,
+                      "strokeAlign": "INSIDE"
+                    }
+                  }
+                ],
+                "layout": {
+                  "layoutMode": "HORIZONTAL",
+                  "padding": {
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 24
+                  },
+                  "itemSpacing": 8,
+                  "counterAxisSpacing": 0,
+                  "cornerRadius": 0,
+                  "width": 1360,
+                  "height": 40,
+                  "layoutSizingHorizontal": "FILL",
+                  "layoutSizingVertical": "HUG",
+                  "primaryAxisAlignItems": "MIN",
+                  "counterAxisAlignItems": "CENTER",
+                  "layoutAlign": "STRETCH",
+                  "layoutGrow": 0,
+                  "strokeWeight": 1,
+                  "strokeAlign": "INSIDE"
+                }
+              },
+              {
+                "id": "3492:2465",
+                "name": "Copy Container",
+                "type": "FRAME",
+                "depth": 3,
+                "ancestorChain": [
+                  "FRAME",
+                  "FRAME",
+                  "FRAME"
+                ],
+                "tokenClassifications": {
+                  "semanticIdentified": [],
+                  "primitiveIdentified": [
+                    {
+                      "property": "fill",
+                      "primitiveToken": "color.purple100",
+                      "rawValue": "rgba(243, 224, 255, 1)",
+                      "matchMethod": "binding",
+                      "confidence": "exact"
+                    }
+                  ],
+                  "unidentified": [
+                    {
+                      "property": "padding-top",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "padding-right",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "padding-bottom",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "padding-left",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    },
+                    {
+                      "property": "item-spacing",
+                      "rawValue": "0",
+                      "reason": "value-match",
+                      "suggestedToken": "semanticSpace.grouped.none"
+                    }
+                  ]
+                },
+                "children": [
+                  {
+                    "id": "3492:2466",
+                    "name": "Challenge Container",
+                    "type": "FRAME",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [
+                        {
+                          "property": "padding-top",
+                          "semanticToken": "semanticSpace.inset.200",
+                          "primitiveToken": "space.space200",
+                          "rawValue": "{space.space200}",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        },
+                        {
+                          "property": "padding-right",
+                          "semanticToken": "semanticSpace.inset.300",
+                          "primitiveToken": "space.space300",
+                          "rawValue": "{space.space300}",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        },
+                        {
+                          "property": "padding-bottom",
+                          "semanticToken": "semanticSpace.inset.200",
+                          "primitiveToken": "space.space200",
+                          "rawValue": "{space.space200}",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        },
+                        {
+                          "property": "padding-left",
+                          "semanticToken": "semanticSpace.inset.300",
+                          "primitiveToken": "space.space300",
+                          "rawValue": "{space.space300}",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "primitiveIdentified": [
+                        {
+                          "property": "item-spacing",
+                          "primitiveToken": "space.space200",
+                          "rawValue": "16px",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "unidentified": []
+                    },
+                    "children": [
+                      {
+                        "id": "3492:2467",
+                        "name": "Subheader Container",
+                        "type": "FRAME",
+                        "depth": 5,
+                        "ancestorChain": [
+                          "FRAME",
+                          "FRAME",
+                          "FRAME",
+                          "FRAME",
+                          "FRAME"
+                        ],
+                        "tokenClassifications": {
+                          "semanticIdentified": [],
+                          "primitiveIdentified": [
+                            {
+                              "property": "stroke",
+                              "primitiveToken": "color.black100",
+                              "rawValue": "rgba(58, 58, 69, 1)",
+                              "matchMethod": "binding",
+                              "confidence": "exact"
+                            }
+                          ],
+                          "unidentified": [
+                            {
+                              "property": "padding-top",
+                              "rawValue": "0",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticSpace.grouped.none"
+                            },
+                            {
+                              "property": "padding-right",
+                              "rawValue": "0",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticSpace.grouped.none"
+                            },
+                            {
+                              "property": "padding-bottom",
+                              "rawValue": "0",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticSpace.grouped.none"
+                            },
+                            {
+                              "property": "padding-left",
+                              "rawValue": "0",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticSpace.grouped.none"
+                            }
+                          ]
+                        },
+                        "children": [
+                          {
+                            "id": "3492:2468",
+                            "name": "Challenge",
+                            "type": "TEXT",
+                            "depth": 6,
+                            "ancestorChain": [
+                              "FRAME",
+                              "FRAME",
+                              "FRAME",
+                              "FRAME",
+                              "FRAME",
+                              "FRAME"
+                            ],
+                            "tokenClassifications": {
+                              "semanticIdentified": [],
+                              "primitiveIdentified": [
+                                {
+                                  "property": "fill",
+                                  "primitiveToken": "color.black300",
+                                  "rawValue": "rgba(10, 10, 15, 1)",
+                                  "matchMethod": "binding",
+                                  "confidence": "exact"
+                                }
+                              ],
+                              "unidentified": [
+                                {
+                                  "property": "border-width",
+                                  "rawValue": "1",
+                                  "reason": "value-match",
+                                  "suggestedToken": "semanticBorderWidth.default"
+                                },
+                                {
+                                  "property": "font-size",
+                                  "rawValue": "29",
+                                  "reason": "value-match",
+                                  "suggestedToken": "icon.icon.size400"
+                                },
+                                {
+                                  "property": "font-weight",
+                                  "rawValue": "700",
+                                  "reason": "value-match",
+                                  "suggestedToken": "fontWeight.fontWeight700"
+                                },
+                                {
+                                  "property": "line-height",
+                                  "rawValue": "35.9900016784668",
+                                  "reason": "out-of-tolerance",
+                                  "closestMatch": {
+                                    "token": "lineHeight.lineHeight125",
+                                    "delta": "±34.4340016784668px"
+                                  }
+                                }
+                              ]
+                            },
+                            "children": [],
+                            "layout": {
+                              "width": 274,
+                              "height": 36,
+                              "layoutSizingHorizontal": "FIXED",
+                              "layoutSizingVertical": "FIXED",
+                              "layoutAlign": "STRETCH",
+                              "layoutGrow": 0,
+                              "strokeWeight": 1,
+                              "strokeAlign": "OUTSIDE"
+                            },
+                            "textStyle": {
+                              "characters": "Challenge",
+                              "fontSize": 29,
+                              "fontFamily": "Rajdhani",
+                              "fontStyle": "Bold",
+                              "fontWeight": 700,
+                              "lineHeight": 35.9900016784668,
+                              "textAlignHorizontal": "LEFT",
+                              "textAlignVertical": "TOP"
+                            }
+                          }
+                        ],
+                        "layout": {
+                          "layoutMode": "NONE",
+                          "padding": {
+                            "top": 0,
+                            "right": 0,
+                            "bottom": 0,
+                            "left": 0
+                          },
+                          "itemSpacing": 0,
+                          "counterAxisSpacing": 0,
+                          "cornerRadius": 0,
+                          "width": 292,
+                          "height": 44,
+                          "layoutSizingHorizontal": "FILL",
+                          "layoutSizingVertical": "FIXED",
+                          "primaryAxisAlignItems": "MIN",
+                          "counterAxisAlignItems": "MIN",
+                          "layoutAlign": "STRETCH",
+                          "layoutGrow": 0,
+                          "strokeAlign": "INSIDE"
+                        },
+                        "strokes": [
+                          {
+                            "color": "rgba(58, 58, 69, 1)"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "3492:2469",
+                        "name": "AI enables me to create at hilarious speed in contrast to my past processes — like racing the starship Enterprise against a Ford Pinto. While that speed is impressive, the outcomes of each prompt can be wildly unpredictable; and an agent’s motivation to deliver results at any cost can fracture a healthy design and code environment at any time.",
+                        "type": "TEXT",
+                        "depth": 5,
+                        "ancestorChain": [
+                          "FRAME",
+                          "FRAME",
+                          "FRAME",
+                          "FRAME",
+                          "FRAME"
+                        ],
+                        "tokenClassifications": {
+                          "semanticIdentified": [],
+                          "primitiveIdentified": [
+                            {
+                              "property": "fill",
+                              "primitiveToken": "color.black300",
+                              "rawValue": "rgba(10, 10, 15, 1)",
+                              "matchMethod": "binding",
+                              "confidence": "exact"
+                            }
+                          ],
+                          "unidentified": [
+                            {
+                              "property": "border-width",
+                              "rawValue": "1",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticBorderWidth.default"
+                            },
+                            {
+                              "property": "font-size",
+                              "rawValue": "16",
+                              "reason": "value-match",
+                              "suggestedToken": "icon.icon.size100"
+                            },
+                            {
+                              "property": "font-weight",
+                              "rawValue": "400",
+                              "reason": "value-match",
+                              "suggestedToken": "fontWeight.fontWeight400"
+                            },
+                            {
+                              "property": "line-height",
+                              "rawValue": "24",
+                              "reason": "out-of-tolerance",
+                              "closestMatch": {
+                                "token": "lineHeight.lineHeight125",
+                                "delta": "±22.444px"
+                              }
+                            }
+                          ]
+                        },
+                        "children": [],
+                        "layout": {
+                          "width": 292,
+                          "height": 264,
+                          "layoutSizingHorizontal": "FILL",
+                          "layoutSizingVertical": "HUG",
+                          "layoutAlign": "STRETCH",
+                          "layoutGrow": 0,
+                          "strokeWeight": 1,
+                          "strokeAlign": "OUTSIDE"
+                        },
+                        "textStyle": {
+                          "characters": "AI enables me to create at hilarious speed in contrast to my past processes — like racing the starship Enterprise against a Ford Pinto.\n\nWhile that speed is impressive, the outcomes of each prompt can be wildly unpredictable; and an agent’s motivation to deliver results at any cost can fracture a healthy design and code environment at any time.",
+                          "fontSize": 16,
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontStyle": "Regular",
+                          "fontWeight": 400,
+                          "lineHeight": 24,
+                          "textAlignHorizontal": "LEFT",
+                          "textAlignVertical": "TOP"
+                        }
+                      }
+                    ],
+                    "layout": {
+                      "layoutMode": "VERTICAL",
+                      "padding": {
+                        "top": 16,
+                        "right": 24,
+                        "bottom": 16,
+                        "left": 24
+                      },
+                      "itemSpacing": 16,
+                      "counterAxisSpacing": 0,
+                      "cornerRadius": 0,
+                      "width": 340,
+                      "height": 380,
+                      "layoutSizingHorizontal": "FILL",
+                      "layoutSizingVertical": "HUG",
+                      "primaryAxisAlignItems": "MIN",
+                      "counterAxisAlignItems": "MIN",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 1,
+                      "strokeAlign": "INSIDE"
+                    }
+                  },
+                  {
+                    "id": "3492:2470",
+                    "name": "Line 133",
+                    "type": "FRAME",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [
+                        {
+                          "property": "stroke",
+                          "semanticToken": "semanticColor.color.structure.border.subtle",
+                          "primitiveToken": "color.gray100",
+                          "rawValue": "{color.gray100}",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "primitiveIdentified": [],
+                      "unidentified": [
+                        {
+                          "property": "border-width",
+                          "rawValue": "1",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticBorderWidth.default"
+                        }
+                      ]
+                    },
+                    "children": [],
+                    "layout": {
+                      "width": 358,
+                      "height": 0,
+                      "layoutSizingHorizontal": "FIXED",
+                      "layoutSizingVertical": "FIXED",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "strokeWeight": 1,
+                      "strokeAlign": "CENTER"
+                    },
+                    "strokes": [
+                      {
+                        "color": "rgba(178, 188, 196, 1)"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "3492:2471",
+                    "name": "Insight Container",
+                    "type": "FRAME",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [
+                        {
+                          "property": "padding-top",
+                          "semanticToken": "semanticSpace.inset.200",
+                          "primitiveToken": "space.space200",
+                          "rawValue": "{space.space200}",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        },
+                        {
+                          "property": "padding-right",
+                          "semanticToken": "semanticSpace.inset.300",
+                          "primitiveToken": "space.space300",
+                          "rawValue": "{space.space300}",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        },
+                        {
+                          "property": "padding-bottom",
+                          "semanticToken": "semanticSpace.inset.200",
+                          "primitiveToken": "space.space200",
+                          "rawValue": "{space.space200}",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        },
+                        {
+                          "property": "padding-left",
+                          "semanticToken": "semanticSpace.inset.300",
+                          "primitiveToken": "space.space300",
+                          "rawValue": "{space.space300}",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "primitiveIdentified": [
+                        {
+                          "property": "item-spacing",
+                          "primitiveToken": "space.space200",
+                          "rawValue": "16px",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "unidentified": []
+                    },
+                    "children": [
+                      {
+                        "id": "3492:2472",
+                        "name": "Subheader Container",
+                        "type": "FRAME",
+                        "depth": 5,
+                        "ancestorChain": [
+                          "FRAME",
+                          "FRAME",
+                          "FRAME",
+                          "FRAME",
+                          "FRAME"
+                        ],
+                        "tokenClassifications": {
+                          "semanticIdentified": [],
+                          "primitiveIdentified": [
+                            {
+                              "property": "stroke",
+                              "primitiveToken": "color.black100",
+                              "rawValue": "rgba(58, 58, 69, 1)",
+                              "matchMethod": "binding",
+                              "confidence": "exact"
+                            }
+                          ],
+                          "unidentified": [
+                            {
+                              "property": "padding-top",
+                              "rawValue": "0",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticSpace.grouped.none"
+                            },
+                            {
+                              "property": "padding-right",
+                              "rawValue": "0",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticSpace.grouped.none"
+                            },
+                            {
+                              "property": "padding-bottom",
+                              "rawValue": "0",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticSpace.grouped.none"
+                            },
+                            {
+                              "property": "padding-left",
+                              "rawValue": "0",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticSpace.grouped.none"
+                            }
+                          ]
+                        },
+                        "children": [
+                          {
+                            "id": "3492:2473",
+                            "name": "Insight",
+                            "type": "TEXT",
+                            "depth": 6,
+                            "ancestorChain": [
+                              "FRAME",
+                              "FRAME",
+                              "FRAME",
+                              "FRAME",
+                              "FRAME",
+                              "FRAME"
+                            ],
+                            "tokenClassifications": {
+                              "semanticIdentified": [],
+                              "primitiveIdentified": [
+                                {
+                                  "property": "fill",
+                                  "primitiveToken": "color.black300",
+                                  "rawValue": "rgba(10, 10, 15, 1)",
+                                  "matchMethod": "binding",
+                                  "confidence": "exact"
+                                }
+                              ],
+                              "unidentified": [
+                                {
+                                  "property": "border-width",
+                                  "rawValue": "1",
+                                  "reason": "value-match",
+                                  "suggestedToken": "semanticBorderWidth.default"
+                                },
+                                {
+                                  "property": "font-size",
+                                  "rawValue": "29",
+                                  "reason": "value-match",
+                                  "suggestedToken": "icon.icon.size400"
+                                },
+                                {
+                                  "property": "font-weight",
+                                  "rawValue": "700",
+                                  "reason": "value-match",
+                                  "suggestedToken": "fontWeight.fontWeight700"
+                                },
+                                {
+                                  "property": "line-height",
+                                  "rawValue": "35.9900016784668",
+                                  "reason": "out-of-tolerance",
+                                  "closestMatch": {
+                                    "token": "lineHeight.lineHeight125",
+                                    "delta": "±34.4340016784668px"
+                                  }
+                                }
+                              ]
+                            },
+                            "children": [],
+                            "layout": {
+                              "width": 282,
+                              "height": 36,
+                              "layoutSizingHorizontal": "FIXED",
+                              "layoutSizingVertical": "FIXED",
+                              "layoutAlign": "STRETCH",
+                              "layoutGrow": 0,
+                              "strokeWeight": 1,
+                              "strokeAlign": "OUTSIDE"
+                            },
+                            "textStyle": {
+                              "characters": "Insight",
+                              "fontSize": 29,
+                              "fontFamily": "Rajdhani",
+                              "fontStyle": "Bold",
+                              "fontWeight": 700,
+                              "lineHeight": 35.9900016784668,
+                              "textAlignHorizontal": "LEFT",
+                              "textAlignVertical": "TOP"
+                            }
+                          }
+                        ],
+                        "layout": {
+                          "layoutMode": "NONE",
+                          "padding": {
+                            "top": 0,
+                            "right": 0,
+                            "bottom": 0,
+                            "left": 0
+                          },
+                          "itemSpacing": 0,
+                          "counterAxisSpacing": 0,
+                          "cornerRadius": 0,
+                          "width": 292,
+                          "height": 44,
+                          "layoutSizingHorizontal": "FILL",
+                          "layoutSizingVertical": "FIXED",
+                          "primaryAxisAlignItems": "MIN",
+                          "counterAxisAlignItems": "MIN",
+                          "layoutAlign": "STRETCH",
+                          "layoutGrow": 0,
+                          "strokeAlign": "INSIDE"
+                        },
+                        "strokes": [
+                          {
+                            "color": "rgba(58, 58, 69, 1)"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "3492:2474",
+                        "name": "The inherent strength of AI is pattern matching, and its weakness is an inability to sustain persistent awareness and depth across sessions. To enable AI Agents to be my primary developer, the design system foundation would need to align to that strength while providing structured data capture-and-distribution systems to supplement the weakness.",
+                        "type": "TEXT",
+                        "depth": 5,
+                        "ancestorChain": [
+                          "FRAME",
+                          "FRAME",
+                          "FRAME",
+                          "FRAME",
+                          "FRAME"
+                        ],
+                        "tokenClassifications": {
+                          "semanticIdentified": [],
+                          "primitiveIdentified": [
+                            {
+                              "property": "fill",
+                              "primitiveToken": "color.black300",
+                              "rawValue": "rgba(10, 10, 15, 1)",
+                              "matchMethod": "binding",
+                              "confidence": "exact"
+                            }
+                          ],
+                          "unidentified": [
+                            {
+                              "property": "border-width",
+                              "rawValue": "1",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticBorderWidth.default"
+                            },
+                            {
+                              "property": "font-size",
+                              "rawValue": "16",
+                              "reason": "value-match",
+                              "suggestedToken": "icon.icon.size100"
+                            },
+                            {
+                              "property": "font-weight",
+                              "rawValue": "400",
+                              "reason": "value-match",
+                              "suggestedToken": "fontWeight.fontWeight400"
+                            },
+                            {
+                              "property": "line-height",
+                              "rawValue": "24",
+                              "reason": "out-of-tolerance",
+                              "closestMatch": {
+                                "token": "lineHeight.lineHeight125",
+                                "delta": "±22.444px"
+                              }
+                            }
+                          ]
+                        },
+                        "children": [],
+                        "layout": {
+                          "width": 292,
+                          "height": 264,
+                          "layoutSizingHorizontal": "FILL",
+                          "layoutSizingVertical": "HUG",
+                          "layoutAlign": "STRETCH",
+                          "layoutGrow": 0,
+                          "strokeWeight": 1,
+                          "strokeAlign": "OUTSIDE"
+                        },
+                        "textStyle": {
+                          "characters": "The inherent strength of AI is pattern matching, and its weakness is an inability to sustain persistent awareness and depth across sessions.\n\nTo enable AI Agents to be my primary developer, the design system foundation would need to align to that strength while providing structured data capture-and-distribution systems to supplement the weakness.",
+                          "fontSize": 16,
+                          "fontFamily": "Figtree",
+                          "fontStyle": "Regular",
+                          "fontWeight": 400,
+                          "lineHeight": 24,
+                          "textAlignHorizontal": "LEFT",
+                          "textAlignVertical": "TOP"
+                        }
+                      }
+                    ],
+                    "layout": {
+                      "layoutMode": "VERTICAL",
+                      "padding": {
+                        "top": 16,
+                        "right": 24,
+                        "bottom": 16,
+                        "left": 24
+                      },
+                      "itemSpacing": 16,
+                      "counterAxisSpacing": 0,
+                      "cornerRadius": 0,
+                      "width": 340,
+                      "height": 380,
+                      "layoutSizingHorizontal": "FILL",
+                      "layoutSizingVertical": "HUG",
+                      "primaryAxisAlignItems": "MIN",
+                      "counterAxisAlignItems": "MIN",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 1,
+                      "strokeAlign": "INSIDE"
+                    }
+                  },
+                  {
+                    "id": "3492:2475",
+                    "name": "Line 134",
+                    "type": "FRAME",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [
+                        {
+                          "property": "stroke",
+                          "semanticToken": "semanticColor.color.structure.border.subtle",
+                          "primitiveToken": "color.gray100",
+                          "rawValue": "{color.gray100}",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "primitiveIdentified": [],
+                      "unidentified": [
+                        {
+                          "property": "border-width",
+                          "rawValue": "1",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticBorderWidth.default"
+                        }
+                      ]
+                    },
+                    "children": [],
+                    "layout": {
+                      "width": 358,
+                      "height": 0,
+                      "layoutSizingHorizontal": "FIXED",
+                      "layoutSizingVertical": "FIXED",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "strokeWeight": 1,
+                      "strokeAlign": "CENTER"
+                    },
+                    "strokes": [
+                      {
+                        "color": "rgba(178, 188, 196, 1)"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "3492:2476",
+                    "name": "Approach Container",
+                    "type": "FRAME",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [
+                        {
+                          "property": "padding-top",
+                          "semanticToken": "semanticSpace.inset.200",
+                          "primitiveToken": "space.space200",
+                          "rawValue": "{space.space200}",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        },
+                        {
+                          "property": "padding-right",
+                          "semanticToken": "semanticSpace.inset.300",
+                          "primitiveToken": "space.space300",
+                          "rawValue": "{space.space300}",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        },
+                        {
+                          "property": "padding-bottom",
+                          "semanticToken": "semanticSpace.inset.200",
+                          "primitiveToken": "space.space200",
+                          "rawValue": "{space.space200}",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        },
+                        {
+                          "property": "padding-left",
+                          "semanticToken": "semanticSpace.inset.300",
+                          "primitiveToken": "space.space300",
+                          "rawValue": "{space.space300}",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "primitiveIdentified": [
+                        {
+                          "property": "item-spacing",
+                          "primitiveToken": "space.space200",
+                          "rawValue": "16px",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "unidentified": []
+                    },
+                    "children": [
+                      {
+                        "id": "3492:2477",
+                        "name": "Subheader Container",
+                        "type": "FRAME",
+                        "depth": 5,
+                        "ancestorChain": [
+                          "FRAME",
+                          "FRAME",
+                          "FRAME",
+                          "FRAME",
+                          "FRAME"
+                        ],
+                        "tokenClassifications": {
+                          "semanticIdentified": [],
+                          "primitiveIdentified": [
+                            {
+                              "property": "stroke",
+                              "primitiveToken": "color.black100",
+                              "rawValue": "rgba(58, 58, 69, 1)",
+                              "matchMethod": "binding",
+                              "confidence": "exact"
+                            }
+                          ],
+                          "unidentified": [
+                            {
+                              "property": "padding-top",
+                              "rawValue": "0",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticSpace.grouped.none"
+                            },
+                            {
+                              "property": "padding-right",
+                              "rawValue": "0",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticSpace.grouped.none"
+                            },
+                            {
+                              "property": "padding-bottom",
+                              "rawValue": "0",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticSpace.grouped.none"
+                            },
+                            {
+                              "property": "padding-left",
+                              "rawValue": "0",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticSpace.grouped.none"
+                            }
+                          ]
+                        },
+                        "children": [
+                          {
+                            "id": "3492:2478",
+                            "name": "Approach",
+                            "type": "TEXT",
+                            "depth": 6,
+                            "ancestorChain": [
+                              "FRAME",
+                              "FRAME",
+                              "FRAME",
+                              "FRAME",
+                              "FRAME",
+                              "FRAME"
+                            ],
+                            "tokenClassifications": {
+                              "semanticIdentified": [],
+                              "primitiveIdentified": [
+                                {
+                                  "property": "fill",
+                                  "primitiveToken": "color.black300",
+                                  "rawValue": "rgba(10, 10, 15, 1)",
+                                  "matchMethod": "binding",
+                                  "confidence": "exact"
+                                }
+                              ],
+                              "unidentified": [
+                                {
+                                  "property": "border-width",
+                                  "rawValue": "1",
+                                  "reason": "value-match",
+                                  "suggestedToken": "semanticBorderWidth.default"
+                                },
+                                {
+                                  "property": "font-size",
+                                  "rawValue": "29",
+                                  "reason": "value-match",
+                                  "suggestedToken": "icon.icon.size400"
+                                },
+                                {
+                                  "property": "font-weight",
+                                  "rawValue": "700",
+                                  "reason": "value-match",
+                                  "suggestedToken": "fontWeight.fontWeight700"
+                                },
+                                {
+                                  "property": "line-height",
+                                  "rawValue": "35.9900016784668",
+                                  "reason": "out-of-tolerance",
+                                  "closestMatch": {
+                                    "token": "lineHeight.lineHeight125",
+                                    "delta": "±34.4340016784668px"
+                                  }
+                                }
+                              ]
+                            },
+                            "children": [],
+                            "layout": {
+                              "width": 282,
+                              "height": 36,
+                              "layoutSizingHorizontal": "FIXED",
+                              "layoutSizingVertical": "FIXED",
+                              "layoutAlign": "STRETCH",
+                              "layoutGrow": 0,
+                              "strokeWeight": 1,
+                              "strokeAlign": "OUTSIDE"
+                            },
+                            "textStyle": {
+                              "characters": "Approach",
+                              "fontSize": 29,
+                              "fontFamily": "Rajdhani",
+                              "fontStyle": "Bold",
+                              "fontWeight": 700,
+                              "lineHeight": 35.9900016784668,
+                              "textAlignHorizontal": "LEFT",
+                              "textAlignVertical": "TOP"
+                            }
+                          }
+                        ],
+                        "layout": {
+                          "layoutMode": "NONE",
+                          "padding": {
+                            "top": 0,
+                            "right": 0,
+                            "bottom": 0,
+                            "left": 0
+                          },
+                          "itemSpacing": 0,
+                          "counterAxisSpacing": 0,
+                          "cornerRadius": 0,
+                          "width": 292,
+                          "height": 44,
+                          "layoutSizingHorizontal": "FILL",
+                          "layoutSizingVertical": "FIXED",
+                          "primaryAxisAlignItems": "MIN",
+                          "counterAxisAlignItems": "MIN",
+                          "layoutAlign": "STRETCH",
+                          "layoutGrow": 0,
+                          "strokeAlign": "INSIDE"
+                        },
+                        "strokes": [
+                          {
+                            "color": "rgba(58, 58, 69, 1)"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "3492:2479",
+                        "name": "I would need to architect systems optimal for AI and clear to humans. Math provides infinite scale and flexibility for creative scale. Experimentation and frameworks would be critical to develop methods for constructing a knowledge system that ensured agents would be able to reference consistently and efficiently.",
+                        "type": "TEXT",
+                        "depth": 5,
+                        "ancestorChain": [
+                          "FRAME",
+                          "FRAME",
+                          "FRAME",
+                          "FRAME",
+                          "FRAME"
+                        ],
+                        "tokenClassifications": {
+                          "semanticIdentified": [],
+                          "primitiveIdentified": [
+                            {
+                              "property": "fill",
+                              "primitiveToken": "color.black300",
+                              "rawValue": "rgba(10, 10, 15, 1)",
+                              "matchMethod": "binding",
+                              "confidence": "exact"
+                            }
+                          ],
+                          "unidentified": [
+                            {
+                              "property": "border-width",
+                              "rawValue": "1",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticBorderWidth.default"
+                            },
+                            {
+                              "property": "font-size",
+                              "rawValue": "16",
+                              "reason": "value-match",
+                              "suggestedToken": "icon.icon.size100"
+                            },
+                            {
+                              "property": "font-weight",
+                              "rawValue": "400",
+                              "reason": "value-match",
+                              "suggestedToken": "fontWeight.fontWeight400"
+                            },
+                            {
+                              "property": "line-height",
+                              "rawValue": "24",
+                              "reason": "out-of-tolerance",
+                              "closestMatch": {
+                                "token": "lineHeight.lineHeight125",
+                                "delta": "±22.444px"
+                              }
+                            }
+                          ]
+                        },
+                        "children": [],
+                        "layout": {
+                          "width": 292,
+                          "height": 240,
+                          "layoutSizingHorizontal": "FILL",
+                          "layoutSizingVertical": "HUG",
+                          "layoutAlign": "STRETCH",
+                          "layoutGrow": 0,
+                          "strokeWeight": 1,
+                          "strokeAlign": "OUTSIDE"
+                        },
+                        "textStyle": {
+                          "characters": "I would need to architect systems optimal for AI and clear to humans. Math provides infinite scale and flexibility for creative scale.\n\nExperimentation and frameworks would be critical to develop methods for constructing a knowledge system that ensured agents would be able to reference consistently and efficiently.",
+                          "fontSize": 16,
+                          "fontFamily": "Figtree",
+                          "fontStyle": "Regular",
+                          "fontWeight": 400,
+                          "lineHeight": 24,
+                          "textAlignHorizontal": "LEFT",
+                          "textAlignVertical": "TOP"
+                        }
+                      }
+                    ],
+                    "layout": {
+                      "layoutMode": "VERTICAL",
+                      "padding": {
+                        "top": 16,
+                        "right": 24,
+                        "bottom": 16,
+                        "left": 24
+                      },
+                      "itemSpacing": 16,
+                      "counterAxisSpacing": 0,
+                      "cornerRadius": 0,
+                      "width": 340,
+                      "height": 380,
+                      "layoutSizingHorizontal": "FILL",
+                      "layoutSizingVertical": "HUG",
+                      "primaryAxisAlignItems": "MIN",
+                      "counterAxisAlignItems": "MIN",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 1,
+                      "strokeAlign": "INSIDE"
+                    }
+                  },
+                  {
+                    "id": "3492:2480",
+                    "name": "Line 135",
+                    "type": "FRAME",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [
+                        {
+                          "property": "stroke",
+                          "semanticToken": "semanticColor.color.structure.border.subtle",
+                          "primitiveToken": "color.gray100",
+                          "rawValue": "{color.gray100}",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "primitiveIdentified": [],
+                      "unidentified": [
+                        {
+                          "property": "border-width",
+                          "rawValue": "1",
+                          "reason": "value-match",
+                          "suggestedToken": "semanticBorderWidth.default"
+                        }
+                      ]
+                    },
+                    "children": [],
+                    "layout": {
+                      "width": 358,
+                      "height": 0,
+                      "layoutSizingHorizontal": "FIXED",
+                      "layoutSizingVertical": "FIXED",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "strokeWeight": 1,
+                      "strokeAlign": "CENTER"
+                    },
+                    "strokes": [
+                      {
+                        "color": "rgba(178, 188, 196, 1)"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "3492:2481",
+                    "name": "Goals Container",
+                    "type": "FRAME",
+                    "depth": 4,
+                    "ancestorChain": [
+                      "FRAME",
+                      "FRAME",
+                      "FRAME",
+                      "FRAME"
+                    ],
+                    "tokenClassifications": {
+                      "semanticIdentified": [
+                        {
+                          "property": "padding-top",
+                          "semanticToken": "semanticSpace.inset.200",
+                          "primitiveToken": "space.space200",
+                          "rawValue": "{space.space200}",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        },
+                        {
+                          "property": "padding-right",
+                          "semanticToken": "semanticSpace.inset.300",
+                          "primitiveToken": "space.space300",
+                          "rawValue": "{space.space300}",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        },
+                        {
+                          "property": "padding-bottom",
+                          "semanticToken": "semanticSpace.inset.200",
+                          "primitiveToken": "space.space200",
+                          "rawValue": "{space.space200}",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        },
+                        {
+                          "property": "padding-left",
+                          "semanticToken": "semanticSpace.inset.300",
+                          "primitiveToken": "space.space300",
+                          "rawValue": "{space.space300}",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "primitiveIdentified": [
+                        {
+                          "property": "item-spacing",
+                          "primitiveToken": "space.space200",
+                          "rawValue": "16px",
+                          "matchMethod": "binding",
+                          "confidence": "exact"
+                        }
+                      ],
+                      "unidentified": []
+                    },
+                    "children": [
+                      {
+                        "id": "3492:2482",
+                        "name": "Subheader Container",
+                        "type": "FRAME",
+                        "depth": 5,
+                        "ancestorChain": [
+                          "FRAME",
+                          "FRAME",
+                          "FRAME",
+                          "FRAME",
+                          "FRAME"
+                        ],
+                        "tokenClassifications": {
+                          "semanticIdentified": [],
+                          "primitiveIdentified": [
+                            {
+                              "property": "stroke",
+                              "primitiveToken": "color.black100",
+                              "rawValue": "rgba(58, 58, 69, 1)",
+                              "matchMethod": "binding",
+                              "confidence": "exact"
+                            }
+                          ],
+                          "unidentified": [
+                            {
+                              "property": "padding-top",
+                              "rawValue": "0",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticSpace.grouped.none"
+                            },
+                            {
+                              "property": "padding-right",
+                              "rawValue": "0",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticSpace.grouped.none"
+                            },
+                            {
+                              "property": "padding-bottom",
+                              "rawValue": "0",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticSpace.grouped.none"
+                            },
+                            {
+                              "property": "padding-left",
+                              "rawValue": "0",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticSpace.grouped.none"
+                            }
+                          ]
+                        },
+                        "children": [
+                          {
+                            "id": "3492:2483",
+                            "name": "Goals",
+                            "type": "TEXT",
+                            "depth": 6,
+                            "ancestorChain": [
+                              "FRAME",
+                              "FRAME",
+                              "FRAME",
+                              "FRAME",
+                              "FRAME",
+                              "FRAME"
+                            ],
+                            "tokenClassifications": {
+                              "semanticIdentified": [],
+                              "primitiveIdentified": [
+                                {
+                                  "property": "fill",
+                                  "primitiveToken": "color.black300",
+                                  "rawValue": "rgba(10, 10, 15, 1)",
+                                  "matchMethod": "binding",
+                                  "confidence": "exact"
+                                }
+                              ],
+                              "unidentified": [
+                                {
+                                  "property": "border-width",
+                                  "rawValue": "1",
+                                  "reason": "value-match",
+                                  "suggestedToken": "semanticBorderWidth.default"
+                                },
+                                {
+                                  "property": "font-size",
+                                  "rawValue": "29",
+                                  "reason": "value-match",
+                                  "suggestedToken": "icon.icon.size400"
+                                },
+                                {
+                                  "property": "font-weight",
+                                  "rawValue": "700",
+                                  "reason": "value-match",
+                                  "suggestedToken": "fontWeight.fontWeight700"
+                                },
+                                {
+                                  "property": "line-height",
+                                  "rawValue": "35.9900016784668",
+                                  "reason": "out-of-tolerance",
+                                  "closestMatch": {
+                                    "token": "lineHeight.lineHeight125",
+                                    "delta": "±34.4340016784668px"
+                                  }
+                                }
+                              ]
+                            },
+                            "children": [],
+                            "layout": {
+                              "width": 282,
+                              "height": 36,
+                              "layoutSizingHorizontal": "FIXED",
+                              "layoutSizingVertical": "FIXED",
+                              "layoutAlign": "STRETCH",
+                              "layoutGrow": 0,
+                              "strokeWeight": 1,
+                              "strokeAlign": "OUTSIDE"
+                            },
+                            "textStyle": {
+                              "characters": "Goals",
+                              "fontSize": 29,
+                              "fontFamily": "Rajdhani",
+                              "fontStyle": "Bold",
+                              "fontWeight": 700,
+                              "lineHeight": 35.9900016784668,
+                              "textAlignHorizontal": "LEFT",
+                              "textAlignVertical": "TOP"
+                            }
+                          }
+                        ],
+                        "layout": {
+                          "layoutMode": "NONE",
+                          "padding": {
+                            "top": 0,
+                            "right": 0,
+                            "bottom": 0,
+                            "left": 0
+                          },
+                          "itemSpacing": 0,
+                          "counterAxisSpacing": 0,
+                          "cornerRadius": 0,
+                          "width": 292,
+                          "height": 44,
+                          "layoutSizingHorizontal": "FILL",
+                          "layoutSizingVertical": "FIXED",
+                          "primaryAxisAlignItems": "MIN",
+                          "counterAxisAlignItems": "MIN",
+                          "layoutAlign": "STRETCH",
+                          "layoutGrow": 0,
+                          "strokeAlign": "INSIDE"
+                        },
+                        "strokes": [
+                          {
+                            "color": "rgba(58, 58, 69, 1)"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "3492:2484",
+                        "name": "Build an enterprise-tier design system fully optimized for the AI Agent development that partners with humans. Design for plug-and-play adoption and minimize aesthetic direction while maximizing capabilities. Explore and evolve workflows for AI-centric collaboration and development processes with humans.",
+                        "type": "TEXT",
+                        "depth": 5,
+                        "ancestorChain": [
+                          "FRAME",
+                          "FRAME",
+                          "FRAME",
+                          "FRAME",
+                          "FRAME"
+                        ],
+                        "tokenClassifications": {
+                          "semanticIdentified": [],
+                          "primitiveIdentified": [
+                            {
+                              "property": "fill",
+                              "primitiveToken": "color.black300",
+                              "rawValue": "rgba(10, 10, 15, 1)",
+                              "matchMethod": "binding",
+                              "confidence": "exact"
+                            }
+                          ],
+                          "unidentified": [
+                            {
+                              "property": "border-width",
+                              "rawValue": "1",
+                              "reason": "value-match",
+                              "suggestedToken": "semanticBorderWidth.default"
+                            },
+                            {
+                              "property": "font-size",
+                              "rawValue": "16",
+                              "reason": "value-match",
+                              "suggestedToken": "icon.icon.size100"
+                            },
+                            {
+                              "property": "font-weight",
+                              "rawValue": "400",
+                              "reason": "value-match",
+                              "suggestedToken": "fontWeight.fontWeight400"
+                            },
+                            {
+                              "property": "line-height",
+                              "rawValue": "24",
+                              "reason": "out-of-tolerance",
+                              "closestMatch": {
+                                "token": "lineHeight.lineHeight125",
+                                "delta": "±22.444px"
+                              }
+                            }
+                          ]
+                        },
+                        "children": [],
+                        "layout": {
+                          "width": 292,
+                          "height": 264,
+                          "layoutSizingHorizontal": "FILL",
+                          "layoutSizingVertical": "HUG",
+                          "layoutAlign": "STRETCH",
+                          "layoutGrow": 0,
+                          "strokeWeight": 1,
+                          "strokeAlign": "OUTSIDE"
+                        },
+                        "textStyle": {
+                          "characters": "Build an enterprise-tier design system fully optimized for the AI Agent development that partners with humans.\n\nDesign for plug-and-play adoption and minimize aesthetic direction while maximizing capabilities.\n\nExplore and evolve workflows for AI-centric collaboration and development processes with humans.",
+                          "fontSize": 16,
+                          "fontFamily": "Figtree",
+                          "fontStyle": "Regular",
+                          "fontWeight": 400,
+                          "lineHeight": 24,
+                          "textAlignHorizontal": "LEFT",
+                          "textAlignVertical": "TOP"
+                        }
+                      }
+                    ],
+                    "layout": {
+                      "layoutMode": "VERTICAL",
+                      "padding": {
+                        "top": 16,
+                        "right": 24,
+                        "bottom": 16,
+                        "left": 24
+                      },
+                      "itemSpacing": 16,
+                      "counterAxisSpacing": 0,
+                      "cornerRadius": 0,
+                      "width": 340,
+                      "height": 380,
+                      "layoutSizingHorizontal": "FILL",
+                      "layoutSizingVertical": "HUG",
+                      "primaryAxisAlignItems": "MIN",
+                      "counterAxisAlignItems": "MIN",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 1,
+                      "strokeAlign": "INSIDE"
+                    }
+                  }
+                ],
+                "layout": {
+                  "layoutMode": "HORIZONTAL",
+                  "padding": {
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "itemSpacing": 0,
+                  "counterAxisSpacing": 0,
+                  "cornerRadius": 0,
+                  "width": 1360,
+                  "height": 380,
+                  "layoutSizingHorizontal": "FILL",
+                  "layoutSizingVertical": "HUG",
+                  "primaryAxisAlignItems": "MIN",
+                  "counterAxisAlignItems": "MAX",
+                  "layoutAlign": "STRETCH",
+                  "layoutGrow": 0,
+                  "strokeAlign": "INSIDE"
+                }
+              }
+            ],
+            "layout": {
+              "layoutMode": "VERTICAL",
+              "padding": {
+                "top": 40,
+                "right": 40,
+                "bottom": 40,
+                "left": 40
+              },
+              "itemSpacing": 48,
+              "counterAxisSpacing": 0,
+              "cornerRadius": 0,
+              "width": 1440,
+              "height": 548,
+              "layoutSizingHorizontal": "FIXED",
+              "layoutSizingVertical": "HUG",
+              "primaryAxisAlignItems": "MIN",
+              "counterAxisAlignItems": "MIN",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "strokeWeight": 1,
+              "strokeAlign": "INSIDE"
+            }
+          },
+          {
+            "id": "3492:2485",
+            "name": "Easter Egg - Because why not!?",
+            "type": "TEXT",
+            "depth": 2,
+            "ancestorChain": [
+              "FRAME",
+              "FRAME"
+            ],
+            "tokenClassifications": {
+              "semanticIdentified": [],
+              "primitiveIdentified": [
+                {
+                  "property": "fill",
+                  "primitiveToken": "color.green100",
+                  "rawValue": "rgba(230, 255, 245, 1)",
+                  "matchMethod": "binding",
+                  "confidence": "exact"
+                },
+                {
+                  "property": "stroke",
+                  "primitiveToken": "color.green400",
+                  "rawValue": "rgba(0, 255, 136, 1)",
+                  "matchMethod": "binding",
+                  "confidence": "exact"
+                }
+              ],
+              "unidentified": [
+                {
+                  "property": "border-width",
+                  "rawValue": "1",
+                  "reason": "value-match",
+                  "suggestedToken": "semanticBorderWidth.default"
+                },
+                {
+                  "property": "font-size",
+                  "rawValue": "72",
+                  "reason": "out-of-tolerance",
+                  "closestMatch": {
+                    "token": "fontSize.fontSize700",
+                    "delta": "±30px"
+                  }
+                },
+                {
+                  "property": "font-weight",
+                  "rawValue": "700",
+                  "reason": "value-match",
+                  "suggestedToken": "fontWeight.fontWeight700"
+                }
+              ]
+            },
+            "children": [],
+            "layout": {
+              "width": 551,
+              "height": 108,
+              "layoutSizingHorizontal": "FIXED",
+              "layoutSizingVertical": "FIXED",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "strokeWeight": 1,
+              "strokeAlign": "OUTSIDE"
+            },
+            "textStyle": {
+              "characters": "Because why not!?",
+              "fontSize": 72,
+              "fontFamily": "Rajdhani",
+              "fontStyle": "Bold",
+              "fontWeight": 700,
+              "textAlignHorizontal": "CENTER",
+              "textAlignVertical": "TOP"
+            },
+            "strokes": [
+              {
+                "color": "rgba(0, 255, 136, 1)"
+              }
+            ]
+          }
+        ],
+        "layout": {
+          "layoutMode": "NONE",
+          "padding": {
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "itemSpacing": 0,
+          "counterAxisSpacing": 0,
+          "cornerRadius": 0,
+          "width": 1440,
+          "height": 756,
+          "layoutSizingHorizontal": "FIXED",
+          "layoutSizingVertical": "FIXED",
+          "primaryAxisAlignItems": "MIN",
+          "counterAxisAlignItems": "MIN",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "strokeWeight": 1,
+          "strokeAlign": "INSIDE"
+        }
+      }
+    ],
+    "layout": {
+      "layoutMode": "NONE",
+      "padding": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "itemSpacing": 0,
+      "counterAxisSpacing": 0,
+      "cornerRadius": 0,
+      "width": 1440,
+      "height": 756,
+      "layoutSizingHorizontal": "FIXED",
+      "layoutSizingVertical": "FIXED",
+      "primaryAxisAlignItems": "MIN",
+      "counterAxisAlignItems": "MIN",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "strokeWeight": 1,
+      "strokeAlign": "INSIDE"
+    }
+  },
+  "classificationSummary": {
+    "semanticIdentified": 20,
+    "primitiveIdentified": 23,
+    "unidentified": 94
+  },
+  "compositionPatterns": [],
+  "unresolvedBindings": [],
+  "recommendations": {
+    "variantMapping": {
+      "componentName": "WhyBuild",
+      "behavioralClassification": "styling",
+      "recommendations": [
+        {
+          "option": "A",
+          "description": "Single component with a variant prop",
+          "rationale": "Variants differ only in visual styling, making a single component with a variant prop the simplest API surface.",
+          "recommended": true,
+          "alignsWith": [
+            "Behavioral analysis: variants are styling-only"
+          ],
+          "tradeoffs": [
+            "Simpler consumer API — one import, one tag.",
+            "Internal complexity grows if behavioral differences emerge later.",
+            "Harder to tree-shake unused variants."
+          ]
+        },
+        {
+          "option": "B",
+          "description": "Primitive + semantic component structure (Stemma pattern)",
+          "rationale": "A split structure future-proofs the component for behavioral divergence, though current variants are styling-only.",
+          "recommended": false,
+          "alignsWith": [],
+          "tradeoffs": [
+            "Clean separation of behavioral contracts per component.",
+            "Aligns with Stemma inheritance pattern used across DesignerPunk.",
+            "More components to maintain and document."
+          ]
+        }
+      ],
+      "conflicts": [],
+      "familyPattern": null,
+      "existingComponents": []
+    },
+    "componentTokens": [
+      {
+        "primitiveToken": "space.space000",
+        "usageCount": 5,
+        "locations": [
+          "item-spacing",
+          "padding-top",
+          "padding-right",
+          "padding-bottom",
+          "padding-left"
+        ],
+        "illustrativeSuggestion": "why.item-spacing = space.space000",
+        "rationale": "space.space000 is used across 5 properties (item-spacing, padding-top, padding-right, padding-bottom, padding-left). Consistent usage suggests semantic intent that could be encoded as a component token."
+      }
+    ]
+  },
+  "screenshots": [
+    {
+      "filePath": "./images/whybuild.png",
+      "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/4f89101e-d7ea-4eba-a36a-8ca12978f190",
+      "format": "png",
+      "scale": 2,
+      "capturedAt": "2026-05-10T14:44:04.242Z"
+    }
+  ],
+  "extractedAt": "2026-05-10T14:44:04.245Z",
+  "extractorVersion": "6.3.0"
+}

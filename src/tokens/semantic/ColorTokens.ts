@@ -340,10 +340,10 @@ export const colorTokens: Record<string, Omit<SemanticToken, 'primitiveTokens'>>
 
   'color.action.navigation.surface': {
     name: 'color.action.navigation.surface',
-    primitiveReferences: { value: 'green100' },
+    primitiveReferences: { value: 'green200' },
     category: SemanticCategory.COLOR,
     context: 'Navigation surface color for active nav button and subnav popover background',
-    description: 'Light green surface for navigation context indicators - active nav button background (popover open state) and subnav dropdown background. Encodes the relationship between trigger and panel. Light-mode only; dark-mode behavior deferred.'
+    description: 'Lighter green surface for navigation context indicators - active nav button background (popover open state) and subnav dropdown background. Encodes the relationship between trigger and panel. Light-mode only; dark-mode behavior deferred.'
   },
 
   // Attention & Highlight (2 tokens)
@@ -446,7 +446,7 @@ export const colorTokens: Record<string, Omit<SemanticToken, 'primitiveTokens'>>
 
   'color.contrast.onAction': {
     name: 'color.contrast.onAction',
-    primitiveReferences: { value: 'black500' },
+    primitiveReferences: { value: 'white100' },
     category: SemanticCategory.COLOR,
     context: 'Contrast color for content on action-colored backgrounds',
     description: 'Content color for text and icons on primary action backgrounds. Black on cyan (base), white on teal (WCAG) to maintain contrast compliance.'
