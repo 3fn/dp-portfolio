@@ -12,7 +12,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('../../../../primitive-assets/CommitMono-400-Regular.otf') format('opentype');
+  src: url('/primitive-assets/CommitMono-400-Regular.otf') format('opentype');
 }
 
 /* Commit Mono Regular Italic (400) */
@@ -21,7 +21,7 @@
   font-style: italic;
   font-weight: 400;
   font-display: swap;
-  src: url('../../../../primitive-assets/CommitMono-400-Italic.otf') format('opentype');
+  src: url('/primitive-assets/CommitMono-400-Italic.otf') format('opentype');
 }
 
 /* Commit Mono Bold (700) */
@@ -30,7 +30,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('../../../../primitive-assets/CommitMono-700-Regular.otf') format('opentype');
+  src: url('/primitive-assets/CommitMono-700-Regular.otf') format('opentype');
 }
 
 /* Commit Mono Bold Italic (700) */
@@ -39,5 +39,5 @@
   font-style: italic;
   font-weight: 700;
   font-display: swap;
-  src: url('../../../../primitive-assets/CommitMono-700-Italic.otf') format('opentype');
+  src: url('/primitive-assets/CommitMono-700-Italic.otf') format('opentype');
 }
