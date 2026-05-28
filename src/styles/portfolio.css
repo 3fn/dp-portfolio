@@ -462,14 +462,16 @@ body {
 }
 .how-built__easter {
   font-family: var(--font-family-display);
-  font-size: var(--font-size-700);
+  font-size: calc(var(--font-size-700) * 1.714);
   font-weight: var(--font-weight-700);
   color: var(--green-100);
   position: absolute;
   inset-block-start: 80px;
-  inset-inline-end: 155px;
+  inset-inline-end: 64px;
   opacity: 0;
   pointer-events: none;
+    box-shadow: -1px -1px 0 var(--green-500), 1px -1px 0 var(--green-500), -1px 1px 0 var(--green-500), 1px 1px 0 var(--green-500),;
+
 }
 .how-built__heading:hover ~ .how-built__easter {
   opacity: 1;
@@ -603,8 +605,8 @@ body {
   margin-top: var(--space-150);
 }
 .badge {
-  padding: var(--space-200) var(--space-250);
-  border-radius: var(--radius-max);
+  padding: var(--space-150) var(--space-200);
+  border-radius: var(--radius-050);
   font-size: var(--font-size-050);
   font-weight: var(--font-weight-500);
   color: var(--color-contrast-on-dark);

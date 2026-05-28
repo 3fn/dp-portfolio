@@ -221,6 +221,18 @@ export class NavAboutPopover extends HTMLElement {
           color: inherit;
           text-decoration: none;
           gap: var(--space-grouped-tight);
+          transition: background var(--duration-150) var(--easing-standard), color var(--duration-150) var(--easing-standard);
+        }
+        .item:hover {
+          background: rgba(255, 255, 255, 0.08);
+          color: var(--color-action-primary);
+        }
+        .item:active {
+          background: rgba(255, 255, 255, 0.12);
+        }
+        .item:focus-visible {
+          outline: 2px solid var(--color-action-primary);
+          outline-offset: -2px;
         }
 
         /* Prefix — fixed width for consistent label alignment */
