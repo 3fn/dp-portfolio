@@ -1,0 +1,36 @@
+name: Build & Deploy to Dreamhost
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Build project
+        run: npm run build:page
+      
+      - name: Deploy to Dreamhost
+        uses: tempora-iot/sftp-action@v1
+        with:
+          host: ${{ secrets.DREAMHOST_SFTP_HOST }}
+          port: 22
+          username: ${{ secrets.DREAMHOST_USERNAME }}
+          password: ${{ secrets.DREAMHOST_PASSWORD }}
+          sourceDir: ./src
+          targetDir: ${{ secrets.DREAMHOST_REMOTE_DIR }}
+          failOnError: true
