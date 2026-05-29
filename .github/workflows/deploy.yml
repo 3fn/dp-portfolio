@@ -39,3 +39,14 @@ jobs:
           localDir: './src'
           remoteDir: ${{ secrets.DREAMHOST_REMOTE_DIR }}
           sftpArgs: '-o ConnectTimeout=5'
+      
+      - name: Deploy dist to Dreamhost via SFTP
+        uses: wangyucode/sftp-upload-action@v2.0.2
+        with:
+          host: ${{ secrets.DREAMHOST_SFTP_HOST }}
+          port: 22
+          username: ${{ secrets.DREAMHOST_USERNAME }}
+          password: ${{ secrets.DREAMHOST_PASSWORD }}
+          localDir: './dist'
+          remoteDir: ${{ secrets.DREAMHOST_REMOTE_DIR }}/dist
+          sftpArgs: '-o ConnectTimeout=5'
