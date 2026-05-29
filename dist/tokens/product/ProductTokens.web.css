@@ -1,0 +1,21 @@
+/* Product tokens — generated 2026-05-27T21:34:31.780Z */
+/* Do not edit manually. Source: product/tokens/*.yaml */
+
+:root {
+  /* Product tokens: layout */
+  --product-layout-content-max-width: 1336px; /* Maximum content column width */
+  --product-layout-content-indent: var(--space-300); /* Left indent for section content and headings */
+  --product-layout-prose-measure-max: 48ch; /* Maximum line length for body text */
+  --product-layout-quote-max-width: 640px; /* Maximum width for blockquote elements */
+  --product-layout-modal-max-width: 1020px; /* Maximum width for ecosystem detail modals */
+  --product-layout-cta-actions-max-width: 280px; /* Maximum width for CTA button group */
+  --product-layout-illustration-max-width: 380px; /* Maximum width for ecosystem system illustration */
+  --product-layout-card-header-max-width: 180px; /* Maximum width for system card SVG headers */
+  --product-layout-cta-bottom-padding: 224px; /* Bottom padding for CTA section */
+
+  /* Product tokens: motion */
+  --product-motion-flip-duration: var(--duration-350); /* Card-to-modal FLIP expansion timing */
+  --product-motion-flip-easing: cubic-bezier(0.4, 0, 0.2, 1); /* Card-to-modal FLIP expansion curve */
+  --product-motion-flicker-duration: 800ms; /* Neon easter egg flicker animation cycle */
+
+}
