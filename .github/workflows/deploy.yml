@@ -40,6 +40,7 @@ jobs:
           remoteDir: ${{ secrets.DREAMHOST_REMOTE_DIR }}
           removeExtraFilesOnServer: true
           forceUpload: true
+          concurrency: 1
       
       - name: Deploy dist to Dreamhost via SFTP
         uses: wangyucode/sftp-upload-action@v2.0.2
