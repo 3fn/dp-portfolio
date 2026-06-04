@@ -38,6 +38,8 @@ jobs:
           password: ${{ secrets.DREAMHOST_PASSWORD }}
           localDir: './_site'
           remoteDir: ${{ secrets.DREAMHOST_REMOTE_DIR }}
+          removeExtraFilesOnServer: true
+          forceUpload: true
       
       - name: Deploy dist to Dreamhost via SFTP
         uses: wangyucode/sftp-upload-action@v2.0.2
