@@ -1,0 +1,382 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base>
+  <Fragment slot="meta">
+    <title>DesignerPunk · The Design System for AI-Human Collaboration</title>
+    <meta name="description" content="Designer Punk is an open source design system developed by Peter Michaels Allen (@3fn) for AI-Human collaboration.">
+    <meta name="keywords" content="design system, AI, open source, Peter Michaels Allen, designer punk">
+    <meta name="author" content="Peter Michaels Allen">
+    <meta property="og:title" content="DesignerPunk · Design System for Humans and AI Agents">
+    <meta property="og:image" content="/images/image-dp-og.jpg">
+    <link rel="icon" type="image/svg+xml" href="/images/image-dp-favicon.svg">
+  </Fragment>
+
+  <Fragment slot="head">
+    <!-- Critical CSS: nav + hero for fastest first paint -->
+    <style>
+      *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font-family: var(--font-family-body); background: var(--white-100); color: var(--color-contrast-on-light); -webkit-font-smoothing: antialiased; }
+      .nav { position: sticky; inset-block-start: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; padding-inline: var(--space-500); min-height: var(--tap-area-recommended); background: var(--black-300); border-block-end: var(--border-width-100) solid var(--color-structure-border-subtle); box-shadow: var(--shadow-container); }
+      .nav__inner { display: flex; align-items: center; justify-content: space-between; width: 100%; max-inline-size: var(--product-layout-content-max-width); }
+      .nav__logo { display: flex; align-items: center; gap: var(--space-100); }
+      .nav__logo-credit { font-size: var(--font-size-050); color: var(--color-contrast-on-dark); opacity: var(--opacity-064); line-height: 1; }
+      .nav__links { display: flex; align-items: center; gap: var(--space-400); }
+      .nav__links a { font-family: var(--font-family-body); font-size: var(--typography-label-md-font-size); font-weight: var(--typography-label-md-font-weight); color: var(--color-contrast-on-dark); text-decoration: none; opacity: var(--opacity-088); transition: opacity var(--duration-150) var(--easing-standard); }
+      .nav__links a:hover { opacity: 1; }
+      #hero { display: grid; grid-template-columns: 1fr 1fr; align-items: start; max-inline-size: var(--product-layout-content-max-width); margin: 0 auto; padding-inline: var(--space-500); gap: var(--space-400); }
+      .hero__content { display: flex; flex-direction: column; gap: var(--space-300); margin-block-start: var(--size-1000); padding-block-start: var(--space-800); }
+      .hero__headline { font-family: var(--font-family-display); line-height: 1.1; color: var(--color-contrast-on-light); padding-inline-start: var(--product-layout-content-indent); }
+      .hero__headline em { font-style: normal; color: var(--color-action-primary); display: inline-block;}
+      .hero__visual { position: relative; display: flex; align-items: flex-start; justify-content: flex-end; }
+    </style>
+
+    <!-- Page scripts -->
+    <script src="/scripts/scroll-nav.js" type="module"></script>
+    <script src="/scripts/reveal.js" type="module"></script>
+    <script src="/scripts/stats.js" type="module"></script>
+    <script src="/scripts/chord.js" type="module"></script>
+    <script src="/scripts/career.js" type="module"></script>
+    <script src="/scripts/ecosystem.js" type="module"></script>
+    <script src="/scripts/agents.js" type="module"></script>
+    <script src="/scripts/token-evolution.js" type="module"></script>
+  </Fragment>
+
+  <!-- Skip to content -->
+  <a href="#hero" class="skip-to-content">Skip to content</a>
+
+  <!-- Navigation -->
+  <nav-header-content></nav-header-content>
+
+  <main>
+
+    <!-- Hero -->
+    <section id="hero">
+      <div class="hero__content">
+        <h1 class="hero__headline reveal-hidden">The design system built for<em>AI-Human collaboration</em></h1>
+        <p class="hero__description reveal-hidden">While modern teams explore how they might build AI-enabled design systems, I built something more.</p>
+        <p class="hero__description reveal-hidden"><strong>DesignerPunk</strong> is an ecosystem that pairs a production-ready design system with built-in intelligence layers that guide AI agents to deliver craft at scale.</p>
+        <div class="hero__ctas reveal-hidden">
+          <button-cta variant="primary" label="Explore the ideas" href="#why-build"></button-cta>
+          <button-cta variant="secondary" label="Check the code " icon="external-link" icon-position="trailing" href="https://github.com/3fn/DesignerPunkv2" target="_blank" rel="noopener"></button-cta>
+        </div>
+      </div>
+      <div class="hero__visual" aria-hidden="true">
+        <object class="hero__illustration" type="image/svg+xml" data="/illustration/heroIllustration.svg" aria-hidden="true"></object>
+        <div class="hero__chord">
+          <canvas id="chord"></canvas>
+          <p class="sr-only">Interactive diagram showing relationships between DesignerPunk's MCP servers, AI agents, and system components including Rosetta (tokens), Stemma (components), and their connections.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section id="stats">
+      <div class="stats__grid">
+        <div class="stats__hero">
+          <div class="stats__hero-number">1</div>
+          <div class="stats__hero-label">Human</div>
+        </div>
+        <div class="stats__items">
+          <div class="stats__item"><span class="stats__value" data-count="217">217</span><span class="stats__label">Primitive tokens</span></div>
+          <div class="stats__item"><span class="stats__value" data-count="193">193</span><span class="stats__label">Semantic tokens</span></div>
+          <div class="stats__item"><span class="stats__value" data-count="9">9</span><span class="stats__label">Component families</span></div>
+          <div class="stats__item"><span class="stats__value" data-count="34">34</span><span class="stats__label">Foundation components</span></div>
+          <div class="stats__item"><span class="stats__value" data-count="210">210</span><span class="stats__label">Contracts</span></div>
+          <div class="stats__item"><span class="stats__value" data-count="8">8</span><span class="stats__label">AI Agents</span></div>
+          <div class="stats__item"><span class="stats__value" data-count="3">3</span><span class="stats__label">MCP servers</span></div>
+          <div class="stats__item"><span class="stats__value" data-count="87" data-prefix="-" data-suffix="%">-87%</span><span class="stats__label">Context load</span></div>
+          <div class="stats__item"><span class="stats__value" data-count="300" data-suffix="+">300+</span><span class="stats__label">Test suites</span></div>
+          <div class="stats__item"><span class="stats__value" data-count="8" data-suffix="k+">8k+</span><span class="stats__label">Governance tests</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Build -->
+    <section id="why-build">
+      <h2 class="section-heading why-build__heading"><span class="section-prefix" aria-hidden="true">//</span> Why build this system?</h2>
+      <p class="why-build__easter" aria-hidden="true">Because why not!?</p>
+      <blockquote class="why-build__quote">When I first tried to build something serious with AI, it became clear: the only way to build something sustainable is to <em>build on</em> something sustainable: <em>a design system</em>.</blockquote>
+      <div class="why-build__narrative">
+        <div class="why-build__copy">
+          <div class="why-build__beat">
+            <h3>Challenge</h3>
+            <p>AI enables creation at hilarious speed, but the outcomes of each prompt can be wildly unpredictable — and an agent's motivation to deliver results at any cost can fracture a healthy design and code environment at any time.</p>
+            <p>On websites, we call this "not ideal"; in Slack channels, we use more four-letter words.</p>
+          </div>
+          <div class="why-build__beat">
+            <h3>Insight &amp; Thesis</h3>
+            <p class="why-build__thesis-statement">Design systems are shared working agreements between Humans and AI Agents.</p>
+            <ol class="why-build__principles">
+              <li>Institutionalized context must persist across sessions</li>
+              <li>Every decision must be queryable</li>
+              <li>Every decision must be validatable</li>
+            </ol>
+          </div>
+          <div class="why-build__beat">
+            <h3>Goals</h3>
+            <ol class="why-build__goals">
+              <li>Build a production-grade design system fully optimized for agent-driven development.</li>
+              <li>Design for plug-and-play development in a 0-1 product environment — enable small teams to work big.</li>
+              <li>Automate workflows for AI-centric collaboration and development processes with humans.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="why-build__evolution" aria-label="Token naming evolution from chaos to semantic structure">
+          <div class="flap-token" data-states="$space-1|$space-1|--space-100|--space-grouped-normal"><span class="flap-text">$space-1</span></div>
+          <div class="flap-token" data-states="--ds-pad-sm|--ds-pad-sm|--space-150|--space-grouped-loose"><span class="flap-text">--ds-pad-sm</span></div>
+          <div class="flap-token" data-states="@color-blue-1|@color-blue-1|--pink-500|--color-action-primary"><span class="flap-text">@color-blue-1</span></div>
+          <div class="flap-token" data-states="%radius-pill|%radius-pill|--radius-050|--radius-050"><span class="flap-text">%radius-pill</span></div>
+          <div class="flap-token" data-states="--dp-space-min|--dp-space-min|--space-200|--space-inset-200"><span class="flap-text">--dp-space-min</span></div>
+          <div class="flap-token" data-states="$clr-primary|$clr-primary|--space-300|--space-separated-normal"><span class="flap-text">$clr-primary</span></div>
+          <div class="flap-token" data-states="_fontSize_h1|_fontSize_h1|--font-size-075|--typography-label-md-font-size"><span class="flap-text">_fontSize_h1</span></div>
+          <div class="flap-token" data-states="--icon-lg|--icon-lg|--radius-100|--radius-100"><span class="flap-text">--icon-lg</span></div>
+          <div class="flap-token" data-states="$color-dp-yellow5|$color-dp-yellow5|--font-size-100|--typography-body-md-font-size"><span class="flap-text">$color-dp-yellow5</span></div>
+          <div class="flap-token" data-states="@media-break-1|@media-break-1|--font-size-500|--typography-display-font-size"><span class="flap-text">@media-break-1</span></div>
+          <div class="flap-token" data-states="%btn-radius|%btn-radius|--font-weight-700|--typography-display-font-weight"><span class="flap-text">%btn-radius</span></div>
+          <div class="flap-token" data-states="--dp-rad-lg|--dp-rad-lg|--radius-max|--radius-max"><span class="flap-text">--dp-rad-lg</span></div>
+          <div class="flap-token" data-states="$lh-body|$lh-body|--black-300|--color-contrast-on-light"><span class="flap-text">$lh-body</span></div>
+          <div class="flap-token" data-states="@gutter-default|@gutter-default|--white-200|--color-structure-surface"><span class="flap-text">@gutter-default</span></div>
+          <div class="flap-token" data-states="--ds-shadow-1|--ds-shadow-1|--duration-150|--motion-button-press"><span class="flap-text">--ds-shadow-1</span></div>
+          <div class="flap-token" data-states="_motion_fast|_motion_fast|--border-width-100|--border-width-100"><span class="flap-text">_motion_fast</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ecosystem -->
+    <section id="ecosystem">
+      <h2 class="section-heading"><span class="section-prefix" aria-hidden="true">//</span> What is this ecosystem?</h2>
+      <div class="ecosystem__layout">
+        <svg class="ecosystem__connectors" aria-hidden="true"></svg>
+        <div class="ecosystem__system ecosystem__system--rosetta" role="button" tabindex="0" aria-label="Rosetta">
+          <object class="ecosystem__system-header" type="image/svg+xml" data="/illustration/header-rosetta.svg" aria-hidden="true"></object>
+          <p class="ecosystem__system-desc">A mathematical token system that generates native code for iOS, Android, and Web from a single unitless source.</p>
+          <ul class="ecosystem__system-highlights">
+            <li>Tokens carry their own mathematical formulas, validated at build time</li>
+            <li>Platform units applied only at final generation — one source, three native outputs</li>
+          </ul>
+        </div>
+        <div class="ecosystem__illustration">
+          <object type="image/svg+xml" data="/illustration/systemIllustration.svg" aria-hidden="true"></object>
+        </div>
+        <div class="ecosystem__system ecosystem__system--civitas" role="button" tabindex="0" aria-label="Civitas">
+          <object class="ecosystem__system-header" type="image/svg+xml" data="/illustration/header-civitas.svg" aria-hidden="true"></object>
+          <p class="ecosystem__system-desc">Governance infrastructure of MCP servers and specialized agents for accurate documentation and consistent implementation.</p>
+          <ul class="ecosystem__system-highlights">
+            <li>Rules served via MCP at the point of decision — 82% context reduction</li>
+            <li>8 domain-specialized agents with explicit boundaries and escalation paths</li>
+          </ul>
+        </div>
+        <div class="ecosystem__system ecosystem__system--stemma" role="button" tabindex="0" aria-label="Stemma">
+          <object class="ecosystem__system-header" type="image/svg+xml" data="/illustration/header-stemma.svg" aria-hidden="true"></object>
+          <p class="ecosystem__system-desc">A component architecture that governs cross-platform development through behavioral contracts and a shared API.</p>
+          <ul class="ecosystem__system-highlights">
+            <li>Structured behavioral contracts — inheritable, queryable, with explicit exclusions</li>
+            <li>True native implementations per platform, governed by shared contracts</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Ecosystem modal -->
+      <div class="ecosystem__modal-backdrop" id="eco-backdrop"></div>
+      <div class="ecosystem__modal" id="eco-modal" role="dialog" aria-modal="true">
+        <button-icon class="ecosystem__modal-close" icon="x" aria-label="Close" variant="tertiary" size="small"></button-icon>
+        <object class="ecosystem__modal-header" id="eco-modal-header" type="image/svg+xml" data="" aria-hidden="true"></object>
+        <div class="ecosystem__modal-body">
+          <div class="ecosystem__modal-copy">
+            <p class="ecosystem__modal-desc" id="eco-modal-desc"></p>
+            <ul class="ecosystem__modal-highlights" id="eco-modal-highlights"></ul>
+            <div class="ecosystem__modal-stats" id="eco-modal-stats"></div>
+          </div>
+          <div class="ecosystem__modal-example" id="eco-modal-viz"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How Built -->
+    <section id="how-built">
+      <h2 class="section-heading how-built__heading"><span class="section-prefix" aria-hidden="true">//</span> How was this system built?</h2>
+      <p class="how-built__easter" aria-hidden="true">Hard $#@%ing work!</p>
+      <div class="how-built__grid">
+        <div class="how-built__featured">
+          <p>DesignerPunk was built using Claude models, primarily through <span>Kiro CLI</span>.</p>
+          <p>What typically takes a team of 15 was <span>built by 1</span> in under a year utilizing a <span>spec-driven methodology</span> with <span>Human-AI collaboration models</span>.</p>
+        </div>
+        <div class="how-built__body">
+          <p>Every feature starts as a spec. Every spec has requirements, design, and tasks that are formalized and reviewed before a line of code is written. This is how one person maintains consistency in agent-driven development environments.</p>
+          <p>Beyond the system itself, my most valuable outcome was developing a workflow that makes agent output predictable through the <strong>inferable architecture</strong> and <strong>collaborative systems</strong> I architected.</p>
+          <p>Once the foundations of tokens, components, and frameworks were established, I expanded the scope to explore how I might train agents to build <em>with</em> the system. These explorations included the addition of Google's A2UI specification for agents to build UI for their own native widgets.</p>
+          <p>Most big-box design systems drive a specific aesthetic. DesignerPunk is built to power <em>yours</em>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Audience -->
+    <section id="audience" aria-labelledby="audience-heading">
+      <h2 id="audience-heading" class="section-heading"><span class="section-prefix" aria-hidden="true">//</span> Who is this system built for?</h2>
+      <p class="audience__hook">Headcount isn't destiny.</p>
+      <p class="audience__sub">DesignerPunk gives small teams the infrastructure to compete with their largest competition. By making Human-AI collaboration the architecture itself, your team ships quality <em>and</em> scale at the start of the product development journey.</p>
+      <div class="audience__grid">
+        <div class="audience__item"><h3>Accessibility from Day One</h3><p>WCAG 2.1 AA built into every component. Minimize risk and enable +20% of customers you would otherwise exclude.</p></div>
+        <div class="audience__item"><h3>Three platforms, one source</h3><p>Web, iOS, and Android tokens and components generated from a single architecture as you need them. Scales to new platforms at your own demand.</p></div>
+        <div class="audience__item"><h3>Consistency without the overhead</h3><p>Mathematical token foundations and behavioral contracts maintain quality across every surface, optimized for AI agent development.</p></div>
+        <div class="audience__item"><h3>Governance that enforces itself</h3><p>Rules served via MCP at the point of decision. Process without overhead, documentation without hunting.</p></div>
+        <div class="audience__item"><h3>AI that ships quality</h3><p>Agents guided by queryable architecture and validatable contracts — structured knowledge, not guesswork.</p></div>
+        <div class="audience__item"><h3>Code-Design sync</h3><p>Tokens flow from code to canvas-based tools like Figma, and back to code. One change propagates everywhere.</p></div>
+      </div>
+      <ul class="audience__personas">
+        <li>Teams of 1–10 who refuse to choose between speed and quality.</li>
+        <li>Founders who want Day One infrastructure that scales to Day 1,000.</li>
+        <li>Builders who pair human creative direction with AI precision.</li>
+        <li>Creators who need opinionated architecture without opinionated design direction.</li>
+      </ul>
+      <p class="audience__closer">A small team builds great things. DesignerPunk makes sure they scale.</p>
+
+      <!-- Code shots (not a section landmark) -->
+      <div id="code-shots">
+        <object type="image/svg+xml" data="/illustration/codeblock-terminal-components.svg" aria-hidden="true"></object>
+        <object type="image/svg+xml" data="/illustration/codeblock-terminal-mcp.svg" aria-hidden="true"></object>
+        <object type="image/svg+xml" data="/illustration/codeblock-terminal-tokens.svg" aria-hidden="true"></object>
+        <object type="image/svg+xml" data="/illustration/codeblock-terminal-contracts.svg" aria-hidden="true"></object>
+      </div>
+    </section>
+
+    <!-- Who Built -->
+    <section id="who-built">
+      <h2 class="section-heading"><span class="section-prefix" aria-hidden="true">//</span> Humans + Agents of this system</h2>
+      <div class="who-built__copy">
+        <p class="who-built__human-label">Human</p>
+        <p class="who-built__name">Peter Michaels Allen</p>
+        <p class="who-built__title">Product UX &amp; Systems Architect + Design Engineer</p>
+        <p class="who-built__employers-label">Notable employers and clients</p>
+        <div class="who-built__badges">
+          <span class="badge badge--pink">Reddit</span>
+          <span class="badge badge--pink">Venmo + PayPal</span>
+          <span class="badge badge--pink">eHealth</span>
+          <span class="badge badge--dark">Redfin</span>
+          <span class="badge badge--dark">Expensify</span>
+          <span class="badge badge--dark">Electronic Arts</span>
+          <span class="badge badge--dark">Federal Deposit Insurance Corporation</span>
+          <span class="badge badge--dark">Comcast</span>
+          <span class="badge badge--dark">Raymond James</span>
+        </div>
+      </div>
+
+      <!-- Career timeline -->
+      <div class="who-built__timeline">
+        <canvas id="career-chart"></canvas>
+        <table class="sr-only">
+          <caption>Career timeline data</caption>
+          <thead><tr><th>Employer</th><th>Period</th><th>Design %</th><th>Engineering %</th></tr></thead>
+          <tbody>
+            <tr><td>Electronic Arts</td><td>Aug – Oct 2010</td><td>50%</td><td>50%</td></tr>
+            <tr><td>Magi.com</td><td>Feb 2011 – Mar 2012</td><td>100%</td><td>0%</td></tr>
+            <tr><td>eHealth</td><td>Apr 2013 – Mar 2015</td><td>99%</td><td>1%</td></tr>
+            <tr><td>FanTalk</td><td>May 2015 – Feb 2016</td><td>92%</td><td>8%</td></tr>
+            <tr><td>Reddit</td><td>Feb 2017 – Jun 2019</td><td>100%</td><td>0%</td></tr>
+            <tr><td>Venmo / PayPal</td><td>Jul 2019 – Apr 2024</td><td>100%</td><td>0%</td></tr>
+            <tr><td>DesignerPunk</td><td>2025 – Present</td><td>45%</td><td>55%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="career-tooltip">
+        <div class="career-tooltip__title" id="ct-title"></div>
+        <div class="career-tooltip__period" id="ct-period"></div>
+        <div class="career-tooltip__row"><span>Design</span><span id="ct-design"></span></div>
+        <div class="career-tooltip__row"><span>Engineering</span><span id="ct-eng"></span></div>
+        <div class="career-tooltip__desc" id="ct-desc"></div>
+      </div>
+
+      <!-- Agents (subsection) -->
+      <div id="agents">
+        <h3 class="agents__title">Agents</h3>
+        <div class="agents__portraits">
+          <object type="image/svg+xml" data="/illustration/agentPortrait-system-core.svg" data-group="core" aria-hidden="true"></object>
+          <object type="image/svg+xml" data="/illustration/agentPortrait-system-product.svg" data-group="product" aria-hidden="true"></object>
+          <object type="image/svg+xml" data="/illustration/agentPortrait-system-implementation.svg" data-group="implementation" aria-hidden="true"></object>
+        </div>
+        <div class="agents__directory">
+          <div>
+            <h4 class="agents__role-header"><span class="section-prefix" aria-hidden="true">//</span> Design system agents</h4>
+            <ul class="agents__list" data-group="core">
+              <li><p class="agents__agent-name" id="directory__ada">Ada</p><p class="agents__agent-system">Rosetta System</p><p class="agents__agent-desc">Token creation, management, and documentation</p></li>
+              <li><p class="agents__agent-name" id="directory__lina">Lina</p><p class="agents__agent-system">Stemma System</p><p class="agents__agent-desc">Component and contract creation, management, and documentation</p></li>
+              <li><p class="agents__agent-name" id="directory__thurgood">Thurgood</p><p class="agents__agent-system">Civitas System</p><p class="agents__agent-desc">Auditing, governance, and spec management</p></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="agents__role-header"><span class="section-prefix" aria-hidden="true">//</span> Product system agents</h4>
+            <ul class="agents__list" data-group="product">
+              <li><p class="agents__agent-name" id="directory__leonardo">Leonardo</p><p class="agents__agent-desc">Product planning and tech coordinator</p></li>
+              <li><p class="agents__agent-name" id="directory__stacy">Stacy</p><p class="agents__agent-desc">Product governance, quality assurance, and applied learnings</p></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="agents__role-header"><span class="section-prefix" aria-hidden="true">//</span> Product implementation agents</h4>
+            <ul class="agents__list" data-group="implementation">
+              <li><p class="agents__agent-name" id="directory__sparky">Sparky</p><p class="agents__agent-desc">Web implementation lead</p></li>
+              <li><p class="agents__agent-name" id="directory__kenya">Kenya</p><p class="agents__agent-desc">iOS implementation lead</p></li>
+              <li><p class="agents__agent-name" id="directory__data">Data</p><p class="agents__agent-desc">Android implementation lead</p></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Thanks (subsection) -->
+      <div id="thanks">
+        <h3 class="thanks__title">Special thanks to:</h3>
+        <div class="thanks__grid">
+          <ul><li>Donnie D'Amato</li><li>Amy Lam</li><li>John Marshall</li><li>Dimitri Otero</li></ul>
+          <ul><li>Nicole Fu</li><li>Lauren LoPrete</li><li>Paul Bakaus &amp; Impeccable.style</li><li>TJ Pitre &amp; Console MCP</li></ul>
+          <ul><li>Joshua Butner</li><li>Design System Wednesday!</li><li>Tracy Weiss</li><li>The haters and nonbelievers</li></ul>
+          <ul><li>Margaret Allen</li><li>Virginia Johnstone (Hi, mom!)</li><li>Kinsley &amp; Colton Kirwan</li><li>Lindsay MacKenzie</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta">
+      <h2 class="section-heading"><span class="section-prefix" aria-hidden="true">//</span> Let's build together</h2>
+      <div class="cta__grid">
+        <div class="cta__body">
+          <p>For half my career, I've built and managed design systems leveraging my experience in design, research, product management, and front-end development to deliver solutions for Humans — and now AI Agents.</p>
+          <p>I built this design system with AI agents as my engineering team and primary consumer to meet the needs of this new AI era.</p>
+          <p>While DesignerPunk's tooling and architecture was built for the purposes of 0-1 to scaffold new products, many of the principles, strategies, and methods are entirely transferable. Imagine what <em>we</em> could build with yours.</p>
+          <p>If you're interested in discussing more, please reach out to me via LinkedIn.</p>
+        </div>
+        <div class="cta__right">
+          <div class="cta__featured">
+            <p><span>Problem solve</span> with vision.</p>
+            <p><span>Build</span> with collaboration.</p>
+            <p><span>Lead</span> by example.</p>
+          </div>
+          <div class="cta__actions">
+            <button-cta variant="primary" size="small" icon="external-link" icon-position="trailing" label="Peter on LinkedIn" href="https://linkedin.com/in/petermichaelsallen" target="_blank" rel="noopener"></button-cta>
+            <button-cta variant="secondary" size="small" icon="external-link" icon-position="trailing" label="DesignerPunk on GitHub" href="https://github.com/3fn/DesignerPunkv2" target="_blank" rel="noopener"></button-cta>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__logo"><img src="/brand/designerPunkLogo.svg" alt="DesignerPunk" style="filter: invert(1);"></div>
+      <div class="footer__info">
+        <span>Peter Michaels Allen</span>
+        <span class="footer__sep" aria-hidden="true">◇</span>
+        <span>peter[at]designerpunk.ai</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Tooltips (positioned fixed, managed by scripts) -->
+  <div id="chord-tip" aria-hidden="true"></div>
+
+  <!-- CTA background lazy-load -->
+  <script>
+    new IntersectionObserver(([e]) => { if (e.isIntersecting) { e.target.classList.add('bg-loaded'); } }, { threshold: 0.1 }).observe(document.getElementById('cta'));
+  </script>
+</Base>

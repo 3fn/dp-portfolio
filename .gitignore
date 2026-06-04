@@ -5,6 +5,8 @@ node_modules/
 
 # Build outputs
 build/
+_site/
+.astro/
 *.tsbuildinfo
 
 # Generated files

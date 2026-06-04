@@ -1,0 +1,10 @@
+category: shadow
+description: Product-specific shadow values for interactive elevation states
+
+tokens:
+  cardHoverElevation:
+    value: "0 6px 32px rgba(0, 0, 0, 0.35)"
+    unitType: shadow
+    description: Elevated shadow for ecosystem card hover state
+    rationale: "Dramatic elevation for interactive card hover feedback. Deeper spread and higher opacity than system shadow tokens — intentionally theatrical for portfolio presentation."
+    platforms: [web]

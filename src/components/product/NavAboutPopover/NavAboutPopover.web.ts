@@ -132,9 +132,9 @@ export class NavAboutPopover extends HTMLElement {
     { prefix: '//', label: 'Why build this system?', href: '#why-build' },
     { prefix: '//', label: 'What is this ecosystem?', href: '#ecosystem' },
     { prefix: '//', label: 'How was this system built?', href: '#how-built' },
-    { prefix: '//', label: 'What makes this enterprise-grade?', href: '#enterprise' },
-    { prefix: '//', label: 'Who built this system?', href: '#who-built' },
-    { prefix: '//', label: 'What can I accomplish with your team?', href: '#cta' },
+    { prefix: '//', label: 'Who is this system built for?', href: '#audience' },
+    { prefix: '//', label: 'Humans + Agents of this system', href: '#who-built' },
+    { prefix: '//', label: "Let's build together", href: '#cta' },
   ];
 
   private _render(): void {
@@ -244,6 +244,21 @@ export class NavAboutPopover extends HTMLElement {
 
         @media (prefers-reduced-motion: reduce) {
           [data-panel] { transition: none; }
+        }
+
+        @media (forced-colors: active) {
+          [data-trigger] {
+            border: 1px solid ButtonText;
+          }
+          [data-trigger]:focus-visible {
+            outline: 2px solid Highlight;
+          }
+          .item {
+            border: 1px solid transparent;
+          }
+          .item:focus-visible {
+            outline: 2px solid Highlight;
+          }
         }
       </style>
       <button data-trigger aria-expanded="false" aria-controls="${PANEL_ID}">

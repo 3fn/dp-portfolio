@@ -3,9 +3,9 @@
  * Intersection Observer toggles .reveal-hidden → .reveal-visible (one-shot).
  */
 
-function initReveal(): void {
+export function init(): () => void {
   const elements = document.querySelectorAll<HTMLElement>('.reveal-hidden');
-  if (!elements.length) return;
+  if (!elements.length) return () => {};
 
   const observer = new IntersectionObserver(
     (entries) => {
@@ -13,13 +13,20 @@ function initReveal(): void {
         if (!entry.isIntersecting) continue;
         entry.target.classList.remove('reveal-hidden');
         entry.target.classList.add('reveal-visible');
-        observer.unobserve(entry.target); // One-shot
+        observer.unobserve(entry.target);
       }
     },
     { threshold: 0.15 }
   );
 
   elements.forEach((el) => observer.observe(el));
+
+  return () => { observer.disconnect(); };
 }
 
-document.addEventListener('DOMContentLoaded', initReveal);
+// DOMContentLoaded fallback boot
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => init());
+} else {
+  init();
+}

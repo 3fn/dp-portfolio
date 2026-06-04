@@ -1,0 +1,45 @@
+category: typography
+description: Product-specific typography values beyond the system scale
+
+tokens:
+  statsHeroSize:
+    value: 8
+    unitType: rem
+    description: Display font size for the primary stats hero number
+    rationale: "Dramatically oversized display number for visual impact. 128px at base — far beyond system scale ceiling of fontSize700 (42px). Intentionally theatrical for portfolio hero stat."
+    platforms: [web]
+
+  easterEggDisplay:
+    value: 4.5
+    unitType: rem
+    description: Display font size for hover-triggered easter egg text
+    rationale: "Dramatically oversized decorative type for neon flicker easter eggs. Derived from fontSize700 × 1.714 — beyond system scale ceiling. Used by both .why-build__easter and .how-built__easter."
+    platforms: [web]
+
+  letterSpacingLabel:
+    value: 0.04
+    unitType: em
+    description: Letter spacing for stats hero label uppercase text
+    rationale: "Slightly wider than system letterSpacing125 (0.025em). Tuned for small uppercase labels at font-size-050."
+    platforms: [web]
+
+  letterSpacingWide:
+    value: 0.08
+    unitType: em
+    description: Letter spacing for section label uppercase text
+    rationale: "Wide tracking for small uppercase section labels. Beyond system scale ceiling (0.05em). Creates visual distinction for navigational labels."
+    platforms: [web]
+
+  letterSpacingSubtle:
+    value: 0.02
+    unitType: em
+    description: Letter spacing for agent role headers
+    rationale: "Minimal positive tracking for display headings. Below system letterSpacing125 (0.025em) — subtler than system minimum."
+    platforms: [web]
+
+  letterSpacingMinimal:
+    value: 0.01
+    unitType: em
+    description: Letter spacing for chord tooltip mono text
+    rationale: "Barely perceptible tracking for monospace tooltip text. Below system minimum — micro-adjustment for optical balance."
+    platforms: [web]

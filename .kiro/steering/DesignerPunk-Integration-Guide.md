@@ -7,7 +7,7 @@ description: Everything a product developer needs to integrate DesignerPunk into
 # DesignerPunk Integration Guide
 
 **Date**: 2026-04-08
-**Last Reviewed**: 2026-05-07
+**Last Reviewed**: 2026-05-10
 **Purpose**: Everything a product developer needs to integrate DesignerPunk into a product repo
 **Organization**: process-standard
 **Scope**: cross-project
@@ -68,18 +68,48 @@ import { myOverrides } from './themes/my-theme/SemanticOverrides';
 export default defineConfig({
   name: 'MyProduct',
   abbreviation: 'MP',
-  // Theme attribute: defaults to "data-theme".
+  // Token attribute: defaults to "data-theme".
   // If your product uses "data-theme" for another purpose,
   // this can be made configurable in a future version.
   themes: [
     { name: 'my-theme', mode: 'dark', overrides: myOverrides }
   ],
+  tokenSource: './src/tokens',        // local token source (omit to use package defaults)
   componentTokens: ['./components'],  // product component tokens (if any)
   output: './dist/tokens'
 });
 ```
 
 If no config file exists, the pipeline uses defaults.
+
+#### Token Source Configuration
+
+By default, the pipeline reads token definitions from the installed `@3fn/core` package. If your product maintains local token source (for customization or contribution back to core), set `tokenSource`:
+
+```typescript
+export default defineConfig({
+  name: 'MyProduct',
+  abbreviation: 'MP',
+  tokenSource: './src/tokens',  // resolve tokens from local source
+  output: './dist/tokens'
+});
+```
+
+**Rules:**
+- Path is resolved relative to the config file's directory
+- Must be a **complete** token source — no fallback to the package for missing families
+- Must export `getAllPrimitiveTokens()` from the root barrel and `getAllSemanticTokens()` from a `semantic/` subdirectory
+- Theme overrides are independent of `tokenSource` — they always resolve from the config's `themes` array
+- `npx designerpunk init` copies a complete token source to `src/tokens/` automatically
+
+**When to use `tokenSource`:**
+- You're iterating on token values locally before contributing back to core
+- You need product-specific primitive token customizations
+- You want `npx designerpunk validate` to check your local edits
+
+**When NOT to use `tokenSource`:**
+- You only consume published tokens without modification (use the package default)
+- You only need theme overrides (use the `themes` config instead)
 
 #### Creating a Theme
 
@@ -166,12 +196,12 @@ Create `.kiro/settings/mcp.json` at your project root (Kiro reads this file on a
         "./node_modules/@3fn/core/dist/mcp/application-mcp.js"
       ],
       "env": {
-        "COMPONENTS_DIR": "./node_modules/@3fn/core/src/components/core",
+        "COMPONENTS_DIR": "./src/components/core",
         "PATTERNS_DIR": "./node_modules/@3fn/core/experience-patterns",
         "TEMPLATES_DIR": "./node_modules/@3fn/core/layout-templates",
         "GUIDANCE_DIR": "./node_modules/@3fn/core/family-guidance",
         "REGISTRY_PATH": "./node_modules/@3fn/core/family-registry.yaml",
-        "TOKEN_INDEX_DIR": "./node_modules/@3fn/core/token-index"
+        "TOKEN_INDEX_DIR": "./token-index"
       },
       "disabled": false,
       "autoApprove": [
@@ -189,7 +219,7 @@ Create `.kiro/settings/mcp.json` at your project root (Kiro reads this file on a
 
 **This configuration uses direct-node invocation** — Kiro spawns the MCP server binaries directly from `node_modules/@3fn/core/dist/mcp/`, rather than going through the `npx designerpunk mcp:*` CLI wrappers. The direct path is more reliable for MCP protocol handshake over stdio.
 
-**After saving `.kiro/settings/mcp.json`, restart your Kiro agent session** — agent sessions read the MCP config on startup; existing sessions won't pick up the new servers until restarted.
+**After saving `.kiro/settings/mcp.json`, restart your Kiro agent session** — agent sessions read the MCP config on startup; existing sessions won't pick up new servers or env var changes until restarted. A `rebuild_index` alone is NOT sufficient if you've changed directory paths — the server process must be restarted to read the new environment.
 
 Once the agent session reconnects, it should show `designerpunk-docs` and `designerpunk-application` as connected MCP servers. If either reports connection failure, verify:
 - `node_modules/@3fn/core/dist/mcp/` contains the bundled server files (they should ship with the package)
@@ -239,6 +269,23 @@ If these queries return results, the ecosystem is working.
 npx designerpunk generate
 ```
 
+The pipeline shows where tokens are being read from:
+```
+📦 MyProduct (MP)
+   Tokens: ./src/tokens  (local)
+   Output: ./dist/tokens
+   Themes: my-theme (dark)
+```
+
+The `(local)` annotation means tokens resolve from your configured `tokenSource` path. If `tokenSource` is omitted, you'll see `(package)` — meaning tokens come from the installed `@3fn/core` package.
+
+To validate token definitions without generating files:
+```bash
+npx designerpunk validate
+```
+
+This checks semantic reference integrity, required fields, mathematical relationships, and family membership. Run it after editing token source files to catch errors before generation.
+
 Produces platform token files in your configured output directory:
 - `DesignTokens.web.css` — CSS custom properties
 - `DesignTokens.ios.swift` — Swift constants + theme protocol
@@ -265,7 +312,8 @@ import '@3fn/core/component-tokens.css';
 
 // Optional: responsive grid, fonts, blend utilities
 import '@3fn/core/grid.css';
-import '@3fn/core/fonts/inter.css';
+import '@3fn/core/fonts/figtree.css';
+import '@3fn/core/fonts/commit-mono.css';
 import '@3fn/core/fonts/rajdhani.css';
 import { BlendCalculator } from '@3fn/core/blend';
 ```
@@ -327,6 +375,113 @@ Base theme applies at `:root` with no attribute. Dark-only themes automatically 
 
 ---
 
+## Running Component Tests
+
+Product repos can run the same component tests that ship with `@3fn/core`. The package provides a Jest preset and shared test utilities — you extend the preset with one line and install 4 devDependencies.
+
+### Setup
+
+Install test dependencies:
+
+```bash
+npm install --save-dev jest @types/jest ts-jest jest-environment-jsdom @types/node
+```
+
+If you ran `npx designerpunk init`, `jest.config.js` and `tsconfig.test.json` are already scaffolded. Otherwise, create them manually:
+
+**jest.config.js**:
+```javascript
+module.exports = {
+  ...require('@3fn/core/jest-preset'),
+  roots: ['<rootDir>/src'],
+};
+```
+
+**tsconfig.test.json**:
+```json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "downlevelIteration": true,
+    "types": ["jest", "node"]
+  },
+  "include": ["src/**/*"]
+}
+```
+
+### Running Tests
+
+```bash
+npx jest                          # Run all tests
+npx jest src/components/core/     # Run component tests only
+npx jest --testPathPattern=Button # Run tests matching "Button"
+```
+
+### Shared Test Utilities
+
+Import from `@3fn/core/testing`:
+
+```typescript
+import {
+  registerComponent,
+  createComponentFixture,
+  cleanupDOM,
+  waitForShadowDOM,
+  setupTokenProperties,
+  cleanupTokenProperties,
+} from '@3fn/core/testing';
+```
+
+**Minimal working test example:**
+
+```typescript
+/** @jest-environment jsdom */
+import { registerComponent, createComponentFixture, cleanupDOM, waitForShadowDOM } from '@3fn/core/testing';
+import { ButtonCTA } from '../platforms/web/ButtonCTA.web';
+
+registerComponent('button-cta', ButtonCTA);
+
+describe('Button-CTA', () => {
+  afterEach(() => cleanupDOM());
+
+  it('renders with label', async () => {
+    const { element, cleanup } = createComponentFixture('button-cta', { label: 'Click me' });
+    await waitForShadowDOM(element);
+
+    const button = element.shadowRoot!.querySelector('button');
+    expect(button).not.toBeNull();
+    expect(button!.textContent).toContain('Click me');
+
+    cleanup();
+  });
+});
+```
+
+### Stemma Validators
+
+For `.stemma.test.ts` pattern tests (naming, token usage, accessibility validation):
+
+```typescript
+import { validateComponentName, validateTokenUsage } from '@3fn/core/testing';
+```
+
+These run static analysis against component schemas and source — no DOM required.
+
+### Notes
+
+- The preset defaults to `jsdom` environment. All web component tests run in jsdom automatically.
+- `jest-environment-jsdom` is required — without it, DOM APIs are unavailable.
+- `@types/node` is required for contract tests that read CSS source from disk (the style-mock returns `''` for CSS imports, so filesystem reads are needed to verify CSS content).
+- If tests fail after updating `@3fn/core`, re-run `npx designerpunk init` to refresh component source. Stale source (from an older init) may cause test failures.
+
+---
+
 ## Native Platform Sync — Target Model (M0b)
 
 For M0b, the manual copy process will be replaced by CLI commands:
@@ -362,8 +517,10 @@ Runs automatically as part of `npx designerpunk generate` when platform paths ar
 | `@3fn/core/config` | `defineConfig` function with TypeScript types |
 | `@3fn/core/blend` | Blend calculation utilities |
 | `@3fn/core/grid.css` | Responsive grid CSS |
-| `@3fn/core/fonts/inter.css` | Inter font family |
-| `@3fn/core/fonts/rajdhani.css` | Rajdhani font family |
+| `@3fn/core/fonts/figtree.css` | Figtree font family (body/UI) |
+| `@3fn/core/fonts/commit-mono.css` | Commit Mono font family (code/mono) |
+| `@3fn/core/fonts/rajdhani.css` | Rajdhani font family (display) |
+| `@3fn/core/fonts/inter.css` | Inter font family (legacy, deprecated) |
 
 ---
 
@@ -422,7 +579,52 @@ product/
     legislation-card/
       legislation-card.schema.yaml
       legislation-card.contracts.yaml  # Only if new accessibility behavior
+  tokens/                    # Product tokens (Specs 108/109)
+    layout.yaml              # Layout constraints (contentMaxWidth, contentIndent, etc.)
+    motion.yaml              # Motion characteristics (flipDuration, etc.)
 ```
+
+### Product Tokens
+
+Product tokens are product-level values that don't belong in Rosetta (system tokens) or Stemma (component tokens). Define them in `product/tokens/{category}.yaml`:
+
+```yaml
+# product/tokens/layout.yaml
+category: layout
+description: Structural layout constraints
+
+tokens:
+  contentMaxWidth:
+    value: 1336
+    unitType: logical
+    description: Maximum content column width
+    rationale: "Optimized for 70-75 characters per line at body font size"
+    platforms: [web, ios, android]
+
+  contentIndent:
+    ref: space300
+    description: Left indent for section content
+    platforms: [web, ios, android]
+```
+
+**Configuration** — add to `designerpunk.config.ts`:
+```typescript
+export default defineConfig({
+  // ...existing config...
+  productTokens: './product/tokens',
+});
+```
+
+**Generation** — `npx designerpunk generate` produces:
+- `dist/product/ProductTokens.web.css` (CSS custom properties)
+- `dist/product/ProductTokens.ios.swift` (Swift constants)
+- `dist/product/ProductTokens.android.kt` (Kotlin objects)
+
+**Validation** — `npx designerpunk validate --product-tokens` checks ref integrity.
+
+**MCP query** — `get_product_tokens({ category: "layout" })` returns tokens with resolved system token values.
+
+**Governance** — see `Product-Token-Governance.md` for naming conventions, rationale requirements, and promotion signals.
 
 ### Writing Screen Specs
 

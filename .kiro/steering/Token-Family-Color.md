@@ -274,11 +274,10 @@ Badge tokens follow the `{component}.{variant}.{property}` pattern.
 | `color.tech` | purple400 | rgba(141, 30, 204, 1) | Technical elements, code snippets |
 | `color.data` | purple300 | rgba(176, 38, 255, 1) | Data visualization, metrics |
 
-### Text Hierarchy (4 tokens)
+### Text Hierarchy (3 tokens)
 
 | Token Name | Primitive | RGBA Value | Use Case |
 |------------|-----------|------------|----------|
-| `color.text.strong` | black300 | rgba(10, 10, 15, 1) | Headings and high-emphasis text - strongest contrast |
 | `color.text.default` | gray300 | rgba(38, 50, 58, 1) | Primary text - body content |
 | `color.text.muted` | gray200 | rgba(94, 112, 124, 1) | Secondary text - less prominent |
 | `color.text.subtle` | gray100 | rgba(178, 188, 196, 1) | Tertiary text - very subtle elements |

@@ -45,7 +45,7 @@ The Figma integration uses two MCP servers strategically, plus the DesignerPunk 
 
 Provides read-write access to Figma variables, styles, and Plugin API execution. Used by both push and extraction workflows.
 
-The `figma-console-mcp` package is included as a peer dependency. It communicates with Figma Desktop via the Desktop Bridge plugin over WebSocket (ports 9223–9232).
+The `figma-console-mcp` package is included as a dev dependency. It communicates with Figma Desktop via the Desktop Bridge plugin over WebSocket (ports 9223–9232).
 
 **Key tools used:**
 - `figma_get_token_values` — Read variable bindings and values

@@ -57,11 +57,24 @@ export class NavHeaderContent extends HTMLElement {
           gap: var(--space-grouped-tight);
         }
         .nav-link:hover { opacity: 1; }
+        .nav-link:focus-visible {
+          outline: 2px solid var(--color-action-primary);
+          outline-offset: 2px;
+        }
+
+        @media (forced-colors: active) {
+          .nav-link {
+            border: 1px solid LinkText;
+          }
+          .nav-link:focus-visible {
+            outline: 2px solid Highlight;
+          }
+        }
       </style>
       <nav-header-app>
         <div slot="leading" class="logo-lockup">
           <div class="logo-lockup__logo" aria-hidden="true">
-            <img src="/src/assets/logo/logo-designerPunk.svg" alt="Designer Punk logo" />
+            <img src="/logo/logo-designerPunk.svg" alt="Designer Punk logo" />
           </div>
           <div class="logo-lockup__credit">
             <span class="credit__by">by</span>

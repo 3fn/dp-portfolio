@@ -8,27 +8,27 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-      
+          node-version: '22'
+
       - name: Configure npm for GitHub Packages
         run: |
           echo "@3fn:registry=https://npm.pkg.github.com" >> ~/.npmrc
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_READ_PACKAGES_TOKEN }}" >> ~/.npmrc
-      
+
       - name: Install dependencies
         run: npm install
-      
+
       - name: Build project
-        run: npm run build:page
-      
+        run: npm run build
+
       - name: Deploy to Dreamhost via SFTP
         uses: wangyucode/sftp-upload-action@v2.0.2
         with:
@@ -36,7 +36,7 @@ jobs:
           port: 22
           username: ${{ secrets.DREAMHOST_USERNAME }}
           password: ${{ secrets.DREAMHOST_PASSWORD }}
-          localDir: './src'
+          localDir: './_site'
           remoteDir: ${{ secrets.DREAMHOST_REMOTE_DIR }}
           sftpArgs: '-o ConnectTimeout=5'
       

@@ -3,8 +3,11 @@ interface ChordNode { id: string; label: string; ck: string; size: number; desc:
 interface ChordGroup { id: string; label: string; color: string; nodes: ChordNode[]; startAngle: number; endAngle: number; }
 type Connection = [string, string, number];
 
-const canvas = document.getElementById('chord') as HTMLCanvasElement | null;
-if (canvas) {
+export function init(): () => void {
+  const canvas = document.getElementById('chord') as HTMLCanvasElement | null;
+  if (!canvas) return () => {};
+
+  {
   const ctx = canvas.getContext('2d')!;
   const tip = document.getElementById('chord-tip')!;
   const dpr = window.devicePixelRatio || 1;
@@ -283,4 +286,18 @@ if (canvas) {
     });
   }, { threshold: 0.1 });
   observer.observe(canvas);
+
+  return () => {
+    if (rafId) cancelAnimationFrame(rafId);
+    observer.disconnect();
+    window.removeEventListener('resize', resize);
+  };
+  }
+}
+
+// DOMContentLoaded fallback boot
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => init());
+} else {
+  init();
 }

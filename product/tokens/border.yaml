@@ -1,0 +1,20 @@
+category: border
+description: Product-specific border values for tooltips and decorative elements
+
+tokens:
+  tooltipRadius:
+    ref: radius025
+    description: Border radius for chord tooltip container
+    platforms: [web]
+
+  tooltipWidth:
+    ref: borderWidth200
+    description: Border width for chord tooltip container
+    platforms: [web]
+
+  quoteBorderWidth:
+    value: 3
+    unitType: logical
+    description: Border width for blockquote left accent
+    rationale: "Slightly heavier than system border-width-200 (2px) for visual emphasis on pull quotes. Thinner than border-width-400 (4px) which feels too heavy."
+    platforms: [web]

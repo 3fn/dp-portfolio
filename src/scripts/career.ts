@@ -6,8 +6,11 @@ interface CareerSegment {
   period: string; desc: string; is3fn: boolean;
 }
 
-const canvas = document.getElementById('career-chart') as HTMLCanvasElement | null;
-if (canvas) {
+export function init(): () => void {
+  const canvas = document.getElementById('career-chart') as HTMLCanvasElement | null;
+  if (!canvas) return () => {};
+
+  {
   const ctx = canvas.getContext('2d')!;
   const tooltip = document.getElementById('career-tooltip')!;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -172,7 +175,8 @@ if (canvas) {
   canvas.addEventListener('mouseleave', () => { hovered = null; tooltip.style.display = 'none'; animDone = false; requestAnimationFrame(draw); });
 
   setup();
-  window.addEventListener('resize', () => { setup(); animT = 0; lastTs = null; animDone = false; requestAnimationFrame(draw); });
+  const onResize = () => { setup(); animT = 0; lastTs = null; animDone = false; requestAnimationFrame(draw); };
+  window.addEventListener('resize', onResize);
 
   // Reduced motion: skip animation, render at full
   if (reducedMotion) { animT = 1; }
@@ -187,4 +191,17 @@ if (canvas) {
     });
   }, { threshold: 1.0 });
   observer.observe(canvas);
+
+  return () => {
+    observer.disconnect();
+    window.removeEventListener('resize', onResize);
+  };
+  }
+}
+
+// DOMContentLoaded fallback boot
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => init());
+} else {
+  init();
 }

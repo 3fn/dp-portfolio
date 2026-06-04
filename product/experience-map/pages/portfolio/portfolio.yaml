@@ -9,9 +9,9 @@ status:
 
 ux-direction: |
   Single-page portfolio showcasing the DesignerPunk design system.
-  Narrative arc: hook → credibility → problem/insight → ecosystem → methodology → value → social proof → CTA.
+  Narrative arc: hook → credibility → problem/insight → ecosystem → methodology → audience → social proof → CTA.
   Desktop-priority with responsive behavior at 3 breakpoints.
-  Audience: hiring managers, design system professionals, engineering leaders.
+  Audience: small teams (1-10), founders building 0-to-1, builders pairing human creative direction with AI precision.
 
 visual-reference: docs/specs/staticReview/hero-exploration.html
 visual-reference-note: |
@@ -26,13 +26,13 @@ page-architecture:
     root: body
     nav: nav[aria-label="Site navigation"] (sticky, z-index above all content)
     main: main (wraps all sections)
-    sections: section × 11 (hero, stats, why-build, ecosystem, how-built, enterprise, code-shots, who-built, agents, thanks, cta)
+    sections: section × 11 (hero, stats, why-build, ecosystem, how-built, audience, code-shots, who-built, agents, thanks, cta)
     footer: footer
 
   heading-hierarchy:
     h1: "The design system built for AI-Human collaboration" (hero, single instance)
-    h2: Section headings × 7 (why-build, ecosystem, how-built, enterprise, who-built, cta + agents title as h3)
-    h3: Card headings (why-build cards), enterprise item titles, agents role headers, thanks title
+    h2: Section headings × 7 (why-build, ecosystem, how-built, audience, who-built, cta + agents title as h3)
+    h3: Card headings (why-build cards), audience item titles, agents role headers, thanks title
     h4: Not used
 
   skip-to-content:
@@ -112,7 +112,7 @@ page-architecture:
 
     section-consolidation: |
       Reduce landmark count from 14 to 11:
-      - code-shots: becomes <div> within or after enterprise section (not its own <section>)
+      - code-shots: becomes <div> within or after audience section (not its own <section>)
       - agents + thanks: become subsections within who-built (using heading hierarchy, not separate <section> landmarks)
       Rationale: Fewer landmarks = more navigable for screen reader users.
 
@@ -175,7 +175,7 @@ sections:
   - why-build
   - ecosystem
   - how-built
-  - enterprise
+  - audience
   - code-shots
   - who-built
   - agents
@@ -273,7 +273,7 @@ ui-tree:
               max-width: product-layout-prose-measure-max
               padding-left: product-layout-content-indent
           - element: p.hero__description
-            content: "<strong>DesignerPunk</strong> is an ecosystem that pairs an enterprise-ready design system with built-in intelligence layers that guide AI agents to deliver craft at scale."
+            content: "<strong>DesignerPunk</strong> is an ecosystem that pairs a production-grade design system with built-in intelligence layers that guide AI agents to deliver craft at scale."
             tokens:
               font: typography.bodyMd
               color: color.text.default
@@ -371,8 +371,8 @@ ui-tree:
                   font-weight: fontWeight500
                   color: color.text.default
 
-  # ─── ENTERPRISE ───────────────────────────────────────────────
-  - element: section#enterprise
+  # ─── AUDIENCE ──────────────────────────────────────────────────
+  - element: section#audience
     tokens:
       padding-block: space.sectioned.generous (96px)
       max-width: product-layout-content-max-width
@@ -380,7 +380,7 @@ ui-tree:
       padding-inline: space500
     children:
       - element: h2
-        content: "What makes this system enterprise-grade?"
+        content: "Who is this system built for?"
         tokens:
           font-family: font-family-display
           font-size: typography.h2 (fontSize500 = 33px)
@@ -395,13 +395,29 @@ ui-tree:
             tokens:
               position: absolute, left -36px
               color: color.text.muted
-      - element: div.enterprise__grid
-        layout: grid, 1fr 1fr, gap 40px 72px (space500 × space900)
+      - element: p.audience__hook
+        content: "Headcount isn't destiny."
+        tokens:
+          font-family: font-family-display
+          font-size: typography.display
+          font-weight: fontWeight700
+          color: color.action.primary
+          margin-left: product-layout-content-indent
+      - element: p.audience__sub
+        content: "DesignerPunk gives small teams the infrastructure to compete with their largest competition. By making Human-AI collaboration the architecture itself, your team ships quality and scale from Day One."
+        tokens:
+          font-size: typography.bodyLg (fontSize125 = 18px)
+          line-height: 1.6
+          color: color.print.default
+          margin-left: product-layout-content-indent
+          margin-bottom: space700
+      - element: div.audience__grid
+        layout: grid, 1fr 1fr, gap space500 space900
         tokens:
           padding-inline: product-layout-content-indent
         children:
-          - element: div.enterprise__item
-            repeat: 6 items (Validated frameworks, Accessibility, AI intelligence layers, Multi-platform scale, Encoded governance, Design-code sync)
+          - element: div.audience__item
+            repeat: 6 items (Accessibility from Day One, Three platforms one source, Consistency without the overhead, Governance that enforces itself, AI that ships quality, Code-Design sync)
             children:
               - element: h3
                 tokens:
@@ -412,11 +428,31 @@ ui-tree:
                   margin-bottom: space075
               - element: p
                 tokens:
-                  font-size: fontSize300 (18px)
-                  line-height: 1.52
-                  color: color.text.default
+                  line-height: lineHeight100
+      - element: div.audience__personas
+        tokens:
+          margin-inline: product-layout-content-indent
+          margin-bottom: space600
+        children:
+          - element: p
+            repeat: 4 persona statements
+            tokens:
+              font-size: typography.bodyLg (fontSize125 = 18px)
+              line-height: 1.6
+              color: color.print.default
+              padding-inline-start: space200
+              border-inline-start: 3px solid color.action.primary
+              margin-block-end: space150
+      - element: p.audience__closer
+        content: "A small team builds great things. DesignerPunk makes sure they scale."
+        tokens:
+          font-family: font-family-display
+          font-size: fontSize200 (22px)
+          font-weight: fontWeight700
+          color: color.text.heading
+          margin-inline-start: product-layout-content-indent
 
-  # ─── CODE SHOTS (div within enterprise flow, not a section landmark) ─
+  # ─── CODE SHOTS (div within audience flow, not a section landmark) ─
   - element: div#code-shots
     note: "Not a <section> landmark — decorative code screenshots"
     tokens:
@@ -1368,7 +1404,7 @@ accessibility:
     - section#why-build
     - section#ecosystem
     - section#how-built
-    - section#enterprise (includes code-shots as non-landmark div)
+    - section#audience (includes code-shots as non-landmark div)
     - section#who-built (includes agents + thanks as non-landmark divs)
     - section#cta
     - footer
@@ -1380,14 +1416,14 @@ accessibility:
       - "Why build this system?" (why-build)
       - "What is this ecosystem?" (ecosystem)
       - "How was this system built?" (how-built)
-      - "What makes this system enterprise-grade?" (enterprise)
+      - "Who is this system built for?" (audience)
       - "Who built, and maintains, this system?" (who-built)
       - "What can I accomplish with your team?" (cta)
     h3:
       - "Challenge", "Insight", "Approach", "Goals" (why-build cards)
       - "Agents" (agents subsection title)
       - "Special thanks to:" (thanks title)
-      - Enterprise feature titles × 6
+      - Audience item titles × 6
     h4:
       - "Design system agents", "Product system agents", "Product implementation agents" (agent role headers)
 

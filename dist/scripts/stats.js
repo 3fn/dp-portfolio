@@ -21,7 +21,7 @@ function animateValue(el, target, prefix, suffix) {
   requestAnimationFrame(tick);
 }
 function initStats() {
-  const values = document.querySelectorAll(".stats-value");
+  const values = document.querySelectorAll(".stats__value");
   if (!values.length) return;
   if (prefersReducedMotion()) {
     values.forEach((el) => {

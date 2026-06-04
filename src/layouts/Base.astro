@@ -1,0 +1,28 @@
+---
+import '../styles/portfolio.css';
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <slot name="meta" />
+
+  <!-- Token cascade: system → product -->
+  <link rel="stylesheet" href="/tokens/DesignTokens.web.css">
+  <link rel="stylesheet" href="/tokens/product/ProductTokens.web.css">
+
+  <!-- Fonts -->
+  <link rel="stylesheet" href="/fonts/rajdhani/rajdhani.css">
+  <link rel="stylesheet" href="/fonts/figtree/figtree.css">
+  <link rel="stylesheet" href="/fonts/commit-mono/commit-mono.css">
+
+  <!-- Component registration (must execute before DOM) -->
+  <script src="/scripts/components.js" type="module"></script>
+
+  <slot name="head" />
+</head>
+<body>
+  <slot />
+</body>
+</html>

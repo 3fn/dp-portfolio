@@ -9,7 +9,7 @@ interface SystemData {
 
 const MODAL_DATA: Record<string, SystemData> = {
   'ecosystem__system--rosetta': {
-    header: '/src/assets/illustration/header-rosetta.svg',
+    header: '/illustration/header-rosetta.svg',
     desc: 'Rosetta is a math-based token system that generates native code for iOS, Android, and Web from a single source. Rather than declaring static values (8, 16, 24), each token is a simple mathematical assertion (base * 1, base * 2, base * 3). This better enables AI agents to predict names, maintain proportions when base values change, and infinite scalability naming convernions.',
     viz: `<div class="ecosystem__modal-viz"><div class="viz-source">space200</div><div class="viz-indent"><span class="viz-keyword">formula:</span> <span class="viz-value">base × 2 = 8 × 2 = 16</span></div><div class="viz-indent"><span class="viz-keyword">value:</span> <span class="viz-value">16</span> <span class="viz-comment">// unitless</span></div><div style="margin:12px 0"><span class="viz-arrow">───── generate ─────▶</span></div><div class="viz-branch"><span class="viz-output">CSS</span><span class="viz-comment">--space-200: 1rem;</span><span class="viz-output">Swift</span><span class="viz-comment">static let space200: CGFloat = 16</span><span class="viz-output">Kotlin</span><span class="viz-comment">val Space200 = 16.dp</span><span class="viz-output">DTCG</span><span class="viz-comment">"space.200": { "$value": 16 }</span><span class="viz-output">Figma</span><span class="viz-comment">space/200 → 16</span></div></div>`,
     highlights: [
@@ -21,7 +21,7 @@ const MODAL_DATA: Record<string, SystemData> = {
     stats: [{ value: '410', label: 'Source tokens' }, { value: '5', label: 'Platform outputs' }, { value: '1,900', label: 'Generated tokens' }],
   },
   'ecosystem__system--stemma': {
-    header: '/src/assets/illustration/header-stemma.svg',
+    header: '/illustration/header-stemma.svg',
     desc: 'Stemma is a component architecture that governs cross-platform development through behavioral contracts and a shared, property-based API. Components are defined by what they guarantee — not how they look — enabling true native implementations across platforms.',
     viz: `<div class="ecosystem__modal-viz"><div class="viz-source">Button-CTA</div><div class="viz-indent"><span class="viz-keyword">inherits:</span> <span class="viz-value">Button-Base</span></div><div style="margin:12px 0"><span class="viz-arrow">───── contracts ─────</span></div><div class="viz-indent"><span class="viz-output">✓</span> <span class="viz-comment">focusable · pressable · labeled · touch_target</span></div><div class="viz-indent"><span class="viz-output">✓</span> <span class="viz-comment">loading_state · screen_reader_announcement</span></div><div class="viz-indent"><span class="viz-value">✗</span> <span class="viz-comment">disabled</span> <span class="viz-keyword">// by design</span></div><div style="margin:12px 0"><span class="viz-arrow">───── implementations ─────</span></div><div class="viz-branch"><span class="viz-output">Web</span><span class="viz-comment">&lt;dp-button-cta&gt; · Shadow DOM</span><span class="viz-output">iOS</span><span class="viz-comment">ButtonCTA: View · scale + haptic</span><span class="viz-output">Android</span><span class="viz-comment">ButtonCta() · ripple + haptic</span></div></div>`,
     highlights: [
@@ -33,7 +33,7 @@ const MODAL_DATA: Record<string, SystemData> = {
     stats: [{ value: '9', label: 'Families' }, { value: '34', label: 'Components' }, { value: '210', label: 'Contracts' }],
   },
   'ecosystem__system--civitas': {
-    header: '/src/assets/illustration/header-civitas.svg',
+    header: '/illustration/header-civitas.svg',
     desc: 'Civitas is the governance infrastructure — MCP servers, specialized agents, and automated intelligence mechanisms that ensure accurate documentation and consistent implementation. Governance is a active system, not a passive reference library.',
     viz: `<div class="ecosystem__modal-viz"><div class="viz-indent"><span class="viz-keyword">agent:</span> <span class="viz-source">Leonardo</span> <span class="viz-comment">// product architect</span></div><div class="viz-indent"><span class="viz-keyword">query:</span> <span class="viz-value">"component for a promoted action?"</span></div><div style="margin:12px 0"><span class="viz-arrow">───── Application MCP ─────▶</span></div><div class="viz-indent"><span class="viz-keyword">result:</span> <span class="viz-output">Button-CTA</span></div><div class="viz-indent"><span class="viz-keyword">props:</span> <span class="viz-comment">variant: "primary", size: "lg"</span></div><div style="margin:12px 0"><span class="viz-arrow">───── counter-argument ─────</span></div><div class="viz-indent"><span class="viz-value">⚠</span> <span class="viz-comment">"If multiple promoted actions exist, consider Button-Action"</span></div></div>`,
     highlights: [
@@ -47,6 +47,8 @@ const MODAL_DATA: Record<string, SystemData> = {
 };
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+export function init(): () => void {
 const backdrop = document.getElementById('eco-backdrop');
 const modal = document.getElementById('eco-modal');
 const modalHeader = document.getElementById('eco-modal-header') as HTMLObjectElement | null;
@@ -62,13 +64,14 @@ if (backdrop && modal) {
   function openModal(systemClass: string, card: HTMLElement) {
     const data = MODAL_DATA[systemClass];
     if (!data) return;
+    if (!modalHeader || !modalDesc || !modalHighlights || !modalStats || !modalViz) return;
     activeCard = card;
 
-    modalHeader!.setAttribute('data', data.header);
-    modalDesc!.textContent = data.desc;
-    modalViz!.innerHTML = data.viz;
-    modalHighlights!.innerHTML = data.highlights.map(h => `<li>${h}</li>`).join('');
-    modalStats!.innerHTML = data.stats.map(s => `<div class="ecosystem__modal-stat"><span class="ecosystem__modal-stat-value">${s.value}</span><span class="ecosystem__modal-stat-label">${s.label}</span></div>`).join('');
+    modalHeader.setAttribute('data', data.header);
+    modalDesc.textContent = data.desc;
+    modalViz.innerHTML = data.viz;
+    modalHighlights.innerHTML = data.highlights.map(h => `<li>${h}</li>`).join('');
+    modalStats.innerHTML = data.stats.map(s => `<div class="ecosystem__modal-stat"><span class="ecosystem__modal-stat-value">${s.value}</span><span class="ecosystem__modal-stat-label">${s.label}</span></div>`).join('');
 
     const cardRect = card.getBoundingClientRect();
     const modalWidth = Math.min(window.innerWidth * 0.9, 1020);
@@ -153,6 +156,7 @@ if (backdrop && modal) {
 }
 
 // === CONNECTOR LINES ===
+let cleanupConnectors: (() => void) | null = null;
 const svg = document.querySelector('.ecosystem__connectors') as SVGElement | null;
 const layout = document.querySelector('.ecosystem__layout') as HTMLElement | null;
 const illustration = document.querySelector('.ecosystem__illustration object') as HTMLObjectElement | null;
@@ -178,7 +182,7 @@ if (svg && layout && illustration) {
     const scaleY = illusRect.height / vbHeight;
 
     svg!.setAttribute('viewBox', `0 0 ${layoutRect.width} ${layoutRect.height}`);
-    svg!.innerHTML = `<defs><filter id="line-shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="3" dy="2" stdDeviation="4" flood-color="rgba(10,10,15,0.4)"/></filter></defs>`;
+    let svgContent = `<defs><filter id="line-shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="3" dy="2" stdDeviation="4" flood-color="rgba(10,10,15,0.4)"/></filter></defs>`;
 
     document.querySelectorAll('.ecosystem__system').forEach(sys => {
       const rect = sys.getBoundingClientRect();
@@ -201,10 +205,12 @@ if (svg && layout && illustration) {
         ty = (illusRect.top - layoutRect.top) + cy * scaleY;
       } else { return; }
 
-      svg!.innerHTML += `<line x1="${sx}" y1="${sy}" x2="${tx}" y2="${ty}" stroke="${cfg.color}" stroke-width="2.5" filter="url(#line-shadow)"/>`;
-      svg!.innerHTML += `<circle cx="${tx}" cy="${ty}" r="7" fill="rgba(10,10,15,0.3)"/>`;
-      svg!.innerHTML += `<circle cx="${tx}" cy="${ty}" r="5" fill="${cfg.color}"/>`;
+      svgContent += `<line x1="${sx}" y1="${sy}" x2="${tx}" y2="${ty}" stroke="${cfg.color}" stroke-width="2.5" filter="url(#line-shadow)"/>`;
+      svgContent += `<circle cx="${tx}" cy="${ty}" r="7" fill="rgba(10,10,15,0.3)"/>`;
+      svgContent += `<circle cx="${tx}" cy="${ty}" r="5" fill="${cfg.color}"/>`;
     });
+
+    svg!.innerHTML = svgContent;
   }
 
   // Wait for illustration to load, then draw
@@ -215,4 +221,17 @@ if (svg && layout && illustration) {
     requestAnimationFrame(() => requestAnimationFrame(drawConnectors));
   }
   window.addEventListener('resize', drawConnectors);
+  cleanupConnectors = () => window.removeEventListener('resize', drawConnectors);
+}
+
+  return () => {
+    if (cleanupConnectors) cleanupConnectors();
+  };
+}
+
+// DOMContentLoaded fallback boot
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => init());
+} else {
+  init();
 }

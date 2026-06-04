@@ -31,9 +31,9 @@ function animateValue(el: HTMLElement, target: number, prefix: string, suffix: s
   requestAnimationFrame(tick);
 }
 
-function initStats(): void {
-  const values = document.querySelectorAll<HTMLElement>('.stats-value');
-  if (!values.length) return;
+export function init(): () => void {
+  const values = document.querySelectorAll<HTMLElement>('.stats__value');
+  if (!values.length) return () => {};
 
   if (prefersReducedMotion()) {
     values.forEach((el) => {
@@ -42,12 +42,11 @@ function initStats(): void {
       const suffix = el.dataset.suffix || '';
       el.textContent = formatValue(target, prefix, suffix);
     });
-    return;
+    return () => {};
   }
 
-  // Trigger count-up when stats section enters viewport (simultaneous with reveal)
   const section = document.getElementById('stats');
-  if (!section) return;
+  if (!section) return () => {};
 
   const observer = new IntersectionObserver(
     (entries) => {
@@ -66,6 +65,13 @@ function initStats(): void {
   );
 
   observer.observe(section);
+
+  return () => { observer.disconnect(); };
 }
 
-document.addEventListener('DOMContentLoaded', initStats);
+// DOMContentLoaded fallback boot
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => init());
+} else {
+  init();
+}

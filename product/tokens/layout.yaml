@@ -62,3 +62,72 @@ tokens:
     description: Bottom padding for CTA section
     rationale: "Creates visual weight and space for background image reveal. Decorative — not derived from spacing scale."
     platforms: [web]
+
+  tooltipMaxWidth:
+    value: 270
+    unitType: logical
+    description: Maximum width for career tooltip
+    rationale: "Constrained for readability at tooltip mono font size. Content-specific — not derived from system layout tokens."
+    platforms: [web]
+
+  chordTipMaxWidth:
+    value: 260
+    unitType: logical
+    description: Maximum width for chord diagram tooltip
+    rationale: "Slightly narrower than career tooltip — less content density. Content-specific."
+    platforms: [web]
+
+  vizBranchGapColumn:
+    ref: space150
+    description: Column gap for visualization branch grid layout
+    platforms: [web]
+
+  vizBranchGapRow:
+    ref: space050
+    description: Row gap for visualization branch grid layout
+    platforms: [web]
+
+  vizBranchMarginTop:
+    ref: space100
+    description: Top margin for visualization branch container
+    platforms: [web]
+
+  sectionPrefixOffset:
+    value: -36
+    unitType: logical
+    description: Negative inline offset for section prefix labels
+    rationale: "Positions prefix text outside the content column for visual hierarchy. Tuned to prefix text width + breathing room."
+    platforms: [web]
+
+  modalHeaderMaxWidth:
+    value: 200
+    unitType: logical
+    description: Maximum width for ecosystem modal header SVG
+    rationale: "Constrains modal header proportionally to modal width. Distinct from cardHeaderMaxWidth (180) — modal has more space."
+    platforms: [web]
+
+  vizIndent:
+    ref: space250
+    description: Indentation for nested visualization code lines
+    platforms: [web]
+
+  heroVisualMaxTablet:
+    value: 400
+    unitType: logical
+    description: Maximum width for hero illustration at tablet breakpoint
+    rationale: "Constrains illustration to prevent overwhelming single-column layout. Proportional to tablet viewport."
+    platforms: [web]
+
+  heroVisualMaxMobile:
+    value: 300
+    unitType: logical
+    description: Maximum width for hero illustration at mobile breakpoint
+    rationale: "Further constrains illustration for narrow viewports. Maintains visual balance with text content below."
+    platforms: [web]
+
+  tokenEvolutionStickyOffset:
+    value: 120
+    unitType: logical
+    description: Top offset for sticky token evolution cluster in Why Build section
+    rationale: "Nav height (48px) + section heading clearance. Positions sticky element below fixed nav with breathing room. No system spacing token at 120px."
+    platforms: [web]

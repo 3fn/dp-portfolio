@@ -1,0 +1,35 @@
+category: color
+description: Product-specific color values for decorative elements, visualizations, and overlays
+
+tokens:
+  vizSyntaxCyan:
+    ref: cyan200
+    description: Code visualization syntax color — source/input elements
+    platforms: [web]
+
+  vizSyntaxGreen:
+    ref: green300
+    description: Code visualization syntax color — output/result elements
+    platforms: [web]
+
+  vizSyntaxYellow:
+    ref: yellow300
+    description: Code visualization syntax color — keyword elements
+    platforms: [web]
+
+  vizSyntaxPink:
+    ref: pink300
+    description: Code visualization syntax color — value/literal elements
+    platforms: [web]
+
+  neonGlow:
+    ref: green300
+    description: Neon easter egg glow color for text-shadow effects
+    platforms: [web]
+
+  backdropOverlay:
+    value: "rgba(10, 10, 15, 0.64)"
+    unitType: color
+    description: Modal backdrop overlay color
+    rationale: "Dark semi-transparent overlay for modal focus. Near-black base (no system primitive) at opacity064. Tuned to portfolio's light theme."
+    platforms: [web]

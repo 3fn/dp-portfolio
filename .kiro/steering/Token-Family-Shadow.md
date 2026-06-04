@@ -65,9 +65,8 @@ Vertical offsets scale with depth (all positive - shadows fall downward):
 | `shadowOffsetY.200` | 8px | Depth 200 - medium shadow | Raised elements (cards, modals) |
 | `shadowOffsetY.300` | 12px | Morning/Afternoon - medium-long | Directional lighting |
 | `shadowOffsetY.400` | 16px | Depth 300 / Sunrise/Sunset - long | Floating elements (FABs) |
-| `shadowOffsetY.600` | 24px | Modal elevation - dramatic vertical offset | Modal/overlay shadows |
 
-**Mathematical Foundation**: Base value = 4px, scales with multipliers (1x, 2x, 3x, 4x, 6x). The 5x gap is intentional — no current consumer requires value 20.
+**Mathematical Foundation**: Base value = 4px, scales with multipliers (1x, 2x, 3x, 4x)
 
 ### Shadow Blur Tokens
 
@@ -83,7 +82,6 @@ Shadow composites reference these blur primitives:
 | Raised elements | `blur100` | 16 |
 | Subtle/hover | `blur125` | 20 |
 | Floating elements | `blur150` | 24 |
-| Modal elevation | `blur400` | 64 |
 
 ### Shadow Opacity Tokens
 

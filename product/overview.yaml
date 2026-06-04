@@ -3,15 +3,17 @@
 ## Product Context
 name: DP-Portfolio
 abbreviation: DPP
-description: Single-page portfolio site showcasing the DesignerPunk ecosystem for hiring managers and potential collaborators
+description: Single-page portfolio site showcasing the DesignerPunk ecosystem — built for small teams, founders, and builders who pair human creative direction with AI precision
 domain: Portfolio / professional marketing
-audience: Hiring managers, design system practitioners, engineering leaders, potential collaborators
+audience: Small teams (1-10), founders building 0-to-1, design system practitioners, builders leveraging AI collaboration
 type: Single-page scroll-based website
-designerpunk-version: 11.7.1
+designerpunk-version: 11.8.0
 
 ## Key Characteristics
 - Content-driven, narrative structure (hook → credibility → insight → ecosystem → methodology → value → CTA)
+- 0-to-1 positioning: infrastructure that enables small teams to compete at scale
 - Scroll-reveal progressive disclosure
+- Scroll-driven token evolution animation (split-flap, 4 phases)
 - Restrained color strategy with action-primary (pink) accent
 - Noise textures at varying densities for tactile quality
 - Interactive data visualizations (chord diagram, career chart)
@@ -20,9 +22,10 @@ designerpunk-version: 11.7.1
 - Stats-forward credibility building ("1 Human" hero stat)
 - Personal, 1st-person voice with easter egg personality
 - Product tokens for layout constraints and motion characteristics
+- Tone: empowering, punk (punch up at systems, not down at people)
 
 ## Platform Status
-web: spec-complete (Spec 003), implementation pending (Spec 004)
+web: implementation-active (Spec 007)
 ios: not-applicable
 android: not-applicable
 
@@ -31,4 +34,16 @@ android: not-applicable
 - Spec 001: Portfolio Page Architecture ✅ Complete
 - Spec 002: Portfolio Token Compliance ✅ Complete
 - Spec 003: Portfolio System Readiness ✅ Complete
-- Spec 004: Portfolio Page Implementation — pending
+- Spec 004: Portfolio Page Implementation ✅ Complete
+- Spec 005: Portfolio CSS Authoring Cleanup ✅ Complete
+- Spec 006: Astro Site Migration — planned
+- Spec 007: Portfolio Audience Repositioning — in progress (Task 4)
+
+## Build & Serve
+dev: npm run dev (Astro dev server + esbuild watch, concurrent)
+build: npm run build (copy:tokens → build:scripts → astro build)
+output: _site/ (deployed to Dreamhost via SFTP)
+scripts-tool: esbuild (separate from Vite — Shadow DOM CSS-as-text requires --loader:.css=text)
+static-assets: public/ (tokens, scripts, fonts, illustration, images, brand — copied verbatim to _site/)
+page-source: src/pages/index.astro (Astro layout + page content)
+css: src/styles/portfolio.css (imported by Astro layout, processed by Vite)

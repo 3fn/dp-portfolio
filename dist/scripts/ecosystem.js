@@ -49,6 +49,7 @@ if (backdrop && modal) {
   let openModal = function(systemClass, card) {
     const data = MODAL_DATA[systemClass];
     if (!data) return;
+    if (!modalHeader || !modalDesc || !modalHighlights || !modalStats || !modalViz) return;
     activeCard = card;
     modalHeader.setAttribute("data", data.header);
     modalDesc.textContent = data.desc;
@@ -144,7 +145,7 @@ if (svg && layout && illustration) {
     const scaleX = illusRect.width / vbWidth;
     const scaleY = illusRect.height / vbHeight;
     svg.setAttribute("viewBox", `0 0 ${layoutRect.width} ${layoutRect.height}`);
-    svg.innerHTML = `<defs><filter id="line-shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="3" dy="2" stdDeviation="4" flood-color="rgba(10,10,15,0.4)"/></filter></defs>`;
+    let svgContent = `<defs><filter id="line-shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="3" dy="2" stdDeviation="4" flood-color="rgba(10,10,15,0.4)"/></filter></defs>`;
     document.querySelectorAll(".ecosystem__system").forEach((sys) => {
       const rect = sys.getBoundingClientRect();
       const cfg = CONFIG[sys.classList[1]];
@@ -165,10 +166,11 @@ if (svg && layout && illustration) {
       } else {
         return;
       }
-      svg.innerHTML += `<line x1="${sx}" y1="${sy}" x2="${tx}" y2="${ty}" stroke="${cfg.color}" stroke-width="2.5" filter="url(#line-shadow)"/>`;
-      svg.innerHTML += `<circle cx="${tx}" cy="${ty}" r="7" fill="rgba(10,10,15,0.3)"/>`;
-      svg.innerHTML += `<circle cx="${tx}" cy="${ty}" r="5" fill="${cfg.color}"/>`;
+      svgContent += `<line x1="${sx}" y1="${sy}" x2="${tx}" y2="${ty}" stroke="${cfg.color}" stroke-width="2.5" filter="url(#line-shadow)"/>`;
+      svgContent += `<circle cx="${tx}" cy="${ty}" r="7" fill="rgba(10,10,15,0.3)"/>`;
+      svgContent += `<circle cx="${tx}" cy="${ty}" r="5" fill="${cfg.color}"/>`;
     });
+    svg.innerHTML = svgContent;
   };
   drawConnectors2 = drawConnectors;
   const CONFIG = {

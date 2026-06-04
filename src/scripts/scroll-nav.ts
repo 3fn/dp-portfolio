@@ -30,12 +30,12 @@ const BORDER_MAP: Record<string, string> = {
   cyan400: 'var(--cyan-400)',
 };
 
-function initScrollNav(): void {
+export function init(): () => void {
   const nav = document.querySelector('nav-header-app') as HTMLElement | null;
-  if (!nav) return;
+  if (!nav) return () => {};
 
   const sections = document.querySelectorAll<HTMLElement>('main > section, main > footer, footer');
-  if (!sections.length) return;
+  if (!sections.length) return () => {};
 
   const navHeight = nav.getBoundingClientRect().height || 64;
 
@@ -54,7 +54,6 @@ function initScrollNav(): void {
         if (glow && GLOW_MAP[glow]) nav.style.setProperty('--nav-glow-color', GLOW_MAP[glow]);
         if (border && BORDER_MAP[border]) nav.style.setProperty('--nav-border-color', BORDER_MAP[border]);
 
-        // Text mode snap — class toggle, no transition
         if (textMode === 'light') {
           nav.classList.add('nav--light-text');
           nav.classList.remove('nav--dark-text');
@@ -71,6 +70,13 @@ function initScrollNav(): void {
   );
 
   sections.forEach((section) => observer.observe(section));
+
+  return () => { observer.disconnect(); };
 }
 
-document.addEventListener('DOMContentLoaded', initScrollNav);
+// DOMContentLoaded fallback boot
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => init());
+} else {
+  init();
+}

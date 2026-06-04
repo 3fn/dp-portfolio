@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peter Michaels Allen — Super.com Case Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Figtree:wght@400;500;600&family=Commit+Mono&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+    :root {
+      /* Color — Committed cyan strategy */
+      --color-bg: #ffffff;
+      --color-surface: #f8fafb;
+      --color-text: #1a2b3c;
+      --color-text-secondary: #4a5e6f;
+      --color-accent: #00c2d1;
+      --color-accent-glow: rgba(0, 194, 209, 0.15);
+      --color-purple: #7b61ff;
+      --color-divider: #e2e8f0;
+
+      /* Spacing — 8px grid */
+      --space-xs: 4px;
+      --space-sm: 8px;
+      --space-md: 16px;
+      --space-lg: 24px;
+      --space-xl: 32px;
+      --space-2xl: 48px;
+      --space-3xl: 64px;
+      --space-4xl: 96px;
+
+      /* Motion */
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --duration-reveal: 600ms;
+
+      /* Typography */
+      --font-display: 'Rajdhani', sans-serif;
+      --font-body: 'Figtree', sans-serif;
+      --font-mono: 'Commit Mono', monospace;
+    }
+
+    html {
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--color-text);
+      background: var(--color-bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* --- Sections --- */
+    section {
+      min-height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      padding: var(--space-3xl) var(--space-2xl);
+      position: relative;
+    }
+
+    .section-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* --- Typography --- */
+    h1, h2, h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      text-wrap: balance;
+      line-height: 1.1;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem);
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw + 0.5rem, 3.5rem);
+      letter-spacing: -0.01em;
+      margin-bottom: var(--space-lg);
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--color-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: var(--space-sm);
+    }
+
+    p {
+      max-width: 65ch;
+      margin-bottom: var(--space-md);
+      color: var(--color-text-secondary);
+      font-size: 1.125rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li {
+      position: relative;
+      padding-left: var(--space-lg);
+      margin-bottom: var(--space-md);
+      font-size: 1.125rem;
+      color: var(--color-text-secondary);
+    }
+
+    ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.7em;
+      width: 8px;
+      height: 2px;
+      background: var(--color-accent);
+    }
+
+    .highlight {
+      color: var(--color-text);
+      font-weight: 600;
+    }
+
+    code {
+      font-family: var(--font-mono);
+      font-size: 0.85em;
+      background: var(--color-surface);
+      color: #c4507a;
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--color-divider);
+    }
+
+    .stat {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3vw, 3rem);
+      font-weight: 700;
+      color: var(--color-accent);
+      display: block;
+      margin-bottom: var(--space-xs);
+    }
+
+    .stat-label {
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: var(--space-xl);
+      margin-top: var(--space-2xl);
+    }
+
+    /* --- Section divider marker --- */
+    .divider {
+      height: 20vh;
+      scroll-snap-align: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--color-divider);
+      letter-spacing: 0.3em;
+      user-select: none;
+    }
+
+    /* --- Transition section (parallax candidate) --- */
+    .section--transition {
+      background: var(--color-surface);
+    }
+
+    .section--transition .section-inner {
+      text-align: center;
+    }
+
+    .section--transition p {
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1.25rem;
+      font-style: italic;
+      color: var(--color-text);
+    }
+
+    /* --- Architecture section --- */
+    .architecture-visual {
+      margin-top: var(--space-2xl);
+      padding: var(--space-2xl);
+      background: var(--color-surface);
+      border-radius: 12px;
+      border: 1px solid var(--color-divider);
+      text-align: center;
+      min-height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-secondary);
+      font-style: italic;
+    }
+
+    /* --- Code block style --- */
+    .code-block {
+      background: #1a2b3c;
+      color: #e2e8f0;
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      padding: var(--space-lg);
+      border-radius: 8px;
+      overflow-x: auto;
+      line-height: 1.7;
+    }
+
+    .code-block .token-name { color: var(--color-accent); }
+    .code-block .token-value { color: #f9a8d4; }
+    .code-block .token-comment { color: #64748b; }
+
+    /* --- Scroll-triggered reveals --- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity var(--duration-reveal) var(--ease-out-expo),
+                  transform var(--duration-reveal) var(--ease-out-expo);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-stagger > * {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity var(--duration-reveal) var(--ease-out-expo),
+                  transform var(--duration-reveal) var(--ease-out-expo);
+    }
+
+    .reveal-stagger.visible > * {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-stagger.visible > *:nth-child(1) { transition-delay: 0ms; }
+    .reveal-stagger.visible > *:nth-child(2) { transition-delay: 80ms; }
+    .reveal-stagger.visible > *:nth-child(3) { transition-delay: 160ms; }
+    .reveal-stagger.visible > *:nth-child(4) { transition-delay: 240ms; }
+    .reveal-stagger.visible > *:nth-child(5) { transition-delay: 320ms; }
+    .reveal-stagger.visible > *:nth-child(6) { transition-delay: 400ms; }
+
+    /* --- Close section --- */
+    .section--close {
+      text-align: center;
+    }
+
+    .section--close h2 {
+      margin-bottom: var(--space-md);
+    }
+
+    .section--close p {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* --- Reduced motion --- */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .reveal-stagger > * { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* --- Slide typography helpers --- */
+    .section-subtitle {
+      font-size: 1.25rem;
+      color: var(--color-text);
+      margin-bottom: var(--space-xl);
+    }
+
+    .section-closer {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-top: var(--space-lg);
+    }
+
+    /* --- Strategy diagram --- */
+    .strategy-diagram {
+      display: flex;
+      align-items: flex-start;
+      margin-top: var(--space-2xl);
+    }
+
+    .strategy-loop {
+      display: flex;
+      align-items: center;
+      animation: shrink-gap 20s ease-in-out forwards;
+      gap: 80px;
+      position: relative;
+    }
+
+    @keyframes shrink-gap {
+      0% { gap: 80px; }
+      100% { gap: 8px; }
+    }
+
+    .loop-node {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 2px solid var(--color-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--color-text);
+      background: var(--color-accent-glow);
+      flex-shrink: 0;
+    }
+
+    .loop-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-md);
+    }
+
+    .loop-arrow-line {
+      height: 1.5px;
+      background: var(--color-accent);
+      position: relative;
+      animation: shrink-arrow 20s ease-in-out forwards;
+      width: 60px;
+    }
+
+    .loop-arrow-line--top::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-left: 6px solid var(--color-accent);
+      border-top: 3px solid transparent;
+      border-bottom: 3px solid transparent;
+    }
+
+    .loop-arrow-line--bottom::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-right: 6px solid var(--color-accent);
+      border-top: 3px solid transparent;
+      border-bottom: 3px solid transparent;
+    }
+
+    @keyframes shrink-arrow {
+      0% { width: 60px; }
+      100% { width: 12px; }
+    }
+
+    .loop-label {
+      position: absolute;
+      bottom: -32px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      color: var(--color-text-secondary);
+      white-space: nowrap;
+      font-style: italic;
+    }
+
+    .output-arrow-line {
+      width: 80px;
+      height: 1.5px;
+      background: var(--color-accent);
+      position: relative;
+      flex-shrink: 0;
+      margin: 60px var(--space-md) 0;
+    }
+
+    .output-arrow-line::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-left: 8px solid var(--color-accent);
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+    }
+
+    .output-node-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .output-node {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 2px solid var(--color-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--color-text);
+      flex-shrink: 0;
+      text-align: center;
+    }
+
+    .output-label {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      color: var(--color-text-secondary);
+      font-style: italic;
+      text-align: center;
+      max-width: 180px;
+    }
+
+    .strategy-quote {
+      font-family: var(--font-body);
+      font-size: 1.25rem;
+      font-style: italic;
+      color: var(--color-text);
+      margin-top: var(--space-2xl);
+      padding-left: var(--space-lg);
+      border-left: 3px solid var(--color-accent);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .strategy-loop { animation: none; gap: 8px; }
+      .loop-arrow-line { animation: none; width: 12px; }
+    }
+
+    /* --- Insight stack --- */    .section--insight {
+      position: relative;
+      overflow: hidden;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-bottom: 0;
+    }
+
+    .insight-bg {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 80%;
+      background: url('golden-gate-construction.jpg') center 20% / cover no-repeat;
+      opacity: 1;
+      mask-image: linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0) 48%);
+      -webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0) 48%);
+    }
+
+    .section--insight .section-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .section--insight::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(255,255,255,1) 25%, rgba(255,255,255,0.85) 40%, rgba(255,255,255,0) 60%);
+      pointer-events: none;
+    }
+
+    .insight-stack {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+
+    .insight-line {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw + 0.5rem, 3rem);
+      font-weight: 700;
+      color: var(--color-text);
+      margin: 0;
+      max-width: none;
+    }
+
+    .insight-line--accent {
+      color: var(--color-accent);
+    }
+
+    /* --- Tension map --- */    .tension-map {
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .tension-map svg {
+      width: 100%;
+      height: auto;
+    }
+
+    .tension-wire {
+      animation: wire-jolt 4s ease-in-out infinite, wire-throb 2s ease-in-out infinite;
+    }
+
+    .tension-wire:nth-child(2) {
+      animation-delay: 2s, 1s;
+    }
+
+    .tension-wire:nth-child(3) {
+      animation-delay: 1s, 0.5s;
+    }
+
+    @keyframes wire-jolt {
+      0%, 80% { transform: translateX(0); }
+      82% { transform: translateX(6px); }
+      84% { transform: translateX(-5px); }
+      86% { transform: translateX(4px); }
+      88% { transform: translateX(-3px); }
+      90% { transform: translateX(2px); }
+      92% { transform: translateX(-1px); }
+      95% { transform: translateX(0); }
+      100% { transform: translateX(0); }
+    }
+
+    @keyframes wire-throb {
+      0%, 100% { opacity: 0.65; }
+      50% { opacity: 0.35; }
+    }
+
+    .tension-glow {
+      opacity: 0;
+      animation: glow-burst 4s ease-out infinite;
+    }
+
+    .glow-1 { animation-delay: 0s; }
+    .glow-2 { animation-delay: 2s; }
+
+    @keyframes glow-burst {
+      0%, 80% { opacity: 0; stroke-width: 3; }
+      82% { opacity: 0.6; stroke-width: 4; }
+      87% { opacity: 0.3; stroke-width: 6; }
+      93% { opacity: 0.1; stroke-width: 8; }
+      100% { opacity: 0; stroke-width: 10; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tension-wire { animation: none; }
+      .tension-glow { animation: none; }
+    }
+
+    /* --- Ping Pong slide --- */
+    .pingpong-layout {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: var(--space-xl);
+    }
+
+    .pingpong-diagram {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-xl);
+      position: relative;
+    }
+
+    .paddle {
+      width: 24px;
+      height: 120px;
+      border-radius: 12px;
+      background: var(--color-accent);
+      flex-shrink: 0;
+    }
+
+    .pingpong-table {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition: width 300ms var(--ease-out-expo);
+    }
+
+    .pingpong-table.step-0 { width: 220px; }
+    .pingpong-table.step-1 { width: 160px; }
+    .pingpong-table.step-2 { width: 100px; }
+    .pingpong-table.step-3 { width: 50px; }
+    .pingpong-table.step-4 { width: 8px; }
+
+    .table-surface {
+      width: 100%;
+      height: 2px;
+      background: var(--color-divider);
+      position: relative;
+    }
+
+    .table-surface::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: -12px;
+      width: 1px;
+      height: 24px;
+      background: var(--color-divider);
+    }
+
+    .ball {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      position: absolute;
+      top: 50%;
+      left: 10%;
+      transform: translateY(-50%);
+      transition: left 0.75s linear, top 0.4s ease-out;
+    }
+
+    .ball.arc-right {
+      left: calc(90% - 10px);
+    }
+
+    .ball.arc-left {
+      left: 10%;
+    }
+
+    .ball.arc-up {
+      top: -40px;
+    }
+
+    .ball.arc-down {
+      top: 50%;
+      transition: left 0.75s linear, top 0.4s ease-in;
+    }
+
+    .ball.final-arc {
+      left: 50%;
+      top: calc(50% - 18px);
+      transition: left 0.45s ease-out, top 0.45s ease-out;
+      transform: translate(-50%, -50%);
+    }
+
+    .ball.final-drop {
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      transition: left 0.05s linear, top 0.3s ease-in;
+    }
+
+    .ball.final-bounce {
+      left: 50%;
+      top: calc(50% - 8px);
+      transform: translate(-50%, -50%);
+      transition: top 0.18s ease-out;
+    }
+
+    .ball.final-settle {
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      transition: top 0.15s ease-in;
+    }
+
+    .paddle-label {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--color-text);
+      text-align: center;
+      margin-top: var(--space-sm);
+    }
+
+    .paddle-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100px;
+    }
+
+    .volley-count {
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+      text-align: center;
+      margin-top: var(--space-lg);
+      font-style: italic;
+      max-width: none;
+    }
+
+    .screenshot-thumb {
+      width: 180px;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--color-divider);
+      cursor: pointer;
+      transition: transform 200ms var(--ease-out-expo), box-shadow 200ms ease;
+      position: relative;
+    }
+
+    .screenshot-thumb:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+
+    .screenshot-thumb img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .screenshot-thumb-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: var(--space-xs) var(--space-sm);
+      background: rgba(26, 43, 60, 0.85);
+      font-size: 0.7rem;
+      color: #fff;
+      text-align: center;
+    }
+
+    .screenshot-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(26, 43, 60, 0.7);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 300ms ease;
+    }
+
+    .screenshot-lightbox.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .screenshot-lightbox img {
+      max-width: 70vw;
+      max-height: 75vh;
+      border-radius: 8px;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.3);
+    }
+
+    .screenshot-caption {
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+      font-style: italic;
+      margin-top: var(--space-xs);
+    }
+
+    /* --- Escalation slide --- */
+    .escalation-steps {
+      display: flex;
+      align-items: flex-end;
+      gap: var(--space-lg);
+      margin-top: var(--space-2xl);
+    }
+
+    .escalation-step {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .escalation-bar {
+      width: 100%;
+      border-radius: 6px 6px 0 0;
+      background: var(--color-accent-glow);
+      border: 1px solid var(--color-accent);
+      border-bottom: none;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: var(--space-md) var(--space-sm);
+    }
+
+    .escalation-step:nth-child(1) .escalation-bar { height: 100px; }
+    .escalation-step:nth-child(2) .escalation-bar { height: 160px; }
+    .escalation-step:nth-child(3) .escalation-bar { height: 220px; }
+
+    .escalation-bar-label {
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--color-text);
+    }
+
+    .escalation-base {
+      width: 100%;
+      padding: var(--space-sm) var(--space-xs);
+      border-top: 2px solid var(--color-accent);
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+    }
+
+    .escalation-connector {
+      position: absolute;
+    }
+
+    /* --- Stat bar --- */
+    .stat-bar {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2xl);
+      margin-top: var(--space-2xl);
+    }
+
+    .stat-bar-anchor {
+      width: 300px;
+      flex-shrink: 0;
+      text-align: center;
+      padding-right: var(--space-2xl);
+      border-right: 2px solid var(--color-divider);
+    }
+
+    .stat-bar-anchor .stat {
+      font-size: clamp(3rem, 5vw, 5rem);
+    }
+
+    .stat-bar-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: var(--space-lg) var(--space-lg);
+      flex: 1;
+      line-height: 1.2;
+      padding-top: 24px;
+    }
+
+    .stat-bar-grid .stat {
+      font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+      line-height: 1;
+      margin-bottom: 0;
+    }
+
+    .stat-bar-grid .stat-label {
+      font-size: 0.75rem;
+      line-height: 1.2;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ball { animation: none; left: 50%; transform: translate(-50%, -50%); }
+      .pingpong-table { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. Title / Opening -->
+  <section>
+    <div class="section-inner reveal">
+      <h3>// Super.com — Staff Product Designer, Design Systems</h3>
+      <h1>Peter Michaels Allen</h1>
+      <p style="font-size: 1.125rem; color: var(--color-text); max-width: none;">Design System Architect + Design Engineer</p>
+      <div style="display: flex; flex-wrap: wrap; gap: var(--space-sm); margin-top: var(--space-xl);">
+        <span style="padding: 6px 14px; border-radius: 4px; font-size: 0.85rem; font-weight: 600; background: var(--color-accent); color: #fff;">Reddit</span>
+        <span style="padding: 6px 14px; border-radius: 4px; font-size: 0.85rem; font-weight: 600; background: var(--color-accent); color: #fff;">Venmo + PayPal</span>
+        <span style="padding: 6px 14px; border-radius: 4px; font-size: 0.85rem; font-weight: 600; background: var(--color-accent); color: #fff;">eHealth</span>
+        <span style="padding: 6px 14px; border-radius: 4px; font-size: 0.85rem; border: 1px solid var(--color-divider); color: var(--color-text-secondary);">Redfin</span>
+        <span style="padding: 6px 14px; border-radius: 4px; font-size: 0.85rem; border: 1px solid var(--color-divider); color: var(--color-text-secondary);">Expensify</span>
+        <span style="padding: 6px 14px; border-radius: 4px; font-size: 0.85rem; border: 1px solid var(--color-divider); color: var(--color-text-secondary);">Electronic Arts</span>
+        <span style="padding: 6px 14px; border-radius: 4px; font-size: 0.85rem; border: 1px solid var(--color-divider); color: var(--color-text-secondary);">FDIC</span>
+        <span style="padding: 6px 14px; border-radius: 4px; font-size: 0.85rem; border: 1px solid var(--color-divider); color: var(--color-text-secondary);">Comcast</span>
+      </div>
+      <p class="highlight" style="color: var(--color-text); font-size: 1.25rem; margin-top: var(--space-xl); max-width: none;">Design systems are relationship infrastructure, not just component libraries.</p>
+    </div>
+  </section>
+
+  <div class="divider">/ /</div>
+
+  <!-- 2. Venmo: The Situation (Tension) -->
+  <section>
+    <div class="section-inner reveal">
+      <h3>// Venmo — July 2019</h3>
+      <h2>No design system.<br>Four failed attempts.</h2>
+      <p class="section-subtitle">Engineers felt burned. Designers felt defensive.</p>
+      <div class="tension-map">
+        <svg viewBox="0 0 960 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Three office locations connected by frayed, unstable lines representing organizational tension">
+          <defs>
+            <filter id="wire-glow" x="-20%" y="-200%" width="140%" height="500%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
+              <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 0.2 0.2 0 0  0.2 0.2 0.2 0 0  0 0 0 1 0"/>
+            </filter>
+          </defs>
+          <!-- Glow layers (behind the wires, animate on jolt) -->
+          <path class="tension-glow glow-1" d="M160 80 L170 76 L185 84 L200 75 L218 83 L235 77 L252 84 L270 76 L288 82 L305 77 L322 83 L340 78 L358 82 L375 76 L392 83 L410 78" stroke="#e85d5d" stroke-width="3" stroke-linecap="round" filter="url(#wire-glow)"/>
+          <path class="tension-glow glow-2" d="M550 78 L567 83 L584 76 L601 82 L618 77 L635 84 L652 76 L669 82 L686 77 L703 83 L720 78 L737 82 L754 76 L771 83 L788 77 L820 80" stroke="#e85d5d" stroke-width="3" stroke-linecap="round" filter="url(#wire-glow)"/>
+          <!-- Frayed connection: SF to Chicago -->
+          <path class="tension-wire" d="M160 80 L170 76 L185 84 L200 75 L218 83 L235 77 L252 84 L270 76 L288 82 L305 77 L322 83 L340 78 L358 82 L375 76 L392 83 L410 78" stroke="#e85d5d" stroke-width="1.2" stroke-linecap="round" opacity="0.65"/>
+          <!-- Frayed connection: Chicago to NYC -->
+          <path class="tension-wire" d="M550 78 L567 83 L584 76 L601 82 L618 77 L635 84 L652 76 L669 82 L686 77 L703 83 L720 78 L737 82 L754 76 L771 83 L788 77 L820 80" stroke="#e85d5d" stroke-width="1.2" stroke-linecap="round" opacity="0.65"/>
+          <!-- SF cluster -->
+          <circle cx="80" cy="80" r="16" fill="#1a2b3c" opacity="0.8"/>
+          <circle cx="105" cy="64" r="10" fill="#1a2b3c" opacity="0.5"/>
+          <circle cx="108" cy="100" r="10" fill="#1a2b3c" opacity="0.5"/>
+          <circle cx="135" cy="75" r="10" fill="#1a2b3c" opacity="0.5"/>
+          <text x="100" y="140" text-anchor="middle" font-family="Figtree, sans-serif" font-size="13" fill="#4a5e6f">San Francisco</text>
+          <!-- Chicago cluster -->
+          <circle cx="480" cy="80" r="16" fill="#1a2b3c" opacity="0.8"/>
+          <circle cx="458" cy="68" r="10" fill="#1a2b3c" opacity="0.5"/>
+          <circle cx="502" cy="92" r="10" fill="#1a2b3c" opacity="0.5"/>
+          <text x="480" y="140" text-anchor="middle" font-family="Figtree, sans-serif" font-size="13" fill="#4a5e6f">Chicago</text>
+          <!-- NYC cluster -->
+          <circle cx="870" cy="80" r="16" fill="#1a2b3c" opacity="0.8"/>
+          <circle cx="848" cy="64" r="10" fill="#1a2b3c" opacity="0.5"/>
+          <circle cx="895" cy="92" r="10" fill="#1a2b3c" opacity="0.5"/>
+          <circle cx="845" cy="97" r="10" fill="#1a2b3c" opacity="0.5"/>
+          <text x="870" y="140" text-anchor="middle" font-family="Figtree, sans-serif" font-size="13" fill="#4a5e6f">New York</text>
+        </svg>
+      </div>
+      <p class="section-closer">— And I was walking into the middle of it.</p>
+    </div>
+  </section>
+
+  <div class="divider">/ /</div>
+
+  <!-- 3. Venmo: The Insight -->
+  <section class="section--insight">
+    <div class="insight-bg"></div>
+    <div class="section-inner reveal">
+      <h3>// Venmo</h3>
+      <div class="insight-stack">
+        <p class="insight-line">The gap was trust.</p>
+        <p class="insight-line">The bridge was shared language.</p>
+        <p class="insight-line insight-line--accent">The pillars were tokens.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider">/ /</div>
+
+  <!-- 4a. Venmo: The Method — Collapsing Ping Pong -->
+  <section>
+    <div class="section-inner reveal">
+      <h3>// Venmo</h3>
+      <h2>Co-designing shared language</h2>
+      <p style="color: var(--color-text-secondary);">6am introductions. Cross-timezone alignment reviews. I took on the bulk of the work to make it frictionless for engineers to say "yes".</p>
+      <div class="pingpong-layout" style="margin-top: var(--space-3xl);">
+        <div class="pingpong-diagram">
+          <div class="paddle-group">
+            <div class="paddle"></div>
+            <span class="paddle-label">Design</span>
+          </div>
+          <div class="pingpong-table step-0" id="pingpong-table">
+            <div class="table-surface"></div>
+            <div class="ball"></div>
+          </div>
+          <div class="paddle-group">
+            <div class="paddle"></div>
+            <span class="paddle-label">Engineering</span>
+          </div>
+        </div>
+        <p class="volley-count">The Collapsing Ping Pong Table Method</p>
+      </div>
+      <p class="section-closer" style="text-align: center; margin-top: var(--space-xl); font-style: italic; max-width: none;">"Everything here is a draft until we agree it isn't."</p>
+    </div>
+  </section>
+
+  <div class="divider">/ /</div>
+
+  <!-- 4b. Venmo: Proven in Production -->
+  <section>
+    <div class="section-inner reveal">
+      <h3>// Venmo</h3>
+      <h2>Proven in production</h2>
+      <p style="font-size: 1.125rem; color: var(--color-text); max-width: none;">Shipped inside the first product built on a new visual language.</p>
+      <div style="display: flex; align-items: center; gap: var(--space-2xl); margin-top: var(--space-2xl);">
+        <div class="screenshot-thumb" id="screenshot-thumb" style="width: 320px; flex-shrink: 0;">
+          <img src="../assets/Token-Screenshot.png" alt="Venmo design token spreadsheet showing shared naming conventions">
+          <span class="screenshot-thumb-label">Click to expand</span>
+        </div>
+        <p style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--color-text); border-left: 3px solid var(--color-accent); padding-left: var(--space-lg); margin: 0; max-width: none;">"And I did all this with an Excel sheet."</p>
+      </div>
+    </div>
+
+    <!-- Lightbox overlay -->
+    <div class="screenshot-lightbox" id="screenshot-lightbox">
+      <img src="../assets/Token-Screenshot.png" alt="Venmo design token spreadsheet — full view">
+    </div>
+  </section>
+
+  <div class="divider">/ /</div>
+
+  <!-- 5. Venmo: The Climax -->
+  <section>
+    <div class="section-inner reveal">
+      <h3>// Venmo</h3>
+      <h2>No tokens, no new designs.</h2>
+      <p style="font-size: 1.125rem; color: var(--color-text);">Product wanted to ship the refresh without the system. My director held the line.</p>
+      <p>I had the vision ready. Engineering backing pre-aligned. The sustainable path was also the fastest path.</p>
+      <p style="font-size: 1.25rem; color: var(--color-text); margin-top: var(--space-lg);"><span class="highlight">They agreed.</span></p>
+      <p style="font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 700; color: var(--color-accent); margin-top: var(--space-xl);">Four months. Zero to in-scope.</p>
+    </div>
+  </section>
+
+  <div class="divider">/ /</div>
+
+  <!-- 5b. Venmo: Organizational Adoption -->
+  <section>
+    <div class="section-inner reveal">
+      <h3>// Venmo</h3>
+      <h2>From initiative to institution</h2>
+      <p style="font-size: 1.125rem; color: var(--color-text);">Practical success earned visibility. Visibility earned credibility. Credibility opened doors.</p>
+      <ul class="reveal-stagger" style="margin-top: var(--space-2xl);">
+        <li><span class="highlight">Presented at Engineering all-hands</span> — the system had organizational attention</li>
+        <li><span class="highlight">Integrated into engineering onboarding</span> — the system became how new engineers learned the product</li>
+      </ul>
+      <p class="section-closer" style="margin-top: var(--space-2xl);">No longer one person's project. An organizational commitment.</p>
+    </div>
+  </section>
+
+  <div class="divider">/ /</div>
+
+  <!-- 6. Venmo: The Accessibility Payoff -->
+  <section>
+    <div class="section-inner reveal">
+      <h3>// Venmo — March 2021</h3>
+      <h2>18 months ahead.</h2>
+      <p style="font-size: 1.125rem; color: var(--color-text);">In August 2019, I started pushing accessibility color work. Some senior designers pushed back. I stood firm.</p>
+      <p>In March 2021, PayPal legal mandated full app accessibility by year-end. Zero lead-time. Color was the most pervasive offender.</p>
+      <p>Design deliverables were ready. Engineering could adopt immediately. <span class="highlight">Delivered ahead of schedule — for both orgs — because the work was already done.</span></p>
+      <div class="stats-grid reveal-stagger" style="margin-top: var(--space-2xl);">
+        <div>
+          <span class="stat">18 months</span>
+          <span class="stat-label">Head start on accessibility</span>
+        </div>
+        <div>
+          <span class="stat">Zero</span>
+          <span class="stat-label">Additional lead-time needed</span>
+        </div>
+        <div>
+          <span class="stat">1:1</span>
+          <span class="stat-label">Product & marketing alignment</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider">/ /</div>
+
+  <!-- 5. Transition -->
+  <section class="section--transition">
+    <div class="section-inner reveal">
+      <h2>Same principle.<br>New reality.</h2>
+      <p>"At Venmo, tokens were the shared language that rebuilt trust between designers and engineers. With DesignerPunk, I'm solving the next version of that same problem: collaboration between humans and AI agents."</p>
+    </div>
+  </section>
+
+  <div class="divider">/ /</div>
+
+  <!-- 6. DesignerPunk: The Situation -->
+  <section>
+    <div class="section-inner reveal">
+      <h3>// DesignerPunk</h3>
+      <h2>The 50 First Dates Problem</h2>
+      <p style="font-size: 1.5rem; color: var(--color-text);">Every session, the AI agent starts fresh.</p>
+      <p style="font-size: 1.5rem; color: var(--color-text);">No memory of yesterday's decisions, or vision for the future.</p>
+    </div>
+  </section>
+
+  <div class="divider">/ /</div>
+
+  <!-- 7. DesignerPunk: The Thesis -->
+  <section>
+    <div class="section-inner reveal">
+      <h3>// DesignerPunk</h3>
+      <h2>The Thesis</h2>
+      <p style="font-size: 1.125rem; color: var(--color-text); margin-bottom: var(--space-xl);">Design systems are shared working agreements between Humans and AI Agents.</p>
+      <ul class="reveal-stagger">
+        <li><span class="highlight">Every decision must be queryable</span></li>
+        <li><span class="highlight">Every decision must be validatable</span></li>
+        <li><span class="highlight">Institutional context must persist across sessions</span></li>
+      </ul>
+      <p style="margin-top: var(--space-xl);">No publicly available design system solves for these.</p>
+    </div>
+  </section>
+
+  <div class="divider">/ /</div>
+
+  <!-- 8. DesignerPunk: Framing -->
+  <section>
+    <div class="section-inner reveal">
+      <h3>// DesignerPunk</h3>
+      <div class="insight-stack" style="margin-top: var(--space-2xl);">
+        <p class="insight-line">Understand the system.</p>
+        <p class="insight-line">Verify the work.</p>
+        <p class="insight-line insight-line--accent">Remember what happened.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider">/ /</div>
+
+  <!-- 8b. DesignerPunk: Architecture -->
+  <section>
+    <div class="section-inner reveal">
+      <h3>// DesignerPunk</h3>
+      <h2>The Architecture</h2>
+      <div style="margin-top: var(--space-xl);">
+        <img src="v1.svg" alt="DesignerPunk architecture: three nested hexagonal layers — Tokens (Rosetta) at core, Components (Stemma) wrapping them, Intelligence and Governance (Civitas) as the outer layer" style="width: 100%; height: auto;">
+      </div>
+    </div>
+  </section>
+
+  <div class="divider">/ /</div>
+
+  <!-- 8c. DesignerPunk: Architecture -->
+  <section>
+    <div class="section-inner reveal">
+      <h3>// DesignerPunk</h3>
+      <h2>Inferable infrastructure</h2>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2xl); margin-top: var(--space-xl); align-items: start;">
+        <ul class="reveal-stagger" style="padding-top: var(--space-lg);">
+          <li style="margin-bottom: var(--space-lg);"><span class="highlight">Mathematical derivation</span><br><span style="color: var(--color-text-secondary);">"REM-concept" calculation system</span></li>
+          <li style="margin-bottom: var(--space-lg);"><span class="highlight">Semantic layers</span><br><span style="color: var(--color-text-secondary);">Self-documenting and intent-driven naming</span></li>
+          <li style="margin-bottom: var(--space-lg);"><span class="highlight">Source of truth linkage</span><br><span style="color: var(--color-text-secondary);">437 source tokens, 5 platforms, 1,900 outputs across</span></li>
+          <li><span class="highlight">Metadata richness + tooling</span><br><span style="color: var(--color-text-secondary);">Answers + context = value</span></li>
+        </ul>
+        <div class="code-block">
+          <span class="token-comment">// Base value: relative unit definition</span><br>
+          <span class="token-name">export const</span> <span class="token-value">SPACING_BASE_VALUE</span> = 8;<br><br>
+          <span class="token-comment">// Primitive: mathematical naming</span><br>
+          <span class="token-name">space100</span> = <span class="token-value">SPACING_BASE_VALUE</span> <span class="token-comment">// 8</span><br>
+          <span class="token-name">space150</span> = <span class="token-value">SPACING_BASE_VALUE × 1.5</span> <span class="token-comment">// 12</span><br>
+          <span class="token-name">space200</span> = <span class="token-value">SPACING_BASE_VALUE × 2</span> <span class="token-comment">// 16</span><br><br>
+          <span class="token-comment">// Semantic: relationship</span><br>
+          <span class="token-name">group.normal</span>: <span class="token-value">space100</span><br>
+          <span class="token-name">related.loose</span>: <span class="token-value">space300</span><br><br>
+          <span class="token-comment">// Semantic: intent</span><br>
+          <span class="token-name">tapAreaMinimum</span>: <span class="token-value">space550</span> <span class="token-comment">// 44</span><br>
+          <span class="token-name">tapAreaRecommended</span>: <span class="token-value">space600</span> <span class="token-comment">// 48</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider">/ /</div>
+
+  <!-- 8d. DesignerPunk: Implementation -->
+  <section>
+    <div class="section-inner reveal">
+      <h3>// DesignerPunk</h3>
+      <h2>Collaboration systems</h2>
+      <ul class="reveal-stagger" style="margin-top: var(--space-xl);">
+        <li><span class="highlight">Machine-validatable contracts and intent</span> — a Button's contract says <code>keyboard_navigation: required</code> across all platforms, but <code>haptic_feedback: required</code> only on iOS/Android. Shared intent, platform-native implementation.</li>
+        <li><span class="highlight">Progressive disclosure</span> — Layered, continuous onboarding for humans and AI Agents that's cost efficient.</li>
+        <li><span class="highlight">Collaboration protocols</span> — "Devil's advocate", "Ballot measures", "Honest thoughts?", and more.</li>
+      </ul>
+      <div style="display: flex; gap: var(--space-xl); margin-top: var(--space-2xl);">
+        <div class="screenshot-thumb mcp-thumb" style="flex: 1; cursor: pointer; background: var(--color-surface); padding: var(--space-md);" onclick="document.getElementById('lightbox-docs-mcp').classList.add('active')">
+          <img src="Documentation MCP.svg" alt="Documentation MCP architecture" style="width: 100%; height: auto;">
+          <span class="screenshot-thumb-label">Documentation MCP</span>
+        </div>
+        <div class="screenshot-thumb mcp-thumb" style="flex: 1; cursor: pointer; background: var(--color-surface); padding: var(--space-md);" onclick="document.getElementById('lightbox-app-mcp').classList.add('active')">
+          <img src="Application MCP.svg" alt="Application MCP architecture" style="width: 100%; height: auto;">
+          <span class="screenshot-thumb-label">Application MCP</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lightbox overlays -->
+    <div class="screenshot-lightbox" id="lightbox-docs-mcp" onclick="this.classList.remove('active')">
+      <img src="Documentation MCP.svg" alt="Documentation MCP — full view" style="background: var(--color-surface); padding: var(--space-lg); border-radius: 8px;">
+    </div>
+    <div class="screenshot-lightbox" id="lightbox-app-mcp" onclick="this.classList.remove('active')">
+      <img src="Application MCP.svg" alt="Application MCP — full view" style="background: var(--color-surface); padding: var(--space-lg); border-radius: 8px;">
+    </div>
+  </section>
+
+  <div class="divider">/ /</div>
+
+  <!-- 8e. DesignerPunk: Agent Specialization -->
+  <section>
+    <div class="section-inner reveal">
+      <h3>// DesignerPunk</h3>
+      <h2>Agent design + experience</h2>
+      <ul class="reveal-stagger" style="margin-top: var(--space-lg);">
+        <li><span class="highlight">8 agents. Bounded domains.</span></li>
+        <li>A token agent doesn't touch components.</li>
+        <li>A platform agent doesn't make architectural decisions.</li>
+      </ul>
+      <div style="margin-top: var(--space-xl);">
+        <img src="../assets/Portrait3.png" alt="Stylized portraits of the 8 AI agent namesakes" style="width: 100%; height: auto;">
+      </div>
+    </div>
+  </section>
+
+  <div class="divider">/ /</div>
+
+  <!-- 10. DesignerPunk: Results -->
+  <section>
+    <div class="section-inner reveal">
+      <h3>// DesignerPunk</h3>
+      <h2>The Result</h2>
+      <div class="stat-bar">
+        <div class="stat-bar-anchor">
+          <span class="stat">1</span>
+          <span class="stat-label">Human</span>
+        </div>
+        <div class="stat-bar-grid reveal-stagger">
+          <div>
+            <span class="stat">217</span>
+            <span class="stat-label">Primitive tokens</span>
+          </div>
+          <div>
+            <span class="stat">193</span>
+            <span class="stat-label">Semantic tokens</span>
+          </div>
+          <div>
+            <span class="stat">9</span>
+            <span class="stat-label">Component families</span>
+          </div>
+          <div>
+            <span class="stat">34</span>
+            <span class="stat-label">Foundation components</span>
+          </div>
+          <div>
+            <span class="stat">210</span>
+            <span class="stat-label">Contracts</span>
+          </div>
+          <div>
+            <span class="stat">8</span>
+            <span class="stat-label">AI Agents</span>
+          </div>
+          <div>
+            <span class="stat">3</span>
+            <span class="stat-label">MCP servers</span>
+          </div>
+          <div>
+            <span class="stat">-87%</span>
+            <span class="stat-label">Context load</span>
+          </div>
+          <div>
+            <span class="stat">300+</span>
+            <span class="stat-label">Test suites</span>
+          </div>
+          <div>
+            <span class="stat">8k+</span>
+            <span class="stat-label">Governance tests</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider">/ /</div>
+
+  <!-- 11. DesignerPunk: Where It's Going -->
+  <section>
+    <div class="section-inner reveal">
+      <h3>// DesignerPunk</h3>
+      <h2>The Trajectory</h2>
+      <div style="margin-top: var(--space-2xl); font-family: var(--font-display); font-weight: 700; line-height: 2;">
+        <p style="color: var(--color-text); max-width: none; font-size: clamp(1.25rem, 2.8vw, 1.85rem);">✓ &nbsp;Craft a design system <span style="color: var(--color-accent);">with AI.</span></p>
+        <p style="color: var(--color-text); max-width: none; font-size: clamp(1.25rem, 2.8vw, 1.85rem);">✓ &nbsp;Craft a design system with AI <span style="color: var(--color-accent);">as a first-class user.</span></p>
+        <p style="color: var(--color-text-secondary); max-width: none; font-size: clamp(1.25rem, 2.8vw, 1.85rem);">☐ &nbsp;Craft a design system with AI as a first-class user <span style="color: var(--color-accent);">that can build products.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider">/ /</div>
+
+  <!-- 12. Close -->
+  <section class="section--close">
+    <div class="section-inner reveal">
+      <h2>The question isn't whether AI will be part of design system work.</h2>
+      <p style="font-size: 1.25rem; color: var(--color-text);">It's whether your infrastructure is ready for it.</p>
+      <p style="margin-top: var(--space-2xl);">Happy to go deeper on anything. The system live: ask me, or DesignerPunk, anything.</p>
+      <div style="margin-top: var(--space-2xl); font-family: var(--font-mono); font-size: 0.875rem; color: var(--color-text-secondary);">
+        <p style="margin-bottom: var(--space-sm); color: var(--color-text-secondary); font-size: 0.875rem;"><code>npm install @3fn/core</code></p>
+        <p style="color: var(--color-text-secondary); font-size: 0.875rem;">github.com/3fn/DesignerPunk</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Scroll-triggered reveal via IntersectionObserver
+    const reveals = document.querySelectorAll('.reveal, .reveal-stagger');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    reveals.forEach(el => observer.observe(el));
+
+    // Ping pong collapsing animation — one arc per step
+    const table = document.getElementById('pingpong-table');
+    if (table) {
+      const ball = table.querySelector('.ball');
+      const ppObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            let step = 0;
+            let goingRight = true;
+
+            const volley = () => {
+              // Arc up
+              ball.classList.add('arc-up');
+              ball.classList.remove('arc-down');
+
+              // Move horizontally
+              if (goingRight) {
+                ball.classList.add('arc-right');
+                ball.classList.remove('arc-left');
+              } else {
+                ball.classList.add('arc-left');
+                ball.classList.remove('arc-right');
+              }
+
+              // Arc down at midpoint
+              setTimeout(() => {
+                ball.classList.remove('arc-up');
+                ball.classList.add('arc-down');
+              }, 375);
+
+              // Collapse table after ball lands
+              setTimeout(() => {
+                step++;
+                table.className = 'pingpong-table step-' + step;
+                goingRight = !goingRight;
+                if (step < 3) {
+                  setTimeout(volley, 800);
+                } else {
+                  // After step 3, do one more volley then final arc
+                  setTimeout(() => {
+                    // Start final arc — goes up and toward center
+                    ball.className = 'ball';
+                    ball.offsetHeight; // force reflow
+                    ball.className = 'ball final-arc';
+
+                    // Drop down to center
+                    setTimeout(() => {
+                      ball.className = 'ball final-drop';
+
+                      // Tiny bounce
+                      setTimeout(() => {
+                        ball.className = 'ball final-bounce';
+
+                        // Settle
+                        setTimeout(() => {
+                          ball.className = 'ball final-settle';
+                          // Now collapse to step 4
+                          table.className = 'pingpong-table step-4';
+                        }, 200);
+                      }, 300);
+                    }, 500);
+                  }, 600);
+                }
+              }, 900);
+            };
+
+            setTimeout(volley, 10000);
+            ppObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      ppObserver.observe(table);
+    }
+
+    // Screenshot lightbox toggle
+    const thumb = document.getElementById('screenshot-thumb');
+    const lightbox = document.getElementById('screenshot-lightbox');
+    if (thumb && lightbox) {
+      thumb.addEventListener('click', () => lightbox.classList.add('active'));
+      lightbox.addEventListener('click', () => lightbox.classList.remove('active'));
+    }
+
+    // MCP lightbox keyboard navigation
+    const mcpLightboxes = ['lightbox-docs-mcp', 'lightbox-app-mcp'];
+    document.addEventListener('keydown', (e) => {
+      const activeIndex = mcpLightboxes.findIndex(id => document.getElementById(id).classList.contains('active'));
+
+      // If no lightbox is open, handle slide navigation
+      if (activeIndex === -1) {
+        if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+          e.preventDefault();
+          const sections = document.querySelectorAll('section');
+          const scrollY = window.scrollY;
+          for (const section of sections) {
+            if (section.offsetTop > scrollY + 10) {
+              document.documentElement.style.scrollSnapType = 'none';
+              window.scrollTo({ top: section.offsetTop, behavior: 'smooth' });
+              setTimeout(() => { document.documentElement.style.scrollSnapType = ''; }, 800);
+              break;
+            }
+          }
+        }
+        if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+          e.preventDefault();
+          const sections = [...document.querySelectorAll('section')].reverse();
+          const scrollY = window.scrollY;
+          for (const section of sections) {
+            if (section.offsetTop < scrollY - 10) {
+              document.documentElement.style.scrollSnapType = 'none';
+              window.scrollTo({ top: section.offsetTop, behavior: 'smooth' });
+              setTimeout(() => { document.documentElement.style.scrollSnapType = ''; }, 800);
+              break;
+            }
+          }
+        }
+        return;
+      }
+
+      // Lightbox is open — handle MCP cycling
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        const next = e.key === 'ArrowRight'
+          ? (activeIndex + 1) % mcpLightboxes.length
+          : (activeIndex - 1 + mcpLightboxes.length) % mcpLightboxes.length;
+        const currentEl = document.getElementById(mcpLightboxes[activeIndex]);
+        const nextEl = document.getElementById(mcpLightboxes[next]);
+        currentEl.style.transition = 'none';
+        nextEl.style.transition = 'none';
+        currentEl.classList.remove('active');
+        nextEl.classList.add('active');
+        requestAnimationFrame(() => {
+          currentEl.style.transition = '';
+          nextEl.style.transition = '';
+        });
+      }
+      if (e.key === 'Escape') {
+        document.getElementById(mcpLightboxes[activeIndex]).classList.remove('active');
+      }
+    });
+  </script>
+</body>
+</html>
