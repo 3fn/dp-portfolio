@@ -303,14 +303,14 @@ body {
   white-space: nowrap;
   overflow: hidden;
   transform: rotate(var(--flap-rotation, 0deg));
-  transition: all var(--duration-350) var(--easing-standard);
+  transition: all var(--duration-350) var(--easing-decelerate);
 }
 .flap-token.resolved {
   transform: rotate(0deg);
 }
 .flap-text {
   display: inline-block;
-  transition: transform var(--duration-250) var(--easing-standard);
+  transition: transform var(--duration-250) var(--easing-decelerate);
 }
 
 @media (prefers-reduced-motion: reduce) {
