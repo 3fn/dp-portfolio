@@ -24,12 +24,22 @@ function applyPhase(tokens, phase) {
     }
     const newText = token.states[phase];
     if (token.text.textContent === newText) continue;
+    const currentWidth = token.el.offsetWidth;
+    token.el.style.inlineSize = currentWidth + "px";
     token.text.style.transform = "rotateX(90deg)";
     token.text.style.opacity = "0";
     setTimeout(() => {
       token.text.textContent = newText;
+      token.el.style.inlineSize = "auto";
+      const newWidth = token.el.offsetWidth;
+      token.el.style.inlineSize = currentWidth + "px";
+      token.el.offsetHeight;
+      token.el.style.inlineSize = newWidth + "px";
       token.text.style.transform = "rotateX(0deg)";
       token.text.style.opacity = "1";
+      setTimeout(() => {
+        token.el.style.inlineSize = "";
+      }, 350);
     }, 150);
   }
 }
