@@ -303,7 +303,7 @@ body {
   white-space: nowrap;
   overflow: hidden;
   transform: rotate(var(--flap-rotation, 0deg));
-  transition: transform var(--duration-350) var(--easing-standard);
+  transition: all var(--duration-350) var(--easing-standard);
 }
 .flap-token.resolved {
   transform: rotate(0deg);
