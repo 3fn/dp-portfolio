@@ -36,9 +36,8 @@ jobs:
           port: 22
           username: ${{ secrets.DREAMHOST_USERNAME }}
           password: ${{ secrets.DREAMHOST_PASSWORD }}
-          localDir: './_site'
+          localDir: '_site'
           remoteDir: ${{ secrets.DREAMHOST_REMOTE_DIR }}
-          removeExtraFilesOnServer: true
           forceUpload: true
           concurrency: 1
       
