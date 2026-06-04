@@ -13,6 +13,7 @@ body {
   background: var(--white-100);
   color: var(--color-contrast-on-light);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 /* === UTILITIES === */
@@ -94,6 +95,9 @@ body {
   gap: var(--space-200);
   margin-block-start: var(--space-200);
   margin-inline-start: var(--product-layout-content-indent);
+}
+.hero__ctas .button-cta__icon {
+  margin-block-end: calc(var(--space-050) * -1);
 }
 .hero__visual {
   position: relative;
@@ -859,9 +863,6 @@ body {
 }
 .cta__body p + p {
   margin-block-start: var(--space-200);
-}
-.cta__body p:last-of-type {
-  text-box-trim: trim-end;
 }
 .cta__featured p {
   font-family: var(--font-family-display);

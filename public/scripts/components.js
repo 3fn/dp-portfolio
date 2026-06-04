@@ -2792,6 +2792,9 @@ var NavHeaderContent = class extends HTMLElement {
           outline: 2px solid var(--color-action-primary);
           outline-offset: 2px;
         }
+        .nav-link icon-base {
+          margin-block-end: var(--space-050);
+        }
 
         @media (forced-colors: active) {
           .nav-link {

@@ -62,7 +62,7 @@ import Base from '../layouts/Base.astro';
         </div>
       </div>
       <div class="hero__visual" aria-hidden="true">
-        <object class="hero__illustration" type="image/svg+xml" data="/illustration/heroIllustration.svg" aria-hidden="true"></object>
+        <object class="hero__illustration" type="image/svg+xml" data="/illustration/heroIllustration.svg" aria-hidden="true" title="DesignerPunk system illustration"></object>
         <div class="hero__chord">
           <canvas id="chord"></canvas>
           <p class="sr-only">Interactive diagram showing relationships between DesignerPunk's MCP servers, AI agents, and system components including Rosetta (tokens), Stemma (components), and their connections.</p>
@@ -149,7 +149,7 @@ import Base from '../layouts/Base.astro';
       <div class="ecosystem__layout">
         <svg class="ecosystem__connectors" aria-hidden="true"></svg>
         <div class="ecosystem__system ecosystem__system--rosetta" role="button" tabindex="0" aria-label="Rosetta">
-          <object class="ecosystem__system-header" type="image/svg+xml" data="/illustration/header-rosetta.svg" aria-hidden="true"></object>
+          <object class="ecosystem__system-header" type="image/svg+xml" data="/illustration/header-rosetta.svg" aria-hidden="true" title="Rosetta"></object>
           <p class="ecosystem__system-desc">A mathematical token system that generates native code for iOS, Android, and Web from a single unitless source.</p>
           <ul class="ecosystem__system-highlights">
             <li>Tokens carry their own mathematical formulas, validated at build time</li>
@@ -157,10 +157,10 @@ import Base from '../layouts/Base.astro';
           </ul>
         </div>
         <div class="ecosystem__illustration">
-          <object type="image/svg+xml" data="/illustration/systemIllustration.svg" aria-hidden="true"></object>
+          <object type="image/svg+xml" data="/illustration/systemIllustration.svg" aria-hidden="true" title="DesignerPunk ecosystem diagram"></object>
         </div>
         <div class="ecosystem__system ecosystem__system--civitas" role="button" tabindex="0" aria-label="Civitas">
-          <object class="ecosystem__system-header" type="image/svg+xml" data="/illustration/header-civitas.svg" aria-hidden="true"></object>
+          <object class="ecosystem__system-header" type="image/svg+xml" data="/illustration/header-civitas.svg" aria-hidden="true" title="Civitas"></object>
           <p class="ecosystem__system-desc">Governance infrastructure of MCP servers and specialized agents for accurate documentation and consistent implementation.</p>
           <ul class="ecosystem__system-highlights">
             <li>Rules served via MCP at the point of decision — 82% context reduction</li>
@@ -168,7 +168,7 @@ import Base from '../layouts/Base.astro';
           </ul>
         </div>
         <div class="ecosystem__system ecosystem__system--stemma" role="button" tabindex="0" aria-label="Stemma">
-          <object class="ecosystem__system-header" type="image/svg+xml" data="/illustration/header-stemma.svg" aria-hidden="true"></object>
+          <object class="ecosystem__system-header" type="image/svg+xml" data="/illustration/header-stemma.svg" aria-hidden="true" title="Stemma"></object>
           <p class="ecosystem__system-desc">A component architecture that governs cross-platform development through behavioral contracts and a shared API.</p>
           <ul class="ecosystem__system-highlights">
             <li>Structured behavioral contracts — inheritable, queryable, with explicit exclusions</li>
@@ -181,7 +181,7 @@ import Base from '../layouts/Base.astro';
       <div class="ecosystem__modal-backdrop" id="eco-backdrop"></div>
       <div class="ecosystem__modal" id="eco-modal" role="dialog" aria-modal="true">
         <button-icon class="ecosystem__modal-close" icon="x" aria-label="Close" variant="tertiary" size="small"></button-icon>
-        <object class="ecosystem__modal-header" id="eco-modal-header" type="image/svg+xml" data="" aria-hidden="true"></object>
+        <object class="ecosystem__modal-header" id="eco-modal-header" type="image/svg+xml" data="" aria-hidden="true" title="System header"></object>
         <div class="ecosystem__modal-body">
           <div class="ecosystem__modal-copy">
             <p class="ecosystem__modal-desc" id="eco-modal-desc"></p>
@@ -234,10 +234,10 @@ import Base from '../layouts/Base.astro';
 
       <!-- Code shots (not a section landmark) -->
       <div id="code-shots">
-        <object type="image/svg+xml" data="/illustration/codeblock-terminal-components.svg" aria-hidden="true"></object>
-        <object type="image/svg+xml" data="/illustration/codeblock-terminal-mcp.svg" aria-hidden="true"></object>
-        <object type="image/svg+xml" data="/illustration/codeblock-terminal-tokens.svg" aria-hidden="true"></object>
-        <object type="image/svg+xml" data="/illustration/codeblock-terminal-contracts.svg" aria-hidden="true"></object>
+        <object type="image/svg+xml" data="/illustration/codeblock-terminal-components.svg" aria-hidden="true" title="Components code example"></object>
+        <object type="image/svg+xml" data="/illustration/codeblock-terminal-mcp.svg" aria-hidden="true" title="MCP code example"></object>
+        <object type="image/svg+xml" data="/illustration/codeblock-terminal-tokens.svg" aria-hidden="true" title="Tokens code example"></object>
+        <object type="image/svg+xml" data="/illustration/codeblock-terminal-contracts.svg" aria-hidden="true" title="Contracts code example"></object>
       </div>
     </section>
 
@@ -291,9 +291,9 @@ import Base from '../layouts/Base.astro';
       <div id="agents">
         <h3 class="agents__title">Agents</h3>
         <div class="agents__portraits">
-          <object type="image/svg+xml" data="/illustration/agentPortrait-system-core.svg" data-group="core" aria-hidden="true"></object>
-          <object type="image/svg+xml" data="/illustration/agentPortrait-system-product.svg" data-group="product" aria-hidden="true"></object>
-          <object type="image/svg+xml" data="/illustration/agentPortrait-system-implementation.svg" data-group="implementation" aria-hidden="true"></object>
+          <object type="image/svg+xml" data="/illustration/agentPortrait-system-core.svg" data-group="core" aria-hidden="true" title="Design system agents portrait"></object>
+          <object type="image/svg+xml" data="/illustration/agentPortrait-system-product.svg" data-group="product" aria-hidden="true" title="Product system agents portrait"></object>
+          <object type="image/svg+xml" data="/illustration/agentPortrait-system-implementation.svg" data-group="implementation" aria-hidden="true" title="Implementation agents portrait"></object>
         </div>
         <div class="agents__directory">
           <div>

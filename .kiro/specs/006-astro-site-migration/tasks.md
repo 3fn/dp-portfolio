@@ -202,7 +202,7 @@ Five parent tasks sequenced to build foundation first (Astro install + directory
 
 ---
 
-- [ ] 4. Deploy Pipeline & Cleanup
+- [x] 4. Deploy Pipeline & Cleanup
 
   **Type**: Parent
   **Validation**: Tier 3 - Comprehensive (includes success criteria)
@@ -228,7 +228,7 @@ Five parent tasks sequenced to build foundation first (Astro install + directory
   - Commit changes: `./.kiro/hooks/commit-task.sh "Task 4 Complete: Deploy Pipeline & Cleanup"`
   - Verify: Check GitHub for committed changes
 
-  - [ ] 4.1 Update deploy workflow
+  - [x] 4.1 Update deploy workflow
     **Type**: Implementation
     **Validation**: Tier 2 - Standard
     **Agent**: Sparky
@@ -237,7 +237,7 @@ Five parent tasks sequenced to build foundation first (Astro install + directory
     - Verify workflow syntax is valid
     - _Requirements: 8.1, 8.2, 8.3_
 
-  - [ ] 4.2 Clean up orphaned files
+  - [x] 4.2 Clean up orphaned files
     **Type**: Setup
     **Validation**: Tier 1 - Minimal
     **Agent**: Sparky
@@ -246,14 +246,14 @@ Five parent tasks sequenced to build foundation first (Astro install + directory
     - Verify no remaining references to deleted files
     - _Requirements: 10.1, 10.2_
 
-  - [ ] 4.3 Update .gitignore
+  - [x] 4.3 Update .gitignore
     **Type**: Setup
     **Validation**: Tier 1 - Minimal
     **Agent**: Sparky
     - Add `_site/` to `.gitignore`
     - _Requirements: 10.3_
 
-  - [ ] 4.4 Update product context for agents
+  - [x] 4.4 Update product context for agents
     **Type**: Implementation
     **Validation**: Tier 2 - Standard
     **Agent**: Sparky
@@ -263,7 +263,7 @@ Five parent tasks sequenced to build foundation first (Astro install + directory
 
 ---
 
-- [ ] 5. Verification & Go-Live
+- [x] 5. Verification & Go-Live
 
   **Type**: Parent
   **Validation**: Tier 3 - Comprehensive (includes success criteria)
@@ -288,7 +288,7 @@ Five parent tasks sequenced to build foundation first (Astro install + directory
   - Commit changes: `./.kiro/hooks/commit-task.sh "Task 5 Complete: Verification & Go-Live"`
   - Verify: Check GitHub for committed changes
 
-  - [ ] 5.1 Staging verification
+  - [x] 5.1 Staging verification
     **Type**: Implementation
     **Validation**: Tier 2 - Standard
     **Agent**: Sparky
@@ -300,7 +300,7 @@ Five parent tasks sequenced to build foundation first (Astro install + directory
     - Check network tab for any failed asset loads
     - _Requirements: 2.1, 2.2, 2.3, 8.4, 9.4_
 
-  - [ ] 5.2 Production go-live
+  - [x] 5.2 Production go-live
     **Type**: Implementation
     **Validation**: Tier 2 - Standard
     **Agent**: Sparky
