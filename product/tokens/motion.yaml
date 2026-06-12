@@ -20,3 +20,17 @@ tokens:
     description: Neon easter egg flicker animation cycle
     rationale: "Tuned to 24fps flicker perception threshold. Decorative — not a functional transition."
     platforms: [web]
+
+  docsVizNodeDuration:
+    value: 500
+    unitType: duration
+    description: Transition duration for visualization node radius and stroke changes
+    rationale: "Longer than system duration350 (350ms) — decorative visualization transitions benefit from slower, more deliberate motion. >300ms tolerance applies."
+    platforms: [web]
+
+  docsVizPositionDuration:
+    value: 600
+    unitType: duration
+    description: Transition duration for visualization node position changes
+    rationale: "Slower than node property changes (500ms) to create staged reveal effect. Positions settle after properties begin changing. Decorative, not functional."
+    platforms: [web]

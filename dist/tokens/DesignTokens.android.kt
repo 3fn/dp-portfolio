@@ -1,6 +1,6 @@
 /**
  * DesignerPunk Design System - Android Tokens
- * Generated: 2026-05-27T21:34:31.709Z
+ * Generated: 2026-06-11T02:46:46.849Z
  * Version: 1.0.0
  * Platform: Android (Kotlin Constants)
  */
@@ -46,8 +46,6 @@ object DesignTokens {
     const val blur_200: Float = 32f
     // base × 2.5 = 16 × 2.5 = 40
     const val blur_250: Float = 40f
-    // base × 4 = 16 × 4 = 64
-    const val blur_400: Float = 64f
 
     // BORDERWIDTH TOKENS
     // base × 0 = 1 × 0 = 0
@@ -70,114 +68,56 @@ object DesignTokens {
     const val breakpoint_lg: Float = 1440f
 
     // COLOR TOKENS
-    // Systematic gray scale progression - lightest
-    const val gray_100: Int = Color.argb(255, 178, 188, 196)
-    // Systematic gray scale progression - medium-light
-    const val gray_200: Int = Color.argb(255, 94, 112, 124)
-    // Systematic gray scale progression - medium
-    const val gray_300: Int = Color.argb(255, 38, 50, 58)
-    // Systematic gray scale progression - dark
-    const val gray_400: Int = Color.argb(255, 24, 34, 40)
-    // Systematic gray scale progression - darkest
-    const val gray_500: Int = Color.argb(255, 16, 22, 26)
-    // Systematic black scale progression - lightest
-    const val black_100: Int = Color.argb(255, 58, 58, 69)
-    // Systematic black scale progression - medium
-    const val black_200: Int = Color.argb(255, 34, 34, 42)
-    // Systematic black scale progression - dark
-    const val black_300: Int = Color.argb(255, 10, 10, 15)
-    // Systematic black scale progression - very dark
-    const val black_400: Int = Color.argb(255, 6, 6, 10)
-    // Systematic black scale progression - pure black
-    const val black_500: Int = Color.argb(255, 0, 0, 0)
-    // Systematic white scale progression - pure white
-    const val white_100: Int = Color.argb(255, 255, 255, 255)
-    // Systematic white scale progression - near white
-    const val white_200: Int = Color.argb(255, 245, 245, 250)
-    // Systematic white scale progression - light gray-white
-    const val white_300: Int = Color.argb(255, 232, 232, 240)
-    // Systematic white scale progression - medium gray-white
-    const val white_400: Int = Color.argb(255, 197, 197, 213)
-    // Systematic white scale progression - dark gray-white
-    const val white_500: Int = Color.argb(255, 153, 153, 171)
-    // Systematic yellow scale progression - lightest
-    const val yellow_100: Int = Color.argb(255, 254, 251, 204)
-    // Systematic yellow scale progression - medium-light
-    const val yellow_200: Int = Color.argb(255, 252, 246, 128)
-    // Systematic yellow scale progression - bright
-    const val yellow_300: Int = Color.argb(255, 249, 240, 2)
-    // Systematic yellow scale progression - dark
-    const val yellow_400: Int = Color.argb(255, 199, 192, 2)
-    // Systematic yellow scale progression - darkest
-    const val yellow_500: Int = Color.argb(255, 143, 139, 1)
-    // Systematic orange scale progression - lightest
-    const val orange_100: Int = Color.argb(255, 255, 229, 220)
-    // Systematic orange scale progression - medium-light
-    const val orange_200: Int = Color.argb(255, 255, 184, 160)
-    // Systematic orange scale progression - bright
-    const val orange_300: Int = Color.argb(255, 255, 107, 53)
-    // Systematic orange scale progression - dark
-    const val orange_400: Int = Color.argb(255, 204, 85, 41)
-    // Systematic orange scale progression - darkest
-    const val orange_500: Int = Color.argb(255, 143, 60, 29)
-    // Systematic purple scale progression - lightest
-    const val purple_100: Int = Color.argb(255, 243, 224, 255)
-    // Systematic purple scale progression - medium-light
-    const val purple_200: Int = Color.argb(255, 217, 138, 255)
-    // Systematic purple scale progression - primary brand
-    const val purple_300: Int = Color.argb(255, 176, 38, 255)
-    // Systematic purple scale progression - dark
-    const val purple_400: Int = Color.argb(255, 141, 30, 204)
-    // Systematic purple scale progression - darkest
-    const val purple_500: Int = Color.argb(255, 99, 21, 143)
-    // Systematic pink scale progression - lightest
-    const val pink_100: Int = Color.argb(255, 255, 218, 232)
-    // Systematic pink scale progression - medium-light
-    const val pink_200: Int = Color.argb(255, 255, 130, 180)
-    // Systematic pink scale progression - base
-    const val pink_300: Int = Color.argb(255, 255, 42, 109)
-    // Systematic pink scale progression - dark
-    const val pink_400: Int = Color.argb(255, 204, 34, 87)
-    // Systematic pink scale progression - darkest
-    const val pink_500: Int = Color.argb(255, 128, 21, 55)
-    // Systematic green scale progression - lightest
-    const val green_100: Int = Color.argb(255, 230, 255, 245)
-    // Systematic green scale progression - medium-light
-    const val green_200: Int = Color.argb(255, 128, 255, 187)
-    // Systematic green scale progression - bright
-    const val green_300: Int = Color.argb(255, 51, 255, 153)
-    // Systematic green scale progression - strong
-    const val green_400: Int = Color.argb(255, 0, 255, 136)
-    // Systematic green scale progression - darkest/glow
-    const val green_500: Int = Color.argb(255, 0, 204, 110)
-    // Systematic cyan scale progression - lightest
-    const val cyan_100: Int = Color.argb(255, 204, 251, 255)
-    // Systematic cyan scale progression - medium-light
-    const val cyan_200: Int = Color.argb(255, 128, 246, 255)
-    // Systematic cyan scale progression - tech primary
-    const val cyan_300: Int = Color.argb(255, 0, 240, 255)
-    // Systematic cyan scale progression - dark
-    const val cyan_400: Int = Color.argb(255, 0, 192, 204)
-    // Systematic cyan scale progression - darkest
-    const val cyan_500: Int = Color.argb(255, 0, 136, 143)
-    // Systematic teal scale progression - lightest
-    const val teal_100: Int = Color.argb(255, 217, 232, 234)
-    // Systematic teal scale progression - medium-light
-    const val teal_200: Int = Color.argb(255, 77, 155, 165)
-    // Systematic teal scale progression - secondary UI
-    const val teal_300: Int = Color.argb(255, 26, 83, 92)
-    // Systematic teal scale progression - dark
-    const val teal_400: Int = Color.argb(255, 21, 66, 74)
-    // Systematic teal scale progression - darkest
-    const val teal_500: Int = Color.argb(255, 15, 46, 51)
-    // Systematic shadow color family - pure black (0, 0, 0) - mode-agnostic
-    const val shadow_black_100: Int = Color.argb(255, 0, 0, 0)
-    // Systematic shadow color family - blue-tinted gray for sunrise/sunset lighting - mode-agnostic
-    const val shadow_blue_100: Int = Color.argb(255, 20, 25, 40)
-    // Systematic shadow color family - warm-tinted gray for cool lighting environments - mode-agnostic
-    const val shadow_orange_100: Int = Color.argb(255, 25, 20, 15)
-    // Systematic shadow color family - blue-gray for ambient/overcast conditions - mode-agnostic
-    const val shadow_gray_100: Int = Color.argb(255, 15, 20, 30)
+    val pink_100 = Oklch(0.92f, 0.045f, 10f).toComposeColor()
+    val pink_200 = Oklch(0.76f, 0.16f, 10f).toComposeColor()
+    val pink_300 = Oklch(0.65f, 0.242f, 10f).toComposeColor()
+    val pink_400 = Oklch(0.55f, 0.203f, 10f).toComposeColor()
+    val pink_500 = Oklch(0.4f, 0.141f, 10f).toComposeColor()
+    val orange_100 = Oklch(0.94f, 0.031f, 39.5f).toComposeColor()
+    val orange_200 = Oklch(0.84f, 0.089f, 39.5f).toComposeColor()
+    val orange_300 = Oklch(0.7f, 0.193f, 39.5f).toComposeColor()
+    val orange_400 = Oklch(0.6f, 0.162f, 39.5f).toComposeColor()
+    val orange_500 = Oklch(0.46f, 0.121f, 39.5f).toComposeColor()
+    val yellow_100 = Oklch(0.98f, 0.061f, 107f).toComposeColor()
+    val yellow_200 = Oklch(0.9f, 0.14f, 107f).toComposeColor()
+    val yellow_300 = Oklch(0.8f, 0.2f, 107f).toComposeColor()
+    val yellow_400 = Oklch(0.68f, 0.169f, 107f).toComposeColor()
+    val yellow_500 = Oklch(0.56f, 0.133f, 107f).toComposeColor()
+    val green_100 = Oklch(0.97f, 0.029f, 154f).toComposeColor()
+    val green_200 = Oklch(0.88f, 0.149f, 154f).toComposeColor()
+    val green_300 = Oklch(0.78f, 0.208f, 154f).toComposeColor()
+    val green_400 = Oklch(0.66f, 0.18f, 154f).toComposeColor()
+    val green_500 = Oklch(0.54f, 0.14f, 154f).toComposeColor()
+    val cyan_100 = Oklch(0.96f, 0.048f, 202.5f).toComposeColor()
+    val cyan_200 = Oklch(0.87f, 0.108f, 202.5f).toComposeColor()
+    val cyan_300 = Oklch(0.76f, 0.148f, 202.5f).toComposeColor()
+    val cyan_400 = Oklch(0.64f, 0.125f, 202.5f).toComposeColor()
+    val cyan_500 = Oklch(0.52f, 0.097f, 202.5f).toComposeColor()
+    val teal_100 = Oklch(0.92f, 0.035f, 209f).toComposeColor()
+    val teal_200 = Oklch(0.72f, 0.1f, 209f).toComposeColor()
+    val teal_300 = Oklch(0.52f, 0.08f, 209f).toComposeColor()
+    val teal_400 = Oklch(0.38f, 0.06f, 209f).toComposeColor()
+    val teal_500 = Oklch(0.28f, 0.045f, 209f).toComposeColor()
+    val purple_100 = Oklch(0.93f, 0.046f, 310f).toComposeColor()
+    val purple_200 = Oklch(0.76f, 0.179f, 310f).toComposeColor()
+    val purple_300 = Oklch(0.6f, 0.286f, 310f).toComposeColor()
+    val purple_400 = Oklch(0.51f, 0.241f, 310f).toComposeColor()
+    val purple_500 = Oklch(0.4f, 0.183f, 310f).toComposeColor()
+    val white_100 = Oklch(1f, 0f, 260f).toComposeColor()
+    val white_200 = Oklch(0.95f, 0.006f, 260f).toComposeColor()
+    val white_300 = Oklch(0.9f, 0.01f, 260f).toComposeColor()
+    val white_400 = Oklch(0.85f, 0.013f, 260f).toComposeColor()
+    val white_500 = Oklch(0.8f, 0.015f, 260f).toComposeColor()
+    val gray_100 = Oklch(0.72f, 0.018f, 260f).toComposeColor()
+    val gray_200 = Oklch(0.62f, 0.02f, 260f).toComposeColor()
+    val gray_300 = Oklch(0.52f, 0.02f, 260f).toComposeColor()
+    val gray_400 = Oklch(0.42f, 0.018f, 260f).toComposeColor()
+    val gray_500 = Oklch(0.32f, 0.015f, 260f).toComposeColor()
+    val black_100 = Oklch(0.28f, 0.013f, 260f).toComposeColor()
+    val black_200 = Oklch(0.21f, 0.01f, 260f).toComposeColor()
+    val black_300 = Oklch(0.14f, 0.008f, 260f).toComposeColor()
+    val black_400 = Oklch(0.07f, 0.004f, 260f).toComposeColor()
+    val black_500 = Oklch(0f, 0f, 260f).toComposeColor()
 
     // DENSITY TOKENS
     // base × 0.75 = 1.0 × 0.75 = 0.75
@@ -193,7 +133,7 @@ object DesignTokens {
     // N/A - Categorical value
     const val font_family_system: String = "-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif"
     // N/A - Categorical value
-    const val font_family_mono: String = ""Commit Mono", SF Mono, Monaco, Inconsolata, "Roboto Mono", Consolas, "Courier New", monospace"
+    const val font_family_mono: String = ""Commit Mono", "SF Mono", Monaco, Inconsolata, "Roboto Mono", Consolas, "Courier New", monospace"
     // N/A - Categorical value
     const val font_family_display: String = "Rajdhani, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif"
     // N/A - Categorical value
@@ -374,8 +314,6 @@ object DesignTokens {
     const val shadow_offset_y_300: Float = 12f
     // base × 4 = 4 × 4 = 16
     const val shadow_offset_y_400: Float = 16f
-    // base × 6 = 4 × 6 = 24
-    const val shadow_offset_y_600: Float = 24f
     // base × 0 = 4 × 0 = 0
     const val shadow_offset_y_000: Float = 0f
     // base × 0 = 0.3 × 0 = 0
@@ -452,12 +390,6 @@ object DesignTokens {
     val space_700 = 56.dp
     // base × 8 = 8 × 8 = 64
     val space_800 = 64.dp
-    // base × 9 = 8 × 9 = 72
-    val space_900 = 72.dp
-    // base × 12 = 8 × 12 = 96
-    val space_1200 = 96.dp
-    // base × 16 = 8 × 16 = 128
-    val space_1600 = 128.dp
 
     // TAPAREA TOKENS
     // base × 1 = 44 × 1 = 44
@@ -494,7 +426,6 @@ object DesignTokens {
     val color_identity_human = Color.argb(255, 255, 107, 53)
     val color_identity_agent = Color.argb(255, 77, 155, 165)
     val color_action_secondary = Color.argb(255, 24, 34, 40)
-    val color_action_navigation_surface = Color.argb(255, 128, 255, 187)
     val color_attention = Color.argb(255, 199, 192, 2)
     val color_highlight = Color.argb(255, 249, 240, 2)
     val color_tech = Color.argb(255, 141, 30, 204)
@@ -502,7 +433,6 @@ object DesignTokens {
     val color_text_default = Color.argb(255, 38, 50, 58)
     val color_text_muted = Color.argb(255, 94, 112, 124)
     val color_text_subtle = Color.argb(255, 178, 188, 196)
-    val color_text_strong = Color.argb(255, 10, 10, 15)
     val color_contrast_on_light = Color.argb(255, 0, 0, 0)
     val color_contrast_on_dark = Color.argb(255, 255, 255, 255)
     val color_structure_surface = Color.argb(255, 245, 245, 250)
@@ -515,7 +445,7 @@ object DesignTokens {
     val glow_neon_purple = Color.argb(255, 99, 21, 143)
     val glow_neon_cyan = Color.argb(255, 0, 136, 143)
     val glow_neon_yellow = Color.argb(255, 143, 139, 1)
-    val glow_neon_green = Color.argb(255, 0, 204, 110)
+    val glow_neon_green = Color.argb(255, 51, 255, 153)
     val glow_neon_pink = Color.argb(255, 128, 21, 55)
     val color_progress_current_background = Color.argb(255, 0, 240, 255)
     val color_progress_current_text = Color.argb(255, 0, 192, 204)
@@ -549,8 +479,6 @@ object DesignTokens {
     val typography_label_md = Typography(fontSize = font_size_100, lineHeight = line_height_100, fontFamily = font_family_body, fontWeight = font_weight_500, letterSpacing = letter_spacing_100)
     val typography_label_md_float = Typography(fontSize = font_size_075, lineHeight = line_height_075, fontFamily = font_family_body, fontWeight = font_weight_500, letterSpacing = letter_spacing_100)
     val typography_label_lg = Typography(fontSize = font_size_125, lineHeight = line_height_125, fontFamily = font_family_body, fontWeight = font_weight_500, letterSpacing = letter_spacing_100)
-    val typography_display_label_md = Typography(fontSize = font_size_150, lineHeight = line_height_150, fontFamily = font_family_display, fontWeight = font_weight_700, letterSpacing = letter_spacing_100)
-    val typography_display_label_lg = Typography(fontSize = font_size_200, lineHeight = line_height_200, fontFamily = font_family_display, fontWeight = font_weight_700, letterSpacing = letter_spacing_100)
     val typography_code_sm = Typography(fontSize = font_size_075, lineHeight = line_height_075, fontFamily = font_family_mono, fontWeight = font_weight_400, letterSpacing = letter_spacing_100)
     val typography_code_md = Typography(fontSize = font_size_100, lineHeight = line_height_100, fontFamily = font_family_mono, fontWeight = font_weight_400, letterSpacing = letter_spacing_100)
     val typography_code_lg = Typography(fontSize = font_size_125, lineHeight = line_height_125, fontFamily = font_family_mono, fontWeight = font_weight_400, letterSpacing = letter_spacing_100)
@@ -558,7 +486,7 @@ object DesignTokens {
     val shadow_container = Typography(offsetX = shadow_offset_x_000, offsetY = shadow_offset_y_100, blur = blur_075, opacity = shadow_opacity_moderate, color = shadow_black_100)
     val shadow_navigation = Typography(offsetX = shadow_offset_x_000, offsetY = shadow_offset_y_100, blur = blur_125, opacity = shadow_opacity_soft, color = shadow_black_100)
     val shadow_dropdown = Typography(offsetX = shadow_offset_x_000, offsetY = shadow_offset_y_100, blur = blur_075, opacity = shadow_opacity_moderate, color = shadow_black_100)
-    val shadow_modal = Typography(offsetX = shadow_offset_x_000, offsetY = shadow_offset_y_600, blur = blur_400, opacity = shadow_opacity_depth_200, color = shadow_black_100)
+    val shadow_modal = Typography(offsetX = shadow_offset_x_000, offsetY = shadow_offset_y_200, blur = blur_100, opacity = shadow_opacity_depth_200, color = shadow_black_100)
     val shadow_toast = Typography(offsetX = shadow_offset_x_000, offsetY = shadow_offset_y_300, blur = blur_150, opacity = shadow_opacity_depth_300, color = shadow_black_100)
     val shadow_tooltip = Typography(offsetX = shadow_offset_x_000, offsetY = shadow_offset_y_300, blur = blur_150, opacity = shadow_opacity_depth_300, color = shadow_black_100)
     val shadow_fab = Typography(offsetX = shadow_offset_x_300, offsetY = shadow_offset_y_400, blur = blur_025, opacity = shadow_opacity_hard, color = shadow_blue_100)
@@ -608,7 +536,7 @@ object DesignTokens {
     // WCAG 2.4.7 Focus Visible
     val accessibility_focus_width = border_width_200
     // WCAG 2.4.7 Focus Visible
-    val accessibility_focus_color = Color.argb(255, 255, 42, 109)
+    val accessibility_focus_color = Color.argb(255, 0, 240, 255)
     val border_none = border_width_000
     val border_default = border_width_100
     val border_emphasis = border_width_200
@@ -637,8 +565,6 @@ object DesignTokens {
     val space_sectioned_tight = space_400
     val space_sectioned_normal = space_500
     val space_sectioned_loose = space_600
-    val space_sectioned_generous = space_1200
-    val space_sectioned_expansive = space_1600
     val space_inset_100 = space_100
     val space_inset_150 = space_150
     val space_inset_200 = space_200

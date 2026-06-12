@@ -88,7 +88,7 @@ A `value:` product token requires demonstrating that the nearest system token do
 |--------|-----------|-----------|
 | Opacity | ±0.04 | Below JND (just-noticeable difference) for transparency |
 | Spacing | ±1 logical unit | Sub-pixel at standard density; invisible |
-| Color (RGB) | ±2 per channel | Below human color discrimination threshold |
+| Color (OKLCH) | ΔE₀₀ ≤ 1.0 | Below CIEDE2000 perceptual threshold; accounts for gamut shape |
 | Border width | 0 (exact only) | 1px vs 2px is always visible |
 | Radius | ±1 logical unit | Subtle curvature difference; usually invisible |
 | Duration (≤300ms) | ±20ms | Short animations are perceptually sensitive |

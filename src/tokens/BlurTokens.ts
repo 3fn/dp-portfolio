@@ -141,18 +141,6 @@ export const blur: Record<string, PrimitiveToken> = {
     isPrecisionTargeted: false,
     platforms: generateBlurPlatformValues(BLUR_BASE_VALUE * 2.5)
   },
-  blur400: {
-    name: 'blur400',
-    category: TokenCategory.BLUR,
-    baseValue: BLUR_BASE_VALUE * 4,
-    familyBaseValue: BLUR_BASE_VALUE,
-    description: 'Blur 400 - modal elevation blur',
-    mathematicalRelationship: `base × 4 = ${BLUR_BASE_VALUE} × 4 = ${BLUR_BASE_VALUE * 4}`,
-    baselineGridAlignment: true,
-    isStrategicFlexibility: false,
-    isPrecisionTargeted: false,
-    platforms: generateBlurPlatformValues(BLUR_BASE_VALUE * 4)
-  },
 };
 
 export const blurNames = Object.keys(blur);

@@ -21,46 +21,7 @@ contracts:
       Render Nav-Header-App, verify no heading elements in DOM/tree.
     required: true
 
-  visual_background_override:
-    category: visual
-    description: Product-controlled background color via CSS custom property
-    behavior: |
-      Nav-Header-App exposes --nav-bg-override as a public CSS custom property.
-      When set, it overrides the default color.structure.canvas background.
-      When not set, the inherited color.structure.canvas value applies.
-      The component does not manage contrast — the product is responsible
-      for updating text/icon colors when the background changes.
-    wcag: null
-    platforms: [web, ios, android]
-    validation:
-      - Setting --nav-bg-override changes rendered background color
-      - Removing --nav-bg-override restores color.structure.canvas default
-      - Custom property pierces Shadow DOM boundary (web)
-    test_approach: |
-      Set --nav-bg-override on host element, verify background changes.
-      Remove property, verify default restores.
-    required: true
-
-  visual_shadow:
-    category: visual
-    description: Always-present drop shadow beneath nav bar
-    behavior: |
-      Nav-Header-App renders a drop shadow beneath the nav bar using the
-      shadow.navigation semantic token. The shadow is intrinsic (always
-      present, not optional). It provides depth separation between the
-      nav bar and page content below.
-    wcag: null
-    platforms: [web, ios, android]
-    validation:
-      - Drop shadow is always present
-      - Shadow uses shadow.navigation token (--shadow-navigation on web)
-    test_approach: |
-      Render Nav-Header-App, verify box-shadow matches shadow.navigation
-      token value.
-    required: true
-
-excludes:
+excluded:
   state_disabled:
     reason: "DesignerPunk does not support disabled states."
     category: state
-    reference: "DesignerPunk Philosophy — no disabled states"

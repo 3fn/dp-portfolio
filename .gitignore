@@ -73,7 +73,10 @@ Thumbs.db
 .kiro/release-state/
 
 # Local archive (personal reference files)
-.archive/
+archive/
+docs/archive/
+docs/presentation/
+docs/specs/
 
 # @3fn/core feedback (local only, shared via other channels)
 .kiro/@3fn-core-feedback/

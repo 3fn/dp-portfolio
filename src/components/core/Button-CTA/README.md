@@ -31,68 +31,19 @@ The Button-CTA (Call-to-Action Button) component is a cross-platform button foll
 
 ---
 
-## Polymorphic Rendering (`href` prop)
-
-When `href` is set, Button-CTA renders as an `<a>` element instead of `<button>`. All visual styling remains identical — only semantics and keyboard behavior change.
-
-```html
-<!-- Renders as <button> -->
-<button-cta label="Submit" variant="primary"></button-cta>
-
-<!-- Renders as <a> — outbound link with trailing icon -->
-<button-cta
-  label="View on GitHub"
-  variant="primary"
-  href="https://github.com/3fn/DesignerPunkv2"
-  target="_blank"
-  icon="external-link"
-  icon-position="trailing"
-></button-cta>
-```
-
-### Behavior Differences
-
-| Behavior | `<button>` (no href) | `<a>` (href set) |
-|----------|---------------------|-------------------|
-| Keyboard activation | Enter + Space | Enter only |
-| Role | button | link |
-| `disabled` prop | Respected | Ignored |
-| `aria-disabled` | Set | Not rendered |
-| `rel` attribute | N/A | Auto-set when `target="_blank"` |
-
-### Security
-
-When `target="_blank"` is set and no explicit `rel` is provided, `rel="noopener noreferrer"` is automatically applied.
-
-### Icon Position
-
-Use `icon-position="trailing"` for outbound link indicators:
-
-```html
-<!-- Leading icon (default) -->
-<button-cta label="Next" icon="arrow-right"></button-cta>
-
-<!-- Trailing icon (outbound links) -->
-<button-cta label="GitHub" href="..." icon="external-link" icon-position="trailing"></button-cta>
-```
-
----
-
 ## Behavioral Contracts
 
-This component guarantees 9 behavioral contracts across all platforms:
+This component guarantees 7 behavioral contracts across all platforms:
 
 | Contract | Description | Platforms | WCAG |
 |----------|-------------|-----------|------|
-| `interaction_focusable` | Can receive keyboard focus | web, ios, android | 2.1.1, 2.4.7 |
-| `interaction_pressable` | Responds to press/click events | web, ios, android | 2.1.1 |
-| `interaction_hover` | Visual feedback on hover | web | 1.4.13 |
-| `interaction_pressed` | Visual feedback when pressed | web, ios, android | 2.4.7 |
-| `state_disabled` | Prevents interaction when disabled | web, ios, android | 4.1.2 |
-| `state_loading` | Shows loading indicator | web, ios, android | 4.1.3 |
-| `interaction_focus_ring` | WCAG 2.4.7 focus visible indicator | web, ios, android | 2.4.7 |
-| `content_renders_link` | Renders as `<a>` when href provided | web, ios, android | 4.1.2 |
-| `layout_icon_position` | Icon at leading or trailing position | web, ios, android | — |
+| `focusable` | Can receive keyboard focus | web, ios, android | 2.1.1, 2.4.7 |
+| `pressable` | Responds to press/click events | web, ios, android | 2.1.1 |
+| `hover_state` | Visual feedback on hover | web | 1.4.13 |
+| `pressed_state` | Visual feedback when pressed | web, ios, android | 2.4.7 |
+| `disabled_state` | Prevents interaction when disabled | web, ios, android | 4.1.2 |
+| `loading_state` | Shows loading indicator | web, ios, android | 4.1.3 |
+| `focus_ring` | WCAG 2.4.7 focus visible indicator | web, ios, android | 2.4.7 |
 
 ---
 
@@ -169,15 +120,11 @@ ButtonCTA(
 | `label` | `string` | ✅ Yes | - | Button text label |
 | `size` | `'small' \| 'medium' \| 'large'` | No | `'medium'` | Button size variant |
 | `variant` | `'primary' \| 'secondary' \| 'tertiary'` | No | `'primary'` | Button visual variant |
-| `icon` | `IconName` | No | - | Optional icon |
-| `iconPosition` | `'leading' \| 'trailing'` | No | `'leading'` | Icon position relative to label |
+| `icon` | `IconName` | No | - | Optional leading icon |
 | `noWrap` | `boolean` | No | `false` | Prevent text wrapping |
-| `disabled` | `boolean` | No | `false` | Disable interaction (ignored when `href` set) |
+| `disabled` | `boolean` | No | `false` | Disable button interaction |
 | `onPress` | `() => void` | ✅ Yes | - | Press/click handler |
 | `testID` | `string` | No | - | Test identifier |
-| `href` | `string` | No | - | URL — renders as `<a>` when set |
-| `target` | `string` | No | - | Link target (e.g., `'_blank'`) |
-| `rel` | `string` | No | auto | Link rel (auto-set to `'noopener noreferrer'` when `target="_blank"`) |
 
 ### Events
 

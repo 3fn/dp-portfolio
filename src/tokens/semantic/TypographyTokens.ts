@@ -335,35 +335,6 @@ export const typographyTokens: Record<string, Omit<SemanticToken, 'primitiveToke
     description: 'Large label typography with 18px font size, 1.75 line height, body font family, medium weight'
   },
 
-  // Display Label Variants (display font for interactive labels)
-  'typography.displayLabelMd': {
-    name: 'typography.displayLabelMd',
-    primitiveReferences: {
-      fontSize: 'fontSize150',
-      lineHeight: 'lineHeight150',
-      fontFamily: 'fontFamilyDisplay',
-      fontWeight: 'fontWeight700',
-      letterSpacing: 'letterSpacing100'
-    },
-    category: SemanticCategory.TYPOGRAPHY,
-    context: 'Display-font interactive labels for primary nav buttons and CTAs',
-    description: 'Medium display label with 20px font size, display font family (Rajdhani), bold weight. Used for nav buttons and interactive labels requiring display font presence.'
-  },
-
-  'typography.displayLabelLg': {
-    name: 'typography.displayLabelLg',
-    primitiveReferences: {
-      fontSize: 'fontSize200',
-      lineHeight: 'lineHeight200',
-      fontFamily: 'fontFamilyDisplay',
-      fontWeight: 'fontWeight700',
-      letterSpacing: 'letterSpacing100'
-    },
-    category: SemanticCategory.TYPOGRAPHY,
-    context: 'Display-font interactive labels for subnav buttons and larger CTAs',
-    description: 'Large display label with 22px font size, display font family (Rajdhani), bold weight. Used for subnav buttons and larger interactive labels requiring display font presence.'
-  },
-
   // Code Text Size Variants
   'typography.codeSm': {
     name: 'typography.codeSm',

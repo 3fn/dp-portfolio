@@ -2736,16 +2736,16 @@
           "resolvedType": "COLOR",
           "valuesByMode": {
             "light": {
-              "aliasOf": "color/green/500"
+              "aliasOf": "color/green/300"
             },
             "dark": {
-              "aliasOf": "color/green/500"
+              "aliasOf": "color/green/300"
             },
             "wcag": {
-              "aliasOf": "color/green/500"
+              "aliasOf": "color/green/300"
             }
           },
-          "description": "Vibrant green glow referencing green500"
+          "description": "Vibrant green glow referencing green300 (highest chroma in family, brighter for glow effect)"
         },
         {
           "name": "glow/neonPink",

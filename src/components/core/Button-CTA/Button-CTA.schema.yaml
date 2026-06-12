@@ -81,14 +81,6 @@ properties:
       Optional leading icon from Icon System. Icon size is automatically
       determined by button size (small/medium: 24px, large: 32px).
       Icons use optical weight compensation for visual balance.
-
-  iconPosition:
-    type: "'leading' | 'trailing'"
-    required: false
-    default: "'leading'"
-    description: |
-      Icon position relative to label text. Default is leading (before text).
-      Use trailing for outbound link indicators (e.g., external-link icon).
   
   noWrap:
     type: boolean
@@ -121,29 +113,6 @@ properties:
       - Web: data-testid
       - iOS: accessibilityIdentifier
       - Android: testTag
-
-  href:
-    type: string
-    required: false
-    description: |
-      When set, component renders as <a> instead of <button> (polymorphic rendering).
-      All visual styling remains identical. Keyboard behavior changes to native link
-      semantics (Enter activates, Space does not). The `disabled` prop is ignored
-      when href is set.
-
-  target:
-    type: string
-    required: false
-    description: |
-      Link target attribute. Only applies when href is set.
-      When "_blank", rel is auto-set to "noopener noreferrer" if not explicitly provided.
-
-  rel:
-    type: string
-    required: false
-    description: |
-      Link rel attribute. Only applies when href is set.
-      Auto-set to "noopener noreferrer" when target="_blank" and not explicitly provided.
 
 
 # Behavioral contracts moved to contracts.yaml

@@ -151,6 +151,8 @@ npx designerpunk mcp:product  # Product MCP — screen specs, domain objects, pr
 
 All commands resolve data paths from the installed package automatically. No configuration needed for the default case. The Product MCP starts with empty data if no `product/` directory exists yet — that's expected for a new project. Create the directory when you're ready to write screen specs (see "Product MCP Setup" below).
 
+**Data freshness is automatic.** MCP servers detect stale data and rebuild before responding (30-second threshold gate). If you edit product YAML, component schemas, or steering docs, the next query will serve fresh data automatically. No manual health checks or `rebuild_index` calls needed during normal operation.
+
 On startup, each server prints its connection details:
 ```
 DesignerPunk Application MCP started
@@ -279,6 +281,23 @@ The pipeline shows where tokens are being read from:
 
 The `(local)` annotation means tokens resolve from your configured `tokenSource` path. If `tokenSource` is omitted, you'll see `(package)` — meaning tokens come from the installed `@3fn/core` package.
 
+**Generate options:**
+
+| Flag | Effect |
+|------|--------|
+| `--force` | Skip staleness detection, always regenerate product tokens |
+| `--product-only` | Skip system token pipeline, regenerate product tokens only (uses existing `token-index/`) |
+
+```bash
+# Fast iteration on product tokens only
+npx designerpunk generate --product-only
+
+# Force full regeneration
+npx designerpunk generate --force
+```
+
+Product token generation automatically detects staleness — if your YAML source files haven't changed since the last build, generation is skipped with a log message. Use `--force` to override.
+
 To validate token definitions without generating files:
 ```bash
 npx designerpunk validate
@@ -296,6 +315,18 @@ Produces platform token files in your configured output directory:
 - `token-index/` — structured YAML index (primitives, semantics, components) loaded by the Application MCP for token queries
 
 If you registered a custom theme, the output includes themed values scoped by `data-theme` attribute (web) or as additional theme structs/instances (iOS/Android).
+
+### Platform Dependencies for OKLCH Color Output
+
+The color system uses OKLCH format. Platform-specific dependencies are needed for native color rendering:
+
+| Platform | Dependency | Purpose | Install |
+|----------|-----------|---------|---------|
+| **Web** | None | CSS `oklch()` is native (Chrome 111+, Safari 15.4+, Firefox 113+) | — |
+| **iOS** | [ChromaKit](https://github.com/HarshilShah/ChromaKit) | `Color.oklch(L, C, H)` API | Swift Package Manager |
+| **Android** | [colormath](https://github.com/ajalt/colormath) | `Oklch(L, C, H).toComposeColor()` | Gradle dependency |
+
+`npx designerpunk init` scaffolds these dependencies in platform-specific config files. If upgrading from a pre-OKLCH version, `npx designerpunk sync` will flag the new dependency requirements.
 
 ### 7. Build Your Product
 
@@ -908,3 +939,66 @@ Agents primarily use MCP queries for design system knowledge. Knowledge bases su
 | `list_product_templates()` | Product-specific layout and content patterns |
 | `get_product_health()` | Index status, data counts, reverse index sizes, gap counts, warnings |
 | `rebuild_product_index()` | Re-index product data and rebuild all reverse indexes |
+
+---
+
+## Upgrading
+
+After upgrading `@3fn/core` to a new version, run `sync` to detect and apply package changes:
+
+```bash
+# Preview what changed (no modifications)
+npx designerpunk sync --dry-run
+
+# Interactive sync (governance auto-applies, source confirms, conflicts prompt)
+npx designerpunk sync
+
+# Factory reset — overwrite all files to match package (no prompts)
+npx designerpunk sync --accept-all
+```
+
+### How Sync Works
+
+1. Compares your project files against the installed `@3fn/core` package using content hashes
+2. Classifies each file: **New**, **Updated** (safe to apply), **Conflict** (you edited it), or **Unchanged**
+3. Applies changes using a two-tier model:
+   - **Governance** (steering docs, agent configs): auto-applied without prompting
+   - **Source** (tokens, components, types): requires your confirmation
+4. Updates `.kiro/sync-manifest.json` (commit this to git — it tracks sync state for your team)
+
+### Conflict Resolution
+
+When a file you've edited also changed in the package, sync prompts:
+- `[s]kip` — keep your version
+- `[o]verwrite` — replace with the package version
+- `[d]iff` — view a unified diff, then decide
+
+### .designerpunkignore
+
+To permanently exclude files from sync (files you've intentionally customized):
+
+```gitignore
+# .designerpunkignore — uses .gitignore syntax
+.kiro/agents/custom-agent.md
+src/tokens/MyCustomTokens.ts
+```
+
+### CI/CD Integration
+
+In non-interactive environments, sync automatically runs in dry-run mode. Use `--accept-all` to apply changes in CI pipelines:
+
+```bash
+npx designerpunk sync --accept-all  # Applies all updates without prompting
+```
+
+### OKLCH Color Migration (v12+)
+
+When upgrading to the OKLCH color system version:
+
+1. **Run sync** — updates token source files from RGBA to OKLCH channel primitives
+2. **Regenerate** — `npx designerpunk generate` produces OKLCH output (CSS `oklch()`, Swift ChromaKit, Kotlin colormath)
+3. **Add platform dependencies** — iOS: ChromaKit via SPM. Android: colormath via Gradle.
+4. **Product color tokens** — convert any `value:` color fields from RGB/hex to OKLCH format: `value: "oklch(0.65 0.24 10)"`. Use an online converter or ask Ada for batch conversion.
+5. **Verify** — CSS custom property names are unchanged (`var(--pink-300)` still works). Only the values change format.
+
+**Visual changes**: Palette refinements (teal, green, orange) and blend re-tuning produce intentional visual differences. See release notes for details.

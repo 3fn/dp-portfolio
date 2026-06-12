@@ -1,6 +1,6 @@
 /**
  * DesignerPunk Design System - Component Tokens
- * Generated: 2026-05-27T21:34:31.715Z
+ * Generated: 2026-06-11T02:46:46.855Z
  * Version: 1.0.0
  * Platform: Web (CSS Custom Properties)
  *
@@ -11,17 +11,17 @@
 :root {
 
   /* Avatar Component Tokens */
-  /* Extra small avatar (24px = 3× base) for inline mentions and compact UI contexts where minimal visual footprint is needed */
+  /* Extra small avatar (24px). Compact contexts — inline mentions, dense lists. */
   --avatar-size-xs: var(--size-300);
-  /* Small avatar (32px = 4× base) for list items and secondary UI contexts with moderate visual presence */
+  /* Small avatar (32px). Comment threads, contact lists. */
   --avatar-size-sm: var(--size-400);
-  /* Medium avatar (40px = 5× base) as the default size, providing balanced visual weight for most UI contexts */
+  /* Medium avatar (40px). Default size — profile cards, list items. */
   --avatar-size-md: var(--size-500);
-  /* Large avatar (48px = 6× base) for profile headers and primary UI contexts requiring prominent visual presence */
+  /* Large avatar (48px). Profile headers, prominent identity display. */
   --avatar-size-lg: var(--size-600);
-  /* Extra large avatar (80px = 10× base) for profile pages and hero sections where avatar is a focal point */
+  /* Extra large avatar (80px). Profile pages, hero sections. */
   --avatar-size-xl: var(--size-1000);
-  /* Extra extra large avatar (128px = 16× base) for hero profiles and full-page profile views requiring maximum visual impact */
+  /* Extra extra large avatar (128px). Full profile view, onboarding. */
   --avatar-size-xxl: var(--size-1600);
   /* Icon size for xs avatar (12px = 1.5× base) maintains 50% ratio (12/24). No existing icon token at this size, so component token fills the gap. */
   --avatar-icon-size-xs: 12;

@@ -1,0 +1,340 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+<Base>
+  <Fragment slot="meta">
+    <title>Rosetta · Token Architecture — DesignerPunk</title>
+    <meta name="description" content="Deep-dive documentation for Rosetta — the mathematical token system that powers DesignerPunk's cross-platform design infrastructure.">
+    <link rel="icon" type="image/svg+xml" href="/images/image-dp-favicon.svg">
+  </Fragment>
+
+  <Fragment slot="head">
+    <style is:global>
+      .docs-layout {
+        display: grid;
+        grid-template-columns: var(--product-layout-docs-nav-rail-collapsed) 1fr 1fr;
+        min-block-size: 100vh;
+      }
+      .docs-nav {
+        position: sticky;
+        inset-block-start: 0;
+        block-size: 100vh;
+        inline-size: var(--product-layout-docs-nav-rail-collapsed);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-block: var(--space-300);
+        transition: inline-size var(--duration-150) var(--easing-standard);
+        background: var(--white-100);
+        border-inline-end: var(--border-width-100) solid var(--gray-100);
+        z-index: 10;
+      }
+      .docs-nav:hover,
+      .docs-nav:focus-within {
+        inline-size: var(--product-layout-docs-nav-rail-expanded);
+        box-shadow: var(--shadow-container);
+      }
+      .docs-nav__list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-050);
+        padding: 0;
+        margin: 0;
+      }
+      .docs-nav__link {
+        display: flex;
+        align-items: center;
+        gap: var(--space-150);
+        padding: var(--space-125) var(--space-250);
+        text-decoration: none;
+        color: var(--gray-300);
+        border-radius: 0 var(--radius-050) var(--radius-050) 0;
+        transition: color var(--duration-150) var(--easing-standard), background var(--duration-150) var(--easing-standard);
+        white-space: nowrap;
+      }
+      .docs-nav__link:hover {
+        color: var(--black-300);
+        background: rgba(0, 0, 0, 0.03);
+      }
+      .docs-nav__link:focus-visible {
+        outline: 2px solid var(--cyan-200);
+        outline-offset: -2px;
+      }
+      .docs-nav__link[aria-current="true"] {
+        color: var(--cyan-200);
+      }
+      .docs-nav__link[aria-current="true"] .docs-nav__dot {
+        background: var(--cyan-200);
+        box-shadow: 0 0 8px var(--product-color-docs-viz-node-glow);
+      }
+      .docs-nav__dot {
+        inline-size: var(--space-100);
+        block-size: var(--space-100);
+        border-radius: var(--radius-half);
+        background: var(--gray-100);
+        flex-shrink: 0;
+        transition: background var(--duration-150) var(--easing-standard), box-shadow var(--duration-150) var(--easing-standard);
+      }
+      .docs-nav__num {
+        font-family: var(--font-family-mono);
+        font-size: var(--font-size-050);
+        font-weight: var(--font-weight-600);
+        min-inline-size: 18px;
+      }
+      .docs-nav__text {
+        font-family: var(--font-family-body);
+        font-size: var(--font-size-050);
+        font-weight: var(--font-weight-500);
+        opacity: 0;
+        transition: opacity var(--duration-150) var(--easing-standard);
+      }
+      .docs-nav:hover .docs-nav__text,
+      .docs-nav:focus-within .docs-nav__text {
+        opacity: 1;
+      }
+      .docs-narrative {
+        max-inline-size: var(--product-layout-docs-narrative-max-width);
+        padding-inline: var(--space-500);
+        padding-block: var(--space-800) var(--space-600);
+      }
+      .docs-viz {
+        position: sticky;
+        inset-block-start: 0;
+        block-size: 100vh;
+        background: var(--black-400);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .docs-skip {
+        position: absolute;
+        inset-block-start: -100%;
+        inset-inline-start: var(--space-100);
+        z-index: 9999;
+        background: var(--color-structure-canvas);
+        padding: var(--space-100) var(--space-200);
+        border-radius: var(--radius-050);
+        text-decoration: none;
+        color: var(--color-text-default);
+      }
+      .docs-skip:focus-visible {
+        inset-block-start: var(--space-100);
+      }
+
+      .viz-svg {
+        inline-size: 100%;
+        block-size: 100%;
+        max-inline-size: 400px;
+      }
+      .viz-svg circle {
+        fill: transparent;
+        stroke-width: 1.5;
+        transition: all 0.5s ease;
+      }
+      .viz-svg text {
+        font-family: var(--font-family-mono);
+        font-size: 10px;
+        fill: rgba(255, 255, 255, 0.6);
+        text-anchor: middle;
+      }
+      .viz-svg line {
+        stroke: var(--cyan-200);
+        stroke-width: 1.5;
+        opacity: 0.3;
+      }
+      .viz-svg g {
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
+      }
+      .viz-tooltip {
+        position: absolute;
+        display: none;
+        background: var(--product-color-docs-viz-tooltip-bg);
+        border: var(--border-width-100) solid var(--cyan-200);
+        border-radius: var(--radius-050);
+        padding: var(--space-150) var(--space-200);
+        max-inline-size: var(--product-layout-docs-tooltip-max-width);
+        font-family: var(--font-family-mono);
+        font-size: var(--font-size-050);
+        line-height: 1.6;
+        z-index: 100;
+        pointer-events: none;
+      }
+      .viz-tooltip__title {
+        color: var(--cyan-200);
+        font-weight: var(--font-weight-700);
+        margin-block-end: var(--space-050);
+      }
+      .viz-tooltip__problem {
+        color: rgba(255, 255, 255, 0.55);
+        margin-block-end: var(--space-100);
+        padding-block-end: var(--space-100);
+        border-block-end: var(--border-width-100) solid rgba(255, 255, 255, 0.1);
+      }
+      .viz-tooltip__solution {
+        color: rgba(255, 255, 255, 0.85);
+      }
+      .docs-intro {
+        font-size: var(--typography-body-lg-font-size);
+        color: var(--color-print-default);
+        margin-block-end: var(--space-700);
+      }
+      .docs-breadcrumb {
+        font-size: var(--font-size-075);
+        color: var(--color-text-muted);
+        margin-block-start: var(--space-500);
+        font-style: italic;
+      }
+
+      @media (max-width: 1023px) {
+        .docs-layout {
+          grid-template-columns: 1fr;
+        }
+        .docs-nav {
+          display: none;
+        }
+        .docs-viz {
+          position: static;
+          block-size: auto;
+          padding-block: var(--space-500);
+        }
+      }
+
+      @media (forced-colors: active) {
+        .docs-nav__link {
+          border: 1px solid transparent;
+        }
+        .docs-nav__link:focus-visible {
+          outline: 2px solid Highlight;
+        }
+        .docs-nav__link[aria-current="true"] {
+          border-color: Highlight;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .docs-nav,
+        .docs-nav__link,
+        .docs-nav__dot,
+        .docs-nav__text {
+          transition: none;
+        }
+      }
+
+      @media print {
+        .docs-layout {
+          display: block;
+        }
+        .docs-nav,
+        .docs-viz {
+          display: none;
+        }
+        .docs-narrative {
+          max-inline-size: none;
+          padding: 0;
+        }
+      }
+    </style>
+    <script src="/scripts/rosetta-nav.js" type="module"></script>
+    <script src="/scripts/rosetta-viz.js" type="module"></script>
+  </Fragment>
+
+  <a href="#docs-content" class="docs-skip">Skip to content</a>
+
+  <div class="docs-layout">
+    <!-- Nav Rail -->
+    <nav class="docs-nav" aria-label="Page sections">
+      <ul class="docs-nav__list">
+        <li><a href="#beat-problem" class="docs-nav__link" aria-current="true"><span class="docs-nav__dot"></span><span class="docs-nav__num">01</span><span class="docs-nav__text">The Problem</span></a></li>
+        <li><a href="#beat-principle" class="docs-nav__link"><span class="docs-nav__dot"></span><span class="docs-nav__num">02</span><span class="docs-nav__text">The Principle</span></a></li>
+        <li><a href="#beat-architecture" class="docs-nav__link"><span class="docs-nav__dot"></span><span class="docs-nav__num">03</span><span class="docs-nav__text">The Architecture</span></a></li>
+        <li><a href="#beat-payoff" class="docs-nav__link"><span class="docs-nav__dot"></span><span class="docs-nav__num">04</span><span class="docs-nav__text">What This Enables</span></a></li>
+      </ul>
+    </nav>
+
+    <!-- Narrative Column -->
+    <main class="docs-narrative" id="docs-content">
+      <article>
+        <h1>Rosetta</h1>
+        <p class="docs-intro">The token architecture that makes every value declare why it exists.</p>
+
+        <section id="beat-problem" aria-labelledby="beat-problem-title">
+          <h2 id="beat-problem-title">The Problem</h2>
+          <p>Token systems without deliberate architecture fail in predictable ways. These aren't theoretical — they're the failure modes that motivated every architectural decision in Rosetta.</p>
+          <h3>Drift</h3>
+          <p>Token values diverge from their intended mathematical relationships without detection. A spacing value gets tweaked from 16 to 15, nobody notices, the grid breaks silently.</p>
+          <h3>Arbitrariness</h3>
+          <p>Values exist without explanation. <code>$spacing-md: 12px</code> — why 12? Nobody remembers. New values get added without justification because there's no mechanism requiring it.</p>
+          <h3>Platform Divergence</h3>
+          <p>Authors add platform units at the token level. iOS and Android get different values for the same concept because nobody enforces a single source.</p>
+          <h3>Missing Audit Trail</h3>
+          <p>No way to trace a platform output back to a design decision. Changes happen without attribution. Theme overrides break things silently.</p>
+        </section>
+
+        <section id="beat-principle" aria-labelledby="beat-principle-title">
+          <h2 id="beat-principle-title">The Unifying Principle</h2>
+          <p>Rosetta's answer isn't "math" — it's that every value declares why it exists. The principle manifests differently across token types:</p>
+          <h3>Formula-Based</h3>
+          <p>Spacing, sizing, and typography tokens declare their mathematical relationship: <code>base × 2 = 8 × 2 = 16</code>. The formula IS the origin story.</p>
+          <h3>Categorical</h3>
+          <p>Font families explicitly declare they're NOT formula-driven: <code>N/A — Categorical value</code>. The architecture makes it structurally impossible to add a value without declaring its origin.</p>
+          <h3>Compositional</h3>
+          <p>Shadows and typography bundle multiple primitives. Origin is the composition: <code>primitiveReferences: {'{'} offsetX, offsetY, blur, opacity, color {'}'}</code>.</p>
+          <h3>Referential</h3>
+          <p>Semantic colors declare their origin as a reference chain: <code>primitiveReferences: {'{'} value: 'green400' {'}'}</code>. Every OKLCH color decomposes into three perceptual channels — hue identifies the family, lightness controls the step, chroma controls saturation.</p>
+          <h3>Component</h3>
+          <p>Component tokens require a <code>reasoning</code> field: <code>buttonIcon.inset.medium → space125</code> — you must explain why this component needs this value.</p>
+          <p>The <code>mathematicalRelationship</code> field exists on every primitive token definition — the TypeScript interface requires it. The architecture makes it structurally impossible to add a value without declaring its origin.</p>
+        </section>
+
+        <section id="beat-architecture" aria-labelledby="beat-architecture-title">
+          <h2 id="beat-architecture-title">The Architecture</h2>
+          <p>Rosetta is named because it's not just tokens — it's a complete system with a defined boundary. Six stages, each a response to a specific failure mode:</p>
+          <dl>
+            <dt>Definition</dt>
+            <dd>Tokens authored in TypeScript with mandatory metadata fields. <em>Prevents: Arbitrariness</em></dd>
+            <dt>Validation</dt>
+            <dd>Mathematical relationships verified against declared formulas (≤5% tolerance = pass, >25% = error). <em>Prevents: Drift</em></dd>
+            <dt>Registry</dt>
+            <dd>Tokens stored in queryable registries by family, layer, platform. <em>Prevents: Missing audit trail</em></dd>
+            <dt>Mode Resolution</dt>
+            <dd>Light/dark resolved from two-level system (primitive values + semantic overrides). <em>Prevents: Platform divergence</em></dd>
+            <dt>Generation</dt>
+            <dd>Unitless values transformed to platform-specific formats (CSS, Swift, Kotlin, DTCG, Figma). <em>Prevents: Platform divergence</em></dd>
+            <dt>Output</dt>
+            <dd>Five platform outputs produced from a single source. <em>Prevents: Platform divergence</em></dd>
+          </dl>
+        </section>
+
+        <section id="beat-payoff" aria-labelledby="beat-payoff-title">
+          <h2 id="beat-payoff-title">What This Enables</h2>
+          <p><strong>768 source tokens produce 3,000+ platform-ready outputs for web, iOS, Android, and canvas-based tools.</strong></p>
+          <h3>Portable Pipeline</h3>
+          <p>Any project installs <code>@3fn/core</code>, runs <code>npx designerpunk generate</code>, gets the full pipeline. Products configure via <code>designerpunk.config.ts</code>.</p>
+          <h3>Theme Architecture</h3>
+          <p>Register themes in config, overrides validated at registration time. Theme-varying tokens detected automatically. Non-theme-varying tokens stay as static constants.</p>
+          <h3>Governance Without Overhead</h3>
+          <p>Component tokens require a <code>reasoning</code> field. Audit tools catch problems in CI. Human review gates prevent ungoverned token creation.</p>
+          <h3>AI Agent Queryability</h3>
+          <p>Token registries serve data to MCP — agents ask questions about tokens at the point of decision rather than loading entire reference docs.</p>
+          <p class="docs-breadcrumb">Each token family has its own relationship with this pipeline — spacing follows a different formula than color, which composes differently than typography. Those stories live in the token family documentation.</p>
+        </section>
+      </article>
+    </main>
+
+    <!-- Visualization Column -->
+    <aside class="docs-viz" aria-hidden="true">
+      <svg class="viz-svg" viewBox="0 0 400 560" preserveAspectRatio="xMidYMid meet">
+        <g class="viz-connections"></g>
+        <g class="viz-nodes"></g>
+      </svg>
+      <div class="viz-tooltip" id="viz-tooltip">
+        <p class="viz-tooltip__title" id="viz-tip-title"></p>
+        <p class="viz-tooltip__problem" id="viz-tip-problem"></p>
+        <p class="viz-tooltip__solution" id="viz-tip-solution"></p>
+      </div>
+    </aside>
+  </div>
+</Base>

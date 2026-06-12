@@ -357,7 +357,7 @@ ui-tree:
         layout: grid, repeat(5, 1fr), row-gap space150
         children:
           - element: div.stats__item
-            repeat: 10 items (217 Primitive tokens, 193 Semantic tokens, 9 Component families, 34 Foundation components, 210 Contracts, 8 AI Agents, 3 MCP servers, -87% Context load, 300+ Test suites, 8k+ Governance tests)
+            repeat: 10 items (217 Primitive tokens, 193 Semantic tokens, 9 Component families, 34 Foundation components, 210 Contracts, 8 AI Agents, 3 MCP servers, -82% Context load, 300+ Test suites, 8k+ Governance tests)
             children:
               - element: span.stats__value
                 tokens:

@@ -2399,6 +2399,45 @@ When creating cross-references, calculate relative paths based on the source doc
 
 ## Spec Workflow
 
+### Product Preparation Phase (Conditional — Before Requirements)
+
+**Load when**: The spec delivers a product-facing page, screen, or user-visible feature.
+**Skip when**: The spec is infrastructure, governance, cleanup, or internal tooling.
+**Gate**: Begins after design outline feedback is resolved AND prototype is confirmed by Peter. The prototype is the INPUT to this phase.
+
+**Purpose**: After the prototype proves the concept, Leonardo translates it into structured Product MCP context that implementation agents can query. This resolves prototype ambiguities before they calcify into requirements and ensures implementation starts with a queryable contract.
+
+**Sequence**:
+```
+Outline → Feedback → Prototype → Peter confirms → [Leo: Production Prep] → Requirements → Design → Tasks → Implementation
+```
+
+**Leonardo's Production Prep Deliverables:**
+
+1. **Experience map entry** — Page definition with sections, audience, visual reference, and interaction specs (`product/experience-map/pages/...`)
+2. **Component selection** — Which system/product components serve each section; prop guidance where relevant
+3. **Visual reference resolution** — Structured as a "confirm or correct" decision list for Peter. Documents which prototype styles are intentional vs. approximations; maps to system tokens where possible.
+4. **Interaction specs** — Scroll behavior, hover/focus states, transitions, responsive breakpoints — structured for platform agents to query
+5. **Product token candidates** — Product-level values identified during visual reference resolution that will need authoring (per System-First Value Selection)
+6. **Product MCP update** — `product/overview.yaml` updated if new page is being added
+
+**Timing & Latency:**
+- Adds 0.5–2 sessions depending on page complexity
+- Net effect is faster total delivery: eliminates more expensive mid-implementation ambiguity resolution
+- Visual reference resolution requires Peter to confirm/correct design intent decisions
+
+**Bottleneck Mitigation:**
+- Leonardo communicates immediately when blocked (waiting on Peter confirmation, unclear prototype intent)
+- If blocked >1 session, flag to Peter for unblocking
+- Partial prep can unblock requirements for sections that ARE resolved while blocked sections continue
+
+**What This Phase Does NOT Do:**
+- Does NOT replace requirements formalization (Thurgood still owns that)
+- Does NOT freeze prototype decisions permanently (prep is a living document that evolves through requirements/design)
+- Does NOT apply to non-visual specs (infrastructure, governance, token work)
+
+---
+
 ### Phase 1: Requirements
 
 **For component development**: Consider creating a design outline before requirements to explore variants, token usage, and platform considerations. See Component Development Guide for component-specific spec methodology.

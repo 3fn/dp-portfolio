@@ -131,3 +131,38 @@ tokens:
     description: Top offset for sticky token evolution cluster in Why Build section
     rationale: "Nav height (48px) + section heading clearance. Positions sticky element below fixed nav with breathing room. No system spacing token at 120px."
     platforms: [web]
+
+  docsNarrativeMaxWidth:
+    value: 680
+    unitType: logical
+    description: Maximum width for documentation narrative column
+    rationale: "Optimized for long-form reading at body font size. Narrower than portfolio contentMaxWidth (1336) — dedicated reading column within three-column layout."
+    platforms: [web]
+
+  docsNavRailCollapsed:
+    value: 80
+    unitType: logical
+    description: Width of collapsed documentation nav rail
+    rationale: "Accommodates icon + truncated label at minimum readable size. Beyond system spacing scale (max 64px)."
+    platforms: [web]
+
+  docsNavRailExpanded:
+    value: 260
+    unitType: logical
+    description: Width of expanded documentation nav rail on hover/focus
+    rationale: "Accommodates full beat labels without truncation. Proportional to narrative column width."
+    platforms: [web]
+
+  docsTooltipMaxWidth:
+    value: 300
+    unitType: logical
+    description: Maximum width for visualization tooltips on docs pages
+    rationale: "Wider than portfolio tooltips (270px) — accommodates two-part tooltip format (problem → solution). Constrained for readability."
+    platforms: [web]
+
+  docsBeatSpacing:
+    value: 80
+    unitType: logical
+    description: Vertical spacing between narrative beats in documentation
+    rationale: "Creates clear visual separation between documentation sections. Beyond system spacing scale (max 64px). Matches prototype 80vh-per-beat rhythm."
+    platforms: [web]

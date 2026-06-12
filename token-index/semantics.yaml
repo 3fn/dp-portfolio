@@ -353,11 +353,11 @@ tokens:
     category: color
     primitiveReferences:
       value: white100
-    themeVarying: true
+    themeVarying: false
     platforms:
       web: '--color-structure-canvas'
-      ios: theme.colorStructureCanvas
-      android: theme.color_structure_canvas
+      ios: colorStructureCanvas
+      android: color_structure_canvas
     consumers: []
   color.structure.surface:
     category: color
@@ -414,11 +414,11 @@ tokens:
     primitiveReferences:
       color: gray100
       opacity: opacity048
-    themeVarying: true
+    themeVarying: false
     platforms:
       web: '--color-structure-border-subtle'
-      ios: theme.colorStructureBorderSubtle
-      android: theme.color_structure_border_subtle
+      ios: colorStructureBorderSubtle
+      android: color_structure_border_subtle
     consumers: []
   color.background.primary.subtle:
     category: color
@@ -444,11 +444,11 @@ tokens:
     category: color
     primitiveReferences:
       value: gray300
-    themeVarying: true
+    themeVarying: false
     platforms:
       web: '--color-icon-navigation-inactive'
-      ios: theme.colorIconNavigationInactive
-      android: theme.color_icon_navigation_inactive
+      ios: colorIconNavigationInactive
+      android: color_icon_navigation_inactive
     consumers: []
   color.print.default:
     category: color
@@ -493,7 +493,7 @@ tokens:
   glow.neonGreen:
     category: color
     primitiveReferences:
-      value: green500
+      value: green300
     themeVarying: false
     platforms:
       web: '--glow-neon-green'

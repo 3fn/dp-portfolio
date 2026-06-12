@@ -1,0 +1,174 @@
+name: rosetta-documentation
+type: documentation-page
+tags: [documentation, rosetta, token-system, architecture, scroll-driven, visualization]
+status:
+  spec: requirements-phase
+  web: not-started
+  ios: not-applicable
+  android: not-applicable
+
+ux-direction: |
+  Deep-dive documentation page for the Rosetta token system. Tells the story of
+  why the architecture exists, what problems it solves, and what it enables.
+  Three-column scroll-driven layout: nav rail (left), narrative (center), sticky visualization (right).
+  Narrative progresses through 4 beats: Problem → Principle → Architecture → Payoff.
+  Desktop-priority with single-column collapse at tablet/mobile.
+
+audience:
+  primary: Design systems practitioners and technical evaluators assessing architectural rigor
+  secondary: Hiring managers and technical leads evaluating Peter's systems thinking
+  assumes: Baseline design systems literacy (knows what tokens are)
+
+visual-reference: docs/specs/staticReview/rosetta-docs-prototype.html
+visual-reference-note: |
+  The prototype is the visual/behavioral source of truth for appearance and interaction feel.
+  Production implementation rebuilds with system tokens, semantic HTML, and accessibility layer.
+  Where prototype and spec conflict, spec takes precedence for implementation decisions.
+
+# ─── PAGE-LEVEL ARCHITECTURE ──────────────────────────────────────
+
+page-architecture:
+  semantic-structure:
+    root: body
+    skip-link: "#main-content"
+    nav: nav.nav-rail[aria-label="Page sections"] (sticky, scroll-tracked)
+    main: main#main-content > article
+    sections: section × 5 (intro, beat-problem, beat-principle, beat-architecture, beat-payoff)
+    aside: aside.visualization[aria-hidden="true"] (decorative)
+
+  heading-hierarchy:
+    h1: "Rosetta" (page title, single instance)
+    h2: Beat titles × 4 (The Problem, The Principle, The Architecture, The Payoff)
+
+  css-load-order:
+    1: dist/tokens/DesignTokens.web.css
+    2: dist/tokens/product/ProductTokens.web.css
+    3: font stylesheets (rajdhani, figtree, commit-mono)
+    4: page-specific styles
+
+  script-architecture:
+    type: ES2022 module
+    scripts:
+      - scroll-tracker (IntersectionObserver — nav active state + viz state)
+      - viz-renderer (SVG node management, state transitions)
+      - tooltip-controller (hover/tap/focus tooltip lifecycle)
+    loading: defer
+    budget: "≤5KB minified total for visualization JS"
+
+  responsive-strategy:
+    breakpoints:
+      desktop: "≥1024px — three-column grid (80px | 1fr | 1fr)"
+      tablet-and-below: "<1024px — single column, nav hidden, viz static"
+    content-max-width: docsNarrativeMaxWidth (680px)
+
+  reduced-motion:
+    policy: "All transitions disabled. Viz shows final state. Nav rail instant."
+
+# ─── SECTIONS ─────────────────────────────────────────────────────
+
+sections:
+  - id: intro
+    beat: 0
+    name: Introduction
+    content-summary: |
+      Context-setting paragraph. AI challenges with tokens. Naming convention instincts.
+      Rosetta's response: build for the instinct, not against it.
+    min-height: 80vh
+    viz-state: intro
+    viz-description: "Split view — chaotic legacy tokens (left, red) vs structured Rosetta tokens (right, cyan)"
+    components-used: none
+
+  - id: beat-problem
+    beat: 1
+    name: The Problem
+    content-summary: |
+      Four failure modes: drift, arbitrariness, platform divergence, missing audit trail.
+      Each with concrete example.
+    min-height: 80vh
+    viz-state: beat-problem
+    viz-description: "5 scattered red nodes with failure-mode labels. No connections — isolated, unrelated."
+    components-used: none
+
+  - id: beat-principle
+    beat: 2
+    name: The Principle
+    content-summary: |
+      Unifying principle: every value declares why it exists.
+      Five origin types: formula-based, perceptual, categorical, compositional, referential.
+      mathematicalRelationship field enforced at type level.
+    min-height: 80vh
+    viz-state: beat-principle
+    viz-description: "Three-tier node layout (primitive → semantic → component) with directional connections showing reference chains."
+    components-used: none
+
+  - id: beat-architecture
+    beat: 3
+    name: The Architecture
+    content-summary: |
+      Six-stage pipeline: Define → Validate → Registry → Resolve → Generate → Output.
+      Each stage mapped to the failure mode it addresses.
+      Pipeline table (semantic HTML table).
+    min-height: 80vh
+    viz-state: beat-architecture
+    viz-description: "Vertical pipeline — 6 cyan nodes connected sequentially. Draw-on-scroll connections."
+    components-used: none
+    special-content: pipeline-table (HTML table element)
+
+  - id: beat-payoff
+    beat: 4
+    name: The Payoff
+    content-summary: |
+      Capabilities enabled: portable pipeline, theme architecture, governance, AI queryability.
+      Data narrative: 768 source tokens → 3,000+ platform outputs.
+      Breadcrumb to token family documentation.
+    min-height: 80vh
+    viz-state: beat-payoff
+    viz-description: "Fan-out — single source node at top, 5 platform output nodes below with connections."
+    components-used: none
+
+# ─── INTERACTION SPECS ────────────────────────────────────────────
+
+interaction:
+  nav-rail:
+    collapsed-width: 80px (product token: navRailCollapsed)
+    expanded-width: 260px (product token: navRailExpanded)
+    expand-trigger: ":hover on nav-rail container"
+    expand-transition: "width 250ms cubic-bezier(0.4, 0, 0.2, 1)"
+    active-tracking: "IntersectionObserver updates aria-current on beat links"
+    keyboard: "Tab to nav, arrow keys between links, Enter activates"
+    focus-visible: "Standard focus ring on links"
+
+  visualization:
+    position: "sticky, top: 0, height: 100vh"
+    aria-hidden: true
+    state-transitions:
+      trigger: "Scroll crosses beat boundary (top < 50vh AND bottom > 30vh)"
+      node-position: "600ms cubic-bezier(0.4, 0, 0.2, 1)"
+      node-radius: "500ms ease"
+      node-stroke-color: "500ms ease"
+      node-opacity: "400ms ease"
+      connections: "Redrawn (replaced, not transitioned)"
+      beat4-connections: "stroke-dashoffset draw-on animation"
+    labels:
+      opacity-interpolation: "fade in 0-20% beat progress, full 20-80%, fade out 80-100%"
+
+  tooltips:
+    desktop: "mousemove proximity (24px hit target minimum). Cursor-following position."
+    mobile: "tap-toggle (tap shows, tap-same dismisses, tap-other switches, tap-empty dismisses)"
+    keyboard: "focus on node shows tooltip (sighted keyboard users)"
+    dismiss-on-scroll: true
+    border-color: "Inherits from node stroke color"
+    content-format: "title (mono bold) | problem (muted, separator) | solution (emphasized with →)"
+
+  url-hash:
+    on-load: "Parse hash → scroll to beat → set viz state immediately"
+    on-nav-click: "pushState update (no scroll jank)"
+    on-scroll: "No hash update during scroll"
+
+  accessibility:
+    skip-link: "Skip to main content (bypasses nav rail)"
+    landmark: "nav[aria-label] + main + article"
+    sections: "section[aria-labelledby] per beat"
+    reduced-motion: "All transitions duration 0. Viz shows final state. No label interpolation."
+    forced-colors: "Interactive elements (nav links, tooltip triggers) remain visible."
+    print: "Hide nav + viz. Single-column narrative."

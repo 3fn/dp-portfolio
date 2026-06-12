@@ -78,9 +78,6 @@ if (!customElements.get("nav-header")) {
   customElements.define("nav-header", NavHeaderBase);
 }
 
-// src/components/core/Nav-Header-App/platforms/web/NavHeaderApp.styles.css
-var NavHeaderApp_styles_default = "/**\n * Nav-Header-App Styles for Web Platform\n *\n * Adds App-level styling on top of Nav-Header-Base.\n * Base remains a pure slot relay with no padding.\n *\n * @see contracts: visual_background_override, visual_shadow\n * @see tokens: navHeader.padding.inline \u2192 space500 (40px)\n */\n\n/* ==========================================================================\n   Content region padding\n   ========================================================================== */\n\nnav-header {\n  padding-inline: var(--navheaderapp-nav-header-padding-inline);\n}\n\n/* ==========================================================================\n   Host overrides\n   - Background: full-width black-300 (overridable via --nav-bg-override)\n   - Border: hidden (transparent)\n   - Shadow: shadow.navigation semantic token\n   ========================================================================== */\n\n:host {\n  --color-structure-canvas: var(--nav-bg-override, var(--black-300));\n  --color-structure-border-subtle: transparent;\n  box-shadow: var(--shadow-navigation);\n}\n";
-
 // src/components/core/Nav-Header-App/platforms/web/NavHeaderApp.web.ts
 var NavHeaderApp = class extends HTMLElement {
   _shadowRoot;
@@ -89,19 +86,14 @@ var NavHeaderApp = class extends HTMLElement {
     this._shadowRoot = this.attachShadow({ mode: "open" });
   }
   connectedCallback() {
-    const style = document.createElement("style");
-    style.textContent = NavHeaderApp_styles_default;
-    this._shadowRoot.appendChild(style);
     const header = document.createElement("nav-header");
     header.setAttribute("appearance", this.getAttribute("appearance") || "opaque");
     header.setAttribute("show-separator", this.getAttribute("show-separator") ?? "true");
-    header.setAttribute("aria-label", "Site navigation");
     if (this.getAttribute("test-id")) header.setAttribute("test-id", this.getAttribute("test-id"));
     header.innerHTML = `
-      <div slot="title" style="display:flex;align-items:center;justify-content:space-between;width:100%;max-width:var(--product-layout-content-max-width);margin-inline:auto;">
-        <slot name="leading"></slot>
-        <slot name="trailing"></slot>
-      </div>
+      <slot name="leading" slot="leading"></slot>
+      <slot name="center" slot="title"></slot>
+      <slot name="trailing" slot="trailing"></slot>
     `;
     this._shadowRoot.appendChild(header);
   }
@@ -631,7 +623,7 @@ var iconBaseSizes = {
 };
 
 // src/components/core/Button-CTA/platforms/web/ButtonCTA.web.css
-var ButtonCTA_web_default = "/**\n * Button-CTA Component Styles for Web Platform\n * \n * Token-based styling using CSS custom properties from the mathematical token system.\n * All values reference semantic or primitive tokens - zero hard-coded values.\n * \n * Stemma System Naming: [Family]-[Type] = Button-CTA\n * Component Type: Standalone (no behavioral variants)\n * \n * @module Button-CTA/platforms/web/styles\n */\n\n/* ==========================================================================\n   Base Button Styles\n   ========================================================================== */\n\n/**\n * Base button element styling.\n * \n * - Flexbox layout for icon-text composition\n * - Token-based typography, spacing, and colors\n * - Semantic button element with proper cursor\n * - Smooth transitions for interaction states\n */\n.button-cta {\n  /* Layout */\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: var(--space-grouped-normal); /* Default icon-text spacing: 8px */\n  \n  /* Typography - Default to medium size (labelMd for UI controls) */\n  font-family: var(--typography-display-label-md-family);\n  font-size: var(--typography-display-label-md-font-size);\n  font-weight: var(--typography-display-label-md-font-weight);\n  line-height: var(--typography-label-md-line-height);\n  letter-spacing: var(--typography-label-md-letter-spacing);\n  text-box-trim: trim-end;\n  \n  /* Text alignment */\n  text-align: center;\n  text-decoration: none;\n  \n  /* Interaction */\n  cursor: pointer;\n  user-select: none;\n  \n  /* Transitions - Uses motion.buttonPress semantic token for consistent button feedback */\n  /* @see Requirements: 3.1, 3.3, 3.4 - Semantic motion token usage */\n  transition: background-color var(--motion-button-press-duration) var(--motion-button-press-easing),\n              border-color var(--motion-button-press-duration) var(--motion-button-press-easing),\n              color var(--motion-button-press-duration) var(--motion-button-press-easing),\n              opacity var(--motion-button-press-duration) var(--motion-button-press-easing),\n              box-shadow var(--motion-button-press-duration) var(--motion-button-press-easing);\n  \n  /* Remove default button styles */\n  border: none;\n  outline: none;\n  background: none;\n  \n  /* Ensure button doesn't shrink in flex containers */\n  flex-shrink: 0;\n}\n\n/* ==========================================================================\n   Size Variants\n   ========================================================================== */\n\n/**\n * Small button (40px calculated height)\n * \n * - Min height: tapAreaMinimum (44px) for accessibility\n * - Calculated height: ~40px (padding + lineHeight)\n * - Horizontal padding: space.inset.200 (16px)\n * - Vertical padding: space.inset.100 (8px)\n * - Border radius: radius100 (8px)\n * - Typography: typography.labelMd (medium weight for UI controls)\n * - Icon size: icon.size100 (24px)\n * - Icon spacing: space.grouped.tight (4px)\n * - Min width: buttonCTA.minWidth.small (56px)\n */\n.button-cta--small {\n  min-height: var(--tap-area-minimum); /* 44px for accessibility */\n  min-width: 56px; /* buttonCTA.minWidth.small */\n  padding: var(--space-inset-100) var(--space-inset-200); /* 8px 16px */\n  border-radius: var(--radius-100); /* 8px */\n  gap: var(--space-grouped-tight); /* 4px for icon-text spacing */\n  \n  /* Typography: labelMd (medium weight for UI controls) */\n  font-family: var(--typography-display-label-md-font-family);\n  font-size: var(--typography-display-label-md-font-size);\n  font-weight: var(--typography-display-label-md-font-weight);\n  line-height: var(--typography-label-md-line-height);\n  letter-spacing: var(--typography-label-md-letter-spacing);\n}\n\n/**\n * Medium button (48px calculated height) - Default size\n * \n * - Min height: tapAreaRecommended (48px) for better usability\n * - Calculated height: ~48px (padding + lineHeight)\n * - Horizontal padding: space.inset.300 (24px)\n * - Vertical padding: space.inset.150 (12px)\n * - Border radius: radius150 (12px)\n * - Typography: typography.labelMd (medium weight for UI controls)\n * - Icon size: icon.size100 (24px)\n * - Icon spacing: space.grouped.normal (8px)\n * - Min width: buttonCTA.minWidth.medium (72px)\n */\n.button-cta--medium {\n  min-height: var(--tap-area-recommended); /* 48px for better usability */\n  min-width: 72px; /* buttonCTA.minWidth.medium */\n  padding: var(--space-inset-150) var(--space-inset-300); /* 12px 24px */\n  border-radius: var(--radius-150); /* 12px */\n  gap: var(--space-grouped-normal); /* 8px for icon-text spacing */\n  \n  /* Typography: labelMd (medium weight for UI controls) */\n  font-family: var(--typography-display-label-md-font-family);\n  font-size: var(--typography-display-label-md-font-size);\n  font-weight: var(--typography-label-md-font-weight);\n  line-height: var(--typography-label-md-line-height);\n  letter-spacing: var(--typography-label-md-letter-spacing);\n}\n\n/**\n * Large button (56px calculated height)\n * \n * - Min height: tapAreaComfortable (56px) for comfortable interaction\n * - Calculated height: ~56px (padding + lineHeight)\n * - Horizontal padding: space.inset.400 (32px)\n * - Vertical padding: space.inset.150 (12px)\n * - Border radius: radius200 (16px)\n * - Typography: typography.labelLg (medium weight for UI controls)\n * - Icon size: icon.size125 (32px)\n * - Icon spacing: space.grouped.normal (8px)\n * - Min width: buttonCTA.minWidth.large (80px)\n */\n.button-cta--large {\n  min-height: var(--tap-area-comfortable); /* 56px for comfortable interaction */\n  min-width: 80px; /* buttonCTA.minWidth.large */\n  padding: var(--space-inset-150) var(--space-inset-400); /* 12px 32px */\n  border-radius: var(--radius-200); /* 16px */\n  gap: var(--space-grouped-normal); /* 8px for icon-text spacing */\n  \n  /* Typography: labelLg (medium weight for UI controls) */\n  font-family: var(--typography-display-label-lg-font-family);\n  font-size: var(--typography--display-label-lg-font-size);\n  font-weight: var(--typography-display-label-lg-font-weight);\n  line-height: var(--typography-label-lg-line-height);\n  letter-spacing: var(--typography-label-lg-letter-spacing);\n}\n\n/* ==========================================================================\n   Style Variants\n   ========================================================================== */\n\n/**\n * Primary button style (filled background)\n * \n * - Background: color.action.primary\n * - Text: color.contrast.onAction (black500 Standard / white100 WCAG)\n * - Border: none\n * - Highest visual emphasis\n */\n.button-cta--primary {\n  background-color: var(--color-action-primary);\n  color: var(--color-contrast-on-action);\n  border: none;\n}\n\n/**\n * Secondary button style (outlined)\n * \n * - Background: color.background\n * - Text: color.action.primary\n * - Border: border.borderDefault solid color.action.primary\n * - Medium visual emphasis\n */\n.button-cta--secondary {\n  background-color: var(--color-structure-canvas);\n  color: var(--color-action-primary);\n  border: var(--border-default) solid var(--color-action-primary);\n}\n\n/**\n * Tertiary button style (text-only)\n * \n * - Background: transparent\n * - Text: color.action.primary\n * - Border: none\n * - Lowest visual emphasis\n */\n.button-cta--tertiary {\n  background-color: transparent;\n  color: var(--color-action-primary);\n  border: none;\n}\n\n/* ==========================================================================\n   Icon Styling\n   ========================================================================== */\n\n/**\n * Icon container styling.\n * \n * - Flexbox for centering\n * - Inherits color from button\n * - Marked as decorative (aria-hidden)\n */\n.button-cta__icon {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n  color: inherit;\n}\n\n/**\n * Icon optical balance for secondary and tertiary buttons.\n * \n * Icons appear heavier than text at the same color due to stroke density.\n * Uses blend utility calculated color (lighterBlend with blend.iconLighter)\n * instead of filter workaround for cross-platform consistency.\n * \n * The --_cta-icon-optical custom property is set by the component\n * using lighterBlend(color.primary, blend.iconLighter) = 8% lighter.\n */\n.button-cta--secondary .button-cta__icon,\n.button-cta--tertiary .button-cta__icon {\n  color: var(--_cta-icon-optical);\n}\n\n/* ==========================================================================\n   Text Label Styling\n   ========================================================================== */\n\n/**\n * Text label with default wrapping behavior.\n * \n * - Allows multi-line text (accessibility-first)\n * - Button height grows to accommodate wrapped text\n * - Maintains minimum height for all text lengths\n */\n.button-cta__label {\n  display: inline-block;\n  white-space: normal;\n  word-wrap: break-word;\n  overflow-wrap: break-word;\n  text-box-trim: trim-end;\n}\n\n/**\n * Text label with no-wrap behavior (opt-in).\n * \n * - Single-line text with ellipsis truncation\n * - Use for constrained spaces (toolbars, navigation)\n * - Accessibility trade-off: may hide content\n */\n.button-cta__label--no-wrap {\n  display: inline-block;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  max-width: 100%;\n}\n\n/* ==========================================================================\n   Interaction States\n   ========================================================================== */\n\n/**\n * Hover state (web only).\n * \n * Uses blend utility calculated color (darkerBlend with blend.hoverDarker)\n * instead of opacity workaround for cross-platform consistency.\n * \n * The --_cta-hover-bg custom property is set by the component\n * using darkerBlend(color.primary, blend.hoverDarker) = 8% darker.\n */\n.button-cta--primary:hover:not(:disabled) {\n  background-color: var(--_cta-hover-bg);\n}\n\n/**\n * Pressed/Active state.\n * \n * Uses blend utility calculated color (darkerBlend with blend.pressedDarker)\n * instead of opacity workaround for cross-platform consistency.\n * \n * The --_cta-pressed-bg custom property is set by the component\n * using darkerBlend(color.primary, blend.pressedDarker) = 12% darker.\n */\n.button-cta--primary:active:not(:disabled) {\n  background-color: var(--_cta-pressed-bg);\n}\n\n/**\n * Focus state (keyboard navigation only).\n * \n * - Uses :focus-visible for keyboard-only focus indicators\n * - Outline: accessibility.focus.width (2px)\n * - Color: accessibility.focus.color (primary)\n * - Offset: accessibility.focus.offset (2px)\n * - Shadow: shadow.hover for elevation\n * - Meets WCAG 2.1 AA contrast requirements (3:1 minimum)\n */\n.button-cta:focus-visible {\n  outline: var(--accessibility-focus-width) solid var(--accessibility-focus-color);\n  outline-offset: var(--accessibility-focus-offset);\n  box-shadow: var(--shadow-hover);\n}\n\n/**\n * Remove focus outline on mouse click.\n * \n * :focus-visible handles this automatically in modern browsers,\n * but this provides fallback for older browsers.\n */\n.button-cta:focus:not(:focus-visible) {\n  outline: none;\n}\n\n/**\n * Disabled state.\n * \n * Uses blend utility calculated color (desaturate with blend.disabledDesaturate)\n * instead of opacity workaround for cross-platform consistency.\n * \n * The --button-disabled-color custom property is set by the component\n * using desaturate(color.primary, blend.disabledDesaturate) = 12% less saturated.\n * \n * - Cursor changes to not-allowed\n * - Prevents interaction\n * - Maintains color contrast for accessibility\n */\n.button-cta:disabled,\n.button-cta--disabled {\n  cursor: not-allowed;\n  pointer-events: none;\n}\n\n.button-cta--primary:disabled,\n.button-cta--primary.button-cta--disabled {\n  background-color: var(--_cta-disabled-bg);\n}\n\n/* ==========================================================================\n   Responsive Behavior\n   ========================================================================== */\n\n/**\n * Ensure buttons adapt to container width when needed.\n * \n * By default, buttons are inline-flex and size to content.\n * For full-width buttons, apply width: 100% via utility class or inline style.\n */\n.button-cta--full-width {\n  width: 100%;\n}\n\n/* ==========================================================================\n   Print Styles\n   ========================================================================== */\n\n/**\n * Optimize button appearance for print.\n * \n * - Remove interactive states\n * - Ensure text is visible\n * - Simplify visual styling\n * - Use color.print.default token for print media\n */\n@media print {\n  .button-cta {\n    background-color: transparent !important;\n    color: var(--color-print-default) !important;\n    border: var(--border-default) solid var(--color-print-default) !important;\n    box-shadow: none !important;\n  }\n  \n  .button-cta__icon {\n    display: none;\n  }\n}\n\n/* ==========================================================================\n   High Contrast Mode Support\n   ========================================================================== */\n\n/**\n * Ensure buttons remain visible in Windows High Contrast Mode.\n * \n * - Force borders for all button styles\n * - Ensure focus indicators are visible\n * - Use border.borderEmphasis (2px) and border.borderHeavy (4px) tokens\n */\n@media (prefers-contrast: high) {\n  .button-cta {\n    border: var(--border-emphasis) solid currentColor; /* 2px */\n  }\n  \n  .button-cta:focus-visible {\n    outline-width: var(--border-heavy); /* 4px */\n  }\n}\n\n/* ==========================================================================\n   Reduced Motion Support\n   ========================================================================== */\n\n/**\n * Respect user preference for reduced motion.\n * \n * - Remove transitions and animations\n * - Maintain functionality without motion\n */\n@media (prefers-reduced-motion: reduce) {\n  .button-cta {\n    transition: none;\n  }\n}\n";
+var ButtonCTA_web_default = "/**\n * Button-CTA Component Styles for Web Platform\n * \n * Token-based styling using CSS custom properties from the mathematical token system.\n * All values reference semantic or primitive tokens - zero hard-coded values.\n * \n * Stemma System Naming: [Family]-[Type] = Button-CTA\n * Component Type: Standalone (no behavioral variants)\n * \n * @module Button-CTA/platforms/web/styles\n */\n\n/* ==========================================================================\n   Base Button Styles\n   ========================================================================== */\n\n/**\n * Base button element styling.\n * \n * - Flexbox layout for icon-text composition\n * - Token-based typography, spacing, and colors\n * - Semantic button element with proper cursor\n * - Smooth transitions for interaction states\n */\n.button-cta {\n  /* Layout */\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: var(--space-grouped-normal); /* Default icon-text spacing: 8px */\n  \n  /* Typography - Default to medium size (labelMd for UI controls) */\n  font-family: var(--typography-label-md-font-family);\n  font-size: var(--typography-label-md-font-size);\n  font-weight: var(--typography-label-md-font-weight);\n  line-height: var(--typography-label-md-line-height);\n  letter-spacing: var(--typography-label-md-letter-spacing);\n  \n  /* Text alignment */\n  text-align: center;\n  text-decoration: none;\n  \n  /* Interaction */\n  cursor: pointer;\n  user-select: none;\n  \n  /* Transitions - Uses motion.buttonPress semantic token for consistent button feedback */\n  /* @see Requirements: 3.1, 3.3, 3.4 - Semantic motion token usage */\n  transition: background-color var(--motion-button-press-duration) var(--motion-button-press-easing),\n              border-color var(--motion-button-press-duration) var(--motion-button-press-easing),\n              color var(--motion-button-press-duration) var(--motion-button-press-easing),\n              opacity var(--motion-button-press-duration) var(--motion-button-press-easing),\n              box-shadow var(--motion-button-press-duration) var(--motion-button-press-easing);\n  \n  /* Remove default button styles */\n  border: none;\n  outline: none;\n  background: none;\n  \n  /* Ensure button doesn't shrink in flex containers */\n  flex-shrink: 0;\n}\n\n/* ==========================================================================\n   Size Variants\n   ========================================================================== */\n\n/**\n * Small button (40px calculated height)\n * \n * - Min height: tapAreaMinimum (44px) for accessibility\n * - Calculated height: ~40px (padding + lineHeight)\n * - Horizontal padding: space.inset.200 (16px)\n * - Vertical padding: space.inset.100 (8px)\n * - Border radius: radius100 (8px)\n * - Typography: typography.labelMd (medium weight for UI controls)\n * - Icon size: icon.size100 (24px)\n * - Icon spacing: space.grouped.tight (4px)\n * - Min width: buttonCTA.minWidth.small (56px)\n */\n.button-cta--small {\n  min-height: var(--tap-area-minimum); /* 44px for accessibility */\n  min-width: 56px; /* buttonCTA.minWidth.small */\n  padding: var(--space-inset-100) var(--space-inset-200); /* 8px 16px */\n  border-radius: var(--radius-100); /* 8px */\n  gap: var(--space-grouped-tight); /* 4px for icon-text spacing */\n  \n  /* Typography: labelMd (medium weight for UI controls) */\n  font-family: var(--typography-label-md-font-family);\n  font-size: var(--typography-label-md-font-size);\n  font-weight: var(--typography-label-md-font-weight);\n  line-height: var(--typography-label-md-line-height);\n  letter-spacing: var(--typography-label-md-letter-spacing);\n}\n\n/**\n * Medium button (48px calculated height) - Default size\n * \n * - Min height: tapAreaRecommended (48px) for better usability\n * - Calculated height: ~48px (padding + lineHeight)\n * - Horizontal padding: space.inset.300 (24px)\n * - Vertical padding: space.inset.150 (12px)\n * - Border radius: radius150 (12px)\n * - Typography: typography.labelMd (medium weight for UI controls)\n * - Icon size: icon.size100 (24px)\n * - Icon spacing: space.grouped.normal (8px)\n * - Min width: buttonCTA.minWidth.medium (72px)\n */\n.button-cta--medium {\n  min-height: var(--tap-area-recommended); /* 48px for better usability */\n  min-width: 72px; /* buttonCTA.minWidth.medium */\n  padding: var(--space-inset-150) var(--space-inset-300); /* 12px 24px */\n  border-radius: var(--radius-150); /* 12px */\n  gap: var(--space-grouped-normal); /* 8px for icon-text spacing */\n  \n  /* Typography: labelMd (medium weight for UI controls) */\n  font-family: var(--typography-label-md-font-family);\n  font-size: var(--typography-label-md-font-size);\n  font-weight: var(--typography-label-md-font-weight);\n  line-height: var(--typography-label-md-line-height);\n  letter-spacing: var(--typography-label-md-letter-spacing);\n}\n\n/**\n * Large button (56px calculated height)\n * \n * - Min height: tapAreaComfortable (56px) for comfortable interaction\n * - Calculated height: ~56px (padding + lineHeight)\n * - Horizontal padding: space.inset.400 (32px)\n * - Vertical padding: space.inset.150 (12px)\n * - Border radius: radius200 (16px)\n * - Typography: typography.labelLg (medium weight for UI controls)\n * - Icon size: icon.size125 (32px)\n * - Icon spacing: space.grouped.normal (8px)\n * - Min width: buttonCTA.minWidth.large (80px)\n */\n.button-cta--large {\n  min-height: var(--tap-area-comfortable); /* 56px for comfortable interaction */\n  min-width: 80px; /* buttonCTA.minWidth.large */\n  padding: var(--space-inset-150) var(--space-inset-400); /* 12px 32px */\n  border-radius: var(--radius-200); /* 16px */\n  gap: var(--space-grouped-normal); /* 8px for icon-text spacing */\n  \n  /* Typography: labelLg (medium weight for UI controls) */\n  font-family: var(--typography-label-lg-font-family);\n  font-size: var(--typography-label-lg-font-size);\n  font-weight: var(--typography-label-lg-font-weight);\n  line-height: var(--typography-label-lg-line-height);\n  letter-spacing: var(--typography-label-lg-letter-spacing);\n}\n\n/* ==========================================================================\n   Style Variants\n   ========================================================================== */\n\n/**\n * Primary button style (filled background)\n * \n * - Background: color.action.primary\n * - Text: color.contrast.onAction (black500 Standard / white100 WCAG)\n * - Border: none\n * - Highest visual emphasis\n */\n.button-cta--primary {\n  background-color: var(--color-action-primary);\n  color: var(--color-contrast-on-action);\n  border: none;\n}\n\n/**\n * Secondary button style (outlined)\n * \n * - Background: color.background\n * - Text: color.action.primary\n * - Border: border.borderDefault solid color.action.primary\n * - Medium visual emphasis\n */\n.button-cta--secondary {\n  background-color: var(--color-structure-canvas);\n  color: var(--color-action-primary);\n  border: var(--border-default) solid var(--color-action-primary);\n}\n\n/**\n * Tertiary button style (text-only)\n * \n * - Background: transparent\n * - Text: color.action.primary\n * - Border: none\n * - Lowest visual emphasis\n */\n.button-cta--tertiary {\n  background-color: transparent;\n  color: var(--color-action-primary);\n  border: none;\n}\n\n/* ==========================================================================\n   Icon Styling\n   ========================================================================== */\n\n/**\n * Icon container styling.\n * \n * - Flexbox for centering\n * - Inherits color from button\n * - Marked as decorative (aria-hidden)\n */\n.button-cta__icon {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n  color: inherit;\n}\n\n/**\n * Icon optical balance for secondary and tertiary buttons.\n * \n * Icons appear heavier than text at the same color due to stroke density.\n * Uses blend utility calculated color (lighterBlend with blend.iconLighter)\n * instead of filter workaround for cross-platform consistency.\n * \n * The --_cta-icon-optical custom property is set by the component\n * using lighterBlend(color.primary, blend.iconLighter) = 8% lighter.\n */\n.button-cta--secondary .button-cta__icon,\n.button-cta--tertiary .button-cta__icon {\n  color: var(--_cta-icon-optical);\n}\n\n/* ==========================================================================\n   Text Label Styling\n   ========================================================================== */\n\n/**\n * Text label with default wrapping behavior.\n * \n * - Allows multi-line text (accessibility-first)\n * - Button height grows to accommodate wrapped text\n * - Maintains minimum height for all text lengths\n */\n.button-cta__label {\n  display: inline-block;\n  white-space: normal;\n  word-wrap: break-word;\n  overflow-wrap: break-word;\n}\n\n/**\n * Text label with no-wrap behavior (opt-in).\n * \n * - Single-line text with ellipsis truncation\n * - Use for constrained spaces (toolbars, navigation)\n * - Accessibility trade-off: may hide content\n */\n.button-cta__label--no-wrap {\n  display: inline-block;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  max-width: 100%;\n}\n\n/* ==========================================================================\n   Interaction States\n   ========================================================================== */\n\n/**\n * Hover state (web only).\n * \n * Uses blend utility calculated color (darkerBlend with blend.hoverDarker)\n * instead of opacity workaround for cross-platform consistency.\n * \n * The --_cta-hover-bg custom property is set by the component\n * using darkerBlend(color.primary, blend.hoverDarker) = 8% darker.\n */\n.button-cta--primary:hover:not(:disabled) {\n  background-color: var(--_cta-hover-bg);\n}\n\n/**\n * Pressed/Active state.\n * \n * Uses blend utility calculated color (darkerBlend with blend.pressedDarker)\n * instead of opacity workaround for cross-platform consistency.\n * \n * The --_cta-pressed-bg custom property is set by the component\n * using darkerBlend(color.primary, blend.pressedDarker) = 12% darker.\n */\n.button-cta--primary:active:not(:disabled) {\n  background-color: var(--_cta-pressed-bg);\n}\n\n/**\n * Focus state (keyboard navigation only).\n * \n * - Uses :focus-visible for keyboard-only focus indicators\n * - Outline: accessibility.focus.width (2px)\n * - Color: accessibility.focus.color (primary)\n * - Offset: accessibility.focus.offset (2px)\n * - Shadow: shadow.hover for elevation\n * - Meets WCAG 2.1 AA contrast requirements (3:1 minimum)\n */\n.button-cta:focus-visible {\n  outline: var(--accessibility-focus-width) solid var(--accessibility-focus-color);\n  outline-offset: var(--accessibility-focus-offset);\n  box-shadow: var(--shadow-hover);\n}\n\n/**\n * Remove focus outline on mouse click.\n * \n * :focus-visible handles this automatically in modern browsers,\n * but this provides fallback for older browsers.\n */\n.button-cta:focus:not(:focus-visible) {\n  outline: none;\n}\n\n/**\n * Disabled state.\n * \n * Uses blend utility calculated color (desaturate with blend.disabledDesaturate)\n * instead of opacity workaround for cross-platform consistency.\n * \n * The --button-disabled-color custom property is set by the component\n * using desaturate(color.primary, blend.disabledDesaturate) = 12% less saturated.\n * \n * - Cursor changes to not-allowed\n * - Prevents interaction\n * - Maintains color contrast for accessibility\n */\n.button-cta:disabled,\n.button-cta--disabled {\n  cursor: not-allowed;\n  pointer-events: none;\n}\n\n.button-cta--primary:disabled,\n.button-cta--primary.button-cta--disabled {\n  background-color: var(--_cta-disabled-bg);\n}\n\n/* ==========================================================================\n   Responsive Behavior\n   ========================================================================== */\n\n/**\n * Ensure buttons adapt to container width when needed.\n * \n * By default, buttons are inline-flex and size to content.\n * For full-width buttons, apply width: 100% via utility class or inline style.\n */\n.button-cta--full-width {\n  width: 100%;\n}\n\n/* ==========================================================================\n   Print Styles\n   ========================================================================== */\n\n/**\n * Optimize button appearance for print.\n * \n * - Remove interactive states\n * - Ensure text is visible\n * - Simplify visual styling\n * - Use color.print.default token for print media\n */\n@media print {\n  .button-cta {\n    background-color: transparent !important;\n    color: var(--color-print-default) !important;\n    border: var(--border-default) solid var(--color-print-default) !important;\n    box-shadow: none !important;\n  }\n  \n  .button-cta__icon {\n    display: none;\n  }\n}\n\n/* ==========================================================================\n   High Contrast Mode Support\n   ========================================================================== */\n\n/**\n * Ensure buttons remain visible in Windows High Contrast Mode.\n * \n * - Force borders for all button styles\n * - Ensure focus indicators are visible\n * - Use border.borderEmphasis (2px) and border.borderHeavy (4px) tokens\n */\n@media (prefers-contrast: high) {\n  .button-cta {\n    border: var(--border-emphasis) solid currentColor; /* 2px */\n  }\n  \n  .button-cta:focus-visible {\n    outline-width: var(--border-heavy); /* 4px */\n  }\n}\n\n/* ==========================================================================\n   Reduced Motion Support\n   ========================================================================== */\n\n/**\n * Respect user preference for reduced motion.\n * \n * - Remove transitions and animations\n * - Maintain functionality without motion\n */\n@media (prefers-reduced-motion: reduce) {\n  .button-cta {\n    transition: none;\n  }\n}\n";
 
 // src/components/core/Button-CTA/platforms/web/ButtonCTA.web.ts
 function getIconSizeForButton(buttonSize) {
@@ -682,7 +674,7 @@ var ButtonCTA = class extends HTMLElement {
    * When these attributes change, attributeChangedCallback is invoked.
    */
   static get observedAttributes() {
-    return ["label", "size", "variant", "icon", "icon-position", "no-wrap", "disabled", "test-id", "href", "target", "rel"];
+    return ["label", "size", "variant", "icon", "no-wrap", "disabled", "test-id"];
   }
   constructor() {
     super();
@@ -885,42 +877,6 @@ var ButtonCTA = class extends HTMLElement {
       this.removeAttribute("test-id");
     }
   }
-  get href() {
-    return this.getAttribute("href");
-  }
-  set href(value) {
-    if (value) {
-      this.setAttribute("href", value);
-    } else {
-      this.removeAttribute("href");
-    }
-  }
-  get target() {
-    return this.getAttribute("target");
-  }
-  set target(value) {
-    if (value) {
-      this.setAttribute("target", value);
-    } else {
-      this.removeAttribute("target");
-    }
-  }
-  get rel() {
-    return this.getAttribute("rel");
-  }
-  set rel(value) {
-    if (value) {
-      this.setAttribute("rel", value);
-    } else {
-      this.removeAttribute("rel");
-    }
-  }
-  get iconPosition() {
-    return this.getAttribute("icon-position") === "trailing" ? "trailing" : "leading";
-  }
-  set iconPosition(value) {
-    this.setAttribute("icon-position", value);
-  }
   // ============================================================================
   // Rendering (Incremental Update Architecture)
   // ============================================================================
@@ -981,38 +937,24 @@ var ButtonCTA = class extends HTMLElement {
       --_cta-icon-color: ${this._iconColor};
       --_cta-icon-optical: ${this._iconOpticalBalanceColor};
     `;
-    const isLink = !!this.href;
-    const tag = isLink ? "a" : "button";
-    const iconPos = this.iconPosition;
-    let linkAttrs = "";
-    if (isLink) {
-      linkAttrs = ` href="${this.href}"`;
-      if (this.target) linkAttrs += ` target="${this.target}"`;
-      const rel = this.rel || (this.target === "_blank" ? "noopener noreferrer" : null);
-      if (rel) linkAttrs += ` rel="${rel}"`;
-    }
-    const buttonAttrs = isLink ? "" : `
-        type="button"
-        role="button"
-        ${disabled ? 'disabled aria-disabled="true"' : 'aria-disabled="false"'}`;
-    const iconHtml = `<span class="button-cta__icon" aria-hidden="true" style="${icon ? "" : "display: none;"}">
-          <icon-base name="${icon || ""}" size="${iconSize}" color="inherit"></icon-base>
-        </span>`;
-    const labelHtml = `<span class="${labelClass}">${label}</span>`;
     this._shadowRoot.innerHTML = `
       <style>${ButtonCTA_web_default}</style>
-      <${tag} 
+      <button 
         class="${buttonClasses}"
-        ${buttonAttrs}
+        type="button"
+        role="button"
+        ${disabled ? 'disabled aria-disabled="true"' : 'aria-disabled="false"'}
         ${testIDAttr}
-        ${linkAttrs}
         aria-label="${label}"
         style="${blendColorStyles}"
       >
-        ${iconPos === "leading" ? iconHtml + labelHtml : labelHtml + iconHtml}
-      </${tag}>
+        <span class="button-cta__icon" aria-hidden="true" style="${icon ? "" : "display: none;"}">
+          <icon-base name="${icon || ""}" size="${iconSize}" color="inherit"></icon-base>
+        </span>
+        <span class="${labelClass}">${label}</span>
+      </button>
     `;
-    this._button = this._shadowRoot.querySelector(tag);
+    this._button = this._shadowRoot.querySelector("button");
     this._labelEl = this._shadowRoot.querySelector(".button-cta__label, .button-cta__label--no-wrap");
     this._iconContainer = this._shadowRoot.querySelector(".button-cta__icon");
     this._iconEl = this._iconContainer?.querySelector("icon-base") || null;
@@ -1047,14 +989,12 @@ var ButtonCTA = class extends HTMLElement {
       disabled ? "button-cta--disabled" : ""
     ].filter(Boolean).join(" ");
     this._button.className = buttonClasses;
-    if (!this.href) {
-      if (disabled) {
-        this._button.setAttribute("disabled", "");
-        this._button.setAttribute("aria-disabled", "true");
-      } else {
-        this._button.removeAttribute("disabled");
-        this._button.setAttribute("aria-disabled", "false");
-      }
+    if (disabled) {
+      this._button.setAttribute("disabled", "");
+      this._button.setAttribute("aria-disabled", "true");
+    } else {
+      this._button.removeAttribute("disabled");
+      this._button.setAttribute("aria-disabled", "false");
     }
     this._button.setAttribute("aria-label", label);
     if (testID) {
@@ -1602,6 +1542,15 @@ var ComponentTokenRegistryImpl = class {
   byComponent = /* @__PURE__ */ new Map();
   /** Index by token family */
   byFamily = /* @__PURE__ */ new Map();
+  /** Default allowOverwrite for register calls that don't specify it */
+  defaultAllowOverwrite = false;
+  /**
+   * Set the default allowOverwrite flag for subsequent register/registerBatch calls.
+   * Used by loadComponentTokens in local mode to prevent double-registration conflicts.
+   */
+  setDefaultAllowOverwrite(allow) {
+    this.defaultAllowOverwrite = allow;
+  }
   /**
    * Register a single component token
    * 
@@ -1612,7 +1561,7 @@ var ComponentTokenRegistryImpl = class {
    * @throws Error if token with same name already exists (unless allowOverwrite is true)
    */
   register(token, options = {}) {
-    const { allowOverwrite = false } = options;
+    const { allowOverwrite = this.defaultAllowOverwrite } = options;
     if (this.tokens.has(token.name) && !allowOverwrite) {
       const existing = this.tokens.get(token.name);
       throw new Error(
@@ -2235,45 +2184,6 @@ var spacingTokens = {
     isStrategicFlexibility: false,
     isPrecisionTargeted: false,
     platforms: generateSpacingPlatformValues(SPACING_BASE_VALUE * 8)
-  },
-  space900: {
-    name: "space900",
-    category: "spacing" /* SPACING */,
-    baseValue: SPACING_BASE_VALUE * 9,
-    familyBaseValue: SPACING_BASE_VALUE,
-    description: "Section spacing - 9x base value",
-    mathematicalRelationship: "base \xD7 9 = 8 \xD7 9 = 72",
-    baselineGridAlignment: true,
-    // 72 is baseline grid aligned (8 × 9)
-    isStrategicFlexibility: false,
-    isPrecisionTargeted: false,
-    platforms: generateSpacingPlatformValues(SPACING_BASE_VALUE * 9)
-  },
-  space1200: {
-    name: "space1200",
-    category: "spacing" /* SPACING */,
-    baseValue: SPACING_BASE_VALUE * 12,
-    familyBaseValue: SPACING_BASE_VALUE,
-    description: "Page section spacing - 12x base value",
-    mathematicalRelationship: "base \xD7 12 = 8 \xD7 12 = 96",
-    baselineGridAlignment: true,
-    // 96 is baseline grid aligned (8 × 12)
-    isStrategicFlexibility: false,
-    isPrecisionTargeted: false,
-    platforms: generateSpacingPlatformValues(SPACING_BASE_VALUE * 12)
-  },
-  space1600: {
-    name: "space1600",
-    category: "spacing" /* SPACING */,
-    baseValue: SPACING_BASE_VALUE * 16,
-    familyBaseValue: SPACING_BASE_VALUE,
-    description: "Page section spacing - 16x base value",
-    mathematicalRelationship: "base \xD7 16 = 8 \xD7 16 = 128",
-    baselineGridAlignment: true,
-    // 128 is baseline grid aligned (8 × 16)
-    isStrategicFlexibility: false,
-    isPrecisionTargeted: false,
-    platforms: generateSpacingPlatformValues(SPACING_BASE_VALUE * 16)
   }
 };
 var spacingTokenNames = Object.keys(spacingTokens);

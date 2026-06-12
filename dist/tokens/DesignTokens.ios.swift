@@ -1,6 +1,6 @@
 ///
 /// DesignerPunk Design System - iOS Tokens
-/// Generated: 2026-05-27T21:34:31.706Z
+/// Generated: 2026-06-11T02:46:46.846Z
 /// Version: 1.0.0
 /// Platform: iOS (Swift Constants)
 ///
@@ -46,8 +46,6 @@ public struct DesignTokens {
     public static let blur200: CGFloat = 32
     /// base × 2.5 = 16 × 2.5 = 40
     public static let blur250: CGFloat = 40
-    /// base × 4 = 16 × 4 = 64
-    public static let blur400: CGFloat = 64
 
     // MARK: - BORDERWIDTH TOKENS
     /// base × 0 = 1 × 0 = 0
@@ -70,114 +68,56 @@ public struct DesignTokens {
     public static let breakpointLg: CGFloat = 1440
 
     // MARK: - COLOR TOKENS
-    /// Systematic gray scale progression - lightest
-    public static let gray100: UIColor = UIColor(red: 0.70, green: 0.74, blue: 0.77, alpha: 1.00)
-    /// Systematic gray scale progression - medium-light
-    public static let gray200: UIColor = UIColor(red: 0.37, green: 0.44, blue: 0.49, alpha: 1.00)
-    /// Systematic gray scale progression - medium
-    public static let gray300: UIColor = UIColor(red: 0.15, green: 0.20, blue: 0.23, alpha: 1.00)
-    /// Systematic gray scale progression - dark
-    public static let gray400: UIColor = UIColor(red: 0.09, green: 0.13, blue: 0.16, alpha: 1.00)
-    /// Systematic gray scale progression - darkest
-    public static let gray500: UIColor = UIColor(red: 0.06, green: 0.09, blue: 0.10, alpha: 1.00)
-    /// Systematic black scale progression - lightest
-    public static let black100: UIColor = UIColor(red: 0.23, green: 0.23, blue: 0.27, alpha: 1.00)
-    /// Systematic black scale progression - medium
-    public static let black200: UIColor = UIColor(red: 0.13, green: 0.13, blue: 0.16, alpha: 1.00)
-    /// Systematic black scale progression - dark
-    public static let black300: UIColor = UIColor(red: 0.04, green: 0.04, blue: 0.06, alpha: 1.00)
-    /// Systematic black scale progression - very dark
-    public static let black400: UIColor = UIColor(red: 0.02, green: 0.02, blue: 0.04, alpha: 1.00)
-    /// Systematic black scale progression - pure black
-    public static let black500: UIColor = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.00)
-    /// Systematic white scale progression - pure white
-    public static let white100: UIColor = UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 1.00)
-    /// Systematic white scale progression - near white
-    public static let white200: UIColor = UIColor(red: 0.96, green: 0.96, blue: 0.98, alpha: 1.00)
-    /// Systematic white scale progression - light gray-white
-    public static let white300: UIColor = UIColor(red: 0.91, green: 0.91, blue: 0.94, alpha: 1.00)
-    /// Systematic white scale progression - medium gray-white
-    public static let white400: UIColor = UIColor(red: 0.77, green: 0.77, blue: 0.84, alpha: 1.00)
-    /// Systematic white scale progression - dark gray-white
-    public static let white500: UIColor = UIColor(red: 0.60, green: 0.60, blue: 0.67, alpha: 1.00)
-    /// Systematic yellow scale progression - lightest
-    public static let yellow100: UIColor = UIColor(red: 1.00, green: 0.98, blue: 0.80, alpha: 1.00)
-    /// Systematic yellow scale progression - medium-light
-    public static let yellow200: UIColor = UIColor(red: 0.99, green: 0.96, blue: 0.50, alpha: 1.00)
-    /// Systematic yellow scale progression - bright
-    public static let yellow300: UIColor = UIColor(red: 0.98, green: 0.94, blue: 0.01, alpha: 1.00)
-    /// Systematic yellow scale progression - dark
-    public static let yellow400: UIColor = UIColor(red: 0.78, green: 0.75, blue: 0.01, alpha: 1.00)
-    /// Systematic yellow scale progression - darkest
-    public static let yellow500: UIColor = UIColor(red: 0.56, green: 0.55, blue: 0.00, alpha: 1.00)
-    /// Systematic orange scale progression - lightest
-    public static let orange100: UIColor = UIColor(red: 1.00, green: 0.90, blue: 0.86, alpha: 1.00)
-    /// Systematic orange scale progression - medium-light
-    public static let orange200: UIColor = UIColor(red: 1.00, green: 0.72, blue: 0.63, alpha: 1.00)
-    /// Systematic orange scale progression - bright
-    public static let orange300: UIColor = UIColor(red: 1.00, green: 0.42, blue: 0.21, alpha: 1.00)
-    /// Systematic orange scale progression - dark
-    public static let orange400: UIColor = UIColor(red: 0.80, green: 0.33, blue: 0.16, alpha: 1.00)
-    /// Systematic orange scale progression - darkest
-    public static let orange500: UIColor = UIColor(red: 0.56, green: 0.24, blue: 0.11, alpha: 1.00)
-    /// Systematic purple scale progression - lightest
-    public static let purple100: UIColor = UIColor(red: 0.95, green: 0.88, blue: 1.00, alpha: 1.00)
-    /// Systematic purple scale progression - medium-light
-    public static let purple200: UIColor = UIColor(red: 0.85, green: 0.54, blue: 1.00, alpha: 1.00)
-    /// Systematic purple scale progression - primary brand
-    public static let purple300: UIColor = UIColor(red: 0.69, green: 0.15, blue: 1.00, alpha: 1.00)
-    /// Systematic purple scale progression - dark
-    public static let purple400: UIColor = UIColor(red: 0.55, green: 0.12, blue: 0.80, alpha: 1.00)
-    /// Systematic purple scale progression - darkest
-    public static let purple500: UIColor = UIColor(red: 0.39, green: 0.08, blue: 0.56, alpha: 1.00)
-    /// Systematic pink scale progression - lightest
-    public static let pink100: UIColor = UIColor(red: 1.00, green: 0.85, blue: 0.91, alpha: 1.00)
-    /// Systematic pink scale progression - medium-light
-    public static let pink200: UIColor = UIColor(red: 1.00, green: 0.51, blue: 0.71, alpha: 1.00)
-    /// Systematic pink scale progression - base
-    public static let pink300: UIColor = UIColor(red: 1.00, green: 0.16, blue: 0.43, alpha: 1.00)
-    /// Systematic pink scale progression - dark
-    public static let pink400: UIColor = UIColor(red: 0.80, green: 0.13, blue: 0.34, alpha: 1.00)
-    /// Systematic pink scale progression - darkest
-    public static let pink500: UIColor = UIColor(red: 0.50, green: 0.08, blue: 0.22, alpha: 1.00)
-    /// Systematic green scale progression - lightest
-    public static let green100: UIColor = UIColor(red: 0.90, green: 1.00, blue: 0.96, alpha: 1.00)
-    /// Systematic green scale progression - medium-light
-    public static let green200: UIColor = UIColor(red: 0.50, green: 1.00, blue: 0.73, alpha: 1.00)
-    /// Systematic green scale progression - bright
-    public static let green300: UIColor = UIColor(red: 0.20, green: 1.00, blue: 0.60, alpha: 1.00)
-    /// Systematic green scale progression - strong
-    public static let green400: UIColor = UIColor(red: 0.00, green: 1.00, blue: 0.53, alpha: 1.00)
-    /// Systematic green scale progression - darkest/glow
-    public static let green500: UIColor = UIColor(red: 0.00, green: 0.80, blue: 0.43, alpha: 1.00)
-    /// Systematic cyan scale progression - lightest
-    public static let cyan100: UIColor = UIColor(red: 0.80, green: 0.98, blue: 1.00, alpha: 1.00)
-    /// Systematic cyan scale progression - medium-light
-    public static let cyan200: UIColor = UIColor(red: 0.50, green: 0.96, blue: 1.00, alpha: 1.00)
-    /// Systematic cyan scale progression - tech primary
-    public static let cyan300: UIColor = UIColor(red: 0.00, green: 0.94, blue: 1.00, alpha: 1.00)
-    /// Systematic cyan scale progression - dark
-    public static let cyan400: UIColor = UIColor(red: 0.00, green: 0.75, blue: 0.80, alpha: 1.00)
-    /// Systematic cyan scale progression - darkest
-    public static let cyan500: UIColor = UIColor(red: 0.00, green: 0.53, blue: 0.56, alpha: 1.00)
-    /// Systematic teal scale progression - lightest
-    public static let teal100: UIColor = UIColor(red: 0.85, green: 0.91, blue: 0.92, alpha: 1.00)
-    /// Systematic teal scale progression - medium-light
-    public static let teal200: UIColor = UIColor(red: 0.30, green: 0.61, blue: 0.65, alpha: 1.00)
-    /// Systematic teal scale progression - secondary UI
-    public static let teal300: UIColor = UIColor(red: 0.10, green: 0.33, blue: 0.36, alpha: 1.00)
-    /// Systematic teal scale progression - dark
-    public static let teal400: UIColor = UIColor(red: 0.08, green: 0.26, blue: 0.29, alpha: 1.00)
-    /// Systematic teal scale progression - darkest
-    public static let teal500: UIColor = UIColor(red: 0.06, green: 0.18, blue: 0.20, alpha: 1.00)
-    /// Systematic shadow color family - pure black (0, 0, 0) - mode-agnostic
-    public static let shadowBlack100: UIColor = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.00)
-    /// Systematic shadow color family - blue-tinted gray for sunrise/sunset lighting - mode-agnostic
-    public static let shadowBlue100: UIColor = UIColor(red: 0.08, green: 0.10, blue: 0.16, alpha: 1.00)
-    /// Systematic shadow color family - warm-tinted gray for cool lighting environments - mode-agnostic
-    public static let shadowOrange100: UIColor = UIColor(red: 0.10, green: 0.08, blue: 0.06, alpha: 1.00)
-    /// Systematic shadow color family - blue-gray for ambient/overcast conditions - mode-agnostic
-    public static let shadowGray100: UIColor = UIColor(red: 0.06, green: 0.08, blue: 0.12, alpha: 1.00)
+    static let pink100 = Color.oklch(0.92, 0.045, 10)
+    static let pink200 = Color.oklch(0.76, 0.16, 10)
+    static let pink300 = Color.oklch(0.65, 0.242, 10)
+    static let pink400 = Color.oklch(0.55, 0.203, 10)
+    static let pink500 = Color.oklch(0.4, 0.141, 10)
+    static let orange100 = Color.oklch(0.94, 0.031, 39.5)
+    static let orange200 = Color.oklch(0.84, 0.089, 39.5)
+    static let orange300 = Color.oklch(0.7, 0.193, 39.5)
+    static let orange400 = Color.oklch(0.6, 0.162, 39.5)
+    static let orange500 = Color.oklch(0.46, 0.121, 39.5)
+    static let yellow100 = Color.oklch(0.98, 0.061, 107)
+    static let yellow200 = Color.oklch(0.9, 0.14, 107)
+    static let yellow300 = Color.oklch(0.8, 0.2, 107)
+    static let yellow400 = Color.oklch(0.68, 0.169, 107)
+    static let yellow500 = Color.oklch(0.56, 0.133, 107)
+    static let green100 = Color.oklch(0.97, 0.029, 154)
+    static let green200 = Color.oklch(0.88, 0.149, 154)
+    static let green300 = Color.oklch(0.78, 0.208, 154)
+    static let green400 = Color.oklch(0.66, 0.18, 154)
+    static let green500 = Color.oklch(0.54, 0.14, 154)
+    static let cyan100 = Color.oklch(0.96, 0.048, 202.5)
+    static let cyan200 = Color.oklch(0.87, 0.108, 202.5)
+    static let cyan300 = Color.oklch(0.76, 0.148, 202.5)
+    static let cyan400 = Color.oklch(0.64, 0.125, 202.5)
+    static let cyan500 = Color.oklch(0.52, 0.097, 202.5)
+    static let teal100 = Color.oklch(0.92, 0.035, 209)
+    static let teal200 = Color.oklch(0.72, 0.1, 209)
+    static let teal300 = Color.oklch(0.52, 0.08, 209)
+    static let teal400 = Color.oklch(0.38, 0.06, 209)
+    static let teal500 = Color.oklch(0.28, 0.045, 209)
+    static let purple100 = Color.oklch(0.93, 0.046, 310)
+    static let purple200 = Color.oklch(0.76, 0.179, 310)
+    static let purple300 = Color.oklch(0.6, 0.286, 310)
+    static let purple400 = Color.oklch(0.51, 0.241, 310)
+    static let purple500 = Color.oklch(0.4, 0.183, 310)
+    static let white100 = Color.oklch(1, 0, 260)
+    static let white200 = Color.oklch(0.95, 0.006, 260)
+    static let white300 = Color.oklch(0.9, 0.01, 260)
+    static let white400 = Color.oklch(0.85, 0.013, 260)
+    static let white500 = Color.oklch(0.8, 0.015, 260)
+    static let gray100 = Color.oklch(0.72, 0.018, 260)
+    static let gray200 = Color.oklch(0.62, 0.02, 260)
+    static let gray300 = Color.oklch(0.52, 0.02, 260)
+    static let gray400 = Color.oklch(0.42, 0.018, 260)
+    static let gray500 = Color.oklch(0.32, 0.015, 260)
+    static let black100 = Color.oklch(0.28, 0.013, 260)
+    static let black200 = Color.oklch(0.21, 0.01, 260)
+    static let black300 = Color.oklch(0.14, 0.008, 260)
+    static let black400 = Color.oklch(0.07, 0.004, 260)
+    static let black500 = Color.oklch(0, 0, 260)
 
     // MARK: - DENSITY TOKENS
     /// base × 0.75 = 1.0 × 0.75 = 0.75
@@ -193,7 +133,7 @@ public struct DesignTokens {
     /// N/A - Categorical value
     public static let fontFamilySystem: String = "-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif"
     /// N/A - Categorical value
-    public static let fontFamilyMono: String = ""Commit Mono", SF Mono, Monaco, Inconsolata, "Roboto Mono", Consolas, "Courier New", monospace"
+    public static let fontFamilyMono: String = ""Commit Mono", "SF Mono", Monaco, Inconsolata, "Roboto Mono", Consolas, "Courier New", monospace"
     /// N/A - Categorical value
     public static let fontFamilyDisplay: String = "Rajdhani, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif"
     /// N/A - Categorical value
@@ -374,8 +314,6 @@ public struct DesignTokens {
     public static let shadowOffsetY300: CGFloat = 12
     /// base × 4 = 4 × 4 = 16
     public static let shadowOffsetY400: CGFloat = 16
-    /// base × 6 = 4 × 6 = 24
-    public static let shadowOffsetY600: CGFloat = 24
     /// base × 0 = 4 × 0 = 0
     public static let shadowOffsetY000: CGFloat = 0
     /// base × 0 = 0.3 × 0 = 0
@@ -452,12 +390,6 @@ public struct DesignTokens {
     public static let space700: CGFloat = 56
     /// base × 8 = 8 × 8 = 64
     public static let space800: CGFloat = 64
-    /// base × 9 = 8 × 9 = 72
-    public static let space900: CGFloat = 72
-    /// base × 12 = 8 × 12 = 96
-    public static let space1200: CGFloat = 96
-    /// base × 16 = 8 × 16 = 128
-    public static let space1600: CGFloat = 128
 
     // MARK: - TAPAREA TOKENS
     /// base × 1 = 44 × 1 = 44
@@ -494,7 +426,6 @@ public struct DesignTokens {
     public static let colorIdentityHuman: UIColor = UIColor(red: 1.00, green: 0.42, blue: 0.21, alpha: 1.00)
     public static let colorIdentityAgent: UIColor = UIColor(red: 0.30, green: 0.61, blue: 0.65, alpha: 1.00)
     public static let colorActionSecondary: UIColor = UIColor(red: 0.09, green: 0.13, blue: 0.16, alpha: 1.00)
-    public static let colorActionNavigationSurface: UIColor = UIColor(red: 0.50, green: 1.00, blue: 0.73, alpha: 1.00)
     public static let colorAttention: UIColor = UIColor(red: 0.78, green: 0.75, blue: 0.01, alpha: 1.00)
     public static let colorHighlight: UIColor = UIColor(red: 0.98, green: 0.94, blue: 0.01, alpha: 1.00)
     public static let colorTech: UIColor = UIColor(red: 0.55, green: 0.12, blue: 0.80, alpha: 1.00)
@@ -502,7 +433,6 @@ public struct DesignTokens {
     public static let colorTextDefault: UIColor = UIColor(red: 0.15, green: 0.20, blue: 0.23, alpha: 1.00)
     public static let colorTextMuted: UIColor = UIColor(red: 0.37, green: 0.44, blue: 0.49, alpha: 1.00)
     public static let colorTextSubtle: UIColor = UIColor(red: 0.70, green: 0.74, blue: 0.77, alpha: 1.00)
-    public static let colorTextStrong: UIColor = UIColor(red: 0.04, green: 0.04, blue: 0.06, alpha: 1.00)
     public static let colorContrastOnLight: UIColor = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.00)
     public static let colorContrastOnDark: UIColor = UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 1.00)
     public static let colorStructureSurface: UIColor = UIColor(red: 0.96, green: 0.96, blue: 0.98, alpha: 1.00)
@@ -515,7 +445,7 @@ public struct DesignTokens {
     public static let glowNeonPurple: UIColor = UIColor(red: 0.39, green: 0.08, blue: 0.56, alpha: 1.00)
     public static let glowNeonCyan: UIColor = UIColor(red: 0.00, green: 0.53, blue: 0.56, alpha: 1.00)
     public static let glowNeonYellow: UIColor = UIColor(red: 0.56, green: 0.55, blue: 0.00, alpha: 1.00)
-    public static let glowNeonGreen: UIColor = UIColor(red: 0.00, green: 0.80, blue: 0.43, alpha: 1.00)
+    public static let glowNeonGreen: UIColor = UIColor(red: 0.20, green: 1.00, blue: 0.60, alpha: 1.00)
     public static let glowNeonPink: UIColor = UIColor(red: 0.50, green: 0.08, blue: 0.22, alpha: 1.00)
     public static let colorProgressCurrentBackground: UIColor = UIColor(red: 0.00, green: 0.94, blue: 1.00, alpha: 1.00)
     public static let colorProgressCurrentText: UIColor = UIColor(red: 0.00, green: 0.75, blue: 0.80, alpha: 1.00)
@@ -549,8 +479,6 @@ public struct DesignTokens {
     public static let typographyLabelMd = Typography(fontSize: fontSize100, lineHeight: lineHeight100, fontFamily: fontFamilyBody, fontWeight: fontWeight500, letterSpacing: letterSpacing100)
     public static let typographyLabelMdFloat = Typography(fontSize: fontSize075, lineHeight: lineHeight075, fontFamily: fontFamilyBody, fontWeight: fontWeight500, letterSpacing: letterSpacing100)
     public static let typographyLabelLg = Typography(fontSize: fontSize125, lineHeight: lineHeight125, fontFamily: fontFamilyBody, fontWeight: fontWeight500, letterSpacing: letterSpacing100)
-    public static let typographyDisplayLabelMd = Typography(fontSize: fontSize150, lineHeight: lineHeight150, fontFamily: fontFamilyDisplay, fontWeight: fontWeight700, letterSpacing: letterSpacing100)
-    public static let typographyDisplayLabelLg = Typography(fontSize: fontSize200, lineHeight: lineHeight200, fontFamily: fontFamilyDisplay, fontWeight: fontWeight700, letterSpacing: letterSpacing100)
     public static let typographyCodeSm = Typography(fontSize: fontSize075, lineHeight: lineHeight075, fontFamily: fontFamilyMono, fontWeight: fontWeight400, letterSpacing: letterSpacing100)
     public static let typographyCodeMd = Typography(fontSize: fontSize100, lineHeight: lineHeight100, fontFamily: fontFamilyMono, fontWeight: fontWeight400, letterSpacing: letterSpacing100)
     public static let typographyCodeLg = Typography(fontSize: fontSize125, lineHeight: lineHeight125, fontFamily: fontFamilyMono, fontWeight: fontWeight400, letterSpacing: letterSpacing100)
@@ -558,7 +486,7 @@ public struct DesignTokens {
     public static let shadowContainer = Typography(offsetX: shadowOffsetX000, offsetY: shadowOffsetY100, blur: blur075, opacity: shadowOpacityModerate, color: shadowBlack100)
     public static let shadowNavigation = Typography(offsetX: shadowOffsetX000, offsetY: shadowOffsetY100, blur: blur125, opacity: shadowOpacitySoft, color: shadowBlack100)
     public static let shadowDropdown = Typography(offsetX: shadowOffsetX000, offsetY: shadowOffsetY100, blur: blur075, opacity: shadowOpacityModerate, color: shadowBlack100)
-    public static let shadowModal = Typography(offsetX: shadowOffsetX000, offsetY: shadowOffsetY600, blur: blur400, opacity: shadowOpacityDepth200, color: shadowBlack100)
+    public static let shadowModal = Typography(offsetX: shadowOffsetX000, offsetY: shadowOffsetY200, blur: blur100, opacity: shadowOpacityDepth200, color: shadowBlack100)
     public static let shadowToast = Typography(offsetX: shadowOffsetX000, offsetY: shadowOffsetY300, blur: blur150, opacity: shadowOpacityDepth300, color: shadowBlack100)
     public static let shadowTooltip = Typography(offsetX: shadowOffsetX000, offsetY: shadowOffsetY300, blur: blur150, opacity: shadowOpacityDepth300, color: shadowBlack100)
     public static let shadowFab = Typography(offsetX: shadowOffsetX300, offsetY: shadowOffsetY400, blur: blur025, opacity: shadowOpacityHard, color: shadowBlue100)
@@ -608,7 +536,7 @@ public struct DesignTokens {
     // WCAG 2.4.7 Focus Visible
     public static let accessibilityFocusWidth = borderWidth200
     // WCAG 2.4.7 Focus Visible
-    public static let accessibilityFocusColor: UIColor = UIColor(red: 1.00, green: 0.16, blue: 0.43, alpha: 1.00)
+    public static let accessibilityFocusColor: UIColor = UIColor(red: 0.00, green: 0.94, blue: 1.00, alpha: 1.00)
     public static let borderNone = borderWidth000
     public static let borderDefault = borderWidth100
     public static let borderEmphasis = borderWidth200
@@ -637,8 +565,6 @@ public struct DesignTokens {
     public static let spaceSectionedTight = space400
     public static let spaceSectionedNormal = space500
     public static let spaceSectionedLoose = space600
-    public static let spaceSectionedGenerous = space1200
-    public static let spaceSectionedExpansive = space1600
     public static let spaceInset100 = space100
     public static let spaceInset150 = space150
     public static let spaceInset200 = space200

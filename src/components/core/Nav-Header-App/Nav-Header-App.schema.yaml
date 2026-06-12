@@ -21,11 +21,16 @@ readiness:
     reviewed: true
 
 description: |
-  App-level header for root destination screens. Inherits safe area,
-  background, layout, and landmark semantics from Nav-Header-Base.
-  Exposes --nav-bg-override for product-controlled background theming
-  and renders a drop shadow via shadow.navigation token. Default
-  background is black-300. Content is product-defined via slots.
+  Permissive app-level header scaffold for root destination screens.
+  Inherits safe area, background, layout, and landmark semantics from
+  Nav-Header-Base. Exposes raw slots for product-defined content.
+
+  Intent: It orients, it doesn't navigate. No back button. Content is
+  product-defined because the design system can't predict what a product's
+  top-level chrome needs. The value is in what it inherits, not in
+  opinionated props.
+
+  Readiness: scaffold — architectural foundation, not production-ready.
 
 behaviors:
   - renderable
@@ -63,19 +68,7 @@ properties:
     type: string
     required: false
 
-customProperties:
-  --nav-bg-override:
-    type: string
-    required: false
-    description: |
-      Overrides the nav background color. Product sets this via JS during
-      scroll transitions. When not set, defaults to black-300.
-    default: "black-300"
-
-tokens:
-  component:
-    - navButton.padding.vertical
-    - navHeader.padding.inline
+tokens: {}
 
 composition:
   internal:

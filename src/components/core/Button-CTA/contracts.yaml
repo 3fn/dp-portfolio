@@ -44,17 +44,18 @@ contracts:
 
   interaction_hover:
     category: interaction
-    description: Visual feedback on hover (desktop only)
+    description: Perceptibly darker on hover (desktop only)
     behavior: |
       On desktop platforms, component shows visual feedback when mouse
-      hovers over the button. Uses blend.hoverDarker token (8% darker)
-      for primary variant background color change.
+      hovers over the button. Background darkens by a perceptible but
+      subtle amount (OKLCH ΔL 0.02–0.05, surface-aware direction).
+      Chroma is preserved — only lightness shifts.
     wcag: "1.4.13 Content on Hover or Focus"
     platforms: [web]
     validation:
-      - Background color changes on mouse enter
+      - Background color darkens on mouse enter (ΔL 0.02–0.05)
       - Background color reverts on mouse leave
-      - Hover state uses blend.hoverDarker token
+      - Chroma unchanged between rest and hover states
       - Hover state not shown when disabled
     test_approach: |
       - Simulate hover, verify background change
@@ -63,16 +64,17 @@ contracts:
 
   interaction_pressed:
     category: interaction
-    description: Visual feedback when pressed
+    description: Distinctly darker when pressed
     behavior: |
       Component shows visual feedback during active press/click.
-      Uses blend.pressedDarker token (12% darker) for primary variant.
+      Background darkens further than hover (OKLCH ΔL 0.05–0.10,
+      surface-aware direction). Chroma is preserved.
       Platform-specific: Web=color change, iOS=scale+haptic, Android=ripple+haptic.
     wcag: null
     platforms: [web, ios, android]
     validation:
-      - Visual feedback shown during press
-      - Feedback uses blend.pressedDarker token
+      - Visual feedback shown during press (ΔL 0.05–0.10)
+      - Pressed state is perceptibly stronger than hover
       - Platform-appropriate animation/effect applied
       - Pressed state not shown when disabled
     test_approach: |
@@ -84,14 +86,15 @@ contracts:
     description: Prevents interaction when disabled
     behavior: |
       When disabled, component cannot receive focus, cannot be clicked/tapped,
-      uses desaturated colors (blend.disabledDesaturate), shows cursor: not-allowed
-      (web), and communicates disabled state to assistive technology.
+      appears visually muted via chroma reduction (OKLCH ΔC ≥0.03 desaturation),
+      shows cursor: not-allowed (web), and communicates disabled state to
+      assistive technology.
     wcag: "4.1.2 Name, Role, Value"
     platforms: [web, ios, android]
     validation:
       - Button cannot receive focus when disabled
       - onPress not called when disabled
-      - Visual styling indicates disabled state
+      - Visual styling indicates disabled state (chroma reduced ≥0.03)
       - aria-disabled="true" set (web)
     test_approach: |
       - Set disabled=true, verify not focusable
@@ -135,48 +138,3 @@ contracts:
       - Tab to button, verify focus ring visible
       - Test in each variant
     required: true
-
-  content_renders_link:
-    category: content
-    description: Renders as link element when href is provided
-    behavior: |
-      When href prop is set, component renders as <a> instead of <button>.
-      All visual styling remains identical. Keyboard behavior changes to
-      native link semantics (Enter activates, Space does not). The disabled
-      prop is ignored when href is set. When target="_blank", rel is auto-set
-      to "noopener noreferrer" if not explicitly provided.
-    wcag: "4.1.2 Name, Role, Value"
-    platforms: [web, ios, android]
-    validation:
-      - href set renders <a> element (web)
-      - href absent renders <button> element (web)
-      - <a> has correct href attribute value
-      - target="_blank" produces rel="noopener noreferrer"
-      - Space key does NOT activate when rendered as <a>
-      - Enter key activates when rendered as <a>
-      - disabled prop ignored when href is set
-    test_approach: |
-      - Set href, verify <a> rendered with correct href
-      - Remove href, verify <button> rendered
-      - Set target="_blank", verify rel auto-applied
-      - Focus <a>, press Space, verify no activation
-      - Focus <a>, press Enter, verify activation
-    required: false
-
-  layout_icon_position:
-    category: layout
-    description: Icon renders at leading or trailing position
-    behavior: |
-      When iconPosition is "leading" (default), the icon renders before
-      the label text. When "trailing", the icon renders after the label.
-      Trailing position is used for outbound link indicators (external-link icon).
-    wcag: null
-    platforms: [web, ios, android]
-    validation:
-      - Default (leading) renders icon before label in DOM order
-      - Trailing renders icon after label in DOM order
-      - Visual order matches DOM order
-    test_approach: |
-      - Render with icon and default position, verify icon precedes label
-      - Render with iconPosition="trailing", verify label precedes icon
-    required: false

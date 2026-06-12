@@ -21,9 +21,9 @@
  */
 
 import { defineComponentTokens } from '@3fn/core/build';
-import { spacingTokens } from '../SpacingTokens';
-import { sizingTokens } from '../SizingTokens';
-import { borderWidthTokens } from '../BorderWidthTokens';
+import { spacingTokens } from '../../tokens/SpacingTokens';
+import { sizingTokens } from '../../tokens/SizingTokens';
+import { borderWidthTokens } from '../../tokens/BorderWidthTokens';
 
 /**
  * Progress Indicator component tokens defined using the hybrid authoring API.

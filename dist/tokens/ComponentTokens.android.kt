@@ -1,6 +1,6 @@
 /**
  * DesignerPunk Design System - Component Tokens
- * Generated: 2026-05-27T21:34:31.715Z
+ * Generated: 2026-06-11T02:46:46.856Z
  * Version: 1.0.0
  * Platform: Android (Kotlin Constants)
  *
@@ -12,18 +12,18 @@ package com.designerpunk.tokens
 
 /** Avatar Component Tokens */
 object AvatarTokens {
-    // Extra small avatar (24px = 3× base) for inline mentions and compact UI contexts where minimal visual footprint is needed
-    val sizeXs = SpacingTokens.size300
-    // Small avatar (32px = 4× base) for list items and secondary UI contexts with moderate visual presence
-    val sizeSm = SpacingTokens.size400
-    // Medium avatar (40px = 5× base) as the default size, providing balanced visual weight for most UI contexts
-    val sizeMd = SpacingTokens.size500
-    // Large avatar (48px = 6× base) for profile headers and primary UI contexts requiring prominent visual presence
-    val sizeLg = SpacingTokens.size600
-    // Extra large avatar (80px = 10× base) for profile pages and hero sections where avatar is a focal point
-    val sizeXl = SpacingTokens.size1000
-    // Extra extra large avatar (128px = 16× base) for hero profiles and full-page profile views requiring maximum visual impact
-    val sizeXxl = SpacingTokens.size1600
+    // Extra small avatar (24px). Compact contexts — inline mentions, dense lists.
+    val sizeXs = SizingTokens.size300
+    // Small avatar (32px). Comment threads, contact lists.
+    val sizeSm = SizingTokens.size400
+    // Medium avatar (40px). Default size — profile cards, list items.
+    val sizeMd = SizingTokens.size500
+    // Large avatar (48px). Profile headers, prominent identity display.
+    val sizeLg = SizingTokens.size600
+    // Extra large avatar (80px). Profile pages, hero sections.
+    val sizeXl = SizingTokens.size1000
+    // Extra extra large avatar (128px). Full profile view, onboarding.
+    val sizeXxl = SizingTokens.size1600
     // Icon size for xs avatar (12px = 1.5× base) maintains 50% ratio (12/24). No existing icon token at this size, so component token fills the gap.
     val iconSizeXs = 12.dp
     // Icon size for xxl avatar (64px = 8× base) maintains 50% ratio (64/128). No existing icon token at this size, so component token fills the gap.

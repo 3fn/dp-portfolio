@@ -232,45 +232,6 @@ export const spacingTokens: Record<string, PrimitiveToken> = {
     isStrategicFlexibility: false,
     isPrecisionTargeted: false,
     platforms: generateSpacingPlatformValues(SPACING_BASE_VALUE * 8)
-  },
-
-  space900: {
-    name: 'space900',
-    category: TokenCategory.SPACING,
-    baseValue: SPACING_BASE_VALUE * 9,
-    familyBaseValue: SPACING_BASE_VALUE,
-    description: 'Section spacing - 9x base value',
-    mathematicalRelationship: 'base × 9 = 8 × 9 = 72',
-    baselineGridAlignment: true, // 72 is baseline grid aligned (8 × 9)
-    isStrategicFlexibility: false,
-    isPrecisionTargeted: false,
-    platforms: generateSpacingPlatformValues(SPACING_BASE_VALUE * 9)
-  },
-
-  space1200: {
-    name: 'space1200',
-    category: TokenCategory.SPACING,
-    baseValue: SPACING_BASE_VALUE * 12,
-    familyBaseValue: SPACING_BASE_VALUE,
-    description: 'Page section spacing - 12x base value',
-    mathematicalRelationship: 'base × 12 = 8 × 12 = 96',
-    baselineGridAlignment: true, // 96 is baseline grid aligned (8 × 12)
-    isStrategicFlexibility: false,
-    isPrecisionTargeted: false,
-    platforms: generateSpacingPlatformValues(SPACING_BASE_VALUE * 12)
-  },
-
-  space1600: {
-    name: 'space1600',
-    category: TokenCategory.SPACING,
-    baseValue: SPACING_BASE_VALUE * 16,
-    familyBaseValue: SPACING_BASE_VALUE,
-    description: 'Page section spacing - 16x base value',
-    mathematicalRelationship: 'base × 16 = 8 × 16 = 128',
-    baselineGridAlignment: true, // 128 is baseline grid aligned (8 × 16)
-    isStrategicFlexibility: false,
-    isPrecisionTargeted: false,
-    platforms: generateSpacingPlatformValues(SPACING_BASE_VALUE * 16)
   }
 };
 

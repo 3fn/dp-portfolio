@@ -34,7 +34,7 @@ An ecosystem of three systems:
 | **410** source tokens | **5** platform outputs |
 | **34** components | **210** behavioral contracts |
 | **8** AI agents | **3** MCP servers |
-| **8k+** governance tests | **-87%** context load reduction |
+| **8k+** governance tests | **-82%** context load reduction |
 
 ---
 

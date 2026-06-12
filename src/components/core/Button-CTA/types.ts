@@ -174,19 +174,6 @@ export interface ButtonProps {
   icon?: IconBaseName;
   
   /**
-   * Icon position relative to label text (optional, default: 'leading')
-   * 
-   * @defaultValue 'leading'
-   * 
-   * @example
-   * ```typescript
-   * iconPosition="leading"   // Icon before text (default)
-   * iconPosition="trailing"  // Icon after text (e.g., external-link on outbound CTAs)
-   * ```
-   */
-  iconPosition?: 'leading' | 'trailing';
-  
-  /**
    * Prevent text wrapping (optional, default: false)
    * 
    * When true, text is truncated with ellipsis instead of wrapping to
@@ -258,7 +245,6 @@ export interface ButtonProps {
    * - Disabled buttons are not keyboard focusable
    * - Screen readers announce disabled state
    * - Visual styling indicates non-interactive state
-   * - Ignored when `href` is set (links are not disableable)
    * 
    * @example
    * ```typescript
@@ -268,51 +254,4 @@ export interface ButtonProps {
    * ```
    */
   disabled?: boolean;
-
-  /**
-   * Optional URL for polymorphic link rendering
-   * 
-   * When set, the component renders as `<a>` instead of `<button>`.
-   * All visual styling remains identical. Keyboard behavior changes
-   * to match native link semantics (Enter activates, Space does not).
-   * 
-   * @remarks
-   * - Renders `<a>` with link role (announced as "link" by screen readers)
-   * - `disabled` prop is ignored when `href` is set
-   * - `onPress` is still called on activation (in addition to navigation)
-   * - Use with `target="_blank"` for external links
-   * 
-   * @example
-   * ```typescript
-   * href="https://github.com/3fn/DesignerPunkv2"
-   * href="#why-build"  // Internal anchor
-   * ```
-   */
-  href?: string;
-
-  /**
-   * Optional link target (only applies when href is set)
-   * 
-   * @remarks
-   * - When `"_blank"`, `rel` is auto-set to `"noopener noreferrer"` if not explicitly provided
-   * 
-   * @example
-   * ```typescript
-   * target="_blank"  // Opens in new tab
-   * ```
-   */
-  target?: string;
-
-  /**
-   * Optional link rel attribute (only applies when href is set)
-   * 
-   * @remarks
-   * - Auto-set to `"noopener noreferrer"` when `target="_blank"` and rel is not explicitly provided
-   * 
-   * @example
-   * ```typescript
-   * rel="noopener noreferrer"
-   * ```
-   */
-  rel?: string;
 }

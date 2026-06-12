@@ -28,8 +28,22 @@ tokens:
     platforms: [web]
 
   backdropOverlay:
-    value: "rgba(10, 10, 15, 0.64)"
+    value: "oklch(0.147 0.0107 285.0 / 0.64)"
     unitType: color
     description: Modal backdrop overlay color
-    rationale: "Dark semi-transparent overlay for modal focus. Near-black base (no system primitive) at opacity064. Tuned to portfolio's light theme."
+    rationale: "Dark semi-transparent overlay for modal focus. Near-black base (no system primitive) at opacity064. Tuned to portfolio's dark theme."
+    platforms: [web]
+
+  docsVizTooltipBg:
+    value: "rgba(13, 13, 26, 0.97)"
+    unitType: color
+    description: Dark near-opaque background for visualization tooltips
+    rationale: "Near-black with slight blue tint for technical depth feel. 97% opacity provides subtle context bleed. Distinct from portfolio tooltipBackground (white). Not a theme override — scoped to docs visualization."
+    platforms: [web]
+
+  docsVizNodeGlow:
+    value: "rgba(128, 246, 255, 0.4)"
+    unitType: color
+    description: Glow effect color for active visualization nodes (cyan200 at 40% opacity)
+    rationale: "Cyan200 base at reduced opacity for soft glow filter effect on hover/active nodes. Opacity-modified system color — can't be expressed as a simple ref."
     platforms: [web]

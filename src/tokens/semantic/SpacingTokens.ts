@@ -154,19 +154,7 @@ export const layoutSpacing = {
      * Generous section boundary for maximum visual separation
      * Example: Major landing page sections, distinct content areas
      */
-    loose: { value: 'space600' } as SpacingSemanticToken,
-
-    /**
-     * Generous page-level section spacing for expansive vertical rhythm
-     * Example: Portfolio page section boundaries, marketing page sections
-     */
-    generous: { value: 'space1200' } as SpacingSemanticToken,
-
-    /**
-     * Maximum page-level section spacing for dramatic vertical rhythm
-     * Example: Hero-to-content transitions, major narrative breaks
-     */
-    expansive: { value: 'space1600' } as SpacingSemanticToken
+    loose: { value: 'space600' } as SpacingSemanticToken
   }
 };
 

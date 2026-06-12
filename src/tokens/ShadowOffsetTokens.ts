@@ -237,19 +237,6 @@ export const shadowOffsetY: Record<string, PrimitiveToken> = {
     isStrategicFlexibility: false,
     isPrecisionTargeted: false,
     platforms: generateShadowOffsetPlatformValues(SHADOW_OFFSET_BASE_VALUE * 4)
-  },
-
-  '600': {
-    name: 'shadowOffsetY.600',
-    category: TokenCategory.SHADOW,
-    baseValue: SHADOW_OFFSET_BASE_VALUE * 6,
-    familyBaseValue: SHADOW_OFFSET_BASE_VALUE,
-    description: 'Modal elevation - dramatic vertical offset',
-    mathematicalRelationship: 'base × 6 = 4 × 6 = 24',
-    baselineGridAlignment: true, // 24 is 4px baseline grid aligned
-    isStrategicFlexibility: false,
-    isPrecisionTargeted: false,
-    platforms: generateShadowOffsetPlatformValues(SHADOW_OFFSET_BASE_VALUE * 6)
   }
 };
 

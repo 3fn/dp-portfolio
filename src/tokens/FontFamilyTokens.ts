@@ -45,7 +45,7 @@ export const fontFamilyTokens: Record<string, PrimitiveToken> = {
         baselineGridAlignment: false,
         isStrategicFlexibility: false,
         isPrecisionTargeted: false,
-        platforms: generateFontFamilyPlatformValues('"Commit Mono", SF Mono, Monaco, Inconsolata, "Roboto Mono", Consolas, "Courier New", monospace')
+        platforms: generateFontFamilyPlatformValues('"Commit Mono", "SF Mono", Monaco, Inconsolata, "Roboto Mono", Consolas, "Courier New", monospace')
     },
 
     fontFamilyDisplay: {

@@ -499,9 +499,9 @@ body {
 }
 .ecosystem__modal-viz { display: flex; flex-direction: column; justify-content: center; }
 .viz-source { color: var(--product-color-viz-syntax-cyan); }
-.viz-arrow { color: rgba(255, 255, 255, var(--opacity-056)); } /* system white + system opacity — muted connector */
+.viz-arrow { color: oklch(from var(--color-contrast-on-dark) l c h / var(--opacity-056)); } /* system white + system opacity — muted connector */
 .viz-output { color: var(--product-color-viz-syntax-green); }
-.viz-comment { color: rgba(255, 255, 255, var(--opacity-072)); } /* system white + system opacity — muted comment text */
+.viz-comment { color: oklch(from var(--color-contrast-on-dark) l c h / var(--opacity-072)); } /* system white + system opacity — muted comment text */
 .viz-keyword { color: var(--product-color-viz-syntax-yellow); }
 .viz-value { color: var(--product-color-viz-syntax-pink); }
 .viz-indent { padding-inline-start: var(--product-layout-viz-indent); }
@@ -720,7 +720,7 @@ body {
   position: fixed;
   pointer-events: none;
   display: none;
-  background: rgba(255, 255, 255, var(--opacity-096)); /* system white + system opacity — near-opaque tooltip surface */
+  background: oklch(from var(--color-contrast-on-dark) l c h / var(--opacity-096)); /* system white + system opacity — near-opaque tooltip surface */
   border: var(--border-width-100) solid var(--gray-100);
   padding: var(--space-200) var(--space-250);
   font-family: var(--font-family-mono);
@@ -906,7 +906,7 @@ body {
   display: flex;
   gap: var(--space-175);
   font-size: var(--font-size-050);
-  color: rgba(255, 255, 255, var(--opacity-064)); /* system white + system opacity — muted footer text */
+  color: oklch(from var(--color-contrast-on-dark) l c h / var(--opacity-064)); /* system white + system opacity — muted footer text */
 }
 .footer__sep {
   opacity: var(--opacity-032);
@@ -917,7 +917,7 @@ body {
   position: fixed;
   pointer-events: none;
   display: none;
-  background: rgba(255, 255, 255, var(--opacity-096)); /* system white + system opacity — near-opaque tooltip surface */
+  background: oklch(from var(--color-contrast-on-dark) l c h / var(--opacity-096)); /* system white + system opacity — near-opaque tooltip surface */
   border: var(--product-border-tooltip-width) solid var(--color-action-primary);
   border-radius: var(--product-border-tooltip-radius);
   padding: var(--space-075) var(--space-150);

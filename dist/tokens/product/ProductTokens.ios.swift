@@ -1,6 +1,6 @@
 import UIKit
 
-// Product tokens — generated 2026-05-27T21:34:31.780Z
+// Product tokens — generated 2026-06-11T02:46:46.898Z
 // Do not edit manually. Source: product/tokens/*.yaml
 
 public enum ProductLayout {
