@@ -37,3 +37,9 @@ Print styles added, forced colors confirmed (from Task 2.1), responsive collapse
 - [x] Forced colors mode passes (nav links visible)
 - [x] Ecosystem Rosetta card links to `/docs/rosetta`
 - [x] Build passes (2 pages, 11 scripts)
+
+---
+
+## Post-Release Correction (2026-06-12, Sparky)
+
+The check `[x] Mobile layout renders correctly` was attested without viewing the rendered page. The desktop layout shipped broken (see task-1.2 post-release correction — nav `position: fixed` removed it from grid flow, shifting narrative and viz tracks). A breakpoint walkthrough against an actual browser would have caught it. The underlying defect has been fixed (nav restored to `position: sticky`); build re-verified. Visual confirmation across the ≤1023px breakpoint is still recommended before final sign-off.

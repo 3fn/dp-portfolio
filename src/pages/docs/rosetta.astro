@@ -12,13 +12,15 @@ import Base from '../../layouts/Base.astro';
     <style is:global>
       .docs-layout {
         display: grid;
+        /* Three tracks: nav rail | narrative | viz. The nav is position:sticky,
+           so it stays in grid flow as track 1 (per design-outline). On hover it
+           expands past its fixed track to overlay the narrative. */
         grid-template-columns: var(--product-layout-docs-nav-rail-collapsed) 1fr 1fr;
         min-block-size: 100vh;
       }
       .docs-nav {
-        position: fixed;
+        position: sticky;
         inset-block-start: 0;
-        inset-inline-start: 0;
         block-size: 100vh;
         inline-size: var(--product-layout-docs-nav-rail-collapsed);
         overflow: hidden;

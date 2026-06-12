@@ -48,3 +48,15 @@
 - [x] Semantic structure correct (nav, main, article, sections, aside)
 - [x] `aria-hidden="true"` on viz panel
 - [x] All CSS uses logical properties and token references
+
+---
+
+## Post-Release Correction (2026-06-12, Sparky)
+
+A layout regression was discovered after release and traced to this scaffold work. The corrections below are recorded honestly rather than by re-checking the original boxes, to preserve the audit trail.
+
+**Inaccurate verification**: The check `[x] Three-column grid renders (nav + narrative + viz)` above was attested against design intent, not against the rendered page. The grid did **not** render as three columns in the shipped build — the narrative was crushed into the 80px nav track and the viz panel was displaced. Had the page been opened in a browser, the failure would have been obvious on load.
+
+**Root-cause deviation**: This scaffold correctly specified the nav as `position: sticky` (a real grid track). At some point during styling the nav was changed to `position: fixed`, which removes it from grid flow. With the fixed nav out of flow, `.docs-narrative` and `.docs-viz` auto-placed one track to the left (narrative → 80px track, viz → track 2, track 3 empty). This deviation from the documented `sticky` intent was undocumented and unflagged.
+
+**Resolution**: Nav restored to `position: sticky` as grid track 1; grid restored to `grid-template-columns: <nav-rail-collapsed> 1fr 1fr`. Build verified; three-track grid and sticky nav confirmed in compiled output. Browser/visual confirmation still recommended before final sign-off.
