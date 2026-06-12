@@ -16,8 +16,9 @@ import Base from '../../layouts/Base.astro';
         min-block-size: 100vh;
       }
       .docs-nav {
-        position: sticky;
+        position: fixed;
         inset-block-start: 0;
+        inset-inline-start: 0;
         block-size: 100vh;
         inline-size: var(--product-layout-docs-nav-rail-collapsed);
         overflow: hidden;
@@ -30,8 +31,7 @@ import Base from '../../layouts/Base.astro';
         border-inline-end: var(--border-width-100) solid var(--gray-100);
         z-index: 10;
       }
-      .docs-nav:hover,
-      .docs-nav:focus-within {
+      .docs-nav:hover {
         inline-size: var(--product-layout-docs-nav-rail-expanded);
         box-shadow: var(--shadow-container);
       }
@@ -90,8 +90,7 @@ import Base from '../../layouts/Base.astro';
         opacity: 0;
         transition: opacity var(--duration-150) var(--easing-standard);
       }
-      .docs-nav:hover .docs-nav__text,
-      .docs-nav:focus-within .docs-nav__text {
+      .docs-nav:hover .docs-nav__text {
         opacity: 1;
       }
       .docs-narrative {
