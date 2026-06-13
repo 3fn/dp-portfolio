@@ -397,6 +397,14 @@ export const colorTokens: Record<string, Omit<SemanticToken, 'primitiveTokens'>>
     description: 'Subtle gray for tertiary and very subtle text elements'
   },
 
+  'color.text.strong': {
+    name: 'color.text.strong',
+    primitiveReferences: { value: 'black300' },
+    category: SemanticCategory.COLOR,
+    context: 'Strong text color for headings and high-emphasis content — intentional two-tier contrast hierarchy',
+    description: 'Dark black for headings and high-emphasis text — provides stronger contrast than color.text.default (gray300) to establish visual hierarchy. Strongest tier in the text contrast scale: strong > default > muted > subtle. Restored 2026-06-12 after v12 upgrade removal — references OKLCH black300 (oklch(0.14 0.008 260)), preserving the prior near-black rgba(10,10,15) perceptual value.'
+  },
+
   // ============================================================================
   // CONTRAST CONCEPT: Content on colored backgrounds
   // ============================================================================

@@ -3,7 +3,7 @@ package com.designerpunk.product.tokens
 import com.designerpunk.tokens.DesignTokens
 import androidx.compose.ui.unit.dp
 
-// Product tokens — generated 2026-06-11T02:46:46.898Z
+// Product tokens — generated 2026-06-13T03:50:37.624Z
 // Do not edit manually. Source: product/tokens/*.yaml
 
 object ProductLayout {

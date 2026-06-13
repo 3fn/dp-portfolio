@@ -7,7 +7,7 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "@3fn/core": "^12.0.3",
+    "@3fn/core": "12.0.5",
     "figma-console-mcp": "^1.22.4"
   },
   "devDependencies": {

@@ -43,3 +43,10 @@ tokens:
     description: Letter spacing for chord tooltip mono text
     rationale: "Barely perceptible tracking for monospace tooltip text. Below system minimum — micro-adjustment for optical balance."
     platforms: [web]
+
+  statLabelSize:
+    value: 11
+    unitType: logical
+    description: Small label size for ecosystem modal stat labels
+    rationale: "Restores the de-facto value of undefined --font-size-025 (11px, from the consumer's fallback). Authored as logical (→11px) rather than rem because @3fn/core v12 drops the unit on rem/em product tokens. Pre-existing dangling ref; cleanup later — see .kiro/@3fn-core-feedback/2026-06-12-v12-token-removal.md."
+    platforms: [web]

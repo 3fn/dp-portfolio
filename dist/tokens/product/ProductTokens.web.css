@@ -1,4 +1,4 @@
-/* Product tokens — generated 2026-06-11T02:46:46.897Z */
+/* Product tokens — generated 2026-06-13T03:50:37.624Z */
 /* Do not edit manually. Source: product/tokens/*.yaml */
 
 :root {
@@ -14,6 +14,9 @@
   --product-color-viz-syntax-pink: var(--pink-300); /* Code visualization syntax color — value/literal elements */
   --product-color-neon-glow: var(--green-300); /* Neon easter egg glow color for text-shadow effects */
   --product-color-backdrop-overlay: oklch(0.147 0.0107 285.0 / 0.64); /* Modal backdrop overlay color */
+  --product-color-docs-viz-tooltip-bg: rgba(13, 13, 26, 0.97); /* Dark near-opaque background for visualization tooltips */
+  --product-color-docs-viz-node-glow: rgba(128, 246, 255, 0.4); /* Glow effect color for active visualization nodes (cyan200 at 40% opacity) */
+  --product-color-text-strong: rgba(10, 10, 15, 1); /* Near-black strong text color for high-emphasis headings and top nav */
 
   /* Product tokens: layout */
   --product-layout-content-max-width: 1336px; /* Maximum content column width */
@@ -36,35 +39,33 @@
   --product-layout-hero-visual-max-tablet: 400px; /* Maximum width for hero illustration at tablet breakpoint */
   --product-layout-hero-visual-max-mobile: 300px; /* Maximum width for hero illustration at mobile breakpoint */
   --product-layout-token-evolution-sticky-offset: 120px; /* Top offset for sticky token evolution cluster in Why Build section */
+  --product-layout-docs-narrative-max-width: 680px; /* Maximum width for documentation narrative column */
+  --product-layout-docs-nav-rail-collapsed: 80px; /* Width of collapsed documentation nav rail */
+  --product-layout-docs-nav-rail-expanded: 260px; /* Width of expanded documentation nav rail on hover/focus */
+  --product-layout-docs-tooltip-max-width: 300px; /* Maximum width for visualization tooltips on docs pages */
+  --product-layout-docs-beat-spacing: 80px; /* Vertical spacing between narrative beats in documentation */
+  --product-layout-section-spacing-expansive: 128px; /* Expansive vertical rhythm between major page sections */
+  --product-layout-section-spacing-generous: 96px; /* Generous vertical rhythm between page sections */
+  --product-layout-block-gap-large: 72px; /* Large gap between stacked content blocks */
+  --product-layout-footer-info-gap: 14px; /* Gap between footer info items */
 
   /* Product tokens: motion */
   --product-motion-flip-duration: var(--duration-350); /* Card-to-modal FLIP expansion timing */
   --product-motion-flip-easing: cubic-bezier(0.4, 0, 0.2, 1); /* Card-to-modal FLIP expansion curve */
   --product-motion-flicker-duration: 800ms; /* Neon easter egg flicker animation cycle */
+  --product-motion-docs-viz-node-duration: 500ms; /* Transition duration for visualization node radius and stroke changes */
+  --product-motion-docs-viz-position-duration: 600ms; /* Transition duration for visualization node position changes */
 
   /* Product tokens: shadow */
   --product-shadow-card-hover-elevation: 0 6px 32px rgba(0, 0, 0, 0.35); /* Elevated shadow for ecosystem card hover state */
 
   /* Product tokens: typography */
-  --product-typography-stats-hero-size: 8; /* Display font size for the primary stats hero number */
-  --product-typography-easter-egg-display: 4.5; /* Display font size for hover-triggered easter egg text */
-  --product-typography-letter-spacing-label: 0.04; /* Letter spacing for stats hero label uppercase text */
-  --product-typography-letter-spacing-wide: 0.08; /* Letter spacing for section label uppercase text */
-  --product-typography-letter-spacing-subtle: 0.02; /* Letter spacing for agent role headers */
-  --product-typography-letter-spacing-minimal: 0.01; /* Letter spacing for chord tooltip mono text */
+  --product-typography-stats-hero-size: 8rem; /* Display font size for the primary stats hero number */
+  --product-typography-easter-egg-display: 4.5rem; /* Display font size for hover-triggered easter egg text */
+  --product-typography-letter-spacing-label: 0.04em; /* Letter spacing for stats hero label uppercase text */
+  --product-typography-letter-spacing-wide: 0.08em; /* Letter spacing for section label uppercase text */
+  --product-typography-letter-spacing-subtle: 0.02em; /* Letter spacing for agent role headers */
+  --product-typography-letter-spacing-minimal: 0.01em; /* Letter spacing for chord tooltip mono text */
+  --product-typography-stat-label-size: 11px; /* Small label size for ecosystem modal stat labels */
 
-  /* Product tokens: layout (docs) */
-  --product-layout-docs-narrative-max-width: 680px; /* Maximum width for documentation narrative column */
-  --product-layout-docs-nav-rail-collapsed: 80px; /* Width of collapsed documentation nav rail */
-  --product-layout-docs-nav-rail-expanded: 260px; /* Width of expanded documentation nav rail */
-  --product-layout-docs-tooltip-max-width: 300px; /* Maximum width for visualization tooltips */
-  --product-layout-docs-beat-spacing: 80px; /* Vertical spacing between narrative beats */
-
-  /* Product tokens: motion (docs) */
-  --product-motion-docs-viz-node-duration: 500ms; /* Visualization node transition duration */
-  --product-motion-docs-viz-position-duration: 600ms; /* Visualization node position transition duration */
-
-  /* Product tokens: color (docs) */
-  --product-color-docs-viz-tooltip-bg: rgba(13, 13, 26, 0.97); /* Dark tooltip background */
-  --product-color-docs-viz-node-glow: rgba(128, 246, 255, 0.4); /* Active node glow (cyan200 @ 40%) */
 }

@@ -207,8 +207,8 @@ body {
 
 /* === WHY BUILD === */
 #why-build {
-  padding-block-start: var(--space-sectioned-expansive);
-  padding-block-end: var(--space-sectioned-generous);
+  padding-block-start: var(--product-layout-section-spacing-expansive);
+  padding-block-end: var(--product-layout-section-spacing-generous);
 }
 .why-build__heading {
   cursor: default;
@@ -247,7 +247,7 @@ body {
 .why-build__narrative {
   display: grid;
   grid-template-columns: 5fr 4fr;
-  gap: var(--space-900);
+  gap: var(--product-layout-block-gap-large);
   padding-inline-start: var(--product-layout-content-indent);
 }
 .why-build__beat {
@@ -329,7 +329,7 @@ body {
 
 /* === ECOSYSTEM === */
 #ecosystem {
-  padding-block: var(--space-sectioned-expansive);
+  padding-block: var(--product-layout-section-spacing-expansive);
 }
 .ecosystem__layout {
   background-image: url('/background/bkgrnd-halftone.png');
@@ -482,7 +482,7 @@ body {
   color: var(--color-text-default);
 }
 .ecosystem__modal-stat-label {
-  font-size: var(--font-size-025, 11px);
+  font-size: var(--product-typography-stat-label-size);
   color: var(--color-text-default);
   margin-block-start: var(--space-025);
 }
@@ -509,7 +509,7 @@ body {
 
 /* === HOW BUILT === */
 #how-built {
-  padding-block: var(--space-sectioned-expansive);
+  padding-block: var(--product-layout-section-spacing-expansive);
   position: relative;
   background: var(--color-structure-surface);
 }
@@ -536,7 +536,7 @@ body {
 .how-built__grid {
   display: grid;
   grid-template-columns: 7fr 5fr;
-  gap: var(--space-900);
+  gap: var(--product-layout-block-gap-large);
   padding-inline: var(--product-layout-content-indent);
 }
 .how-built__featured {
@@ -574,7 +574,7 @@ body {
 
 /* === AUDIENCE === */
 #audience {
-  padding-block: var(--space-sectioned-generous);
+  padding-block: var(--product-layout-section-spacing-generous);
 }
 .audience__hook {
   font-family: var(--font-family-display);
@@ -596,12 +596,12 @@ body {
 .audience__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-500) var(--space-900);
+  gap: var(--space-500) var(--product-layout-block-gap-large);
   padding-inline: var(--product-layout-content-indent);
 }
 .audience__item h3 {
   font-family: var(--font-family-display);
-  color: var(--color-text-strong);
+  color: var(--product-color-text-strong);
   margin-block-end: var(--space-075);
 }
 .audience__item p {
@@ -632,7 +632,7 @@ body {
 /* === CODE SHOTS === */
 #code-shots {
   padding-block-start: var(--space-400);
-  padding-block-end: var(--space-sectioned-generous);
+  padding-block-end: var(--product-layout-section-spacing-generous);
   display: flex;
   align-items: flex-start;
   overflow: hidden;
@@ -661,7 +661,7 @@ body {
 
 /* === WHO BUILT === */
 #who-built {
-  padding-block-start: var(--space-sectioned-generous);
+  padding-block-start: var(--product-layout-section-spacing-generous);
 }
 .who-built__copy {
   margin-inline: var(--product-layout-content-indent);
@@ -739,7 +739,7 @@ body {
 
 /* === AGENTS === */
 #agents {
-  padding-block-start: var(--space-sectioned-generous);
+  padding-block-start: var(--product-layout-section-spacing-generous);
   padding-block-end: var(--space-700);
 }
 .agents__title {
@@ -832,7 +832,7 @@ body {
 
 /* === CTA === */
 #cta {
-  margin-block-start: var(--space-sectioned-expansive);
+  margin-block-start: var(--product-layout-section-spacing-expansive);
   padding-block: var(--space-700) var(--product-layout-cta-bottom-padding);
   background-position: right bottom;
   background-size: auto 100%;
@@ -904,7 +904,7 @@ body {
 }
 .footer__info {
   display: flex;
-  gap: var(--space-175);
+  gap: var(--product-layout-footer-info-gap);
   font-size: var(--font-size-050);
   color: oklch(from var(--color-contrast-on-dark) l c h / var(--opacity-064)); /* system white + system opacity — muted footer text */
 }

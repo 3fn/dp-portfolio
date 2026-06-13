@@ -47,3 +47,10 @@ tokens:
     description: Glow effect color for active visualization nodes (cyan200 at 40% opacity)
     rationale: "Cyan200 base at reduced opacity for soft glow filter effect on hover/active nodes. Opacity-modified system color — can't be expressed as a simple ref."
     platforms: [web]
+
+  textStrong:
+    value: "rgba(10, 10, 15, 1)"
+    unitType: color
+    description: Near-black strong text color for high-emphasis headings and top nav
+    rationale: "Restores system --color-text-strong (rgba(10,10,15)), removed by @3fn/core v12. Exact pre-v12 value recovered from commit 543bc49. Temporary product shim pending core resolution — see .kiro/@3fn-core-feedback/2026-06-12-v12-token-removal.md."
+    platforms: [web]

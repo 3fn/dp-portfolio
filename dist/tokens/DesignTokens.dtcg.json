@@ -3,8 +3,8 @@
   "$extensions": {
     "designerpunk": {
       "version": "1.0.0",
-      "generatedAt": "2026-06-11T02:46:46.858Z",
-      "rosettaVersion": "12.0.3"
+      "generatedAt": "2026-06-13T03:50:37.580Z",
+      "rosettaVersion": "12.0.5"
     }
   },
   "space": {
@@ -2667,8 +2667,8 @@
         "designerpunk": {
           "family": "color",
           "modes": {
-            "light": "rgba(0, 136, 143, 1)",
-            "dark": "rgba(204, 251, 255, 1)"
+            "light": "oklch(0.52 0.097 202.5)",
+            "dark": "oklch(0.96 0.048 202.5)"
           }
         }
       }
@@ -2781,8 +2781,8 @@
         "designerpunk": {
           "family": "color",
           "modes": {
-            "light": "rgba(255, 255, 255, 1)",
-            "dark": "rgba(24, 34, 40, 1)"
+            "light": "oklch(1 0 260)",
+            "dark": "oklch(0.42 0.018 260)"
           }
         }
       }
@@ -2845,8 +2845,8 @@
         "designerpunk": {
           "family": "color",
           "modes": {
-            "light": "rgba(178, 188, 196, 0.48)",
-            "dark": "rgba(16, 22, 26, 0.48)"
+            "light": "oklch(0.72 0.018 260 / 0.48)",
+            "dark": "oklch(0.32 0.015 260 / 0.48)"
           },
           "primitiveRefs": {
             "color": "gray100",
@@ -2863,8 +2863,8 @@
         "designerpunk": {
           "family": "color",
           "modes": {
-            "light": "rgba(204, 251, 255, 1)",
-            "dark": "rgba(0, 136, 143, 1)"
+            "light": "oklch(0.96 0.048 202.5)",
+            "dark": "oklch(0.52 0.097 202.5)"
           }
         }
       }
@@ -2887,8 +2887,8 @@
         "designerpunk": {
           "family": "color",
           "modes": {
-            "light": "rgba(38, 50, 58, 1)",
-            "dark": "rgba(178, 188, 196, 1)"
+            "light": "oklch(0.52 0.02 260)",
+            "dark": "oklch(0.72 0.018 260)"
           }
         }
       }

@@ -1,6 +1,6 @@
 /**
  * DesignerPunk Design System - Android Tokens
- * Generated: 2026-06-11T02:46:46.849Z
+ * Generated: 2026-06-13T03:50:37.572Z
  * Version: 1.0.0
  * Platform: Android (Kotlin Constants)
  */
@@ -390,6 +390,12 @@ object DesignTokens {
     val space_700 = 56.dp
     // base × 8 = 8 × 8 = 64
     val space_800 = 64.dp
+    // base × 9 = 8 × 9 = 72
+    val space_900 = 72.dp
+    // base × 12 = 8 × 12 = 96
+    val space_1200 = 96.dp
+    // base × 16 = 8 × 16 = 128
+    val space_1600 = 128.dp
 
     // TAPAREA TOKENS
     // base × 1 = 44 × 1 = 44
@@ -406,58 +412,59 @@ object DesignTokens {
     Use these for UI development
     // ============================================
 
-    val color_feedback_success_text = Color.argb(255, 0, 255, 136)
-    val color_feedback_success_background = Color.argb(255, 230, 255, 245)
-    val color_feedback_success_border = Color.argb(255, 0, 255, 136)
-    val color_feedback_error_text = Color.argb(255, 204, 34, 87)
-    val color_feedback_error_background = Color.argb(255, 255, 218, 232)
-    val color_feedback_error_border = Color.argb(255, 204, 34, 87)
-    val color_feedback_warning_text = Color.argb(255, 204, 85, 41)
-    val color_feedback_warning_background = Color.argb(255, 255, 229, 220)
-    val color_feedback_warning_border = Color.argb(255, 204, 85, 41)
-    val color_feedback_select_text_rest = Color.argb(255, 0, 192, 204)
-    val color_feedback_select_text_default = Color.argb(255, 94, 112, 124)
-    val color_feedback_select_background_rest = Color.argb(255, 204, 251, 255)
-    val color_feedback_select_background_default = Color.argb(255, 178, 188, 196)
-    val color_feedback_select_border_rest = Color.argb(255, 0, 192, 204)
-    val color_feedback_select_border_default = Color.argb(255, 94, 112, 124)
-    val color_feedback_notification_background = Color.argb(255, 204, 34, 87)
-    val color_feedback_notification_text = Color.argb(255, 255, 255, 255)
-    val color_identity_human = Color.argb(255, 255, 107, 53)
-    val color_identity_agent = Color.argb(255, 77, 155, 165)
-    val color_action_secondary = Color.argb(255, 24, 34, 40)
-    val color_attention = Color.argb(255, 199, 192, 2)
-    val color_highlight = Color.argb(255, 249, 240, 2)
-    val color_tech = Color.argb(255, 141, 30, 204)
-    val color_data = Color.argb(255, 176, 38, 255)
-    val color_text_default = Color.argb(255, 38, 50, 58)
-    val color_text_muted = Color.argb(255, 94, 112, 124)
-    val color_text_subtle = Color.argb(255, 178, 188, 196)
-    val color_contrast_on_light = Color.argb(255, 0, 0, 0)
-    val color_contrast_on_dark = Color.argb(255, 255, 255, 255)
-    val color_structure_surface = Color.argb(255, 245, 245, 250)
-    val color_structure_surface_primary = Color.argb(255, 245, 245, 250)
-    val color_structure_surface_secondary = Color.argb(255, 232, 232, 240)
-    val color_structure_surface_tertiary = Color.argb(255, 197, 197, 213)
-    val color_structure_border = Color.argb(255, 178, 188, 196)
-    val color_icon_default = Color.argb(255, 94, 112, 124)
-    val color_print_default = Color.argb(255, 58, 58, 69)
-    val glow_neon_purple = Color.argb(255, 99, 21, 143)
-    val glow_neon_cyan = Color.argb(255, 0, 136, 143)
-    val glow_neon_yellow = Color.argb(255, 143, 139, 1)
-    val glow_neon_green = Color.argb(255, 51, 255, 153)
-    val glow_neon_pink = Color.argb(255, 128, 21, 55)
-    val color_progress_current_background = Color.argb(255, 0, 240, 255)
-    val color_progress_current_text = Color.argb(255, 0, 192, 204)
-    val color_progress_pending_background = Color.argb(255, 232, 232, 240)
-    val color_progress_pending_text = Color.argb(255, 38, 50, 58)
-    val color_progress_pending_connector = Color.argb(255, 245, 245, 250)
-    val color_progress_completed_background = Color.argb(255, 230, 255, 245)
-    val color_progress_completed_text = Color.argb(255, 0, 255, 136)
-    val color_progress_completed_connector = Color.argb(255, 230, 255, 245)
-    val color_progress_error_background = Color.argb(255, 255, 218, 232)
-    val color_progress_error_text = Color.argb(255, 204, 34, 87)
-    val color_scrim_standard = Color.argb(204, 0, 0, 0)
+    val color_feedback_success_text = Oklch(0.66f, 0.18f, 154f).toComposeColor()
+    val color_feedback_success_background = Oklch(0.97f, 0.029f, 154f).toComposeColor()
+    val color_feedback_success_border = Oklch(0.66f, 0.18f, 154f).toComposeColor()
+    val color_feedback_error_text = Oklch(0.55f, 0.203f, 10f).toComposeColor()
+    val color_feedback_error_background = Oklch(0.92f, 0.045f, 10f).toComposeColor()
+    val color_feedback_error_border = Oklch(0.55f, 0.203f, 10f).toComposeColor()
+    val color_feedback_warning_text = Oklch(0.6f, 0.162f, 39.5f).toComposeColor()
+    val color_feedback_warning_background = Oklch(0.94f, 0.031f, 39.5f).toComposeColor()
+    val color_feedback_warning_border = Oklch(0.6f, 0.162f, 39.5f).toComposeColor()
+    val color_feedback_select_text_rest = Oklch(0.64f, 0.125f, 202.5f).toComposeColor()
+    val color_feedback_select_text_default = Oklch(0.62f, 0.02f, 260f).toComposeColor()
+    val color_feedback_select_background_rest = Oklch(0.96f, 0.048f, 202.5f).toComposeColor()
+    val color_feedback_select_background_default = Oklch(0.72f, 0.018f, 260f).toComposeColor()
+    val color_feedback_select_border_rest = Oklch(0.64f, 0.125f, 202.5f).toComposeColor()
+    val color_feedback_select_border_default = Oklch(0.62f, 0.02f, 260f).toComposeColor()
+    val color_feedback_notification_background = Oklch(0.55f, 0.203f, 10f).toComposeColor()
+    val color_feedback_notification_text = Oklch(1f, 0f, 260f).toComposeColor()
+    val color_identity_human = Oklch(0.7f, 0.193f, 39.5f).toComposeColor()
+    val color_identity_agent = Oklch(0.72f, 0.1f, 209f).toComposeColor()
+    val color_action_secondary = Oklch(0.42f, 0.018f, 260f).toComposeColor()
+    val color_attention = Oklch(0.68f, 0.169f, 107f).toComposeColor()
+    val color_highlight = Oklch(0.8f, 0.2f, 107f).toComposeColor()
+    val color_tech = Oklch(0.51f, 0.241f, 310f).toComposeColor()
+    val color_data = Oklch(0.6f, 0.286f, 310f).toComposeColor()
+    val color_text_default = Oklch(0.52f, 0.02f, 260f).toComposeColor()
+    val color_text_muted = Oklch(0.62f, 0.02f, 260f).toComposeColor()
+    val color_text_subtle = Oklch(0.72f, 0.018f, 260f).toComposeColor()
+    val color_text_strong = Oklch(0.14f, 0.008f, 260f).toComposeColor()
+    val color_contrast_on_light = Oklch(0f, 0f, 260f).toComposeColor()
+    val color_contrast_on_dark = Oklch(1f, 0f, 260f).toComposeColor()
+    val color_structure_surface = Oklch(0.95f, 0.006f, 260f).toComposeColor()
+    val color_structure_surface_primary = Oklch(0.95f, 0.006f, 260f).toComposeColor()
+    val color_structure_surface_secondary = Oklch(0.9f, 0.01f, 260f).toComposeColor()
+    val color_structure_surface_tertiary = Oklch(0.85f, 0.013f, 260f).toComposeColor()
+    val color_structure_border = Oklch(0.72f, 0.018f, 260f).toComposeColor()
+    val color_icon_default = Oklch(0.62f, 0.02f, 260f).toComposeColor()
+    val color_print_default = Oklch(0.28f, 0.013f, 260f).toComposeColor()
+    val glow_neon_purple = Oklch(0.4f, 0.183f, 310f).toComposeColor()
+    val glow_neon_cyan = Oklch(0.52f, 0.097f, 202.5f).toComposeColor()
+    val glow_neon_yellow = Oklch(0.56f, 0.133f, 107f).toComposeColor()
+    val glow_neon_green = Oklch(0.78f, 0.208f, 154f).toComposeColor()
+    val glow_neon_pink = Oklch(0.4f, 0.141f, 10f).toComposeColor()
+    val color_progress_current_background = Oklch(0.76f, 0.148f, 202.5f).toComposeColor()
+    val color_progress_current_text = Oklch(0.64f, 0.125f, 202.5f).toComposeColor()
+    val color_progress_pending_background = Oklch(0.9f, 0.01f, 260f).toComposeColor()
+    val color_progress_pending_text = Oklch(0.52f, 0.02f, 260f).toComposeColor()
+    val color_progress_pending_connector = Oklch(0.95f, 0.006f, 260f).toComposeColor()
+    val color_progress_completed_background = Oklch(0.97f, 0.029f, 154f).toComposeColor()
+    val color_progress_completed_text = Oklch(0.66f, 0.18f, 154f).toComposeColor()
+    val color_progress_completed_connector = Oklch(0.97f, 0.029f, 154f).toComposeColor()
+    val color_progress_error_background = Oklch(0.92f, 0.045f, 10f).toComposeColor()
+    val color_progress_error_text = Oklch(0.55f, 0.203f, 10f).toComposeColor()
+    val color_scrim_standard = Oklch(0f, 0f, 260f).toComposeColor().copy(alpha = 0.8f)
     val typography_body_sm = Typography(fontSize = font_size_075, lineHeight = line_height_075, fontFamily = font_family_body, fontWeight = font_weight_400, letterSpacing = letter_spacing_100)
     val typography_body_md = Typography(fontSize = font_size_100, lineHeight = line_height_100, fontFamily = font_family_body, fontWeight = font_weight_400, letterSpacing = letter_spacing_100)
     val typography_body_lg = Typography(fontSize = font_size_125, lineHeight = line_height_125, fontFamily = font_family_body, fontWeight = font_weight_400, letterSpacing = letter_spacing_100)
@@ -536,7 +543,7 @@ object DesignTokens {
     // WCAG 2.4.7 Focus Visible
     val accessibility_focus_width = border_width_200
     // WCAG 2.4.7 Focus Visible
-    val accessibility_focus_color = Color.argb(255, 0, 240, 255)
+    val accessibility_focus_color = Oklch(0.76f, 0.148f, 202.5f).toComposeColor()
     val border_none = border_width_000
     val border_default = border_width_100
     val border_emphasis = border_width_200
@@ -565,6 +572,8 @@ object DesignTokens {
     val space_sectioned_tight = space_400
     val space_sectioned_normal = space_500
     val space_sectioned_loose = space_600
+    val space_sectioned_generous = space_1200
+    val space_sectioned_expansive = space_1600
     val space_inset_100 = space_100
     val space_inset_150 = space_150
     val space_inset_200 = space_200
@@ -684,14 +693,13 @@ object DesignTokens {
     val elevation_tooltip = 24.dp
 
     // WCAG Theme Semantic Overrides (Spec 080 Phase 2)
-    val color_feedback_info_text_wcag = Color.argb(255, 99, 21, 143)
-    val color_feedback_info_background_wcag = Color.argb(255, 243, 224, 255)
-    val color_feedback_info_border_wcag = Color.argb(255, 99, 21, 143)
-    val color_action_primary_wcag_light = Color.argb(255, 26, 83, 92)
-    val color_action_primary_wcag_dark = Color.argb(255, 0, 240, 255)
-    val color_action_navigation_wcag_light = Color.argb(255, 15, 46, 51)
-    val color_action_navigation_wcag_dark = Color.argb(255, 217, 232, 234)
-    val color_contrast_on_action_wcag = Color.argb(255, 255, 255, 255)
-    val color_background_primary_subtle_wcag_light = Color.argb(255, 217, 232, 234)
-    val color_background_primary_subtle_wcag_dark = Color.argb(255, 15, 46, 51)
+    val color_feedback_info_text_wcag = oklch(0.4 0.183 310)
+    val color_feedback_info_background_wcag = oklch(0.93 0.046 310)
+    val color_feedback_info_border_wcag = oklch(0.4 0.183 310)
+    val color_action_primary_wcag = oklch(0.52 0.08 209)
+    val color_action_navigation_wcag_light = oklch(0.28 0.045 209)
+    val color_action_navigation_wcag_dark = oklch(0.92 0.035 209)
+    val color_contrast_on_action_wcag = oklch(1 0 260)
+    val color_background_primary_subtle_wcag_light = oklch(0.92 0.035 209)
+    val color_background_primary_subtle_wcag_dark = oklch(0.28 0.045 209)
 }

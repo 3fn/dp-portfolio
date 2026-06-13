@@ -166,3 +166,34 @@ tokens:
     description: Vertical spacing between narrative beats in documentation
     rationale: "Creates clear visual separation between documentation sections. Beyond system spacing scale (max 64px). Matches prototype 80vh-per-beat rhythm."
     platforms: [web]
+
+  # --- Recovery shims for tokens removed by @3fn/core v12 (see .kiro/@3fn-core-feedback/2026-06-12-v12-token-removal.md) ---
+  # Tracked debt: re-promote to system + remove these once core resolves promotion safety.
+
+  sectionSpacingExpansive:
+    value: 128
+    unitType: logical
+    description: Expansive vertical rhythm between major page sections
+    rationale: "Restores system --space-sectioned-expansive (space1600 = 128px), removed by @3fn/core v12. No current system token provides section spacing above sectioned.loose (48px). Temporary product shim pending core resolution — see .kiro/@3fn-core-feedback/2026-06-12-v12-token-removal.md."
+    platforms: [web]
+
+  sectionSpacingGenerous:
+    value: 96
+    unitType: logical
+    description: Generous vertical rhythm between page sections
+    rationale: "Restores system --space-sectioned-generous (space1200 = 96px), removed by @3fn/core v12. No current system equivalent. Temporary product shim pending core resolution — see .kiro/@3fn-core-feedback/2026-06-12-v12-token-removal.md."
+    platforms: [web]
+
+  blockGapLarge:
+    value: 72
+    unitType: logical
+    description: Large gap between stacked content blocks
+    rationale: "Restores system --space-900 (72px), removed by @3fn/core v12. No current system token at 72px (scale now tops at space800 = 64px). Temporary product shim pending core resolution — see .kiro/@3fn-core-feedback/2026-06-12-v12-token-removal.md."
+    platforms: [web]
+
+  footerInfoGap:
+    value: 14
+    unitType: logical
+    description: Gap between footer info items
+    rationale: "Restores the intended value of the never-defined --space-175. The system naming convention (space-N = N/12.5 px) implies 14px (space-150 = 12px, space-200 = 16px). Pre-existing dangling ref; cleanup later — see .kiro/@3fn-core-feedback/2026-06-12-v12-token-removal.md."
+    platforms: [web]

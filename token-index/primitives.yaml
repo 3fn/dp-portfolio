@@ -119,6 +119,30 @@ tokens:
       web: '--space-800'
       ios: space800
       android: space_800
+  space900:
+    family: spacing
+    value: 72
+    formula: base × 9 = 8 × 9 = 72
+    platforms:
+      web: '--space-900'
+      ios: space900
+      android: space_900
+  space1200:
+    family: spacing
+    value: 96
+    formula: base × 12 = 8 × 12 = 96
+    platforms:
+      web: '--space-1200'
+      ios: space1200
+      android: space_1200
+  space1600:
+    family: spacing
+    value: 128
+    formula: base × 16 = 8 × 16 = 128
+    platforms:
+      web: '--space-1600'
+      ios: space1600
+      android: space_1600
   fontSize050:
     family: fontSize
     value: 0.8125

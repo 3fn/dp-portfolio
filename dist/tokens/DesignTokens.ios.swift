@@ -1,6 +1,6 @@
 ///
 /// DesignerPunk Design System - iOS Tokens
-/// Generated: 2026-06-11T02:46:46.846Z
+/// Generated: 2026-06-13T03:50:37.569Z
 /// Version: 1.0.0
 /// Platform: iOS (Swift Constants)
 ///
@@ -390,6 +390,12 @@ public struct DesignTokens {
     public static let space700: CGFloat = 56
     /// base × 8 = 8 × 8 = 64
     public static let space800: CGFloat = 64
+    /// base × 9 = 8 × 9 = 72
+    public static let space900: CGFloat = 72
+    /// base × 12 = 8 × 12 = 96
+    public static let space1200: CGFloat = 96
+    /// base × 16 = 8 × 16 = 128
+    public static let space1600: CGFloat = 128
 
     // MARK: - TAPAREA TOKENS
     /// base × 1 = 44 × 1 = 44
@@ -406,58 +412,59 @@ public struct DesignTokens {
     /// Use these for UI development
     // ============================================
 
-    public static let colorFeedbackSuccessText: UIColor = UIColor(red: 0.00, green: 1.00, blue: 0.53, alpha: 1.00)
-    public static let colorFeedbackSuccessBackground: UIColor = UIColor(red: 0.90, green: 1.00, blue: 0.96, alpha: 1.00)
-    public static let colorFeedbackSuccessBorder: UIColor = UIColor(red: 0.00, green: 1.00, blue: 0.53, alpha: 1.00)
-    public static let colorFeedbackErrorText: UIColor = UIColor(red: 0.80, green: 0.13, blue: 0.34, alpha: 1.00)
-    public static let colorFeedbackErrorBackground: UIColor = UIColor(red: 1.00, green: 0.85, blue: 0.91, alpha: 1.00)
-    public static let colorFeedbackErrorBorder: UIColor = UIColor(red: 0.80, green: 0.13, blue: 0.34, alpha: 1.00)
-    public static let colorFeedbackWarningText: UIColor = UIColor(red: 0.80, green: 0.33, blue: 0.16, alpha: 1.00)
-    public static let colorFeedbackWarningBackground: UIColor = UIColor(red: 1.00, green: 0.90, blue: 0.86, alpha: 1.00)
-    public static let colorFeedbackWarningBorder: UIColor = UIColor(red: 0.80, green: 0.33, blue: 0.16, alpha: 1.00)
-    public static let colorFeedbackSelectTextRest: UIColor = UIColor(red: 0.00, green: 0.75, blue: 0.80, alpha: 1.00)
-    public static let colorFeedbackSelectTextDefault: UIColor = UIColor(red: 0.37, green: 0.44, blue: 0.49, alpha: 1.00)
-    public static let colorFeedbackSelectBackgroundRest: UIColor = UIColor(red: 0.80, green: 0.98, blue: 1.00, alpha: 1.00)
-    public static let colorFeedbackSelectBackgroundDefault: UIColor = UIColor(red: 0.70, green: 0.74, blue: 0.77, alpha: 1.00)
-    public static let colorFeedbackSelectBorderRest: UIColor = UIColor(red: 0.00, green: 0.75, blue: 0.80, alpha: 1.00)
-    public static let colorFeedbackSelectBorderDefault: UIColor = UIColor(red: 0.37, green: 0.44, blue: 0.49, alpha: 1.00)
-    public static let colorFeedbackNotificationBackground: UIColor = UIColor(red: 0.80, green: 0.13, blue: 0.34, alpha: 1.00)
-    public static let colorFeedbackNotificationText: UIColor = UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 1.00)
-    public static let colorIdentityHuman: UIColor = UIColor(red: 1.00, green: 0.42, blue: 0.21, alpha: 1.00)
-    public static let colorIdentityAgent: UIColor = UIColor(red: 0.30, green: 0.61, blue: 0.65, alpha: 1.00)
-    public static let colorActionSecondary: UIColor = UIColor(red: 0.09, green: 0.13, blue: 0.16, alpha: 1.00)
-    public static let colorAttention: UIColor = UIColor(red: 0.78, green: 0.75, blue: 0.01, alpha: 1.00)
-    public static let colorHighlight: UIColor = UIColor(red: 0.98, green: 0.94, blue: 0.01, alpha: 1.00)
-    public static let colorTech: UIColor = UIColor(red: 0.55, green: 0.12, blue: 0.80, alpha: 1.00)
-    public static let colorData: UIColor = UIColor(red: 0.69, green: 0.15, blue: 1.00, alpha: 1.00)
-    public static let colorTextDefault: UIColor = UIColor(red: 0.15, green: 0.20, blue: 0.23, alpha: 1.00)
-    public static let colorTextMuted: UIColor = UIColor(red: 0.37, green: 0.44, blue: 0.49, alpha: 1.00)
-    public static let colorTextSubtle: UIColor = UIColor(red: 0.70, green: 0.74, blue: 0.77, alpha: 1.00)
-    public static let colorContrastOnLight: UIColor = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.00)
-    public static let colorContrastOnDark: UIColor = UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 1.00)
-    public static let colorStructureSurface: UIColor = UIColor(red: 0.96, green: 0.96, blue: 0.98, alpha: 1.00)
-    public static let colorStructureSurfacePrimary: UIColor = UIColor(red: 0.96, green: 0.96, blue: 0.98, alpha: 1.00)
-    public static let colorStructureSurfaceSecondary: UIColor = UIColor(red: 0.91, green: 0.91, blue: 0.94, alpha: 1.00)
-    public static let colorStructureSurfaceTertiary: UIColor = UIColor(red: 0.77, green: 0.77, blue: 0.84, alpha: 1.00)
-    public static let colorStructureBorder: UIColor = UIColor(red: 0.70, green: 0.74, blue: 0.77, alpha: 1.00)
-    public static let colorIconDefault: UIColor = UIColor(red: 0.37, green: 0.44, blue: 0.49, alpha: 1.00)
-    public static let colorPrintDefault: UIColor = UIColor(red: 0.23, green: 0.23, blue: 0.27, alpha: 1.00)
-    public static let glowNeonPurple: UIColor = UIColor(red: 0.39, green: 0.08, blue: 0.56, alpha: 1.00)
-    public static let glowNeonCyan: UIColor = UIColor(red: 0.00, green: 0.53, blue: 0.56, alpha: 1.00)
-    public static let glowNeonYellow: UIColor = UIColor(red: 0.56, green: 0.55, blue: 0.00, alpha: 1.00)
-    public static let glowNeonGreen: UIColor = UIColor(red: 0.20, green: 1.00, blue: 0.60, alpha: 1.00)
-    public static let glowNeonPink: UIColor = UIColor(red: 0.50, green: 0.08, blue: 0.22, alpha: 1.00)
-    public static let colorProgressCurrentBackground: UIColor = UIColor(red: 0.00, green: 0.94, blue: 1.00, alpha: 1.00)
-    public static let colorProgressCurrentText: UIColor = UIColor(red: 0.00, green: 0.75, blue: 0.80, alpha: 1.00)
-    public static let colorProgressPendingBackground: UIColor = UIColor(red: 0.91, green: 0.91, blue: 0.94, alpha: 1.00)
-    public static let colorProgressPendingText: UIColor = UIColor(red: 0.15, green: 0.20, blue: 0.23, alpha: 1.00)
-    public static let colorProgressPendingConnector: UIColor = UIColor(red: 0.96, green: 0.96, blue: 0.98, alpha: 1.00)
-    public static let colorProgressCompletedBackground: UIColor = UIColor(red: 0.90, green: 1.00, blue: 0.96, alpha: 1.00)
-    public static let colorProgressCompletedText: UIColor = UIColor(red: 0.00, green: 1.00, blue: 0.53, alpha: 1.00)
-    public static let colorProgressCompletedConnector: UIColor = UIColor(red: 0.90, green: 1.00, blue: 0.96, alpha: 1.00)
-    public static let colorProgressErrorBackground: UIColor = UIColor(red: 1.00, green: 0.85, blue: 0.91, alpha: 1.00)
-    public static let colorProgressErrorText: UIColor = UIColor(red: 0.80, green: 0.13, blue: 0.34, alpha: 1.00)
-    public static let colorScrimStandard: UIColor = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 0.80)
+    static let colorFeedbackSuccessText = Color.oklch(0.66, 0.18, 154)
+    static let colorFeedbackSuccessBackground = Color.oklch(0.97, 0.029, 154)
+    static let colorFeedbackSuccessBorder = Color.oklch(0.66, 0.18, 154)
+    static let colorFeedbackErrorText = Color.oklch(0.55, 0.203, 10)
+    static let colorFeedbackErrorBackground = Color.oklch(0.92, 0.045, 10)
+    static let colorFeedbackErrorBorder = Color.oklch(0.55, 0.203, 10)
+    static let colorFeedbackWarningText = Color.oklch(0.6, 0.162, 39.5)
+    static let colorFeedbackWarningBackground = Color.oklch(0.94, 0.031, 39.5)
+    static let colorFeedbackWarningBorder = Color.oklch(0.6, 0.162, 39.5)
+    static let colorFeedbackSelectTextRest = Color.oklch(0.64, 0.125, 202.5)
+    static let colorFeedbackSelectTextDefault = Color.oklch(0.62, 0.02, 260)
+    static let colorFeedbackSelectBackgroundRest = Color.oklch(0.96, 0.048, 202.5)
+    static let colorFeedbackSelectBackgroundDefault = Color.oklch(0.72, 0.018, 260)
+    static let colorFeedbackSelectBorderRest = Color.oklch(0.64, 0.125, 202.5)
+    static let colorFeedbackSelectBorderDefault = Color.oklch(0.62, 0.02, 260)
+    static let colorFeedbackNotificationBackground = Color.oklch(0.55, 0.203, 10)
+    static let colorFeedbackNotificationText = Color.oklch(1, 0, 260)
+    static let colorIdentityHuman = Color.oklch(0.7, 0.193, 39.5)
+    static let colorIdentityAgent = Color.oklch(0.72, 0.1, 209)
+    static let colorActionSecondary = Color.oklch(0.42, 0.018, 260)
+    static let colorAttention = Color.oklch(0.68, 0.169, 107)
+    static let colorHighlight = Color.oklch(0.8, 0.2, 107)
+    static let colorTech = Color.oklch(0.51, 0.241, 310)
+    static let colorData = Color.oklch(0.6, 0.286, 310)
+    static let colorTextDefault = Color.oklch(0.52, 0.02, 260)
+    static let colorTextMuted = Color.oklch(0.62, 0.02, 260)
+    static let colorTextSubtle = Color.oklch(0.72, 0.018, 260)
+    static let colorTextStrong = Color.oklch(0.14, 0.008, 260)
+    static let colorContrastOnLight = Color.oklch(0, 0, 260)
+    static let colorContrastOnDark = Color.oklch(1, 0, 260)
+    static let colorStructureSurface = Color.oklch(0.95, 0.006, 260)
+    static let colorStructureSurfacePrimary = Color.oklch(0.95, 0.006, 260)
+    static let colorStructureSurfaceSecondary = Color.oklch(0.9, 0.01, 260)
+    static let colorStructureSurfaceTertiary = Color.oklch(0.85, 0.013, 260)
+    static let colorStructureBorder = Color.oklch(0.72, 0.018, 260)
+    static let colorIconDefault = Color.oklch(0.62, 0.02, 260)
+    static let colorPrintDefault = Color.oklch(0.28, 0.013, 260)
+    static let glowNeonPurple = Color.oklch(0.4, 0.183, 310)
+    static let glowNeonCyan = Color.oklch(0.52, 0.097, 202.5)
+    static let glowNeonYellow = Color.oklch(0.56, 0.133, 107)
+    static let glowNeonGreen = Color.oklch(0.78, 0.208, 154)
+    static let glowNeonPink = Color.oklch(0.4, 0.141, 10)
+    static let colorProgressCurrentBackground = Color.oklch(0.76, 0.148, 202.5)
+    static let colorProgressCurrentText = Color.oklch(0.64, 0.125, 202.5)
+    static let colorProgressPendingBackground = Color.oklch(0.9, 0.01, 260)
+    static let colorProgressPendingText = Color.oklch(0.52, 0.02, 260)
+    static let colorProgressPendingConnector = Color.oklch(0.95, 0.006, 260)
+    static let colorProgressCompletedBackground = Color.oklch(0.97, 0.029, 154)
+    static let colorProgressCompletedText = Color.oklch(0.66, 0.18, 154)
+    static let colorProgressCompletedConnector = Color.oklch(0.97, 0.029, 154)
+    static let colorProgressErrorBackground = Color.oklch(0.92, 0.045, 10)
+    static let colorProgressErrorText = Color.oklch(0.55, 0.203, 10)
+    static let colorScrimStandard = Color.oklch(0, 0, 260, opacity: 0.8)
     public static let typographyBodySm = Typography(fontSize: fontSize075, lineHeight: lineHeight075, fontFamily: fontFamilyBody, fontWeight: fontWeight400, letterSpacing: letterSpacing100)
     public static let typographyBodyMd = Typography(fontSize: fontSize100, lineHeight: lineHeight100, fontFamily: fontFamilyBody, fontWeight: fontWeight400, letterSpacing: letterSpacing100)
     public static let typographyBodyLg = Typography(fontSize: fontSize125, lineHeight: lineHeight125, fontFamily: fontFamilyBody, fontWeight: fontWeight400, letterSpacing: letterSpacing100)
@@ -536,7 +543,7 @@ public struct DesignTokens {
     // WCAG 2.4.7 Focus Visible
     public static let accessibilityFocusWidth = borderWidth200
     // WCAG 2.4.7 Focus Visible
-    public static let accessibilityFocusColor: UIColor = UIColor(red: 0.00, green: 0.94, blue: 1.00, alpha: 1.00)
+    static let accessibilityFocusColor = Color.oklch(0.76, 0.148, 202.5)
     public static let borderNone = borderWidth000
     public static let borderDefault = borderWidth100
     public static let borderEmphasis = borderWidth200
@@ -565,6 +572,8 @@ public struct DesignTokens {
     public static let spaceSectionedTight = space400
     public static let spaceSectionedNormal = space500
     public static let spaceSectionedLoose = space600
+    public static let spaceSectionedGenerous = space1200
+    public static let spaceSectionedExpansive = space1600
     public static let spaceInset100 = space100
     public static let spaceInset150 = space150
     public static let spaceInset200 = space200
@@ -686,11 +695,11 @@ public struct DesignTokens {
     static let zIndexTooltip: CGFloat = 6
 
     // MARK: - WCAG Theme Semantic Overrides (Spec 080 Phase 2)
-    public static let colorFeedbackInfoText_wcag: UIColor = UIColor(red: 0.39, green: 0.08, blue: 0.56, alpha: 1.00)
-    public static let colorFeedbackInfoBackground_wcag: UIColor = UIColor(red: 0.95, green: 0.88, blue: 1.00, alpha: 1.00)
-    public static let colorFeedbackInfoBorder_wcag: UIColor = UIColor(red: 0.39, green: 0.08, blue: 0.56, alpha: 1.00)
-    public static let colorActionPrimary_wcag: UIColor = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.00, green: 0.94, blue: 1.00, alpha: 1.00) : UIColor(red: 0.10, green: 0.33, blue: 0.36, alpha: 1.00) }
-    public static let colorActionNavigation_wcag: UIColor = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.85, green: 0.91, blue: 0.92, alpha: 1.00) : UIColor(red: 0.06, green: 0.18, blue: 0.20, alpha: 1.00) }
-    public static let colorContrastOnAction_wcag: UIColor = UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 1.00)
-    public static let colorBackgroundPrimarySubtle_wcag: UIColor = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.06, green: 0.18, blue: 0.20, alpha: 1.00) : UIColor(red: 0.85, green: 0.91, blue: 0.92, alpha: 1.00) }
+    public static let colorFeedbackInfoText_wcag: UIColor = oklch(0.4 0.183 310)
+    public static let colorFeedbackInfoBackground_wcag: UIColor = oklch(0.93 0.046 310)
+    public static let colorFeedbackInfoBorder_wcag: UIColor = oklch(0.4 0.183 310)
+    public static let colorActionPrimary_wcag: UIColor = oklch(0.52 0.08 209)
+    public static let colorActionNavigation_wcag: UIColor = UIColor { $0.userInterfaceStyle == .dark ? oklch(0.92 0.035 209) : oklch(0.28 0.045 209) }
+    public static let colorContrastOnAction_wcag: UIColor = oklch(1 0 260)
+    public static let colorBackgroundPrimarySubtle_wcag: UIColor = UIColor { $0.userInterfaceStyle == .dark ? oklch(0.28 0.045 209) : oklch(0.92 0.035 209) }
 }

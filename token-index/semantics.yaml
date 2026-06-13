@@ -319,6 +319,16 @@ tokens:
       ios: colorTextSubtle
       android: color_text_subtle
     consumers: []
+  color.text.strong:
+    category: color
+    primitiveReferences:
+      value: black300
+    themeVarying: false
+    platforms:
+      web: '--color-text-strong'
+      ios: colorTextStrong
+      android: color_text_strong
+    consumers: []
   color.contrast.onLight:
     category: color
     primitiveReferences:
@@ -2009,6 +2019,26 @@ tokens:
       web: '--space-sectioned-loose'
       ios: spaceSectionedLoose
       android: space_sectioned_loose
+    consumers: []
+  space.sectioned.generous:
+    category: spacing
+    primitiveReferences:
+      value: space1200
+    themeVarying: false
+    platforms:
+      web: '--space-sectioned-generous'
+      ios: spaceSectionedGenerous
+      android: space_sectioned_generous
+    consumers: []
+  space.sectioned.expansive:
+    category: spacing
+    primitiveReferences:
+      value: space1600
+    themeVarying: false
+    platforms:
+      web: '--space-sectioned-expansive'
+      ios: spaceSectionedExpansive
+      android: space_sectioned_expansive
     consumers: []
   space.inset.100:
     category: spacing

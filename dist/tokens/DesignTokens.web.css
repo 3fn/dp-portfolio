@@ -1,6 +1,6 @@
 /**
  * DesignerPunk Design System - Web Tokens
- * Generated: 2026-06-11T02:46:46.839Z
+ * Generated: 2026-06-13T03:50:37.561Z
  * Version: 1.0.0
  * Platform: Web (CSS Custom Properties)
  *
@@ -505,6 +505,12 @@
   --space-700: 56px;
   /* base × 8 = 8 × 8 = 64 */
   --space-800: 64px;
+  /* base × 9 = 8 × 9 = 72 */
+  --space-900: 72px;
+  /* base × 12 = 8 × 12 = 96 */
+  --space-1200: 96px;
+  /* base × 16 = 8 × 16 = 128 */
+  --space-1600: 128px;
 
   /* TAPAREA TOKENS */
   /* base × 1 = 44 × 1 = 44 */
@@ -521,68 +527,69 @@
   Use these for UI development
    * ============================================ */
 
-  --color-feedback-success-text: rgba(0, 255, 136, 1);
-  --color-feedback-success-background: rgba(230, 255, 245, 1);
-  --color-feedback-success-border: rgba(0, 255, 136, 1);
-  --color-feedback-error-text: rgba(204, 34, 87, 1);
-  --color-feedback-error-background: rgba(255, 218, 232, 1);
-  --color-feedback-error-border: rgba(204, 34, 87, 1);
-  --color-feedback-warning-text: rgba(204, 85, 41, 1);
-  --color-feedback-warning-background: rgba(255, 229, 220, 1);
-  --color-feedback-warning-border: rgba(204, 85, 41, 1);
-  --color-feedback-info-text: rgba(21, 66, 74, 1);
-  --color-feedback-info-background: rgba(217, 232, 234, 1);
-  --color-feedback-info-border: rgba(21, 66, 74, 1);
-  --color-feedback-select-text-rest: rgba(0, 192, 204, 1);
-  --color-feedback-select-text-default: rgba(94, 112, 124, 1);
-  --color-feedback-select-background-rest: rgba(204, 251, 255, 1);
-  --color-feedback-select-background-default: rgba(178, 188, 196, 1);
-  --color-feedback-select-border-rest: rgba(0, 192, 204, 1);
-  --color-feedback-select-border-default: rgba(94, 112, 124, 1);
-  --color-feedback-notification-background: rgba(204, 34, 87, 1);
-  --color-feedback-notification-text: rgba(255, 255, 255, 1);
-  --color-identity-human: rgba(255, 107, 53, 1);
-  --color-identity-agent: rgba(77, 155, 165, 1);
-  --color-action-primary: rgba(0, 240, 255, 1);
-  --color-action-secondary: rgba(24, 34, 40, 1);
-  --color-action-navigation: light-dark(rgba(0, 136, 143, 1), rgba(204, 251, 255, 1));
-  --color-attention: rgba(199, 192, 2, 1);
-  --color-highlight: rgba(249, 240, 2, 1);
-  --color-tech: rgba(141, 30, 204, 1);
-  --color-data: rgba(176, 38, 255, 1);
-  --color-text-default: rgba(38, 50, 58, 1);
-  --color-text-muted: rgba(94, 112, 124, 1);
-  --color-text-subtle: rgba(178, 188, 196, 1);
-  --color-contrast-on-light: rgba(0, 0, 0, 1);
-  --color-contrast-on-dark: rgba(255, 255, 255, 1);
-  --color-contrast-on-action: rgba(0, 0, 0, 1);
-  --color-structure-canvas: light-dark(rgba(255, 255, 255, 1), rgba(24, 34, 40, 1));
-  --color-structure-surface: rgba(245, 245, 250, 1);
-  --color-structure-surface-primary: rgba(245, 245, 250, 1);
-  --color-structure-surface-secondary: rgba(232, 232, 240, 1);
-  --color-structure-surface-tertiary: rgba(197, 197, 213, 1);
-  --color-structure-border: rgba(178, 188, 196, 1);
-  --color-structure-border-subtle: light-dark(rgba(178, 188, 196, 0.48), rgba(16, 22, 26, 0.48));
-  --color-background-primary-subtle: light-dark(rgba(204, 251, 255, 1), rgba(0, 136, 143, 1));
-  --color-icon-default: rgba(94, 112, 124, 1);
-  --color-icon-navigation-inactive: light-dark(rgba(38, 50, 58, 1), rgba(178, 188, 196, 1));
-  --color-print-default: rgba(58, 58, 69, 1);
-  --glow-neon-purple: rgba(99, 21, 143, 1);
-  --glow-neon-cyan: rgba(0, 136, 143, 1);
-  --glow-neon-yellow: rgba(143, 139, 1, 1);
-  --glow-neon-green: rgba(51, 255, 153, 1);
-  --glow-neon-pink: rgba(128, 21, 55, 1);
-  --color-progress-current-background: rgba(0, 240, 255, 1);
-  --color-progress-current-text: rgba(0, 192, 204, 1);
-  --color-progress-pending-background: rgba(232, 232, 240, 1);
-  --color-progress-pending-text: rgba(38, 50, 58, 1);
-  --color-progress-pending-connector: rgba(245, 245, 250, 1);
-  --color-progress-completed-background: rgba(230, 255, 245, 1);
-  --color-progress-completed-text: rgba(0, 255, 136, 1);
-  --color-progress-completed-connector: rgba(230, 255, 245, 1);
-  --color-progress-error-background: rgba(255, 218, 232, 1);
-  --color-progress-error-text: rgba(204, 34, 87, 1);
-  --color-scrim-standard: rgba(0, 0, 0, 0.8);
+  --color-feedback-success-text: oklch(0.66 0.18 154);
+  --color-feedback-success-background: oklch(0.97 0.029 154);
+  --color-feedback-success-border: oklch(0.66 0.18 154);
+  --color-feedback-error-text: oklch(0.55 0.203 10);
+  --color-feedback-error-background: oklch(0.92 0.045 10);
+  --color-feedback-error-border: oklch(0.55 0.203 10);
+  --color-feedback-warning-text: oklch(0.6 0.162 39.5);
+  --color-feedback-warning-background: oklch(0.94 0.031 39.5);
+  --color-feedback-warning-border: oklch(0.6 0.162 39.5);
+  --color-feedback-info-text: oklch(0.38 0.06 209);
+  --color-feedback-info-background: oklch(0.92 0.035 209);
+  --color-feedback-info-border: oklch(0.38 0.06 209);
+  --color-feedback-select-text-rest: oklch(0.64 0.125 202.5);
+  --color-feedback-select-text-default: oklch(0.62 0.02 260);
+  --color-feedback-select-background-rest: oklch(0.96 0.048 202.5);
+  --color-feedback-select-background-default: oklch(0.72 0.018 260);
+  --color-feedback-select-border-rest: oklch(0.64 0.125 202.5);
+  --color-feedback-select-border-default: oklch(0.62 0.02 260);
+  --color-feedback-notification-background: oklch(0.55 0.203 10);
+  --color-feedback-notification-text: oklch(1 0 260);
+  --color-identity-human: oklch(0.7 0.193 39.5);
+  --color-identity-agent: oklch(0.72 0.1 209);
+  --color-action-primary: oklch(0.76 0.148 202.5);
+  --color-action-secondary: oklch(0.42 0.018 260);
+  --color-action-navigation: light-dark(oklch(0.52 0.097 202.5), oklch(0.96 0.048 202.5));
+  --color-attention: oklch(0.68 0.169 107);
+  --color-highlight: oklch(0.8 0.2 107);
+  --color-tech: oklch(0.51 0.241 310);
+  --color-data: oklch(0.6 0.286 310);
+  --color-text-default: oklch(0.52 0.02 260);
+  --color-text-muted: oklch(0.62 0.02 260);
+  --color-text-subtle: oklch(0.72 0.018 260);
+  --color-text-strong: oklch(0.14 0.008 260);
+  --color-contrast-on-light: oklch(0 0 260);
+  --color-contrast-on-dark: oklch(1 0 260);
+  --color-contrast-on-action: oklch(0 0 260);
+  --color-structure-canvas: light-dark(oklch(1 0 260), oklch(0.42 0.018 260));
+  --color-structure-surface: oklch(0.95 0.006 260);
+  --color-structure-surface-primary: oklch(0.95 0.006 260);
+  --color-structure-surface-secondary: oklch(0.9 0.01 260);
+  --color-structure-surface-tertiary: oklch(0.85 0.013 260);
+  --color-structure-border: oklch(0.72 0.018 260);
+  --color-structure-border-subtle: light-dark(oklch(0.72 0.018 260 / 0.48), oklch(0.32 0.015 260 / 0.48));
+  --color-background-primary-subtle: light-dark(oklch(0.96 0.048 202.5), oklch(0.52 0.097 202.5));
+  --color-icon-default: oklch(0.62 0.02 260);
+  --color-icon-navigation-inactive: light-dark(oklch(0.52 0.02 260), oklch(0.72 0.018 260));
+  --color-print-default: oklch(0.28 0.013 260);
+  --glow-neon-purple: oklch(0.4 0.183 310);
+  --glow-neon-cyan: oklch(0.52 0.097 202.5);
+  --glow-neon-yellow: oklch(0.56 0.133 107);
+  --glow-neon-green: oklch(0.78 0.208 154);
+  --glow-neon-pink: oklch(0.4 0.141 10);
+  --color-progress-current-background: oklch(0.76 0.148 202.5);
+  --color-progress-current-text: oklch(0.64 0.125 202.5);
+  --color-progress-pending-background: oklch(0.9 0.01 260);
+  --color-progress-pending-text: oklch(0.52 0.02 260);
+  --color-progress-pending-connector: oklch(0.95 0.006 260);
+  --color-progress-completed-background: oklch(0.97 0.029 154);
+  --color-progress-completed-text: oklch(0.66 0.18 154);
+  --color-progress-completed-connector: oklch(0.97 0.029 154);
+  --color-progress-error-background: oklch(0.92 0.045 10);
+  --color-progress-error-text: oklch(0.55 0.203 10);
+  --color-scrim-standard: oklch(0 0 260 / 0.8);
   --typography-body-sm-font-size: var(--font-size-075);
   --typography-body-sm-line-height: var(--line-height-075);
   --typography-body-sm-font-family: var(--font-family-body);
@@ -832,7 +839,7 @@
   /* WCAG 2.4.7 Focus Visible */
   --accessibility-focus-width: var(--border-width-200);
   /* WCAG 2.4.7 Focus Visible */
-  --accessibility-focus-color: rgba(0, 240, 255, 1);
+  --accessibility-focus-color: oklch(0.76 0.148 202.5);
   --border-none: var(--border-width-000);
   --border-default: var(--border-width-100);
   --border-emphasis: var(--border-width-200);
@@ -861,6 +868,8 @@
   --space-sectioned-tight: var(--space-400);
   --space-sectioned-normal: var(--space-500);
   --space-sectioned-loose: var(--space-600);
+  --space-sectioned-generous: var(--space-1200);
+  --space-sectioned-expansive: var(--space-1600);
   --space-inset-100: var(--space-100);
   --space-inset-150: var(--space-150);
   --space-inset-200: var(--space-200);
@@ -930,11 +939,11 @@
 
 /* WCAG Theme: Semantic token overrides from theme files (Spec 080 Phase 2) */
 :root[data-theme="wcag"] {
-  --color-feedback-info-text: rgba(99, 21, 143, 1);
-  --color-feedback-info-background: rgba(243, 224, 255, 1);
-  --color-feedback-info-border: rgba(99, 21, 143, 1);
-  --color-action-primary: light-dark(rgba(26, 83, 92, 1), rgba(0, 240, 255, 1));
-  --color-action-navigation: light-dark(rgba(15, 46, 51, 1), rgba(217, 232, 234, 1));
-  --color-contrast-on-action: rgba(255, 255, 255, 1);
-  --color-background-primary-subtle: light-dark(rgba(217, 232, 234, 1), rgba(15, 46, 51, 1));
+  --color-feedback-info-text: oklch(0.4 0.183 310);
+  --color-feedback-info-background: oklch(0.93 0.046 310);
+  --color-feedback-info-border: oklch(0.4 0.183 310);
+  --color-action-primary: oklch(0.52 0.08 209);
+  --color-action-navigation: light-dark(oklch(0.28 0.045 209), oklch(0.92 0.035 209));
+  --color-contrast-on-action: oklch(1 0 260);
+  --color-background-primary-subtle: light-dark(oklch(0.92 0.035 209), oklch(0.28 0.045 209));
 }
