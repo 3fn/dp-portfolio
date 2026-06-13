@@ -113,13 +113,18 @@ export function init(): () => void {
     if (!state || beatId === currentBeat) return;
     currentBeat = beatId;
 
-    // Update nodes
+    // Update nodes.
+    // Drive animated values through CSS properties (style), NOT SVG presentation
+    // attributes: Safari/WebKit only fires CSS transitions on property changes, not
+    // on attribute changes. Firefox/Chrome bridge the attribute → property, Safari
+    // does not — so attribute-based animation silently no-ops on Safari.
     state.nodes.forEach((n, i) => {
       const el = nodeEls[i];
-      el.g.setAttribute('transform', `translate(${n.x}, ${n.y})`);
+      el.g.style.transform = `translate(${n.x}px, ${n.y}px)`;
       el.g.style.opacity = n.r > 0 ? '1' : '0';
-      el.circle.setAttribute('r', String(n.r));
-      el.circle.setAttribute('stroke', n.color);
+      el.circle.style.setProperty('r', `${n.r}px`); // CSS `r` (Safari 15.4+)
+      el.circle.setAttribute('r', String(n.r));      // attribute fallback for older engines
+      el.circle.style.setProperty('stroke', n.color);
       el.text.textContent = n.label;
     });
 
@@ -133,13 +138,15 @@ export function init(): () => void {
       line.setAttribute('y1', String(na.y));
       line.setAttribute('x2', String(nb.x));
       line.setAttribute('y2', String(nb.y));
-      // Beat 4: draw-on-scroll via stroke-dashoffset
+      // Beat 4: draw-on-scroll via stroke-dashoffset.
+      // Animate through the CSS property (style), not the attribute, so Safari
+      // transitions it. Unitless values map to SVG user units (matches dasharray).
       if (beatId === 'beat-payoff') {
         const len = Math.hypot(nb.x - na.x, nb.y - na.y);
         line.setAttribute('stroke-dasharray', String(len));
-        line.setAttribute('stroke-dashoffset', String(len));
+        line.style.setProperty('stroke-dashoffset', String(len));
         line.style.transition = 'stroke-dashoffset 0.8s ease';
-        requestAnimationFrame(() => line.setAttribute('stroke-dashoffset', '0'));
+        requestAnimationFrame(() => line.style.setProperty('stroke-dashoffset', '0'));
       }
       connsG.appendChild(line);
     });
@@ -195,11 +202,25 @@ export function init(): () => void {
     activeNode = null;
   }
 
+  // Convert client (viewport) coordinates to SVG user units, accounting for
+  // viewBox scaling AND preserveAspectRatio letterboxing. The previous manual
+  // (clientX - rect.left) * (400 / rect.width) math ignored vertical letterboxing
+  // (viewBox 400x560 rendered inside a 400 x 100vh box), so hit-testing never
+  // aligned with the rendered nodes and tooltips effectively never triggered.
+  function clientToSvg(clientX: number, clientY: number): { x: number; y: number } {
+    const svgEl = svg as SVGSVGElement;
+    const ctm = svgEl.getScreenCTM();
+    if (!ctm) return { x: -1, y: -1 };
+    const pt = svgEl.createSVGPoint();
+    pt.x = clientX;
+    pt.y = clientY;
+    const p = pt.matrixTransform(ctm.inverse());
+    return { x: p.x, y: p.y };
+  }
+
   // Desktop hover
   svg.addEventListener('mousemove', (e: MouseEvent) => {
-    const rect = svg.getBoundingClientRect();
-    const sx = (e.clientX - rect.left) * (400 / rect.width);
-    const sy = (e.clientY - rect.top) * (560 / rect.height);
+    const { x: sx, y: sy } = clientToSvg(e.clientX, e.clientY);
     const state = STATES[currentBeat];
     if (!state) return;
 
@@ -219,9 +240,7 @@ export function init(): () => void {
 
   // Mobile tap
   svg.addEventListener('click', (e: MouseEvent) => {
-    const rect = svg.getBoundingClientRect();
-    const sx = (e.clientX - rect.left) * (400 / rect.width);
-    const sy = (e.clientY - rect.top) * (560 / rect.height);
+    const { x: sx, y: sy } = clientToSvg(e.clientX, e.clientY);
     const state = STATES[currentBeat];
     if (!state) return;
 

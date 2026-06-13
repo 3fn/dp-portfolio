@@ -99,10 +99,11 @@ function init() {
     currentBeat = beatId;
     state.nodes.forEach((n, i) => {
       const el = nodeEls[i];
-      el.g.setAttribute("transform", `translate(${n.x}, ${n.y})`);
+      el.g.style.transform = `translate(${n.x}px, ${n.y}px)`;
       el.g.style.opacity = n.r > 0 ? "1" : "0";
+      el.circle.style.setProperty("r", `${n.r}px`);
       el.circle.setAttribute("r", String(n.r));
-      el.circle.setAttribute("stroke", n.color);
+      el.circle.style.setProperty("stroke", n.color);
       el.text.textContent = n.label;
     });
     connsG.innerHTML = "";
@@ -117,9 +118,9 @@ function init() {
       if (beatId === "beat-payoff") {
         const len = Math.hypot(nb.x - na.x, nb.y - na.y);
         line.setAttribute("stroke-dasharray", String(len));
-        line.setAttribute("stroke-dashoffset", String(len));
+        line.style.setProperty("stroke-dashoffset", String(len));
         line.style.transition = "stroke-dashoffset 0.8s ease";
-        requestAnimationFrame(() => line.setAttribute("stroke-dashoffset", "0"));
+        requestAnimationFrame(() => line.style.setProperty("stroke-dashoffset", "0"));
       }
       connsG.appendChild(line);
     });
@@ -161,10 +162,18 @@ function init() {
     tooltip.style.display = "none";
     activeNode = null;
   }
+  function clientToSvg(clientX, clientY) {
+    const svgEl = svg;
+    const ctm = svgEl.getScreenCTM();
+    if (!ctm) return { x: -1, y: -1 };
+    const pt = svgEl.createSVGPoint();
+    pt.x = clientX;
+    pt.y = clientY;
+    const p = pt.matrixTransform(ctm.inverse());
+    return { x: p.x, y: p.y };
+  }
   svg.addEventListener("mousemove", (e) => {
-    const rect = svg.getBoundingClientRect();
-    const sx = (e.clientX - rect.left) * (400 / rect.width);
-    const sy = (e.clientY - rect.top) * (560 / rect.height);
+    const { x: sx, y: sy } = clientToSvg(e.clientX, e.clientY);
     const state = STATES[currentBeat];
     if (!state) return;
     let hit = -1;
@@ -179,9 +188,7 @@ function init() {
   });
   svg.addEventListener("mouseleave", hideTooltip);
   svg.addEventListener("click", (e) => {
-    const rect = svg.getBoundingClientRect();
-    const sx = (e.clientX - rect.left) * (400 / rect.width);
-    const sy = (e.clientY - rect.top) * (560 / rect.height);
+    const { x: sx, y: sy } = clientToSvg(e.clientX, e.clientY);
     const state = STATES[currentBeat];
     if (!state) return;
     let hit = -1;
