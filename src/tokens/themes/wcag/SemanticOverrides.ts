@@ -16,8 +16,9 @@ export const wcagSemanticOverrides: SemanticOverrideMap = {
   'color.feedback.info.background': { primitiveReferences: { value: 'purple100' } },
   'color.feedback.info.border': { primitiveReferences: { value: 'purple500' } },
 
-  // Action: cyan → teal (contrast improvement)
-  'color.action.primary': { primitiveReferences: { value: 'teal300' } },
+  // Action primary: pink (matches base; pink300's wcag channel rgba(194,24,91) gives ~5.87:1 on white content).
+  // Navigation stays teal for hue distinguishability.
+  'color.action.primary': { primitiveReferences: { value: 'pink300' } },
   'color.action.navigation': { primitiveReferences: { value: 'teal500' } },
 
   // Contrast inversion: black → white (teal bg requires white content)

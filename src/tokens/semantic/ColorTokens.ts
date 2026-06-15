@@ -316,10 +316,10 @@ export const colorTokens: Record<string, Omit<SemanticToken, 'primitiveTokens'>>
 
   'color.action.primary': {
     name: 'color.action.primary',
-    primitiveReferences: { value: 'cyan300' },
+    primitiveReferences: { value: 'pink300' },
     category: SemanticCategory.COLOR,
     context: 'Primary action color for emphasized interactive elements',
-    description: 'Cyan color for emphasized actions - hero CTAs, main buttons, primary interactive elements. Use for single, focused instances where visual prominence is desired.'
+    description: 'Pink color for emphasized actions - hero CTAs, main buttons, primary interactive elements. Use for single, focused instances where visual prominence is desired.'
   },
 
   'color.action.secondary': {
