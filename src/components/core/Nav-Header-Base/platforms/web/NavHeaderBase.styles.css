@@ -30,7 +30,7 @@
   display: flex;
   align-items: center;
   min-block-size: var(--tap-area-recommended);
-  background-color: var(--color-structure-canvas);
+  background-color: var(--color-black-300);
 }
 
 .nav-header--translucent {
