@@ -1,6 +1,6 @@
 ///
 /// DesignerPunk Design System - iOS Tokens
-/// Generated: 2026-06-13T03:50:37.569Z
+/// Generated: 2026-06-15T13:22:53.783Z
 /// Version: 1.0.0
 /// Platform: iOS (Swift Constants)
 ///
@@ -543,7 +543,7 @@ public struct DesignTokens {
     // WCAG 2.4.7 Focus Visible
     public static let accessibilityFocusWidth = borderWidth200
     // WCAG 2.4.7 Focus Visible
-    static let accessibilityFocusColor = Color.oklch(0.76, 0.148, 202.5)
+    static let accessibilityFocusColor = Color.oklch(0.65, 0.242, 10)
     public static let borderNone = borderWidth000
     public static let borderDefault = borderWidth100
     public static let borderEmphasis = borderWidth200

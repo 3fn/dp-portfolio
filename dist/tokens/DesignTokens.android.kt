@@ -1,6 +1,6 @@
 /**
  * DesignerPunk Design System - Android Tokens
- * Generated: 2026-06-13T03:50:37.572Z
+ * Generated: 2026-06-15T13:22:53.786Z
  * Version: 1.0.0
  * Platform: Android (Kotlin Constants)
  */
@@ -543,7 +543,7 @@ object DesignTokens {
     // WCAG 2.4.7 Focus Visible
     val accessibility_focus_width = border_width_200
     // WCAG 2.4.7 Focus Visible
-    val accessibility_focus_color = Oklch(0.76f, 0.148f, 202.5f).toComposeColor()
+    val accessibility_focus_color = Oklch(0.65f, 0.242f, 10f).toComposeColor()
     val border_none = border_width_000
     val border_default = border_width_100
     val border_emphasis = border_width_200

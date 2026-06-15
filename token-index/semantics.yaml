@@ -222,7 +222,7 @@ tokens:
   color.action.primary:
     category: color
     primitiveReferences:
-      value: cyan300
+      value: pink300
     themeVarying: true
     platforms:
       web: '--color-action-primary'
@@ -1667,7 +1667,7 @@ tokens:
   accessibility.focus.color:
     category: accessibility
     primitiveReferences:
-      value: cyan300
+      value: pink300
     themeVarying: false
     platforms:
       web: '--accessibility-focus-color'
