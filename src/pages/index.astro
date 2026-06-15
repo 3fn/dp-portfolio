@@ -16,7 +16,7 @@ import Base from '../layouts/Base.astro';
     <!-- Critical CSS: nav + hero for fastest first paint -->
     <style is:global>
       *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font-family: var(--font-family-body); background: var(--white-100); color: var(--color-contrast-on-light); -webkit-font-smoothing: antialiased; }
+      body { font-family: var(--font-family-body); background: var(--black-300); color: var(--color-contrast-on-dark); -webkit-font-smoothing: antialiased; }
       .nav { position: sticky; inset-block-start: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; padding-inline: var(--space-500); min-height: var(--tap-area-recommended); background: var(--black-300); border-block-end: var(--border-width-100) solid var(--color-structure-border-subtle); box-shadow: var(--shadow-container); }
       .nav__inner { display: flex; align-items: center; justify-content: space-between; width: 100%; max-inline-size: var(--product-layout-content-max-width); }
       .nav__logo { display: flex; align-items: center; gap: var(--space-100); }

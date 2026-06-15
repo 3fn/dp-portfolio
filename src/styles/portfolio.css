@@ -62,7 +62,7 @@ body {
   font-family: var(--font-family-display);
   font-size: var(--font-size-500);
   font-weight: var(--font-weight-700);
-  color: var(--color-text-default);
+  color: var(--product-color-text-strong);
   margin-block-end: var(--space-700);
   margin-inline-start: var(--product-layout-content-indent);
 }
